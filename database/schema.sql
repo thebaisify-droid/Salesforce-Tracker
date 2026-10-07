@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS vacancies (
   salary_min REAL,
   salary_max REAL,
   salary_currency TEXT,
+  salary_period TEXT,
   job_url TEXT,
   description TEXT,
   posted_at TEXT,

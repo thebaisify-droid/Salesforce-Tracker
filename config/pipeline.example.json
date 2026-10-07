@@ -9,14 +9,14 @@
   "require_quality_report": true,
   "min_sources_succeeded": 3,
   "sources": [
-    {"name":"source_1","enabled":true,"config":"config/sources/source_1.json","output":"source_1.json","command":"python collectors/source_1.py --incremental --since {since} --until {until} --output {output}"},
-    {"name":"source_2","enabled":true,"config":"config/sources/source_2.json","output":"source_2.json","command":"python collectors/source_2.py --incremental --since {since} --until {until} --output {output}"},
-    {"name":"source_3","enabled":true,"config":"config/sources/source_3.json","output":"source_3.json","command":"python collectors/source_3.py --incremental --since {since} --until {until} --output {output}"}
+    {"name":"source_1","enabled":true,"config":"config/sources/source_1.json","output":"source_1.json","command":"python -m collectors.source_1 --incremental --since {since} --until {until} --output {output}"},
+    {"name":"source_2","enabled":true,"config":"config/sources/source_2.json","output":"source_2.json","command":"python -m collectors.source_2 --incremental --since {since} --until {until} --output {output}"},
+    {"name":"source_3","enabled":true,"config":"config/sources/source_3.json","output":"source_3.json","command":"python -m collectors.source_3 --incremental --since {since} --until {until} --output {output}"}
   ],
   "steps": {
-    "transform": "python scripts/process_incremental.py --input-dir {raw_dir} --run-id {run_id} --metrics {metrics}",
-    "quality": "python scripts/validate_incremental.py --run-id {run_id} --report {quality_report}",
-    "publish": "python scripts/publish_dashboard.py --run-id {run_id}"
+    "transform": "python -m scripts.process_incremental --input-dir {raw_dir} --run-id {run_id} --metrics {metrics}",
+    "quality": "python -m scripts.validate_incremental --run-id {run_id} --report {quality_report}",
+    "publish": "python -m scripts.publish_dashboard --run-id {run_id}"
   },
   "assurance": {
     "expected_master_data_version": "1.3",
