@@ -158,6 +158,33 @@ class TrackerTests(unittest.TestCase):
         b = normalize({"id":"2","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_medium=y"}, "s2")
         self.assertEqual(a["dedupe_key"], b["dedupe_key"])
 
+    def test_dashboard_snapshot_is_public_safe(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            raw = {
+                "jobId": "108085473",
+                "title": "Salesforce Developer (Financial Services)",
+                "employer": {"name": "Morson Edge"},
+                "location": {"text": "London"},
+                "descriptionText": "Salesforce development using Apex. Contact recruiter@example.com.",
+                "jobUrl": "https://www.totaljobs.com/job/example",
+                "datePosted": "2026-10-06T10:19:25.333Z",
+                "salary": {"rawText": "£600 - 700 per day", "currency": "GBP", "period": "day"},
+            }
+            with Store(db) as store:
+                store.begin_run("dashboard-test", "1.4", "2.2")
+                store.upsert(normalize(raw, "source_2"))
+                store.finish_run("dashboard-test", "success", {"inserted_rows": 1})
+                snapshot = store.dashboard_snapshot()
+            self.assertEqual(snapshot["active_vacancies"], 1)
+            self.assertEqual(snapshot["by_source"][0]["label"], "Totaljobs")
+            vacancy = snapshot["vacancies"][0]
+            self.assertEqual(vacancy["title"], "Salesforce Developer (Financial Services)")
+            self.assertEqual(vacancy["sources"][0]["label"], "Totaljobs")
+            self.assertEqual(vacancy["salary"]["period"], "day")
+            self.assertNotIn("description", vacancy)
+            self.assertNotIn("raw_json", vacancy)
+
     def test_store_insert_unchanged_update(self):
         with tempfile.TemporaryDirectory() as d:
             db = Path(d) / "tracker.db"

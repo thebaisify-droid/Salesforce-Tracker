@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:
-      contents: read
+      contents: write
       actions: read
     env:
       TRACKER_DATABASE_PATH: data/salesforce_tracker.db
@@ -63,8 +63,28 @@ jobs:
             data/salesforce_tracker.db
             state/
             dashboard/data.json
+            dashboard/live-data.json
           if-no-files-found: error
           retention-days: 90
+
+      - name: Publish sanitised dashboard JSON to main
+        if: success() && hashFiles('dashboard/live-data.json') != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp dashboard/live-data.json /tmp/live-data.json
+          git config user.name "salesforce-tracker-bot"
+          git config user.email "salesforce-tracker-bot@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B dashboard-publish origin/main
+          cp /tmp/live-data.json dashboard/live-data.json
+          git add dashboard/live-data.json
+          if git diff --cached --quiet; then
+            echo "Public dashboard JSON is unchanged."
+          else
+            git commit -m "Update live dashboard data [skip ci]"
+            git push origin HEAD:main
+          fi
 
       - name: Upload run evidence
         if: always()
@@ -77,5 +97,6 @@ jobs:
             runs/**/metrics.json
             runs/**/quality_report.json
             dashboard/data.json
+            dashboard/live-data.json
           if-no-files-found: ignore
           retention-days: 30
