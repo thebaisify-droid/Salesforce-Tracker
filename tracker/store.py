@@ -15,8 +15,8 @@ VACANCY_FIELDS = [
     "role_confidence", "role_review_required", "end_client_name", "end_client_sector",
     "end_client_sector_confidence", "end_client_method", "sector_basis", "sector_review_required",
     "location", "employment_type", "contract_type", "salary_min", "salary_max", "salary_currency",
-    "job_url", "description", "posted_at", "normalized_hash", "raw_json", "master_data_version",
-    "role_taxonomy_version"
+    "salary_period", "job_url", "description", "posted_at", "normalized_hash", "raw_json",
+    "master_data_version", "role_taxonomy_version"
 ]
 
 

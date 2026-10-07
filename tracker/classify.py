@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-MASTER_PATH = ROOT / "config" / "master_data_v1.3.json"
+MASTER_PATH = ROOT / "config" / "master_data_v1.4.json"
 TAXONOMY_PATH = ROOT / "config" / "role_taxonomy_v2.2.json"
 
 
@@ -34,13 +34,26 @@ def _contains_any(text: str, values: list[str]) -> list[str]:
     return [v for v in values if v.lower() in low]
 
 
+def _phrase_present(text: str, phrase: str) -> bool:
+    pattern = r"(?<!\w)" + re.escape(phrase.lower()) + r"(?!\w)"
+    return re.search(pattern, text.lower()) is not None
+
+
 def classify_advertiser(advertiser: str | None, description: str | None) -> dict[str, Any]:
     advertiser = (advertiser or "").strip()
     description = description or ""
     cfg = master_data()["advertiser"]
+
+    known_hits = _contains_any(advertiser, cfg.get("known_agencies", []))
     name_hits = _contains_any(advertiser, cfg["agency_name_markers"])
     desc_hits = _contains_any(description, cfg["agency_description_markers"])
 
+    if known_hits:
+        return {
+            "advertiser_type": "RECRUITMENT_AGENCY",
+            "advertiser_type_confidence": 0.99,
+            "advertiser_method": "KNOWN_AGENCY",
+        }
     if name_hits:
         return {
             "advertiser_type": "RECRUITMENT_AGENCY",
@@ -50,7 +63,7 @@ def classify_advertiser(advertiser: str | None, description: str | None) -> dict
     if desc_hits:
         return {
             "advertiser_type": "RECRUITMENT_AGENCY",
-            "advertiser_type_confidence": 0.90,
+            "advertiser_type_confidence": 0.95,
             "advertiser_method": "AGENCY_DESCRIPTION_MARKER",
         }
     if advertiser:
@@ -81,11 +94,11 @@ def _extract_end_client(description: str) -> tuple[str | None, str | None]:
 
 
 def classify_sector(description: str | None, advertiser_type: str, end_client_name: str | None) -> dict[str, Any]:
-    text = (description or "").lower()
+    text = description or ""
     sectors = master_data()["sectors"]
     scored: list[tuple[int, str, list[str]]] = []
     for sector, keywords in sectors.items():
-        hits = [kw for kw in keywords if kw.lower() in text]
+        hits = [kw for kw in keywords if _phrase_present(text, kw)]
         if hits:
             scored.append((len(hits), sector, hits))
     scored.sort(key=lambda item: (-item[0], item[1]))

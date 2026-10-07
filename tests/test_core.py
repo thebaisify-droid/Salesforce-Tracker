@@ -7,10 +7,11 @@ import unittest
 from datetime import datetime, timezone
 from pathlib import Path
 
-from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command
 from collectors.common import _apify_named_ref, _filter_window
+from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command
 from tracker.classify import classify, versions
 from tracker.normalize import normalize
+from tracker.relevance import salesforce_relevance
 from tracker.store import Store
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class TrackerTests(unittest.TestCase):
     def test_versions_are_pinned(self):
-        self.assertEqual(versions(), ("1.3", "2.2"))
+        self.assertEqual(versions(), ("1.4", "2.2"))
 
     def test_source_artifact_validation(self):
         with tempfile.TemporaryDirectory() as d:
@@ -50,112 +51,115 @@ class TrackerTests(unittest.TestCase):
         self.assertIn("Sales Cloud", result["role_specialism"])
         self.assertIn("Experience Cloud", result["role_specialism"])
 
-    def test_tracking_parameters_do_not_break_deduplication(self):
-        a = normalize(
-            {"id":"1","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_source=x"},
-            "s1",
-        )
-        b = normalize(
-            {"id":"2","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_medium=y"},
-            "s2",
-        )
-        self.assertEqual(a["dedupe_key"], b["dedupe_key"])
-
     def test_apify_console_task_ref_converts_to_api_ref(self):
-        self.assertEqual(
-            _apify_named_ref("develop_ify/cv-library-scraper-task"),
-            "develop_ify~cv-library-scraper-task",
-        )
-        self.assertEqual(
-            _apify_named_ref("develop_ify~cv-library-scraper-task"),
-            "develop_ify~cv-library-scraper-task",
-        )
+        self.assertEqual(_apify_named_ref("develop_ify/cv-library-scraper-task"), "develop_ify~cv-library-scraper-task")
+        self.assertEqual(_apify_named_ref("develop_ify~cv-library-scraper-task"), "develop_ify~cv-library-scraper-task")
 
     def test_date_only_boundary_is_preserved(self):
-        rows = [
-            {"publishedAt": "2026-10-04", "id": "boundary"},
-            {"publishedAt": "2026-10-03", "id": "old"},
-        ]
-        filtered = _filter_window(
-            rows,
-            "publishedAt",
-            "2026-10-04T10:45:00Z",
-            "2026-10-07T10:45:00Z",
-        )
+        rows = [{"datePosted": "2026-10-04", "id": "boundary"}, {"datePosted": "2026-10-03", "id": "old"}]
+        filtered = _filter_window(rows, "datePosted", "2026-10-04T10:45:00Z", "2026-10-07T10:45:00Z")
         self.assertEqual([row["id"] for row in filtered], ["boundary"])
 
-    def test_adzuna_shape_normalizes(self):
-        record = normalize(
-            {
-                "id": "adz-1",
-                "title": "Salesforce Administrator",
-                "company": {"display_name": "Example Ltd"},
-                "location": {"display_name": "London"},
-                "description": "Salesforce Service Cloud administration",
-                "redirect_url": "https://example.com/jobs/adz-1",
-                "created": "2026-10-07T08:00:00Z",
-                "salary_min": 50000,
-                "salary_max": 60000,
-            },
-            "source_2",
+    def test_known_agency_and_sector_word_boundaries(self):
+        morson = classify(
+            "Salesforce Developer",
+            "Morson Edge",
+            "Salesforce Financial Services Cloud role in banking.",
         )
-        self.assertEqual(record["advertiser"], "Example Ltd")
-        self.assertEqual(record["location"], "London")
-        self.assertEqual(record["job_url"], "https://example.com/jobs/adz-1")
+        self.assertEqual(morson["advertiser_type"], "RECRUITMENT_AGENCY")
+        self.assertEqual(morson["sector_basis"], "END_CLIENT_DESCRIPTION_SECTOR")
+        proactive = classify(
+            "Salesforce Technical Architect",
+            "Proactive Appointments",
+            "Proactive Appointments Limited operates as an employment agency and employment business. Ongoing platform transformation.",
+        )
+        self.assertEqual(proactive["advertiser_type"], "RECRUITMENT_AGENCY")
+        self.assertIsNone(proactive["end_client_sector"])
+
+    def test_salesforce_relevance_accepts_platform_role(self):
+        relevant, _ = salesforce_relevance({
+            "title": "IT Business Analyst",
+            "description": "Experience of Salesforce Sales Cloud and Financial Services Cloud is required.",
+        })
+        self.assertTrue(relevant)
+
+    def test_salesforce_relevance_rejects_incidental_crm_mention(self):
+        relevant, _ = salesforce_relevance({
+            "title": "Sales Account Manager",
+            "description": "Experience with CRM platforms such as Salesforce, HubSpot or Zoho would be beneficial.",
+        })
+        self.assertFalse(relevant)
+
+    def test_cv_library_shape_normalizes(self):
+        record = normalize({
+            "jobId": "cv-1",
+            "title": "Salesforce Business Analyst",
+            "company": "Example Recruitment",
+            "location": "London",
+            "descriptionText": "Salesforce Sales Cloud business analysis.",
+            "canonicalUrl": "https://www.cv-library.co.uk/job/123/",
+            "postedAt": "2026-10-07T08:00:00Z",
+            "salaryMin": 550,
+            "salaryMax": 650,
+            "salaryCurrency": "GBP",
+            "salaryPeriod": "day",
+            "contractType": "Contract",
+        }, "source_1")
+        self.assertEqual(record["job_url"], "https://www.cv-library.co.uk/job/123")
         self.assertEqual(record["posted_at"], "2026-10-07T08:00:00Z")
+        self.assertEqual(record["salary_period"], "day")
 
-    def test_lightcast_shape_normalizes(self):
-        record = normalize(
-            {
-                "id": "lc-1",
-                "title_raw": "Salesforce Developer",
-                "company_name": "Example Bank",
-                "city_name": "Manchester",
-                "body": "A banking role building Apex and Lightning Web Components.",
-                "url": "https://example.com/jobs/lc-1",
-                "posted": "2026-10-07T07:30:00Z",
-                "employment_type_name": "Full-time",
-            },
-            "source_1",
-        )
-        self.assertEqual(record["display_title"], "Salesforce Developer")
-        self.assertEqual(record["advertiser"], "Example Bank")
-        self.assertEqual(record["location"], "Manchester")
+    def test_totaljobs_shape_normalizes(self):
+        record = normalize({
+            "jobId": 108085473,
+            "title": "Salesforce Developer (Financial Services)",
+            "employer": {"name": "Morson Edge"},
+            "location": {"text": "Tower Hill, City of London (EC3)"},
+            "descriptionText": "Salesforce development using Apex and Lightning.",
+            "jobUrl": "https://www.totaljobs.com/job/example",
+            "datePosted": "2026-10-06T10:19:25.333Z",
+            "salary": {"rawText": "£600 - 700 per day + 12 months", "min": 12, "max": 700, "currency": "GBP", "period": "day"},
+            "employmentType": ["CONTRACTOR"],
+        }, "source_2")
+        self.assertEqual(record["advertiser"], "Morson Edge")
+        self.assertEqual(record["location"], "Tower Hill, City of London (EC3)")
+        self.assertEqual(record["posted_at"], "2026-10-06T10:19:25.333Z")
+        self.assertEqual(record["salary_min"], 600.0)
+        self.assertEqual(record["salary_max"], 700.0)
+        self.assertEqual(record["salary_period"], "day")
+        self.assertEqual(record["employment_type"], "CONTRACTOR")
+
+    def test_reed_shape_normalizes(self):
+        record = normalize({
+            "jobId": 57407294,
+            "title": "Salesforce Developer",
+            "employer": "Foresters Financial",
+            "location": "BR29BF",
+            "description": "Salesforce development role.",
+            "url": "https://www.reed.co.uk/jobs/salesforce-developer/57407294",
+            "datePosted": "2026-09-30T00:00:00.000Z",
+            "salaryFrom": 60000,
+            "salaryTo": 60000,
+            "salaryCurrency": "GBP",
+            "salaryPeriod": "Annual",
+            "jobType": "Permanent",
+            "isFullTime": True,
+        }, "source_3")
+        self.assertEqual(record["advertiser"], "Foresters Financial")
+        self.assertEqual(record["posted_at"], "2026-09-30T00:00:00.000Z")
+        self.assertEqual(record["contract_type"], "Permanent")
         self.assertEqual(record["employment_type"], "Full-time")
-        self.assertIn("Platform / Apex / LWC", record["role_specialism"])
+        self.assertEqual(record["salary_period"], "Annual")
 
-    def test_apify_linkedin_shape_normalizes(self):
-        record = normalize(
-            {
-                "id": "li-1",
-                "title": "Senior Salesforce Functional Consultant",
-                "companyName": "Example Consulting",
-                "location": "Birmingham, United Kingdom",
-                "description": "Sales Cloud and Service Cloud consulting.",
-                "jobUrl": "https://www.linkedin.com/jobs/view/li-1",
-                "publishedAt": "2026-10-07",
-                "contractType": "Contract",
-                "salaryMin": 550,
-                "salaryMax": 650,
-                "salaryCurrency": "GBP",
-            },
-            "source_3",
-        )
-        self.assertEqual(record["advertiser"], "Example Consulting")
-        self.assertEqual(record["contract_type"], "Contract")
-        self.assertEqual(record["salary_min"], 550.0)
-        self.assertEqual(record["salary_currency"], "GBP")
+    def test_tracking_parameters_do_not_break_deduplication(self):
+        a = normalize({"id":"1","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_source=x"}, "s1")
+        b = normalize({"id":"2","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_medium=y"}, "s2")
+        self.assertEqual(a["dedupe_key"], b["dedupe_key"])
 
     def test_store_insert_unchanged_update(self):
         with tempfile.TemporaryDirectory() as d:
             db = Path(d) / "tracker.db"
-            base = {
-                "id":"1",
-                "title":"Salesforce Business Analyst",
-                "company":"Bank Plc",
-                "description":"Banking transformation using Sales Cloud",
-                "url":"https://example.com/1",
-            }
+            base = {"id":"1","title":"Salesforce Business Analyst","company":"Bank Plc","description":"Banking transformation using Sales Cloud","url":"https://example.com/1"}
             with Store(db) as store:
                 record = normalize(base, "s1")
                 self.assertEqual(store.upsert(record), "inserted")
@@ -163,36 +167,28 @@ class TrackerTests(unittest.TestCase):
                 changed = normalize({**base, "title":"Senior Salesforce Business Analyst"}, "s1")
                 self.assertEqual(store.upsert(changed), "updated")
 
-    def test_process_incremental_writes_metrics(self):
+    def test_process_incremental_filters_irrelevant_rows(self):
         with tempfile.TemporaryDirectory() as d:
             temp = Path(d)
             raw = temp / "raw"
             raw.mkdir()
             (raw / "source_1.json").write_text(json.dumps([
                 {"id":"1","title":"Salesforce Developer","company":"Acme","url":"https://example.com/1"},
-                {"id":"2","title":"Salesforce Administrator","company":"Acme","url":"https://example.com/2"},
+                {"id":"2","title":"Sales Account Manager","company":"Acme","description":"Salesforce is one of several CRMs we use.","url":"https://example.com/2"},
             ]))
             metrics = temp / "metrics.json"
             db = temp / "tracker.db"
             env = dict(os.environ)
             env["PYTHONPATH"] = str(ROOT)
             proc = subprocess.run(
-                [
-                    sys.executable,
-                    str(ROOT / "scripts" / "process_incremental.py"),
-                    "--input-dir", str(raw),
-                    "--run-id", "test-run",
-                    "--metrics", str(metrics),
-                    "--database", str(db),
-                ],
-                env=env,
-                capture_output=True,
-                text=True,
+                [sys.executable, "-m", "scripts.process_incremental", "--input-dir", str(raw), "--run-id", "test-run", "--metrics", str(metrics), "--database", str(db)],
+                cwd=ROOT, env=env, capture_output=True, text=True,
             )
             self.assertEqual(proc.returncode, 0, proc.stderr)
             payload = json.loads(metrics.read_text())
-            self.assertEqual(payload["inserted_rows"], 2)
-            self.assertEqual(payload["master_data_version"], "1.3")
+            self.assertEqual(payload["inserted_rows"], 1)
+            self.assertEqual(payload["irrelevant_rows"], 1)
+            self.assertEqual(payload["master_data_version"], "1.4")
             self.assertEqual(payload["role_taxonomy_version"], "2.2")
 
     def test_project_preflight_blocks_unconfigured_sources(self):

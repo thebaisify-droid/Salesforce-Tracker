@@ -4,7 +4,7 @@ UK Salesforce hiring-market tracker with three-source incremental ingestion, vac
 
 ## Current status
 
-**Core tracker: implemented and tested. Confirmed daily sources: CV-Library, Totaljobs and Reed via saved Apify Tasks. Live credentials/validation are still pending.**
+**Core tracker: implemented and tested. Confirmed daily sources: CV-Library, Totaljobs and Reed via saved Apify Tasks. Live source Tasks and schemas have been validated; production persistence and schedule activation are still pending.**
 
 The repository contains:
 
@@ -12,7 +12,7 @@ The repository contains:
 - strict 3/3 source gating;
 - Apify Actor and saved-Task collector adapters;
 - SQLite reference store and idempotent vacancy upsert/deduplication;
-- master data **v1.3** and role taxonomy **v2.2**;
+- master data **v1.4** and role taxonomy **v2.2**;
 - advertiser/direct-employer, role-family, seniority, Salesforce-specialism and sector classification;
 - review flags for uncertain role/sector classifications;
 - built-in assurance validation;
