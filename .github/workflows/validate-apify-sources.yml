@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          python collectors/source_1.py --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_1.json > validation/source_1.log 2>&1
+          python -m collectors.source_1 --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_1.json > validation/source_1.log 2>&1
           code=$?
           echo "$code" > validation/source_1.exit_code
           exit 0
@@ -42,7 +42,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          python collectors/source_2.py --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_2.json > validation/source_2.log 2>&1
+          python -m collectors.source_2 --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_2.json > validation/source_2.log 2>&1
           code=$?
           echo "$code" > validation/source_2.exit_code
           exit 0
@@ -51,7 +51,7 @@ jobs:
         shell: bash
         run: |
           set +e
-          python collectors/source_3.py --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_3.json > validation/source_3.log 2>&1
+          python -m collectors.source_3 --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_3.json > validation/source_3.log 2>&1
           code=$?
           echo "$code" > validation/source_3.exit_code
           exit 0

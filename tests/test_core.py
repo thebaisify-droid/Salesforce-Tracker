@@ -179,7 +179,8 @@ class TrackerTests(unittest.TestCase):
             proc = subprocess.run(
                 [
                     sys.executable,
-                    str(ROOT / "scripts" / "process_incremental.py"),
+                    "-m",
+                    "scripts.process_incremental",
                     "--input-dir", str(raw),
                     "--run-id", "test-run",
                     "--metrics", str(metrics),
