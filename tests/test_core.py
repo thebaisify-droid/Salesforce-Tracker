@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command
+from collectors.common import _filter_window
 from tracker.classify import classify, versions
 from tracker.normalize import normalize
 from tracker.store import Store
@@ -59,6 +60,19 @@ class TrackerTests(unittest.TestCase):
             "s2",
         )
         self.assertEqual(a["dedupe_key"], b["dedupe_key"])
+
+    def test_date_only_boundary_is_preserved(self):
+        rows = [
+            {"publishedAt": "2026-10-04", "id": "boundary"},
+            {"publishedAt": "2026-10-03", "id": "old"},
+        ]
+        filtered = _filter_window(
+            rows,
+            "publishedAt",
+            "2026-10-04T10:45:00Z",
+            "2026-10-07T10:45:00Z",
+        )
+        self.assertEqual([row["id"] for row in filtered], ["boundary"])
 
     def test_adzuna_shape_normalizes(self):
         record = normalize(
