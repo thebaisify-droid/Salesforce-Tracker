@@ -1,34 +1,34 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "ingestion_platform": "Apify",
   "sources": [
     {
       "slot": "source_1",
       "name": "CV-Library",
-      "provider": "apify_actor",
+      "provider": "apify_task",
+      "task": "develop_ify/cv-library-scraper-task",
       "trust_tier": "A",
       "purpose": "Primary UK Salesforce vacancy feed",
-      "access": "Existing Apify Actor",
-      "independence": "Independent job-board dataset; shares Apify as the collection platform"
+      "access": "Existing saved Apify Task"
     },
     {
       "slot": "source_2",
       "name": "Totaljobs",
-      "provider": "apify_actor",
+      "provider": "apify_task",
+      "task": "develop_ify/totaljobs-com-scraper-task",
       "trust_tier": "A",
       "purpose": "Second UK Salesforce vacancy feed and cross-board corroboration",
-      "access": "Existing Apify Actor",
-      "independence": "Independent job-board dataset; shares Apify as the collection platform"
+      "access": "Existing saved Apify Task"
     },
     {
       "slot": "source_3",
-      "name": "Indeed",
-      "provider": "apify_actor",
+      "name": "Reed",
+      "provider": "apify_task",
+      "task": "develop_ify/uk-jobs-reed-task",
       "trust_tier": "A",
       "purpose": "Third UK Salesforce vacancy feed and market-coverage cross-check",
-      "access": "Existing Apify Actor",
-      "independence": "Independent job-board dataset; shares Apify as the collection platform"
+      "access": "Existing saved Apify Task"
     }
   ],
-  "assurance_note": "The three underlying job boards are independent data sources, but Apify is a shared ingestion dependency. A platform-wide Apify outage must be treated as one common-mode ingestion failure rather than three independent source failures."
+  "assurance_note": "The three underlying job boards are separate data sources, but Apify is a shared ingestion dependency. A platform-wide Apify outage is a common-mode failure, not three independent source failures."
 }

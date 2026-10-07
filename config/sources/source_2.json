@@ -1,11 +1,10 @@
 {
   "ready": false,
-  "provider": "apify_actor",
+  "provider": "apify_task",
   "source_name": "Totaljobs",
   "role": "second_uk_job_board",
-  "actor_id": "env:APIFY_TOTALJOBS_ACTOR_ID",
+  "task_id": "develop_ify/totaljobs-com-scraper-task",
   "token": "env:APIFY_TOKEN",
   "timeout_seconds": 300,
-  "input": {},
-  "notes": "Use the existing Totaljobs Actor in the user's Apify account. Add the exact Actor ID and actor-specific search input, validate output, then set ready=true."
+  "notes": "Existing saved Apify Task. The task's stored input is preserved. Set ready=true after a live validation run confirms its output schema and Salesforce/UK filtering."
 }
