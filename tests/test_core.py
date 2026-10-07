@@ -14,6 +14,7 @@ from tracker.normalize import normalize
 from tracker.relevance import salesforce_relevance
 from tracker.store import Store
 from scripts.state_snapshot import build_manifest, safe_extract, verify_manifest
+from scripts.restore_github_state import select_latest_artifact
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -206,6 +207,18 @@ class TrackerTests(unittest.TestCase):
             result = verify_manifest(root, manifest_path)
             self.assertTrue(result["verified"])
             self.assertEqual(result["database"]["integrity_check"], "ok")
+
+    def test_restore_selects_latest_main_branch_artifact(self):
+        payload = {
+            "artifacts": [
+                {"id": 1, "name": "tracker-state", "expired": False, "created_at": "2026-10-01T00:00:00Z", "workflow_run": {"head_branch": "main"}},
+                {"id": 2, "name": "tracker-state", "expired": False, "created_at": "2026-10-02T00:00:00Z", "workflow_run": {"head_branch": "feature"}},
+                {"id": 3, "name": "tracker-state", "expired": False, "created_at": "2026-10-03T00:00:00Z", "workflow_run": {"head_branch": "main"}},
+                {"id": 4, "name": "tracker-state", "expired": True, "created_at": "2026-10-04T00:00:00Z", "workflow_run": {"head_branch": "main"}},
+            ]
+        }
+        artifact = select_latest_artifact(payload, "tracker-state", "main")
+        self.assertEqual(artifact["id"], 3)
 
     def test_state_snapshot_rejects_path_traversal(self):
         import zipfile
