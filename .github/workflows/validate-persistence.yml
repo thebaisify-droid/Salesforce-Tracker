@@ -1,0 +1,180 @@
+name: Validate persistent tracker state
+
+on:
+  push:
+    branches:
+      - validate/persistence
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      actions: read
+    env:
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Preflight
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --check
+
+      - name: Create live persistent seed
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --force
+
+      - name: Build verified state manifest
+        run: python -m scripts.state_snapshot --root . --database "$TRACKER_DATABASE_PATH" --write-manifest state/state_manifest.json
+
+      - name: Capture seed summary and raw evidence
+        run: |
+          python - <<'PY'
+          import json, shutil, sqlite3
+          from pathlib import Path
+
+          latest=json.loads(Path("state/latest_success.json").read_text())
+          run_id=latest["run_id"]
+          source=Path("runs")/run_id/"raw"
+          target=Path("validation/replay_raw")
+          target.mkdir(parents=True, exist_ok=True)
+          for path in source.glob("*.json"):
+              shutil.copy2(path, target/path.name)
+
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          summary={
+              "run_id": run_id,
+              "vacancies": conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0],
+              "active_vacancies": conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0],
+              "source_links": conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0],
+          }
+          conn.close()
+          Path("validation/seed_summary.json").write_text(json.dumps(summary,indent=2)+"\n")
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Upload state seed
+        uses: actions/upload-artifact@v4
+        with:
+          name: persistence-seed-${{ github.run_id }}
+          path: |
+            data/salesforce_tracker.db
+            state/
+            dashboard/data.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload live raw replay set
+        uses: actions/upload-artifact@v4
+        with:
+          name: persistence-raw-${{ github.run_id }}
+          path: validation/replay_raw/
+          if-no-files-found: error
+          retention-days: 7
+
+  restore-and-dedupe:
+    needs: seed
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    env:
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore seed through production restore path
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >
+          python -m scripts.restore_github_state
+          --root .
+          --artifact-name persistence-seed-${{ github.run_id }}
+          --branch validate/persistence
+
+      - name: Download identical live raw records
+        uses: actions/download-artifact@v4
+        with:
+          name: persistence-raw-${{ github.run_id }}
+          path: validation/replay_raw
+
+      - name: Verify restored database has prior state
+        run: |
+          python -m scripts.state_snapshot --root . --verify
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          count=conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+          keys=[row[0] for row in conn.execute("SELECT dedupe_key FROM vacancies ORDER BY dedupe_key")]
+          conn.close()
+          if count <= 0:
+              raise SystemExit("restored database contains no vacancies")
+          payload={"vacancies_before":count,"dedupe_keys_before":keys}
+          Path("validation/before.json").write_text(json.dumps(payload,indent=2)+"\n")
+          print(json.dumps({"vacancies_before":count},indent=2))
+          PY
+
+      - name: Replay same live source records into restored database
+        run: >
+          python -m scripts.process_incremental
+          --input-dir validation/replay_raw
+          --run-id persistence-replay-${{ github.run_id }}
+          --metrics validation/replay_metrics.json
+          --database "$TRACKER_DATABASE_PATH"
+
+      - name: Prove cross-run deduplication
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+
+          before=json.loads(Path("validation/before.json").read_text())
+          metrics=json.loads(Path("validation/replay_metrics.json").read_text())
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          after=conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+          after_keys=[row[0] for row in conn.execute("SELECT dedupe_key FROM vacancies ORDER BY dedupe_key")]
+          conn.close()
+
+          if metrics["inserted_rows"] != 0:
+              raise SystemExit(f"expected zero duplicate inserts, got {metrics['inserted_rows']}")
+          if metrics["unchanged_rows"] + metrics["updated_rows"] <= 0:
+              raise SystemExit("replay did not match any persisted vacancy")
+          if after != before["vacancies_before"]:
+              raise SystemExit(f"vacancy count changed on identical replay: {before['vacancies_before']} -> {after}")
+          if after_keys != before["dedupe_keys_before"]:
+              raise SystemExit("dedupe key set changed on identical replay")
+
+          result={
+              "persistence_verified": True,
+              "vacancies_before": before["vacancies_before"],
+              "vacancies_after": after,
+              "inserted_rows_on_replay": metrics["inserted_rows"],
+              "unchanged_rows_on_replay": metrics["unchanged_rows"],
+              "updated_rows_on_replay": metrics["updated_rows"],
+              "irrelevant_rows_on_replay": metrics.get("irrelevant_rows",0),
+          }
+          Path("validation/persistence_result.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Rebuild state manifest after replay
+        run: python -m scripts.state_snapshot --root . --database "$TRACKER_DATABASE_PATH" --write-manifest state/state_manifest.json
+
+      - name: Upload persistence proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: persistence-proof-${{ github.run_id }}
+          path: |
+            validation/*.json
+            state/state_manifest.json
+          if-no-files-found: warn
+          retention-days: 7
