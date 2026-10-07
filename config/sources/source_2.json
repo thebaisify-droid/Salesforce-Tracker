@@ -1,10 +1,10 @@
 {
-  "ready": false,
+  "ready": true,
   "provider": "apify_task",
   "source_name": "Totaljobs",
   "role": "second_uk_job_board",
   "task_id": "develop_ify/totaljobs-com-scraper-task",
   "token": "env:APIFY_TOKEN",
   "timeout_seconds": 300,
-  "notes": "Existing saved Apify Task. The task's stored input is preserved. Set ready=true after a live validation run confirms its output schema and Salesforce/UK filtering."
+  "notes": "Temporary validation-branch activation of the existing saved Apify Task."
 }
