@@ -1,32 +1,34 @@
 {
-  "version": "1.0",
+  "version": "1.1",
+  "ingestion_platform": "Apify",
   "sources": [
     {
       "slot": "source_1",
-      "name": "Lightcast UK Job Postings",
-      "provider": "lightcast_uk",
+      "name": "CV-Library",
+      "provider": "apify_actor",
       "trust_tier": "A",
-      "purpose": "Primary structured labour-market dataset and analytical baseline",
-      "access": "Commercial OAuth2 API",
-      "independence": "Multi-source vendor dataset"
+      "purpose": "Primary UK Salesforce vacancy feed",
+      "access": "Existing Apify Actor",
+      "independence": "Independent job-board dataset; shares Apify as the collection platform"
     },
     {
       "slot": "source_2",
-      "name": "Adzuna Jobs API",
-      "provider": "adzuna",
+      "name": "Totaljobs",
+      "provider": "apify_actor",
       "trust_tier": "A",
-      "purpose": "Official jobs-API corroboration and listing-level validation",
-      "access": "Official app_id/app_key API",
-      "independence": "Independent job search/aggregation source"
+      "purpose": "Second UK Salesforce vacancy feed and cross-board corroboration",
+      "access": "Existing Apify Actor",
+      "independence": "Independent job-board dataset; shares Apify as the collection platform"
     },
     {
       "slot": "source_3",
-      "name": "LinkedIn Jobs via Apify",
+      "name": "Indeed",
       "provider": "apify_actor",
-      "trust_tier": "B",
-      "purpose": "Independent public-job cross-check with strong direct-employer coverage",
-      "access": "Public listing scraper operated through Apify",
-      "independence": "Different collection mechanism; monitor scraper drift"
+      "trust_tier": "A",
+      "purpose": "Third UK Salesforce vacancy feed and market-coverage cross-check",
+      "access": "Existing Apify Actor",
+      "independence": "Independent job-board dataset; shares Apify as the collection platform"
     }
-  ]
+  ],
+  "assurance_note": "The three underlying job boards are independent data sources, but Apify is a shared ingestion dependency. A platform-wide Apify outage must be treated as one common-mode ingestion failure rather than three independent source failures."
 }

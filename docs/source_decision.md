@@ -1,27 +1,25 @@
-# Proposed three-source architecture
+# Daily source architecture
 
-This repository could not recover the exact source names from the earlier project chat, so the following is a **proposed, explicit source architecture**, not a claim about a previous decision.
+The daily production tracker uses the three UK job-board sources already selected and available through the user's Apify account:
 
-## 1. Lightcast UK Job Postings — primary analytical source
+1. **CV-Library**
+2. **Totaljobs**
+3. **Indeed**
 
-Lightcast exposes a dedicated UK Job Postings API, OAuth2 authentication with the `postings:uk` scope, date-window filtering and structured/enriched posting fields. It is the strongest analytical baseline when account access is available.
+These replace the temporary Lightcast/Adzuna/LinkedIn proposal that was added only because the earlier Apify Actor details were not recoverable from the project chat.
 
-Documentation: https://docs.lightcast.io/lightcast-api/reference/overview-uk-job-postings
+## Why these three
 
-## 2. Adzuna Jobs API — official API cross-check
+They give direct coverage of the UK vacancy market relevant to the tracker and avoid adding new provider accounts solely to make the daily pipeline work. Each board is treated as a separate underlying data source, while Apify is treated as the shared ingestion platform.
 
-Adzuna has an official UK job-search API using `app_id` and `app_key`. It provides listing-level job data and gives us an independently collected source for reconciliation.
+## Common-mode dependency
 
-Documentation: https://developer.adzuna.com/docs/search
+Three successful Actor runs do not mean three independent technical collection paths: all three rely on Apify. The run evidence therefore records each board separately but operational monitoring must also distinguish an **Apify platform failure** from a board-specific scraper/schema failure.
 
-## 3. LinkedIn Jobs via Apify — independent market cross-check
+## External assurance
 
-The selected Apify Actor accepts title/keyword and location filters, exposes structured job/company fields and returns public LinkedIn job listings without requiring LinkedIn credentials. Because this is a scraper rather than a first-party job API, it is deliberately assigned a lower trust tier and should be monitored for schema/drift failures.
+Lightcast or Adzuna may still be added later as a weekly/monthly validation benchmark. They are **not required for the daily refresh**.
 
-Actor: https://apify.com/bebity/linkedin-jobs-scraper
+## Activation
 
-## Assurance rule
-
-The dashboard remains unpublished unless all three configured sources succeed. Source 3 should corroborate and extend coverage; it should not silently override higher-trust structured evidence. Duplicate listings are merged through canonical URLs and source lineage is retained.
-
-All three configs remain `ready=false` until the necessary credentials/access are supplied and a first-source validation run passes.
+The three source configs remain `ready=false` until the exact existing Actor or Task IDs and their working input configurations are wired in and validated. Do not put the Apify token in Git.

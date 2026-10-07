@@ -1,11 +1,11 @@
 {
   "ready": false,
-  "provider": "lightcast_uk",
-  "role": "primary_labour_market_dataset",
-  "client_id": "env:LIGHTCAST_CLIENT_ID",
-  "client_secret": "env:LIGHTCAST_CLIENT_SECRET",
-  "keyword": "Salesforce",
-  "limit": 10,
-  "max_pages": 20,
-  "notes": "Preferred primary analytical source. Requires Lightcast UK Job Postings API access with postings:uk scope."
+  "provider": "apify_actor",
+  "source_name": "CV-Library",
+  "role": "primary_uk_job_board",
+  "actor_id": "env:APIFY_CV_LIBRARY_ACTOR_ID",
+  "token": "env:APIFY_TOKEN",
+  "timeout_seconds": 300,
+  "input": {},
+  "notes": "Use the existing CV-Library Actor in the user's Apify account. Add the exact Actor ID and actor-specific search input, validate output, then set ready=true."
 }

@@ -1,18 +1,11 @@
 {
   "ready": false,
   "provider": "apify_actor",
-  "role": "independent_direct_market_crosscheck",
-  "actor_id": "bebity~linkedin-jobs-scraper",
+  "source_name": "Indeed",
+  "role": "third_uk_job_board",
+  "actor_id": "env:APIFY_INDEED_ACTOR_ID",
   "token": "env:APIFY_TOKEN",
   "timeout_seconds": 300,
-  "window_field": "publishedAt",
-  "input": {
-    "titles": ["Salesforce"],
-    "locations": ["United Kingdom"],
-    "publishedAt": "r604800",
-    "rows": 500,
-    "companyProfile": true,
-    "enrichCompany": false
-  },
-  "notes": "Independent LinkedIn public-job cross-check through Apify. Actor searches the past week and the collector trims rows to the exact 72-hour pipeline window."
+  "input": {},
+  "notes": "Use the existing Indeed Actor in the user's Apify account. Add the exact Actor ID and actor-specific search input, validate output, then set ready=true."
 }
