@@ -1,0 +1,93 @@
+name: Validate saved Apify job-board tasks
+
+on:
+  push:
+    branches:
+      - validate/apify-tasks
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prepare validation window
+        run: |
+          mkdir -p validation
+          echo "UNTIL=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+          echo "SINCE=$(python - <<'PY'
+          from datetime import datetime, timedelta, timezone
+          print((datetime.now(timezone.utc)-timedelta(days=7)).replace(microsecond=0).isoformat().replace('+00:00','Z'))
+          PY
+          )" >> "$GITHUB_ENV"
+
+      - name: Validate CV-Library task
+        shell: bash
+        run: |
+          set +e
+          python collectors/source_1.py --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_1.json > validation/source_1.log 2>&1
+          code=$?
+          echo "$code" > validation/source_1.exit_code
+          exit 0
+
+      - name: Validate Totaljobs task
+        shell: bash
+        run: |
+          set +e
+          python collectors/source_2.py --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_2.json > validation/source_2.log 2>&1
+          code=$?
+          echo "$code" > validation/source_2.exit_code
+          exit 0
+
+      - name: Validate Reed task
+        shell: bash
+        run: |
+          set +e
+          python collectors/source_3.py --incremental --since "$SINCE" --until "$UNTIL" --output validation/source_3.json > validation/source_3.log 2>&1
+          code=$?
+          echo "$code" > validation/source_3.exit_code
+          exit 0
+
+      - name: Build validation summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          out = {}
+          for i, name in [(1,"CV-Library"),(2,"Totaljobs"),(3,"Reed")]:
+              base=Path("validation")
+              code_path=base/f"source_{i}.exit_code"
+              data_path=base/f"source_{i}.json"
+              code=int(code_path.read_text().strip()) if code_path.exists() else 99
+              count=None
+              keys=[]
+              if data_path.exists():
+                  try:
+                      payload=json.loads(data_path.read_text())
+                      if isinstance(payload,list):
+                          count=len(payload)
+                          if payload and isinstance(payload[0],dict):
+                              keys=sorted(payload[0].keys())
+                  except Exception:
+                      pass
+              out[f"source_{i}"]={"name":name,"exit_code":code,"record_count":count,"sample_keys":keys}
+          Path("validation/summary.json").write_text(json.dumps(out,indent=2)+"\n")
+          print(json.dumps(out,indent=2))
+          PY
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apify-source-validation-${{ github.run_id }}
+          path: validation/
+          if-no-files-found: warn
+          retention-days: 7
