@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command
-from collectors.common import _filter_window
+from collectors.common import _apify_named_ref, _filter_window
 from tracker.classify import classify, versions
 from tracker.normalize import normalize
 from tracker.store import Store
@@ -60,6 +60,16 @@ class TrackerTests(unittest.TestCase):
             "s2",
         )
         self.assertEqual(a["dedupe_key"], b["dedupe_key"])
+
+    def test_apify_console_task_ref_converts_to_api_ref(self):
+        self.assertEqual(
+            _apify_named_ref("develop_ify/cv-library-scraper-task"),
+            "develop_ify~cv-library-scraper-task",
+        )
+        self.assertEqual(
+            _apify_named_ref("develop_ify~cv-library-scraper-task"),
+            "develop_ify~cv-library-scraper-task",
+        )
 
     def test_date_only_boundary_is_preserved(self):
         rows = [
