@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class TrackerTests(unittest.TestCase):
     def test_versions_are_pinned(self):
-        self.assertEqual(versions(), ("1.3", "2.2"))
+        self.assertEqual(versions(), ("1.4", "2.2"))
 
     def test_source_artifact_validation(self):
         with tempfile.TemporaryDirectory() as d:
@@ -59,6 +59,22 @@ class TrackerTests(unittest.TestCase):
         rows = [{"datePosted": "2026-10-04", "id": "boundary"}, {"datePosted": "2026-10-03", "id": "old"}]
         filtered = _filter_window(rows, "datePosted", "2026-10-04T10:45:00Z", "2026-10-07T10:45:00Z")
         self.assertEqual([row["id"] for row in filtered], ["boundary"])
+
+    def test_known_agency_and_sector_word_boundaries(self):
+        morson = classify(
+            "Salesforce Developer",
+            "Morson Edge",
+            "Salesforce Financial Services Cloud role in banking.",
+        )
+        self.assertEqual(morson["advertiser_type"], "RECRUITMENT_AGENCY")
+        self.assertEqual(morson["sector_basis"], "END_CLIENT_DESCRIPTION_SECTOR")
+        proactive = classify(
+            "Salesforce Technical Architect",
+            "Proactive Appointments",
+            "Proactive Appointments Limited operates as an employment agency and employment business. Ongoing platform transformation.",
+        )
+        self.assertEqual(proactive["advertiser_type"], "RECRUITMENT_AGENCY")
+        self.assertIsNone(proactive["end_client_sector"])
 
     def test_salesforce_relevance_accepts_platform_role(self):
         relevant, _ = salesforce_relevance({
@@ -172,7 +188,7 @@ class TrackerTests(unittest.TestCase):
             payload = json.loads(metrics.read_text())
             self.assertEqual(payload["inserted_rows"], 1)
             self.assertEqual(payload["irrelevant_rows"], 1)
-            self.assertEqual(payload["master_data_version"], "1.3")
+            self.assertEqual(payload["master_data_version"], "1.4")
             self.assertEqual(payload["role_taxonomy_version"], "2.2")
 
     def test_project_preflight_blocks_unconfigured_sources(self):
