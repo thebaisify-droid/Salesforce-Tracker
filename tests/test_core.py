@@ -10,6 +10,7 @@ from pathlib import Path
 from collectors.common import _apify_named_ref, _filter_window
 from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command
 from tracker.classify import classify, versions
+from tracker.dashboard import merge_with_baseline
 from tracker.normalize import normalize
 from tracker.relevance import salesforce_relevance
 from tracker.store import Store
@@ -157,6 +158,41 @@ class TrackerTests(unittest.TestCase):
         a = normalize({"id":"1","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_source=x"}, "s1")
         b = normalize({"id":"2","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_medium=y"}, "s2")
         self.assertEqual(a["dedupe_key"], b["dedupe_key"])
+
+    def test_dashboard_baseline_restores_45_without_duplicate_live_rows(self):
+        baseline = json.loads((ROOT / "config" / "baseline_2026-10-06.json").read_text())
+        self.assertEqual(len(baseline["rows"]), 45)
+        live = {
+            "vacancies": [
+                {
+                    "id": 101,
+                    "title": "Salesforce Developer (Financial Services)",
+                    "advertiser": "Morson Edge",
+                    "advertiser_type": "RECRUITMENT_AGENCY",
+                    "role_family": "Engineering / Development",
+                    "seniority": "Standard",
+                    "specialisms": ["Platform / Apex / LWC"],
+                    "end_client_name": None,
+                    "sector": "Financial Services",
+                    "location": "Tower Hill, City of London (EC3), E1W 1WY",
+                    "employment_type": "CONTRACTOR",
+                    "contract_type": "Contract",
+                    "salary": {"min": 600, "max": 700, "currency": "GBP", "period": "day"},
+                    "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473",
+                    "posted_at": "2026-10-06T10:19:25.333Z",
+                    "first_seen_at": "2026-10-07T11:31:45Z",
+                    "last_seen_at": "2026-10-07T11:31:45Z",
+                    "review": {"role": False, "sector": True},
+                    "sources": [{"key": "source_2", "label": "Totaljobs", "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473"}],
+                }
+            ]
+        }
+        merged = merge_with_baseline(live, baseline)
+        self.assertEqual(merged["active_vacancies"], 45)
+        relevance = {row["label"]: row["value"] for row in merged["by_relevance"]}
+        self.assertEqual(relevance["CORE"], 29)
+        self.assertEqual(relevance["ADJACENT"], 16)
+        self.assertEqual(merged["baseline"]["post_baseline_new"], 0)
 
     def test_dashboard_snapshot_is_public_safe(self):
         with tempfile.TemporaryDirectory() as d:
