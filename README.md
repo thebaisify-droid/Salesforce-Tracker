@@ -17,9 +17,9 @@ The repository contains:
 - review flags for uncertain role/sector classifications;
 - built-in assurance validation;
 - dashboard aggregate publishing and refresh-status evidence;
-- CI tests and a daily GitHub Actions workflow that remains disabled until live validation is complete.
+- CI tests and a daily GitHub Actions workflow that remains disabled until persistent storage is selected and the live schedule switch is enabled.
 
-The Task references are wired under `config/sources/`, but `"ready": false` remains deliberate until each saved Task has been run with the Apify token and its current output schema has been validated.
+The three saved Tasks and their live output schemas have been validated, so all three source configs are now marked `"ready": true`. This does not enable scheduled execution.
 
 ## Verify the build
 

@@ -191,10 +191,10 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(payload["master_data_version"], "1.4")
             self.assertEqual(payload["role_taxonomy_version"], "2.2")
 
-    def test_project_preflight_blocks_unconfigured_sources(self):
+    def test_project_preflight_accepts_validated_sources(self):
         result = preflight(ROOT / "config" / "pipeline.json")
-        self.assertFalse(result["ok"])
-        self.assertEqual(sum("live provider is not configured" in error for error in result["errors"]), 3)
+        self.assertTrue(result["ok"], result["errors"])
+        self.assertEqual(result["enabled_sources"], 3)
 
 
 if __name__ == "__main__":
