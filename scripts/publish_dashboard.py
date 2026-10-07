@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from tracker.dashboard import merge_with_baseline
 from tracker.store import SOURCE_LABELS, Store
 
 
@@ -48,6 +49,7 @@ def main() -> int:
     p.add_argument("--database", default=os.environ.get("TRACKER_DATABASE_PATH", "data/salesforce_tracker.db"))
     p.add_argument("--output", default="dashboard/data.json")
     p.add_argument("--public-output", default="dashboard/live-data.json")
+    p.add_argument("--baseline", default="config/baseline_2026-10-06.json")
     args = p.parse_args()
 
     with Store(args.database) as store:
@@ -57,6 +59,17 @@ def main() -> int:
     run_dir = Path(run_dir_value) if run_dir_value else None
     metrics = load_json(run_dir / "metrics.json") if run_dir else {}
     quality = load_json(run_dir / "quality_report.json") if run_dir else {}
+
+    latest_state = load_json(Path("state/latest_success.json"))
+    if not metrics and isinstance(latest_state.get("metrics"), dict):
+        metrics = latest_state["metrics"]
+    if not quality:
+        state_quality = (latest_state.get("quality") or {}).get("report")
+        if isinstance(state_quality, dict):
+            quality = state_quality
+
+    baseline = load_json(Path(args.baseline))
+    snapshot = merge_with_baseline(snapshot, baseline)
 
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     latest = snapshot.get("latest_run") or {}

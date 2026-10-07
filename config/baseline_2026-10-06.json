@@ -953,5 +953,8 @@
       ],
       "source_evidence": "CV-Library 1 advert · 88% confidence"
     }
-  ]
+  ],
+  "frozen_baseline": 42,
+  "late_discoveries": 3,
+  "confirmed_expired": 0
 }
