@@ -1,0 +1,47 @@
+name: Full live tracker validation
+
+on:
+  push:
+    branches:
+      - validate/full-live-refresh
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Preflight
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --check
+
+      - name: Run forced 72-hour live refresh
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --force
+
+      - name: Show dashboard status
+        if: always()
+        run: |
+          if [ -f state/dashboard_status.json ]; then cat state/dashboard_status.json; fi
+          latest=$(find runs -name metrics.json -type f 2>/dev/null | head -1)
+          if [ -n "$latest" ]; then echo "--- metrics ---"; cat "$latest"; fi
+
+      - name: Upload full validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-live-validation-${{ github.run_id }}
+          path: |
+            state/
+            runs/
+            dashboard/
+            data/salesforce_tracker.db
+          if-no-files-found: warn
+          retention-days: 7
