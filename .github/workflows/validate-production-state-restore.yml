@@ -1,0 +1,40 @@
+name: Validate production tracker-state restore
+
+on:
+  push:
+    branches:
+      - validate/production-state-restore
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore actual production state artifact
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Verify restored production state
+        run: |
+          python -m scripts.state_snapshot --root . --verify
+          python - <<'PY'
+          import json, sqlite3
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          result={
+              "production_restore_verified": True,
+              "vacancies": conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0],
+              "active_vacancies": conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0],
+              "source_links": conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0],
+              "refresh_runs": conn.execute("SELECT COUNT(*) FROM refresh_runs").fetchone()[0],
+          }
+          conn.close()
+          print(json.dumps(result,indent=2))
+          PY
