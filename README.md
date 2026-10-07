@@ -4,7 +4,7 @@ UK Salesforce hiring-market tracker with three-source incremental ingestion, vac
 
 ## Current status
 
-**Core tracker: implemented and tested. Confirmed daily sources: CV-Library, Totaljobs and Reed via saved Apify Tasks. Live source Tasks and schemas have been validated; production persistence and schedule activation are still pending.**
+**Core tracker: implemented and tested. Confirmed daily sources: CV-Library, Totaljobs and Reed via saved Apify Tasks. Live source Tasks and schemas have been validated; GitHub-native persistent state is implemented and schedule activation is the remaining go-live switch.**
 
 The repository contains:
 
@@ -17,7 +17,7 @@ The repository contains:
 - review flags for uncertain role/sector classifications;
 - built-in assurance validation;
 - dashboard aggregate publishing and refresh-status evidence;
-- CI tests and a daily GitHub Actions workflow that remains disabled until persistent storage is selected and the live schedule switch is enabled.
+- CI tests and a daily GitHub Actions workflow with integrity-checked state restoration; the live schedule remains disabled until its repository variable is enabled.
 
 The three saved Tasks and their live output schemas have been validated, so all three source configs are now marked `"ready": true`. This does not enable scheduled execution.
 

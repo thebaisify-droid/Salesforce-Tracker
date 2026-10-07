@@ -13,6 +13,8 @@ from tracker.classify import classify, versions
 from tracker.normalize import normalize
 from tracker.relevance import salesforce_relevance
 from tracker.store import Store
+from scripts.state_snapshot import build_manifest, safe_extract, verify_manifest
+from scripts.restore_github_state import select_latest_artifact
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -190,6 +192,43 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(payload["irrelevant_rows"], 1)
             self.assertEqual(payload["master_data_version"], "1.4")
             self.assertEqual(payload["role_taxonomy_version"], "2.2")
+
+    def test_state_manifest_verifies_sqlite_snapshot(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            db = root / "data" / "salesforce_tracker.db"
+            with Store(db):
+                pass
+            (root / "state").mkdir(parents=True, exist_ok=True)
+            (root / "state" / "latest_success.json").write_text(json.dumps({"status": "success"}))
+            manifest = build_manifest(root, "data/salesforce_tracker.db")
+            manifest_path = root / "state" / "state_manifest.json"
+            manifest_path.write_text(json.dumps(manifest))
+            result = verify_manifest(root, manifest_path)
+            self.assertTrue(result["verified"])
+            self.assertEqual(result["database"]["integrity_check"], "ok")
+
+    def test_restore_selects_latest_main_branch_artifact(self):
+        payload = {
+            "artifacts": [
+                {"id": 1, "name": "tracker-state", "expired": False, "created_at": "2026-10-01T00:00:00Z", "workflow_run": {"head_branch": "main"}},
+                {"id": 2, "name": "tracker-state", "expired": False, "created_at": "2026-10-02T00:00:00Z", "workflow_run": {"head_branch": "feature"}},
+                {"id": 3, "name": "tracker-state", "expired": False, "created_at": "2026-10-03T00:00:00Z", "workflow_run": {"head_branch": "main"}},
+                {"id": 4, "name": "tracker-state", "expired": True, "created_at": "2026-10-04T00:00:00Z", "workflow_run": {"head_branch": "main"}},
+            ]
+        }
+        artifact = select_latest_artifact(payload, "tracker-state", "main")
+        self.assertEqual(artifact["id"], 3)
+
+    def test_state_snapshot_rejects_path_traversal(self):
+        import zipfile
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            archive = root / "bad.zip"
+            with zipfile.ZipFile(archive, "w") as zf:
+                zf.writestr("../escape.txt", "bad")
+            with self.assertRaises(RuntimeError):
+                safe_extract(archive, root / "restore")
 
     def test_project_preflight_accepts_validated_sources(self):
         result = preflight(ROOT / "config" / "pipeline.json")
