@@ -1,0 +1,19 @@
+{
+  "version": "1.3",
+  "advertiser": {
+    "agency_name_markers": ["recruitment","recruit","staffing","talent","resourcing","resources","search","placements","employment","personnel","headhunt","consultancy"],
+    "agency_description_markers": ["on behalf of our client","our client is","our client,","recruitment agency","acting as an employment agency","acting as an employment business","successful candidate will join our client"]
+  },
+  "sectors": {
+    "Financial Services": ["bank","banking","payments","fintech","insurance","wealth","asset management","mortgage","lending","credit card"],
+    "Technology Services": ["technology consultancy","software company","saas","cyber security","cybersecurity","managed services","it services","digital consultancy","cloud consultancy"],
+    "Public Sector": ["government","civil service","local authority","council","public sector","nhs","ministry","department for"],
+    "Healthcare & Life Sciences": ["healthcare","health care","pharma","pharmaceutical","life sciences","medical","hospital","clinical"],
+    "Retail & Consumer": ["retail","consumer goods","ecommerce","e-commerce","supermarket","fashion","hospitality"],
+    "Manufacturing & Engineering": ["manufacturing","manufacturer","engineering","automotive","aerospace","industrial"],
+    "Energy & Utilities": ["energy","utility","utilities","electricity","gas","renewable","water company","oil and gas"],
+    "Telecommunications & Media": ["telecom","telecommunications","media","broadcast","publisher","publishing"],
+    "Professional Services": ["professional services","legal","law firm","accountancy","accounting","audit","consulting firm"],
+    "Education & Nonprofit": ["university","college","education","charity","nonprofit","non-profit","ngo"]
+  }
+}

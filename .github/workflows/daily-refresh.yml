@@ -1,0 +1,47 @@
+name: Daily Salesforce tracker refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 6 * * *"
+    - cron: "15 7 * * *"
+
+concurrency:
+  group: salesforce-daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.event_name == 'workflow_dispatch' || vars.TRACKER_LIVE_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install project dependencies
+        run: |
+          if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Preflight
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --check
+      - name: Run daily refresh
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          TRACKER_DATABASE_PATH: ${{ vars.TRACKER_DATABASE_PATH || 'data/salesforce_tracker.db' }}
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --scheduled
+      - name: Upload run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: refresh-${{ github.run_id }}
+          path: |
+            state/*.json
+            runs/**/run_status.json
+            runs/**/metrics.json
+            runs/**/quality_report.json
+            dashboard/data.json
+          if-no-files-found: ignore
+          retention-days: 30
