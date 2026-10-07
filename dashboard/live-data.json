@@ -1,0 +1,216 @@
+{
+  "active_vacancies": 3,
+  "by_role_family": [
+    {
+      "label": "Architecture",
+      "value": 2
+    },
+    {
+      "label": "Engineering / Development",
+      "value": 1
+    }
+  ],
+  "by_sector": [
+    {
+      "label": "Financial Services",
+      "value": 2
+    },
+    {
+      "label": "Manufacturing & Engineering",
+      "value": 1
+    }
+  ],
+  "by_advertiser_type": [
+    {
+      "label": "RECRUITMENT_AGENCY",
+      "value": 3
+    }
+  ],
+  "by_source": [
+    {
+      "key": "source_2",
+      "label": "Totaljobs",
+      "value": 2
+    },
+    {
+      "key": "source_3",
+      "label": "Reed",
+      "value": 1
+    }
+  ],
+  "review_queue": {
+    "role": 1,
+    "sector": 3
+  },
+  "latest_run": {
+    "run_id": "20261007T112956Z-d3306b65",
+    "started_at": "2026-10-07T11:31:45Z",
+    "finished_at": "2026-10-07T11:31:45Z",
+    "status": "success",
+    "inserted_rows": 3,
+    "updated_rows": 0,
+    "unchanged_rows": 0,
+    "rejected_rows": 0,
+    "master_data_version": "1.4",
+    "role_taxonomy_version": "2.2"
+  },
+  "vacancies": [
+    {
+      "id": 1,
+      "title": "Salesforce Developer (Financial Services)",
+      "advertiser": "Morson Edge",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "role_family": "Engineering / Development",
+      "seniority": "Standard",
+      "specialisms": [
+        "Platform / Apex / LWC"
+      ],
+      "end_client_name": null,
+      "sector": "Financial Services",
+      "location": "Tower Hill, City of London (EC3), E1W 1WY",
+      "employment_type": "CONTRACTOR",
+      "contract_type": "Freelance / Project collaboration; On-site",
+      "salary": {
+        "min": 600,
+        "max": 700,
+        "currency": "GBP",
+        "period": "day"
+      },
+      "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473",
+      "posted_at": "2026-10-06T10:19:25.333Z",
+      "first_seen_at": "2026-10-07T11:31:45Z",
+      "last_seen_at": "2026-10-07T11:31:45Z",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Salesforce Functional Architect",
+      "advertiser": "Morson Edge",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "role_family": "Architecture",
+      "seniority": "Standard",
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "Experience Cloud"
+      ],
+      "end_client_name": null,
+      "sector": "Financial Services",
+      "location": "Tower Hill, City of London (EC3), E1W 1WY",
+      "employment_type": "FULL_TIME",
+      "contract_type": "Freelance / Project collaboration; On-site",
+      "salary": {
+        "min": 600,
+        "max": 750,
+        "currency": "GBP",
+        "period": "day"
+      },
+      "url": "https://www.totaljobs.com/job/salesforce-functional-architect/morson-edge-job108080984",
+      "posted_at": "2026-10-05T11:31:42.237Z",
+      "first_seen_at": "2026-10-07T11:31:45Z",
+      "last_seen_at": "2026-10-07T11:31:45Z",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/salesforce-functional-architect/morson-edge-job108080984"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Salesforce Technical Architect",
+      "advertiser": "Proactive Appointments",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "role_family": "Architecture",
+      "seniority": "Standard",
+      "specialisms": [
+        "Platform / Apex / LWC"
+      ],
+      "end_client_name": null,
+      "sector": "Manufacturing & Engineering",
+      "location": "London",
+      "employment_type": "Full-time",
+      "contract_type": "Contract",
+      "salary": {
+        "min": 500,
+        "max": 550,
+        "currency": "GBP",
+        "period": "Daily"
+      },
+      "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965",
+      "posted_at": "2026-10-05T00:00:00.000Z",
+      "first_seen_at": "2026-10-07T11:31:45Z",
+      "last_seen_at": "2026-10-07T11:31:45Z",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965"
+        }
+      ]
+    }
+  ],
+  "schema": "salesforce-hiring-dashboard/v1",
+  "run_id": "20261007T112956Z-d3306b65",
+  "generated_at": "2026-10-07T11:31:45Z",
+  "refresh": {
+    "status": "success",
+    "started_at": "2026-10-07T11:31:45Z",
+    "finished_at": "2026-10-07T11:31:45Z",
+    "inserted": 3,
+    "updated": 0,
+    "unchanged": 0,
+    "rejected": 0,
+    "master_data_version": "1.4",
+    "role_taxonomy_version": "2.2"
+  },
+  "pipeline": {
+    "quality_passed": true,
+    "raw_records": 26,
+    "relevant_records": 3,
+    "irrelevant_records": 23,
+    "rejected_records": 0,
+    "sources": [
+      {
+        "key": "source_1",
+        "label": "CV-Library",
+        "raw": 0,
+        "relevant": 0,
+        "irrelevant": 0
+      },
+      {
+        "key": "source_2",
+        "label": "Totaljobs",
+        "raw": 21,
+        "relevant": 2,
+        "irrelevant": 19
+      },
+      {
+        "key": "source_3",
+        "label": "Reed",
+        "raw": 5,
+        "relevant": 1,
+        "irrelevant": 4
+      }
+    ]
+  }
+}
