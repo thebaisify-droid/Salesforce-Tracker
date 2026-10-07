@@ -1,5 +1,5 @@
 {
-  "ready": false,
+  "ready": true,
   "provider": "apify_task",
   "source_name": "Totaljobs",
   "role": "second_uk_job_board",
@@ -7,5 +7,5 @@
   "token": "env:APIFY_TOKEN",
   "timeout_seconds": 300,
   "window_field": "datePosted",
-  "notes": "Live schema validated 2026-10-07. Keep ready=false until end-to-end smoke test passes."
+  "notes": "Live Task and schema validated 2026-10-07."
 }
