@@ -1,10 +1,10 @@
 # Persistent tracker state
 
-GitHub-hosted runners are ephemeral, so the tracker must explicitly carry its SQLite state from one successful run to the next.
+GitHub-hosted runners are ephemeral, so the tracker explicitly carries its SQLite state from one successful run to the next.
 
 ## Production mechanism
 
-The daily workflow uses a named GitHub Actions artifact: `tracker-state`.
+The live daily workflow uses a named GitHub Actions artifact: `tracker-state`.
 
 At the start of a run it:
 
@@ -13,7 +13,7 @@ At the start of a run it:
 3. restores the newest snapshot when one exists;
 4. validates every restored checksum;
 5. runs SQLite `PRAGMA integrity_check`;
-6. verifies the required tracker tables before processing any new vacancies.
+6. verifies the required tracker tables before processing new vacancies.
 
 After a successful refresh it:
 
@@ -29,12 +29,21 @@ A failed refresh does not replace the last successful persistent snapshot.
 - `state/`
 - `dashboard/data.json`
 
-Raw run payloads are diagnostic evidence rather than durable state and remain in the separate per-run artifact.
+Raw run payloads are diagnostic evidence rather than durable state and remain in separate per-run artifacts.
+
+## Proven cross-run behaviour
+
+Persistence was validated across two separate GitHub-hosted runners using live CV-Library, Totaljobs and Reed output. Runner B restored runner A's verified database containing 3 vacancies and replayed the identical raw records. The result was:
+
+- 3 vacancies before;
+- 3 vacancies after;
+- 0 duplicate inserts;
+- 3 unchanged matched vacancies.
 
 ## Retention
 
-The state artifact is retained for 90 days. Daily operation continuously creates a new snapshot, so normal day-to-day continuity does not depend on artifacts older than one run. This is an operational persistence mechanism, not a long-term archive. If the tracker is expected to be shut down for more than the artifact-retention period, create an external backup first.
+The state artifact is retained for 90 days. Daily operation continually creates a newer snapshot, so normal continuity depends only on the latest successful state. This is operational persistence, not long-term archival; create an external backup before any shutdown expected to exceed the artifact-retention period.
 
-## Manual runs
+## Schedule
 
-A manual workflow dispatch runs a forced refresh immediately rather than waiting for the 07:15 local schedule window. Scheduled runs still use the Europe/London DST guard.
+The production workflow is enabled. It checks both UTC equivalents of 07:15 Europe/London and the local-time guard selects the correct BST/GMT slot. A manual workflow dispatch forces an immediate refresh.

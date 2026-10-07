@@ -1,25 +1,25 @@
 # Salesforce Tracker
 
-UK Salesforce hiring-market tracker with three-source incremental ingestion, vacancy normalisation/deduplication, role and sector classification, assurance gates, and dashboard-ready aggregates.
+UK Salesforce hiring-market tracker with three-source incremental ingestion, vacancy normalisation/deduplication, role and sector classification, assurance gates, persistent state and dashboard-ready aggregates.
 
 ## Current status
 
-**Core tracker: implemented and tested. Confirmed daily sources: CV-Library, Totaljobs and Reed via saved Apify Tasks. Live source Tasks and schemas have been validated; GitHub-native persistent state is implemented and schedule activation is the remaining go-live switch.**
+**Live.** The confirmed daily sources are CV-Library, Totaljobs and Reed via saved Apify Tasks. Live schemas are validated, persistent state has been seeded and cross-run deduplication has been proven across separate GitHub runners.
 
 The repository contains:
 
 - daily refresh orchestration with a 72-hour overlap window;
 - strict 3/3 source gating;
-- Apify Actor and saved-Task collector adapters;
-- SQLite reference store and idempotent vacancy upsert/deduplication;
+- CV-Library, Totaljobs and Reed saved-Task ingestion through Apify;
+- integrity-checked persistent SQLite state restored between GitHub runners;
+- idempotent vacancy upsert/deduplication;
 - master data **v1.4** and role taxonomy **v2.2**;
+- Salesforce-relevance filtering to remove incidental CRM mentions;
 - advertiser/direct-employer, role-family, seniority, Salesforce-specialism and sector classification;
 - review flags for uncertain role/sector classifications;
 - built-in assurance validation;
 - dashboard aggregate publishing and refresh-status evidence;
-- CI tests and a daily GitHub Actions workflow with integrity-checked state restoration; the live schedule remains disabled until its repository variable is enabled.
-
-The three saved Tasks and their live output schemas have been validated, so all three source configs are now marked `"ready": true`. This does not enable scheduled execution.
+- CI tests and the live 07:15 Europe/London daily GitHub Actions schedule.
 
 ## Verify the build
 
@@ -34,11 +34,13 @@ python -m pipeline.daily_refresh --config config/pipeline.json --check
 - Totaljobs — `develop_ify/totaljobs-com-scraper-task`
 - Reed — `develop_ify/uk-jobs-reed-task`
 
-Only `APIFY_TOKEN` is required as a source secret. See `docs/credentials.md`.
+Only `APIFY_TOKEN` is required as a source secret.
 
 ## Scheduling
 
-The workflow checks both UTC equivalents of **07:15 Europe/London** and uses a local-time guard to handle BST/GMT safely. Scheduled execution is disabled until the repository variable `TRACKER_LIVE_ENABLED=true` is set.
+GitHub Actions checks both UTC equivalents of **07:15 Europe/London**. The pipeline's Europe/London guard selects the correct BST/GMT run and skips the other probe. Manual workflow dispatches force an immediate refresh.
+
+Each run restores the latest verified `tracker-state` artifact before processing and writes a new integrity-checked state snapshot after success.
 
 ## Secrets
 
