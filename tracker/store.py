@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 from pathlib import Path
 from typing import Any
@@ -8,6 +9,12 @@ from tracker.normalize import utc_iso
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = ROOT / "database" / "schema.sql"
+
+SOURCE_LABELS = {
+    "source_1": "CV-Library",
+    "source_2": "Totaljobs",
+    "source_3": "Reed",
+}
 
 VACANCY_FIELDS = [
     "external_id", "display_title", "title_raw", "advertiser", "advertiser_type",
@@ -18,6 +25,16 @@ VACANCY_FIELDS = [
     "salary_period", "job_url", "description", "posted_at", "normalized_hash", "raw_json",
     "master_data_version", "role_taxonomy_version"
 ]
+
+
+def _specialisms(value: str | None) -> list[str]:
+    if not value:
+        return []
+    try:
+        parsed = json.loads(value)
+    except (TypeError, json.JSONDecodeError):
+        return [value]
+    return [str(item) for item in parsed] if isinstance(parsed, list) else [str(parsed)]
 
 
 class Store:
@@ -61,7 +78,10 @@ class Store:
         else:
             vacancy_id = int(existing["vacancy_id"])
             if existing["normalized_hash"] == record["normalized_hash"]:
-                self.conn.execute("UPDATE vacancies SET last_seen_at = ?, is_active = 1 WHERE vacancy_id = ?", (now, vacancy_id))
+                self.conn.execute(
+                    "UPDATE vacancies SET last_seen_at = ?, is_active = 1 WHERE vacancy_id = ?",
+                    (now, vacancy_id),
+                )
                 outcome = "unchanged"
             else:
                 assignments = ",".join(f"{field} = ?" for field in VACANCY_FIELDS)
@@ -112,25 +132,104 @@ class Store:
     def dashboard_snapshot(self) -> dict[str, Any]:
         total = self.conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0]
         role_rows = self.conn.execute(
-            "SELECT COALESCE(role_family,'Unresolved') label, COUNT(*) value FROM vacancies WHERE is_active=1 GROUP BY role_family ORDER BY value DESC"
+            "SELECT COALESCE(role_family,'Unresolved') label, COUNT(*) value FROM vacancies WHERE is_active=1 GROUP BY role_family ORDER BY value DESC, label"
         ).fetchall()
         sector_rows = self.conn.execute(
-            "SELECT COALESCE(end_client_sector,'Unresolved') label, COUNT(*) value FROM vacancies WHERE is_active=1 GROUP BY end_client_sector ORDER BY value DESC"
+            "SELECT COALESCE(end_client_sector,'Unresolved') label, COUNT(*) value FROM vacancies WHERE is_active=1 GROUP BY end_client_sector ORDER BY value DESC, label"
         ).fetchall()
         advertiser_rows = self.conn.execute(
-            "SELECT advertiser_type label, COUNT(*) value FROM vacancies WHERE is_active=1 GROUP BY advertiser_type ORDER BY value DESC"
+            "SELECT advertiser_type label, COUNT(*) value FROM vacancies WHERE is_active=1 GROUP BY advertiser_type ORDER BY value DESC, label"
         ).fetchall()
         review = self.conn.execute(
             "SELECT SUM(role_review_required), SUM(sector_review_required) FROM vacancies WHERE is_active=1"
         ).fetchone()
         latest = self.conn.execute(
-            "SELECT run_id, started_at, finished_at, status, inserted_rows, updated_rows, unchanged_rows, rejected_rows FROM refresh_runs ORDER BY started_at DESC LIMIT 1"
+            "SELECT run_id, started_at, finished_at, status, inserted_rows, updated_rows, unchanged_rows, rejected_rows, master_data_version, role_taxonomy_version FROM refresh_runs ORDER BY started_at DESC LIMIT 1"
         ).fetchone()
+
+        source_rows = self.conn.execute(
+            """
+            SELECT source_name, COUNT(DISTINCT vacancy_id) value
+            FROM vacancy_sources
+            GROUP BY source_name
+            ORDER BY value DESC, source_name
+            """
+        ).fetchall()
+
+        vacancy_rows = self.conn.execute(
+            """
+            SELECT
+              vacancy_id, display_title, advertiser, advertiser_type,
+              role_family, role_seniority, role_specialism,
+              end_client_name, end_client_sector, location,
+              employment_type, contract_type,
+              salary_min, salary_max, salary_currency, salary_period,
+              job_url, posted_at, first_seen_at, last_seen_at,
+              role_review_required, sector_review_required
+            FROM vacancies
+            WHERE is_active=1
+            ORDER BY COALESCE(posted_at, first_seen_at) DESC, vacancy_id DESC
+            """
+        ).fetchall()
+
+        sources_by_vacancy: dict[int, list[dict[str, Any]]] = {}
+        for row in self.conn.execute(
+            "SELECT vacancy_id, source_name, source_url FROM vacancy_sources ORDER BY vacancy_id, source_name"
+        ):
+            item = {
+                "key": row["source_name"],
+                "label": SOURCE_LABELS.get(row["source_name"], row["source_name"]),
+                "url": row["source_url"],
+            }
+            sources_by_vacancy.setdefault(int(row["vacancy_id"]), []).append(item)
+
+        vacancies: list[dict[str, Any]] = []
+        for row in vacancy_rows:
+            vacancy_id = int(row["vacancy_id"])
+            vacancies.append({
+                "id": vacancy_id,
+                "title": row["display_title"],
+                "advertiser": row["advertiser"],
+                "advertiser_type": row["advertiser_type"],
+                "role_family": row["role_family"] or "Unresolved",
+                "seniority": row["role_seniority"] or "Standard",
+                "specialisms": _specialisms(row["role_specialism"]),
+                "end_client_name": row["end_client_name"],
+                "sector": row["end_client_sector"] or "Unresolved",
+                "location": row["location"],
+                "employment_type": row["employment_type"],
+                "contract_type": row["contract_type"],
+                "salary": {
+                    "min": row["salary_min"],
+                    "max": row["salary_max"],
+                    "currency": row["salary_currency"],
+                    "period": row["salary_period"],
+                },
+                "url": row["job_url"],
+                "posted_at": row["posted_at"],
+                "first_seen_at": row["first_seen_at"],
+                "last_seen_at": row["last_seen_at"],
+                "review": {
+                    "role": bool(row["role_review_required"]),
+                    "sector": bool(row["sector_review_required"]),
+                },
+                "sources": sources_by_vacancy.get(vacancy_id, []),
+            })
+
         return {
             "active_vacancies": int(total),
             "by_role_family": [dict(r) for r in role_rows],
             "by_sector": [dict(r) for r in sector_rows],
             "by_advertiser_type": [dict(r) for r in advertiser_rows],
+            "by_source": [
+                {
+                    "key": row["source_name"],
+                    "label": SOURCE_LABELS.get(row["source_name"], row["source_name"]),
+                    "value": int(row["value"]),
+                }
+                for row in source_rows
+            ],
             "review_queue": {"role": int(review[0] or 0), "sector": int(review[1] or 0)},
             "latest_run": dict(latest) if latest else None,
+            "vacancies": vacancies,
         }
