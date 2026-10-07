@@ -1,0 +1,2 @@
+# Core tracker currently uses only Python 3.12 standard-library modules.
+# Add provider-specific dependencies here only when a selected source requires them.

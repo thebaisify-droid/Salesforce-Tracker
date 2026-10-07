@@ -1,0 +1,34 @@
+{
+  "version": "2.2",
+  "role_families": [
+    {"name":"Architecture","keywords":["salesforce technical architect","technical architect","solution architect","enterprise architect","salesforce architect"]},
+    {"name":"Engineering / Development","keywords":["salesforce developer","apex developer","lightning developer","software engineer","salesforce engineer"]},
+    {"name":"Functional Consulting","keywords":["salesforce functional consultant","functional consultant","salesforce consultant","crm consultant"]},
+    {"name":"Business Analysis","keywords":["salesforce business analyst","business analyst","lead ba","senior ba","crm business analyst"]},
+    {"name":"Administration / Platform","keywords":["salesforce administrator","salesforce admin","crm administrator","salesforce platform manager","salesforce platform lead"]},
+    {"name":"Product / Ownership","keywords":["salesforce product owner","product owner","salesforce product manager","crm product owner","platform owner"]},
+    {"name":"Programme / Project Delivery","keywords":["salesforce project manager","salesforce programme manager","salesforce program manager","scrum master","delivery manager"]},
+    {"name":"Training / Enablement","keywords":["salesforce trainer","systems trainer","salesforce training","enablement","adoption lead","learning consultant"]},
+    {"name":"Data / Integration","keywords":["mulesoft","salesforce integration","integration architect","data migration","salesforce data","etl"]},
+    {"name":"Sales / Pre-Sales","keywords":["salesforce pre-sales","salesforce presales","solution engineer","account executive","sales engineer"]},
+    {"name":"Quality / Release / DevOps","keywords":["salesforce qa","salesforce tester","test analyst","release manager","salesforce devops","copado"]}
+  ],
+  "seniority": {
+    "Lead": ["lead ","head of","principal","director","manager"],
+    "Senior": ["senior","sr ","sr."],
+    "Junior": ["junior","graduate","trainee","associate"]
+  },
+  "specialisms": {
+    "Sales Cloud": ["sales cloud"],
+    "Service Cloud": ["service cloud"],
+    "Experience Cloud": ["experience cloud","community cloud"],
+    "Marketing Cloud": ["marketing cloud","sfmc"],
+    "Commerce Cloud": ["commerce cloud","b2c commerce","b2b commerce"],
+    "Data Cloud": ["data cloud","cdp"],
+    "CPQ / Revenue Cloud": ["salesforce cpq","revenue cloud","cpq"],
+    "Field Service": ["field service","fsl"],
+    "MuleSoft / Integration": ["mulesoft","mule soft","integration cloud"],
+    "Tableau / Analytics": ["tableau","crm analytics","einstein analytics"],
+    "Platform / Apex / LWC": ["apex","lightning web component","lwc","visualforce"]
+  }
+}
