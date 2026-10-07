@@ -115,6 +115,15 @@ def _filter_window(records: list[dict[str, Any]], field: str | None, since: str,
     return filtered
 
 
+def _apify_named_ref(value: str) -> str:
+    """Accept console-style owner/name or API-style owner~name references."""
+    value = value.strip()
+    if "/" in value and "~" not in value:
+        owner, name = value.split("/", 1)
+        return f"{owner}~{name}"
+    return value
+
+
 def _collect_adzuna(cfg: dict[str, Any], values: dict[str, str]) -> list[dict[str, Any]]:
     app_id = _subst(cfg.get("app_id", "env:ADZUNA_APP_ID"), values)
     app_key = _subst(cfg.get("app_key", "env:ADZUNA_APP_KEY"), values)
@@ -245,21 +254,34 @@ def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
         return _collect_lightcast_uk(cfg, values)
 
     if provider == "apify_actor":
-        actor_id = _subst(cfg.get("actor_id") or cfg.get("actor_id_env", "env:APIFY_ACTOR_ID"), values)
+        actor_id = _apify_named_ref(str(_subst(cfg.get("actor_id") or cfg.get("actor_id_env", "env:APIFY_ACTOR_ID"), values)))
         token = _subst(cfg.get("token", "env:APIFY_TOKEN"), values)
         actor_input = _subst(cfg.get("input", {}), values)
-        params = {"token": token, "format": "json", "clean": "true"}
+        params = {"format": "json", "clean": "true"}
         url = f"https://api.apify.com/v2/acts/{quote(actor_id, safe='~')}/run-sync-get-dataset-items?{urlencode(params)}"
-        payload = _request_json(url, method="POST", body=actor_input, timeout=int(cfg.get("timeout_seconds", 300)))
+        payload = _request_json(
+            url,
+            method="POST",
+            headers={"Authorization": f"Bearer {token}"},
+            body=actor_input,
+            timeout=int(cfg.get("timeout_seconds", 300)),
+        )
         rows = _extract_list(payload, cfg.get("collection_key"))
         return _filter_window(rows, cfg.get("window_field"), since, until)
 
     if provider == "apify_task":
-        task_id = _subst(cfg.get("task_id") or cfg.get("task_id_env", "env:APIFY_TASK_ID"), values)
+        task_id = _apify_named_ref(str(_subst(cfg.get("task_id") or cfg.get("task_id_env", "env:APIFY_TASK_ID"), values)))
         token = _subst(cfg.get("token", "env:APIFY_TOKEN"), values)
-        params = {"token": token, "format": "json", "clean": "true"}
+        params = {"format": "json", "clean": "true"}
         url = f"https://api.apify.com/v2/actor-tasks/{quote(task_id, safe='~')}/run-sync-get-dataset-items?{urlencode(params)}"
-        payload = _request_json(url, method="POST", timeout=int(cfg.get("timeout_seconds", 300)))
+        override_input = _subst(cfg.get("input"), values) if "input" in cfg else None
+        payload = _request_json(
+            url,
+            method="POST",
+            headers={"Authorization": f"Bearer {token}"},
+            body=override_input,
+            timeout=int(cfg.get("timeout_seconds", 300)),
+        )
         rows = _extract_list(payload, cfg.get("collection_key"))
         return _filter_window(rows, cfg.get("window_field"), since, until)
 

@@ -1,47 +1,39 @@
 # Source configuration
 
-The tracker has three source slots. Their exact providers are deliberately not hard-coded until the live sources are confirmed.
+The confirmed daily sources are saved Apify Tasks:
 
-## Apify Actor
+- CV-Library — `develop_ify/cv-library-scraper-task`
+- Totaljobs — `develop_ify/totaljobs-com-scraper-task`
+- Reed — `develop_ify/uk-jobs-reed-task`
+
+## Apify Task
 
 ```json
 {
-  "ready": true,
-  "provider": "apify_actor",
-  "actor_id": "username~actor-name",
+  "ready": false,
+  "provider": "apify_task",
+  "task_id": "develop_ify/cv-library-scraper-task",
   "token": "env:APIFY_TOKEN",
-  "timeout_seconds": 300,
-  "input": {
-    "query": "Salesforce",
-    "country": "United Kingdom",
-    "from": "{since}",
-    "to": "{until}"
-  }
+  "timeout_seconds": 300
 }
 ```
 
-`{since}` and `{until}` are supplied by the 72-hour incremental refresh window. The exact actor input fields must match the chosen Actor.
+The collector accepts either the console-style `owner/task-name` reference or Apify's API-style `owner~task-name` reference. Saved Task input is used unchanged unless an explicit `input` object is added to the source config, in which case it is sent as a run-time override.
 
-## HTTP JSON API
+## Incremental window
 
-```json
-{
-  "ready": true,
-  "provider": "http_json",
-  "url": "https://example.invalid/jobs",
-  "method": "GET",
-  "query": {
-    "q": "Salesforce",
-    "from": "{since}",
-    "to": "{until}",
-    "api_key": "env:SOURCE_1_API_KEY"
-  },
-  "collection_key": "jobs"
-}
-```
-
-Environment-backed values use `env:VARIABLE_NAME`, keeping secrets out of Git.
+The pipeline itself runs with a 72-hour overlapping window. After the first live Task validation, each source config may also specify `window_field` so the collector can trim a wider Task result to the exact pipeline window.
 
 ## Go-live rule
 
-Do not set a source to `ready=true` until it has been tested independently and its output contains a stable source record ID, title, advertiser/company where available, location, description, URL and posting timestamp where available.
+Do not set a source to `ready=true` until its Task has been run independently and the returned dataset has been inspected for:
+
+- stable source record ID;
+- title;
+- advertiser/company where available;
+- location;
+- description;
+- canonical job URL;
+- posting timestamp/date where available.
+
+The real `APIFY_TOKEN` must remain outside Git.

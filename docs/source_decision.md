@@ -1,25 +1,29 @@
 # Daily source architecture
 
-The daily production tracker uses the three UK job-board sources already selected and available through the user's Apify account:
+The confirmed daily production sources are the three saved Apify Tasks already created for this project:
 
-1. **CV-Library**
-2. **Totaljobs**
-3. **Indeed**
+1. **CV-Library** — `develop_ify/cv-library-scraper-task`
+2. **Totaljobs** — `develop_ify/totaljobs-com-scraper-task`
+3. **Reed** — `develop_ify/uk-jobs-reed-task`
 
-These replace the temporary Lightcast/Adzuna/LinkedIn proposal that was added only because the earlier Apify Actor details were not recoverable from the project chat.
+Earlier references to Indeed, Lightcast or Adzuna are superseded for the daily production feed.
 
 ## Why these three
 
-They give direct coverage of the UK vacancy market relevant to the tracker and avoid adding new provider accounts solely to make the daily pipeline work. Each board is treated as a separate underlying data source, while Apify is treated as the shared ingestion platform.
+They give direct UK job-board coverage and reuse the collection assets already configured in Apify. Each board remains a separate source for lineage, source counts, deduplication and assurance.
+
+## Saved Tasks
+
+The pipeline calls the saved Tasks rather than raw Actors. This means each Task's stored input configuration remains the source of its scraper settings. Apify's API accepts a task by opaque ID or by the owner's username plus task name separated by `~`; the collector also accepts the slash-style references shown in the Apify console and converts them internally.
 
 ## Common-mode dependency
 
-Three successful Actor runs do not mean three independent technical collection paths: all three rely on Apify. The run evidence therefore records each board separately but operational monitoring must also distinguish an **Apify platform failure** from a board-specific scraper/schema failure.
+CV-Library, Totaljobs and Reed are separate underlying datasets, but all three run through Apify. A platform-wide Apify failure is therefore recorded as a common ingestion dependency failure.
 
 ## External assurance
 
-Lightcast or Adzuna may still be added later as a weekly/monthly validation benchmark. They are **not required for the daily refresh**.
+Lightcast or Adzuna may still be added later as periodic validation benchmarks. They are not required for the daily refresh.
 
 ## Activation
 
-The three source configs remain `ready=false` until the exact existing Actor or Task IDs and their working input configurations are wired in and validated. Do not put the Apify token in Git.
+The Task references are now wired. The three configs remain `ready=false` until the Apify token is available and each Task has been run once to validate the current output schema and verify that its saved input still represents the intended Salesforce/UK search.
