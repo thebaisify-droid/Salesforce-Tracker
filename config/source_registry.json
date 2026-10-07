@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "sources": [
+    {
+      "slot": "source_1",
+      "name": "Lightcast UK Job Postings",
+      "provider": "lightcast_uk",
+      "trust_tier": "A",
+      "purpose": "Primary structured labour-market dataset and analytical baseline",
+      "access": "Commercial OAuth2 API",
+      "independence": "Multi-source vendor dataset"
+    },
+    {
+      "slot": "source_2",
+      "name": "Adzuna Jobs API",
+      "provider": "adzuna",
+      "trust_tier": "A",
+      "purpose": "Official jobs-API corroboration and listing-level validation",
+      "access": "Official app_id/app_key API",
+      "independence": "Independent job search/aggregation source"
+    },
+    {
+      "slot": "source_3",
+      "name": "LinkedIn Jobs via Apify",
+      "provider": "apify_actor",
+      "trust_tier": "B",
+      "purpose": "Independent public-job cross-check with strong direct-employer coverage",
+      "access": "Public listing scraper operated through Apify",
+      "independence": "Different collection mechanism; monitor scraper drift"
+    }
+  ]
+}
