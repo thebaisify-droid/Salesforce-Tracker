@@ -10,7 +10,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from tracker.classify import classify, versions
 
-COLLECTION_KEYS = ("records", "jobs", "vacancies", "items", "data")
+COLLECTION_KEYS = ("records", "jobs", "vacancies", "items", "data", "results", "postings")
 TRACKING_PARAMS = {"utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid"}
 
 
@@ -54,7 +54,10 @@ def text_value(value: Any) -> str | None:
     if isinstance(value, (int, float)):
         return str(value)
     if isinstance(value, dict):
-        parts = [value.get(k) for k in ("name", "city", "region", "state", "country")]
+        for key in ("display_name", "name", "formatted"):
+            if value.get(key):
+                return str(value[key]).strip()
+        parts = [value.get(k) for k in ("city", "region", "state", "country")]
         text = ", ".join(str(v).strip() for v in parts if v)
         return text or json.dumps(value, sort_keys=True)
     return str(value).strip() or None
@@ -76,6 +79,8 @@ def canonical_url(url: str | None) -> str | None:
 def _float(value: Any) -> float | None:
     if value is None:
         return None
+    if isinstance(value, dict):
+        value = first_value(value, "value", "min", "max")
     try:
         return float(str(value).replace(",", "").replace("£", "").strip())
     except ValueError:
@@ -83,13 +88,13 @@ def _float(value: Any) -> float | None:
 
 
 def normalize(raw: dict[str, Any], source_name: str) -> dict[str, Any]:
-    title = text_value(first_value(raw, "title", "job_title", "jobTitle", "position", "name"))
+    title = text_value(first_value(raw, "title", "title_raw", "job_title", "jobTitle", "position", "name"))
     advertiser = text_value(first_value(raw, "advertiser", "company", "company_name", "companyName", "employer", "recruiter"))
     description = text_value(first_value(raw, "description", "job_description", "jobDescription", "body", "summary")) or ""
-    location = text_value(first_value(raw, "location", "job_location", "jobLocation", "city"))
-    url = canonical_url(text_value(first_value(raw, "job_url", "jobUrl", "url", "link", "apply_url", "applyUrl")))
+    location = text_value(first_value(raw, "location", "job_location", "jobLocation", "city", "city_name"))
+    url = canonical_url(text_value(first_value(raw, "job_url", "jobUrl", "url", "link", "apply_url", "applyUrl", "redirect_url")))
     external_id = text_value(first_value(raw, "id", "job_id", "jobId", "reference", "vacancy_id", "guid")) or url
-    posted_at = text_value(first_value(raw, "posted_at", "postedAt", "published_at", "publishedAt", "date", "created_at", "createdAt"))
+    posted_at = text_value(first_value(raw, "posted_at", "postedAt", "posted", "published_at", "publishedAt", "date", "created", "created_at", "createdAt"))
 
     dedupe_basis = url or "|".join((title or "", advertiser or "", location or "", (posted_at or "")[:10])).lower()
     dedupe_key = hashlib.sha256(dedupe_basis.encode("utf-8")).hexdigest()
@@ -103,8 +108,8 @@ def normalize(raw: dict[str, Any], source_name: str) -> dict[str, Any]:
         "title_raw": title,
         "advertiser": advertiser,
         "location": location,
-        "employment_type": text_value(first_value(raw, "employment_type", "employmentType", "job_type", "jobType")),
-        "contract_type": text_value(first_value(raw, "contract_type", "contractType")),
+        "employment_type": text_value(first_value(raw, "employment_type", "employmentType", "employment_type_name", "job_type", "jobType", "workType")),
+        "contract_type": text_value(first_value(raw, "contract_type", "contractType", "contract_type_name")),
         "salary_min": _float(first_value(raw, "salary_min", "salaryMin", "min_salary", "minSalary")),
         "salary_max": _float(first_value(raw, "salary_max", "salaryMax", "max_salary", "maxSalary")),
         "salary_currency": text_value(first_value(raw, "salary_currency", "salaryCurrency", "currency")) or "GBP",

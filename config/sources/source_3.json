@@ -1,1 +1,18 @@
-{"ready":false,"provider":"unconfigured","notes":"Live source slot 3. Choose and configure the provider before enabling scheduled refreshes. Supported providers: http_json, apify_actor, fixture."}
+{
+  "ready": false,
+  "provider": "apify_actor",
+  "role": "independent_direct_market_crosscheck",
+  "actor_id": "bebity~linkedin-jobs-scraper",
+  "token": "env:APIFY_TOKEN",
+  "timeout_seconds": 300,
+  "window_field": "publishedAt",
+  "input": {
+    "titles": ["Salesforce"],
+    "locations": ["United Kingdom"],
+    "publishedAt": "r604800",
+    "rows": 500,
+    "companyProfile": true,
+    "enrichCompany": false
+  },
+  "notes": "Independent LinkedIn public-job cross-check through Apify. Actor searches the past week and the collector trims rows to the exact 72-hour pipeline window."
+}
