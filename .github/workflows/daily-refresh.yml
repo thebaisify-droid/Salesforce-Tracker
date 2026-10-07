@@ -29,11 +29,10 @@ jobs:
         run: python -m pipeline.daily_refresh --config config/pipeline.json --check
       - name: Run daily refresh
         env:
-          LIGHTCAST_CLIENT_ID: ${{ secrets.LIGHTCAST_CLIENT_ID }}
-          LIGHTCAST_CLIENT_SECRET: ${{ secrets.LIGHTCAST_CLIENT_SECRET }}
-          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
-          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_CV_LIBRARY_ACTOR_ID: ${{ vars.APIFY_CV_LIBRARY_ACTOR_ID }}
+          APIFY_TOTALJOBS_ACTOR_ID: ${{ vars.APIFY_TOTALJOBS_ACTOR_ID }}
+          APIFY_INDEED_ACTOR_ID: ${{ vars.APIFY_INDEED_ACTOR_ID }}
           TRACKER_DATABASE_PATH: ${{ vars.TRACKER_DATABASE_PATH || 'data/salesforce_tracker.db' }}
         run: python -m pipeline.daily_refresh --config config/pipeline.json --scheduled
       - name: Upload run evidence

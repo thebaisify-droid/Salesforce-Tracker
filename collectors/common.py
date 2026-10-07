@@ -254,6 +254,15 @@ def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
         rows = _extract_list(payload, cfg.get("collection_key"))
         return _filter_window(rows, cfg.get("window_field"), since, until)
 
+    if provider == "apify_task":
+        task_id = _subst(cfg.get("task_id") or cfg.get("task_id_env", "env:APIFY_TASK_ID"), values)
+        token = _subst(cfg.get("token", "env:APIFY_TOKEN"), values)
+        params = {"token": token, "format": "json", "clean": "true"}
+        url = f"https://api.apify.com/v2/actor-tasks/{quote(task_id, safe='~')}/run-sync-get-dataset-items?{urlencode(params)}"
+        payload = _request_json(url, method="POST", timeout=int(cfg.get("timeout_seconds", 300)))
+        rows = _extract_list(payload, cfg.get("collection_key"))
+        return _filter_window(rows, cfg.get("window_field"), since, until)
+
     raise RuntimeError(f"unsupported provider for source_{slot}: {provider!r}")
 
 
