@@ -100,8 +100,17 @@ def _filter_window(records: list[dict[str, Any]], field: str | None, since: str,
         return records
     filtered: list[dict[str, Any]] = []
     for record in records:
-        timestamp = _parse_time(record.get(field))
-        if timestamp is not None and start <= timestamp <= end:
+        raw_value = record.get(field)
+        timestamp = _parse_time(raw_value)
+        if timestamp is None:
+            continue
+        raw_text = str(raw_value).strip()
+        if len(raw_text) == 10 and raw_text[4] == "-" and raw_text[7] == "-":
+            # A date-only source has no clock precision. Include the whole
+            # boundary date rather than risk dropping a valid overlap record.
+            if start.date() <= timestamp.date() <= end.date():
+                filtered.append(record)
+        elif start <= timestamp <= end:
             filtered.append(record)
     return filtered
 
