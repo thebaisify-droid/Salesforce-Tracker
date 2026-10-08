@@ -111,7 +111,7 @@ def _salary(raw: dict[str, Any]) -> tuple[float | None, float | None, str, str |
 
 
 def _employment_type(raw: dict[str, Any]) -> str | None:
-    value = first_value(raw, "employment_type", "employmentType", "employment_type_name", "workType", "jobTypes", "job_type", "jobType", "working_pattern")
+    value = first_value(raw, "employment_type", "employmentType", "employment_type_name", "workType", "jobTypes", "working_pattern")
     if value not in (None, "", [], {}):
         return text_value(value)
     if raw.get("isFullTime") is True:
@@ -158,7 +158,7 @@ def normalize(raw: dict[str, Any], source_name: str) -> dict[str, Any]:
         "advertiser": advertiser,
         "location": location,
         "employment_type": _employment_type(raw),
-        "contract_type": text_value(first_value(raw, "contract_type", "contractType", "contract_type_name", "jobType")),
+        "contract_type": text_value(first_value(raw, "contract_type", "contractType", "contract_type_name", "jobType", "job_type")),
         "salary_min": salary_min,
         "salary_max": salary_max,
         "salary_currency": salary_currency,
