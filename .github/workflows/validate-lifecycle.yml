@@ -1,0 +1,85 @@
+name: Validate lifecycle expiry assurance
+
+on:
+  push:
+    branches:
+      - build/lifecycle-expiry-assurance
+
+jobs:
+  lifecycle-dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+    env:
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore current production tracker state
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Dry-run lifecycle verification
+        run: >
+          python -m scripts.verify_lifecycle
+          --database "$TRACKER_DATABASE_PATH"
+          --report validation/lifecycle_dry_run.json
+          --min-age-days 14
+          --limit 25
+          --confirmations 2
+          --min-confirmation-hours 12
+          --timeout-seconds 8
+          --max-workers 6
+          --dry-run
+
+      - name: Summarise verifier evidence
+        run: |
+          python - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+
+          report=json.loads(Path("validation/lifecycle_dry_run.json").read_text())
+          evidence=Counter()
+          domains=Counter()
+          for item in report["items"]:
+              for check in item.get("url_checks", []):
+                  evidence[check["evidence_type"]] += 1
+                  try:
+                      from urllib.parse import urlsplit
+                      domains[urlsplit(check["checked_url"]).netloc] += 1
+                  except Exception:
+                      pass
+          summary={
+              "candidates_selected": report["candidates_selected"],
+              "observations": report["observations"],
+              "evidence_types": dict(evidence),
+              "checked_domains": dict(domains),
+              "would_change_database": not report["dry_run"],
+              "sample_unavailable": [
+                  {"vacancy_id":x["vacancy_id"],"title":x["title"],"evidence":x["evidence_type"]}
+                  for x in report["items"] if x["observation"]=="UNAVAILABLE"
+              ][:10],
+              "sample_inconclusive": [
+                  {"vacancy_id":x["vacancy_id"],"title":x["title"],"evidence":x["evidence_type"]}
+                  for x in report["items"] if x["observation"]=="INCONCLUSIVE"
+              ][:10],
+          }
+          Path("validation/lifecycle_summary.json").write_text(json.dumps(summary,indent=2)+"\n")
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Upload lifecycle validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lifecycle-validation-${{ github.run_id }}
+          path: validation/*.json
+          if-no-files-found: error
+          retention-days: 7
