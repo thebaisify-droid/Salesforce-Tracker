@@ -16,6 +16,7 @@ from tracker.relevance import salesforce_relevance
 from tracker.store import Store
 from scripts.state_snapshot import build_manifest, safe_extract, verify_manifest
 from scripts.restore_github_state import select_latest_artifact
+from scripts.migrate_baseline import migrate
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -255,6 +256,20 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(payload["irrelevant_rows"], 1)
             self.assertEqual(payload["master_data_version"], "1.4")
             self.assertEqual(payload["role_taxonomy_version"], "2.2")
+
+    def test_baseline_migration_inserts_45_then_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            baseline = ROOT / "config" / "baseline_2026-10-06.json"
+            first = migrate(db, baseline)
+            self.assertTrue(first["passed"], first)
+            self.assertEqual(first["database_after"], 45)
+            self.assertEqual(first["inserted_missing_baseline"], 45)
+            second = migrate(db, baseline)
+            self.assertTrue(second["passed"], second)
+            self.assertEqual(second["database_after"], 45)
+            self.assertEqual(second["inserted_missing_baseline"], 0)
+            self.assertEqual(second["matched_existing"], 45)
 
     def test_state_manifest_verifies_sqlite_snapshot(self):
         with tempfile.TemporaryDirectory() as d:

@@ -1,0 +1,95 @@
+name: Validate 45-vacancy baseline migration
+
+on:
+  push:
+    branches:
+      - build/migrate-baseline-state
+
+jobs:
+  migrate-and-refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore current production state
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Migrate validated 45-vacancy baseline
+        run: python -m scripts.migrate_baseline --database "$TRACKER_DATABASE_PATH" --report state/baseline_migration.json
+
+      - name: Verify baseline state before refresh
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          report=json.loads(Path("state/baseline_migration.json").read_text())
+          if report["database_after"] != 45:
+              raise SystemExit(f"expected exactly 45 after baseline migration, got {report['database_after']}")
+          if report["matched_existing"] < 3:
+              raise SystemExit(f"expected at least 3 existing live matches, got {report['matched_existing']}")
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          dup=conn.execute("SELECT COUNT(*) FROM (SELECT job_url,COUNT(*) c FROM vacancies WHERE job_url IS NOT NULL AND job_url<>'' GROUP BY job_url HAVING c>1)").fetchone()[0]
+          conn.close()
+          if dup:
+              raise SystemExit(f"duplicate job URLs after migration: {dup}")
+          print(json.dumps(report,indent=2))
+          PY
+
+      - name: Run real incremental refresh against migrated master
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --force
+
+      - name: Prove refresh preserves master continuity
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          count=conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+          active=conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0]
+          dup=conn.execute("SELECT COUNT(*) FROM (SELECT job_url,COUNT(*) c FROM vacancies WHERE job_url IS NOT NULL AND job_url<>'' GROUP BY job_url HAVING c>1)").fetchone()[0]
+          conn.close()
+          latest=json.loads(Path("state/latest_success.json").read_text())
+          result={
+              "database_vacancies":count,
+              "active_vacancies":active,
+              "duplicate_job_urls":dup,
+              "latest_run_id":latest["run_id"],
+              "inserted_rows":latest["summary"].get("inserted_rows"),
+              "updated_rows":latest["summary"].get("updated_rows"),
+              "unchanged_rows":latest["summary"].get("unchanged_rows"),
+              "sources_succeeded":latest["summary"].get("sources_succeeded"),
+              "quality_passed":latest["summary"].get("quality_passed"),
+          }
+          if count < 45 or active < 45:
+              raise SystemExit(f"master continuity failed: {count} total / {active} active")
+          if dup:
+              raise SystemExit(f"canonical URL duplicates detected: {dup}")
+          if result["sources_succeeded"] != 3 or result["quality_passed"] is not True:
+              raise SystemExit("live refresh did not pass the 3-source assurance gate")
+          Path("state/baseline_refresh_proof.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baseline-migration-validation-${{ github.run_id }}
+          path: |
+            state/*.json
+            dashboard/*.json
+            data/salesforce_tracker.db
+          if-no-files-found: warn
+          retention-days: 7
