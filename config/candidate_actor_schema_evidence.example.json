@@ -24,8 +24,8 @@
         "postedWithinDays",
         "maxPages"
       ],
-      "actor_id_match_verified": false,
-      "field_support_for_actual_saved_task_verified": false,
+      "actor_id_match_verified": true,
+      "field_support_for_actual_saved_task_verified": true,
       "saved_task_actor_id": "T0edvAvD8lVcvc58G",
       "saved_task_actor_id_observed": true,
       "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified.",
@@ -34,8 +34,14 @@
         "github_workflow_run_id": 37784631922,
         "artifact_id": 11553970809
       },
-      "candidate_actor_public_listing_match_verified": false,
-      "task_actor_identity_observed_from_apify_metadata": true
+      "candidate_actor_public_listing_match_verified": true,
+      "task_actor_identity_observed_from_apify_metadata": true,
+      "input_schema_available": true,
+      "input_field_names_verified": true,
+      "broad_role_search_execution_verified": false,
+      "paid_charging_verified": false,
+      "schema_run_id": 37795936497,
+      "schema_artifact_id": 11558656387
     },
     {
       "source": "Totaljobs",
@@ -53,8 +59,8 @@
         "postedWithin",
         "mode"
       ],
-      "actor_id_match_verified": false,
-      "field_support_for_actual_saved_task_verified": false,
+      "actor_id_match_verified": true,
+      "field_support_for_actual_saved_task_verified": true,
       "saved_task_actor_id": "RO7aokuNWfmP0kV0G",
       "saved_task_actor_id_observed": true,
       "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified.",
@@ -63,11 +69,17 @@
         "github_workflow_run_id": 37784631922,
         "artifact_id": 11553970809
       },
-      "candidate_actor_public_listing_match_verified": false,
-      "task_actor_identity_observed_from_apify_metadata": true
+      "candidate_actor_public_listing_match_verified": true,
+      "task_actor_identity_observed_from_apify_metadata": true,
+      "input_schema_available": true,
+      "input_field_names_verified": true,
+      "broad_role_search_execution_verified": false,
+      "paid_charging_verified": false,
+      "schema_run_id": 37795936497,
+      "schema_artifact_id": 11558656387
     }
   ],
-  "required_evidence": "Saved Task actId values verified in live read-only metadata; match these opaque Actor IDs to an authoritative Actor identity/input schema. Public listing candidates are not confirmed as the same Actors. No broad-role search behaviour or billing has been validated.",
+  "required_evidence": "Authoritative live Actor metadata and default-build input schema verified for both saved Tasks. Runtime search behaviour, enum/value constraints and actual charges remain unverified; no paid acquisition authorised.",
   "evidence_run_id": 37784631922,
   "evidence_artifact_id": 11553970809
 }
