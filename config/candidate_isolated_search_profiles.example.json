@@ -1,0 +1,60 @@
+{
+  "schema": "candidate-isolated-search-profiles/v1",
+  "status": "INACTIVE_SCHEMA_REVIEW",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "production_tasks_immutable": true,
+  "approved_spend_usd": 0,
+  "source_profiles": [
+    {
+      "source": "CV-Library",
+      "production_task": "develop_ify/cv-library-scraper-task",
+      "isolation": "future separate task or actor input only",
+      "observed_fields": [
+        "query",
+        "country",
+        "maxResults",
+        "incrementalMode",
+        "postedWithinDays"
+      ],
+      "actor_input_schema_verified": false,
+      "override_support_verified": false,
+      "proposed_searches": [
+        {
+          "query": "business analyst",
+          "country": "gb",
+          "maxResults": 15
+        },
+        {
+          "query": "cyber security analyst",
+          "country": "gb",
+          "maxResults": 15
+        }
+      ],
+      "proposed_fields_are_unvalidated": true
+    },
+    {
+      "source": "Totaljobs",
+      "production_task": "develop_ify/totaljobs-com-scraper-task",
+      "isolation": "future separate task or actor input only",
+      "observed_fields": [
+        "keywords",
+        "postedWithin",
+        "maxListings",
+        "mode"
+      ],
+      "actor_input_schema_verified": false,
+      "override_support_verified": false,
+      "proposed_searches": [
+        {
+          "keywords": "business analyst"
+        },
+        {
+          "keywords": "cyber security analyst"
+        }
+      ],
+      "proposed_fields_are_unvalidated": true
+    }
+  ],
+  "note": "Existing Task field-name evidence is not actor schema verification. Samples are inert proposal data. Do not assume these arguments are accepted until matched to underlying actor input schema."
+}
