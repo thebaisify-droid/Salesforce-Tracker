@@ -1,0 +1,152 @@
+{
+  "schema": "candidate-representative-validation-plan/v1",
+  "state": "PLANNED_NOT_AUTHORISED",
+  "paid_runs_enabled": false,
+  "publication_enabled": false,
+  "account_limit_usd": 19,
+  "salesforce_reserve_usd": 8,
+  "prior_usage_snapshot_usd": 6.42,
+  "prior_snapshot_stale": true,
+  "pilot_spend_approved_usd": 0,
+  "proposed_validation_max_usd": 1.5,
+  "per_run_cap_usd": 0.15,
+  "max_results_per_run": 10,
+  "planned_target_families": 22,
+  "minimum_human_reviewed_records": 100,
+  "required_sources": [
+    "Totaljobs",
+    "Indeed UK",
+    "JobServe"
+  ],
+  "excluded": [
+    "CV-Library"
+  ],
+  "sampling_policy": {
+    "goal": "Balanced stratified validation across 22 families rather than population market share estimate",
+    "minimum_target_per_family": 5,
+    "realised_minimum_must_be_reported": true,
+    "oversampling_of_rare_families_allowed": true,
+    "selection_bias_must_be_reported": true
+  },
+  "approval_prerequisites": [
+    "Fresh account spending snapshot and actual $8 Salesforce reservation check",
+    "Validate input schema and live pricing for each selected Actor",
+    "Separate explicit user authorisation of the total new $1.50 amount",
+    "Cap every Actor invocation individually and verify account headroom before each",
+    "Capture posting date, employer, description, location and stable ID where source permits",
+    "Human verify active original URLs and independently label at least 100 records before release",
+    "No automated refresh or release from this validation"
+  ],
+  "families": [
+    {
+      "family": "Business Analysis",
+      "keyword": "business analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Data Analysis",
+      "keyword": "data analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Business Intelligence",
+      "keyword": "business intelligence analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Delivery Management",
+      "keyword": "delivery manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Product Ownership",
+      "keyword": "product owner",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Product Management",
+      "keyword": "product manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Agile / Scrum",
+      "keyword": "scrum master",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Project Management",
+      "keyword": "IT project manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Business Change & Transformation",
+      "keyword": "business change manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Programme & Portfolio Management",
+      "keyword": "programme manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Business Process & Operational Analysis",
+      "keyword": "business process analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Agile Leadership",
+      "keyword": "agile coach",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Product Strategy & Operations",
+      "keyword": "product operations manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Service Management & Design",
+      "keyword": "service designer",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Data & Analytics Management",
+      "keyword": "data governance manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Information Security Analysis",
+      "keyword": "information security analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Security Operations / SOC",
+      "keyword": "SOC analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Security Architecture",
+      "keyword": "cyber security architect",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Security Consulting & Advisory",
+      "keyword": "cyber security consultant",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Security Risk & Third-Party Risk",
+      "keyword": "third party risk analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "Security Management",
+      "keyword": "information security manager",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    },
+    {
+      "family": "IT Security",
+      "keyword": "IT security analyst",
+      "status": "NOT_SAMPLED_OR_NOT_VERIFIED"
+    }
+  ]
+}
