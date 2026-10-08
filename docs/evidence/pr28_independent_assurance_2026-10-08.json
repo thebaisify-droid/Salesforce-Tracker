@@ -1,0 +1,550 @@
+{
+  "schema": "candidate-independent-assurance/v1",
+  "review_date": "2026-10-08",
+  "scope": "Original 30-retained-record one-keyword pilot; no additional paid collection",
+  "original_records": 30,
+  "source_counts": {
+    "Totaljobs": 10,
+    "Indeed UK": 10,
+    "JobServe": 10
+  },
+  "exact_url_unique": 30,
+  "independently_corroborated_titles": 7,
+  "original_active_status_confirmed": 0,
+  "description_supported_provisional_family_records": 7,
+  "human_approved_records": 0,
+  "records_passing_release_assurance": 0,
+  "cross_source_duplicates": {
+    "exact_url_duplicates_detected": 0,
+    "possible_cross_postings_resolved": false,
+    "conclusion": "INCONCLUSIVE_NO_EMPLOYER_LOCATION_FOR_MOST_RECORDS"
+  },
+  "role_family_coverage": {
+    "taxonomy_families": 22,
+    "provisional_family_names": [
+      "Data Analysis",
+      "Business Analysis",
+      "Product Ownership",
+      "Data & Analytics Management"
+    ],
+    "provisional_families_with_independent_descriptions": 4,
+    "verified_representative_families": 0,
+    "security_families_sampled": 0,
+    "security_families_targeted": 7,
+    "representative_coverage_demonstrated": false
+  },
+  "release": {
+    "pull_request": 28,
+    "decision": "NO_GO",
+    "approved": false,
+    "independent_human_signoff": false,
+    "required_minimum_100_reviewed_not_met": true,
+    "missing_core_cv_library": true,
+    "real_world_precision_recall_not_validated": true,
+    "database_restore_test_not_established": true,
+    "site_filters_test_not_established": true,
+    "publication_disabled": true
+  },
+  "records": [
+    {
+      "record_id": "6751bba81e90241731bd",
+      "source": "Totaljobs",
+      "title": "Business Analyst",
+      "source_url": "https://www.totaljobs.com/job/business-analyst/heathrow-airport-job108115901",
+      "independent_evidence": {
+        "organization": "Clackmannanshire Council",
+        "url": "https://www.lgjobs.com/job/business-analyst-cla04449-95575",
+        "evidence_type": "INDEPENDENT_LISTING",
+        "note": "Matching employer, location, reference and requirements description; original URL active state unconfirmed"
+      },
+      "role_family_assessment": {
+        "family": "Business Analysis",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "0ff02e2c473fafb7bafe",
+      "source": "Totaljobs",
+      "title": "Senior Product Owner – D365 CE and Custom Portal",
+      "source_url": "https://www.totaljobs.com/job/senior-product-owner-d365-ce-and-custom-portal/workwell-job108114536",
+      "independent_evidence": {
+        "organization": "Workwell",
+        "url": "https://workwellsolutions.com/careers/current-vacancies/senior-product-owner-d365-ce-and-custom-portal/",
+        "evidence_type": "EMPLOYER_LISTING",
+        "note": "Matching title and product backlog responsibilities"
+      },
+      "role_family_assessment": {
+        "family": "Product Ownership",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "7e0fcd3c746edfdb084d",
+      "source": "Totaljobs",
+      "title": "Business Process Analyst – Automation and Discovery",
+      "source_url": "https://www.totaljobs.com/job/business-process-analyst-automation-and-discovery/london-stock-exchange-job108116150",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "2bab8b671670428cc7a0",
+      "source": "Totaljobs",
+      "title": "Marlin Broking Coordinator",
+      "source_url": "https://www.totaljobs.com/job/marlin-broking-coordinator/aon-uk-ltd-job108116207",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "02ff2157ba3d5f0e7308",
+      "source": "Totaljobs",
+      "title": "Technical Business Analyst - Wealth Management",
+      "source_url": "https://www.totaljobs.com/job/technical-business-analyst-wealth-management/sanderson-recruitment-job108112969",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "f693ed4aa6657bc61286",
+      "source": "Totaljobs",
+      "title": "Charles River Business Analyst",
+      "source_url": "https://www.totaljobs.com/job/charles-river-business-analyst/sanderson-recruitment-job108111916",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "8d8fa3efc5a988929c0d",
+      "source": "Totaljobs",
+      "title": "Senior Business Analyst",
+      "source_url": "https://www.totaljobs.com/job/senior-business-analyst/mthree-job108093125",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "8fa7be902e89564f54e2",
+      "source": "Totaljobs",
+      "title": "IT Program Manager",
+      "source_url": "https://www.totaljobs.com/job/it-program-manager/international-rescue-committee-u-k-job108103194",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "7e16dabb8e3c9d71797c",
+      "source": "Totaljobs",
+      "title": "XVA Developer",
+      "source_url": "https://www.totaljobs.com/job/xva-developer/sumitomo-mitsui-banking-corporation-job108103967",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "8ceb643b5c9fc1109201",
+      "source": "Totaljobs",
+      "title": "Engagement Delivery Director",
+      "source_url": "https://www.totaljobs.com/job/engagement-delivery-director/salesforce-job108110303",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "ec73065af9837d8ba9e9",
+      "source": "Indeed UK",
+      "title": "Data Analyst",
+      "source_url": "https://uk.indeed.com/viewjob?jk=19995f7a0af37a48",
+      "independent_evidence": {
+        "organization": "Falkirk Council",
+        "url": "https://myjobscotland.gov.uk/councils/falkirk-council/jobs",
+        "evidence_type": "EMPLOYER_LISTING",
+        "note": "Employer careers index lists role and closing date; original Indeed application status unconfirmed"
+      },
+      "role_family_assessment": {
+        "family": "Data Analysis",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "523f34dd8d5dca289daa",
+      "source": "Indeed UK",
+      "title": "Business Analyst",
+      "source_url": "https://uk.indeed.com/viewjob?jk=89ee0d1533a05cad",
+      "independent_evidence": {
+        "organization": "Clackmannanshire Council",
+        "url": "https://www.lgjobs.com/job/business-analyst-cla04449-95575",
+        "evidence_type": "INDEPENDENT_LISTING",
+        "note": "Matching employer, location, reference and requirements description; original URL active state unconfirmed"
+      },
+      "role_family_assessment": {
+        "family": "Business Analysis",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "9192cdf27270ba0729c3",
+      "source": "Indeed UK",
+      "title": "Project Controls Analytics Consultant (Defence)",
+      "source_url": "https://uk.indeed.com/viewjob?jk=c137b94af89b0c0f",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "b6e56ad91b2d8695af0e",
+      "source": "Indeed UK",
+      "title": "Contract - Tech Business Analyst – Tech and Data",
+      "source_url": "https://uk.indeed.com/viewjob?jk=e65c1cb34a1158f1",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "614dbafd0e790a835e2a",
+      "source": "Indeed UK",
+      "title": "Asset Analyst",
+      "source_url": "https://uk.indeed.com/viewjob?jk=062f4e94da3cddae",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "b0ee77397f340c811109",
+      "source": "Indeed UK",
+      "title": "Data Product Owner",
+      "source_url": "https://uk.indeed.com/viewjob?jk=0c6fe01819784876",
+      "independent_evidence": {
+        "organization": "Bupa",
+        "url": "https://builtin.com/job/data-product-owner/11494358",
+        "evidence_type": "INDEPENDENT_LISTING",
+        "note": "Matched employer and product backlog responsibilities"
+      },
+      "role_family_assessment": {
+        "family": "Product Ownership",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "4cdeadcbf5969c6b46a5",
+      "source": "Indeed UK",
+      "title": "Senior Product Analyst",
+      "source_url": "https://uk.indeed.com/viewjob?jk=97bafb1336f9b30c",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "4b9e388f5c1387c9f4ba",
+      "source": "Indeed UK",
+      "title": "Data Analyst - Performance",
+      "source_url": "https://uk.indeed.com/viewjob?jk=70afe2e781e892c2",
+      "independent_evidence": {
+        "organization": "Assystem",
+        "url": "https://www.glassdoor.co.uk/job-listing/data-analyst-performance-assystem-JV_IC3316792_KO0%2C24_KE25%2C33.htm?jl=1010008965492",
+        "evidence_type": "INDEPENDENT_LISTING",
+        "note": "Matching title/location; older advertisement may be stale"
+      },
+      "role_family_assessment": {
+        "family": "Data & Analytics Management",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "5db7e63b26c64e4be552",
+      "source": "Indeed UK",
+      "title": "Systems Data Analyst",
+      "source_url": "https://uk.indeed.com/viewjob?jk=ca2b3e061328c681",
+      "independent_evidence": {
+        "organization": "Dunelm",
+        "url": "https://www.dunelmcareers.com/vacancies/37133/systems-data-analyst.html",
+        "evidence_type": "EMPLOYER_LISTING",
+        "note": "Matching title, UK locations and duties"
+      },
+      "role_family_assessment": {
+        "family": "Data Analysis",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "0968e1b0127d2583928d",
+      "source": "Indeed UK",
+      "title": "Business Analyst",
+      "source_url": "https://uk.indeed.com/viewjob?jk=194374ab62ade5bf",
+      "independent_evidence": {
+        "organization": "Clackmannanshire Council",
+        "url": "https://www.lgjobs.com/job/business-analyst-cla04449-95575",
+        "evidence_type": "INDEPENDENT_LISTING",
+        "note": "Matching employer, location, reference and requirements description; original URL active state unconfirmed"
+      },
+      "role_family_assessment": {
+        "family": "Business Analysis",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "PAGE_VIEWED",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "1895aeb9c23b71948f10",
+      "source": "JobServe",
+      "title": "Business Analyst & Technical Support (1st & 2nd Line)- £27k-£33k DOE",
+      "source_url": "https://www.jobserve.com/gb/en/hAalB",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "2f22d7448aa03b15d8bf",
+      "source": "JobServe",
+      "title": "Business Analyst - Financial Services Remediation",
+      "source_url": "https://www.jobserve.com/gb/en/hBsAV",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "86e192a4fdbdddb2f551",
+      "source": "JobServe",
+      "title": "Business Analyst - Finance",
+      "source_url": "https://www.jobserve.com/gb/en/hDAb2",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "ea50acd6aa17f28a5330",
+      "source": "JobServe",
+      "title": "Business Analyst - AI Initiatives",
+      "source_url": "https://www.jobserve.com/gb/en/hDCdX",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "c26d4922ec23eb42b48a",
+      "source": "JobServe",
+      "title": "Business Analyst (EAM/CAFM) - Hybrid - O/S IR35",
+      "source_url": "https://www.jobserve.com/gb/en/hAZaX",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "297d47f387ba2a626a3f",
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "source_url": "https://www.jobserve.com/gb/en/hBmjo",
+      "independent_evidence": {
+        "organization": "Clackmannanshire Council",
+        "url": "https://www.lgjobs.com/job/business-analyst-cla04449-95575",
+        "evidence_type": "INDEPENDENT_LISTING",
+        "note": "Matching employer, location, reference and requirements description; original URL active state unconfirmed"
+      },
+      "role_family_assessment": {
+        "family": "Business Analysis",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "6dad88fe2a3f72ea3cf2",
+      "source": "JobServe",
+      "title": "Business Analyst - Retail - upto £675 INSIDE IR35",
+      "source_url": "https://www.jobserve.com/gb/en/hC9cZ",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "c70b208044824cd6ca4b",
+      "source": "JobServe",
+      "title": "Business Analyst, Financial Services",
+      "source_url": "https://www.jobserve.com/gb/en/hBuzS",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "8fe41be00b4bb8f5eedb",
+      "source": "JobServe",
+      "title": "Business Analyst (ERP), £400 per day inside IR35",
+      "source_url": "https://www.jobserve.com/gb/en/hASA4",
+      "independent_evidence": null,
+      "role_family_assessment": null,
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    },
+    {
+      "record_id": "eb4ec9b94e2ad9684f0d",
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "source_url": "https://www.jobserve.com/gb/en/hCL7t",
+      "independent_evidence": {
+        "organization": "Clackmannanshire Council",
+        "url": "https://www.lgjobs.com/job/business-analyst-cla04449-95575",
+        "evidence_type": "INDEPENDENT_LISTING",
+        "note": "Matching employer, location, reference and requirements description; original URL active state unconfirmed"
+      },
+      "role_family_assessment": {
+        "family": "Business Analysis",
+        "status": "DESCRIPTION_SUPPORTED_PROVISIONAL"
+      },
+      "page_access_previously": "NOT_RETRIEVABLE_BY_BROWSER",
+      "active_original_vacancy_verified": false,
+      "posting_date_original_verified": false,
+      "human_reviewer_approved": false,
+      "duplicate_status": "NO_EXACT_URL_MATCH; CROSS_SOURCE_NOT_RESOLVED",
+      "publication_ready": false
+    }
+  ]
+}
