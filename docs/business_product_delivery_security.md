@@ -102,3 +102,25 @@ do not estimate population-wide job market volumes or unbiased aggregate
 precision/recall. Supplement with a random sample of the full acquisition frame
 before release. The existing synthetic assurance report is not a deployment gate
 for real-world quality.
+
+## Human-labelled evaluation (still offline)
+
+Once the exported review CSV has been independently labelled with
+`expected_included`, `expected_family`, `reviewer`, and `reviewed_at`,
+run:
+
+```sh
+python -m scripts.evaluate_candidate_reviews \
+  --input runs/candidate_review_unlabelled.csv \
+  --report runs/candidate_human_review_report.json \
+  --minimum-samples 100
+```
+
+The command fails closed for missing reviewer evidence, duplicate sample IDs,
+invalid labels, or fewer than 100 reviewed cases (default). It reports
+precision, recall and role-family accuracy, plus source counts and error cases.
+Passing these thresholds is **not** production approval; independently audit
+source authenticity, sample selection, cross-board duplicate handling, and
+representativeness. At present no independently labelled UK market sample
+has been supplied or verified. The report always sets
+`publication_approved=false` and `real_world_accuracy_validated=false`.
