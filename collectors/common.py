@@ -8,6 +8,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.error import HTTPError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
@@ -45,8 +46,16 @@ def _request_json(
     if data is not None:
         request_headers["Content-Type"] = "application/json"
     req = Request(url, data=data, method=method, headers=request_headers)
-    with urlopen(req, timeout=timeout) as response:
-        return json.loads(response.read().decode("utf-8"))
+    try:
+        with urlopen(req, timeout=timeout) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except HTTPError as exc:
+        try:
+            detail = exc.read().decode("utf-8", errors="replace")[:4000]
+        except Exception:
+            detail = ""
+        suffix = f": {detail}" if detail else ""
+        raise RuntimeError(f"HTTP {exc.code} from provider{suffix}") from exc
 
 
 def _request_form_json(url: str, form: dict[str, str], timeout: int = 60) -> Any:
@@ -258,6 +267,10 @@ def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
         token = _subst(cfg.get("token", "env:APIFY_TOKEN"), values)
         actor_input = _subst(cfg.get("input", {}), values)
         params = {"format": "json", "clean": "true"}
+        if cfg.get("max_charged_results") is not None:
+            params["maxItems"] = str(int(cfg["max_charged_results"]))
+        if cfg.get("max_total_charge_usd") is not None:
+            params["maxTotalChargeUsd"] = str(float(cfg["max_total_charge_usd"]))
         url = f"https://api.apify.com/v2/acts/{quote(actor_id, safe='~')}/run-sync-get-dataset-items?{urlencode(params)}"
         payload = _request_json(
             url,

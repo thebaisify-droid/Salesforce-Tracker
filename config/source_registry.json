@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "ingestion_platform": "Apify",
   "sources": [
     {
@@ -28,7 +28,27 @@
       "trust_tier": "A",
       "purpose": "Third UK Salesforce vacancy feed and market-coverage cross-check",
       "access": "Existing saved Apify Task"
+    },
+    {
+      "slot": "source_4",
+      "name": "Indeed UK",
+      "provider": "apify_actor",
+      "actor": "wildorigins/indeed-jobs",
+      "trust_tier": "B",
+      "purpose": "Secondary UK Salesforce vacancy enrichment and corroboration",
+      "access": "Apify Actor via existing APIFY_TOKEN",
+      "status": "validated_enrichment"
+    },
+    {
+      "slot": "source_5",
+      "name": "JobServe",
+      "provider": "apify_actor",
+      "actor": "solidcode/jobserve-scraper",
+      "trust_tier": "B",
+      "purpose": "Secondary UK IT/contract Salesforce vacancy enrichment and corroboration",
+      "access": "Apify pay-per-result Actor via existing APIFY_TOKEN",
+      "status": "staged_pending_apify_usage"
     }
   ],
-  "assurance_note": "The three underlying job boards are separate data sources, but Apify is a shared ingestion dependency. A platform-wide Apify outage is a common-mode failure, not three independent source failures."
+  "assurance_note": "CV-Library, Totaljobs and Reed remain the core publication gate. Indeed UK is an active enrichment source. JobServe is fully wired and schema-validated but temporarily paused because the current Apify account usage allowance is insufficient for another paid Actor run. All underlying job boards are separate data sources, while Apify remains a shared ingestion dependency."
 }

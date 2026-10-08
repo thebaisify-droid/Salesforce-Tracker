@@ -1,0 +1,29 @@
+{
+  "ready": true,
+  "provider": "apify_actor",
+  "source_name": "JobServe",
+  "role": "secondary_enrichment_uk_job_board",
+  "actor_id": "solidcode/jobserve-scraper",
+  "token": "env:APIFY_TOKEN",
+  "timeout_seconds": 480,
+  "window_field": "postedDateTime",
+  "input": {
+    "keywords": [
+      "salesforce"
+    ],
+    "location": "",
+    "country": "gb",
+    "distance": "50",
+    "startUrls": [],
+    "jobType": "",
+    "industries": [],
+    "postedSince": "",
+    "remoteOnly": false,
+    "advertisedBy": "",
+    "includeDescription": true,
+    "onlyUniqueJobs": true,
+    "maxResults": 75
+  },
+  "notes": "JobServe UK enrichment source. Live schema validated 2026-10-08; 72-hour filtering uses postedDateTime.",
+  "max_charged_results": 75
+}

@@ -1,0 +1,17 @@
+{
+  "ready": true,
+  "provider": "apify_actor",
+  "source_name": "Indeed UK",
+  "role": "secondary_enrichment_uk_job_board",
+  "actor_id": "wildorigins/indeed-jobs",
+  "token": "env:APIFY_TOKEN",
+  "timeout_seconds": 480,
+  "window_field": "postedAt",
+  "input": {
+    "query": "Salesforce",
+    "country": "uk",
+    "maxResults": 75
+  },
+  "notes": "Indeed UK enrichment source. Uses uk.indeed.com and is non-blocking because pipeline min_sources_succeeded remains 3.",
+  "max_charged_results": 75
+}

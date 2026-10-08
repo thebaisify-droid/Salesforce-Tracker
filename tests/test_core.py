@@ -108,6 +108,22 @@ class TrackerTests(unittest.TestCase):
         self.assertTrue(relevant)
         self.assertEqual(reason, "salesforce_direct_employer")
 
+    def test_salesforce_direct_employer_requires_ecosystem_role_signal(self):
+        relevant, reason = salesforce_relevance({
+            "title":"Senior Corporate Paralegal, Global Governance",
+            "company":"Salesforce",
+            "snippet":"Corporate legal governance role."
+        })
+        self.assertFalse(relevant)
+        self.assertEqual(reason, "salesforce_direct_employer_non_ecosystem_role")
+        relevant, reason = salesforce_relevance({
+            "title":"Life Sciences Program Manager/Program Executive",
+            "company":"Salesforce",
+            "snippet":"Programme leadership for Salesforce customers."
+        })
+        self.assertTrue(relevant)
+        self.assertEqual(reason, "salesforce_direct_employer")
+
     def test_salesforce_relevance_rejects_incidental_crm_mention(self):
         relevant, _ = salesforce_relevance({
             "title": "Sales Account Manager",
@@ -153,6 +169,48 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(record["salary_max"], 700.0)
         self.assertEqual(record["salary_period"], "day")
         self.assertEqual(record["employment_type"], "CONTRACTOR")
+
+    def test_indeed_uk_shape_normalizes(self):
+        record = normalize({
+            "jobId": "abc123",
+            "title": "Salesforce Administrator",
+            "company": "Example Ltd",
+            "location": "Manchester",
+            "jobTypes": ["Full-time", "Permanent"],
+            "salaryMin": 50000,
+            "salaryMax": 60000,
+            "salaryCurrency": "GBP",
+            "salaryPeriod": "year",
+            "postedAt": "2026-10-08T00:00:00.000Z",
+            "snippet": "Administer Sales Cloud and Salesforce Flow.",
+            "url": "https://uk.indeed.com/viewjob?jk=abc123"
+        }, "source_4")
+        self.assertEqual(record["external_id"], "abc123")
+        self.assertEqual(record["employment_type"], "Full-time, Permanent")
+        self.assertEqual(record["posted_at"], "2026-10-08T00:00:00.000Z")
+        self.assertEqual(record["salary_min"], 50000.0)
+        self.assertEqual(record["salary_period"], "year")
+
+    def test_jobserve_shape_normalizes(self):
+        record = normalize({
+            "reference": "JS-123",
+            "title": "Salesforce Technical Architect",
+            "company": "Example Recruitment",
+            "location": "London, UK",
+            "jobType": "Contract",
+            "salary_min": 650,
+            "salary_max": 750,
+            "salary_currency": "GBP",
+            "salary_period": "day",
+            "postedDateTime": "2026-10-08",
+            "description": "Salesforce architecture across Service Cloud and Experience Cloud.",
+            "url": "https://www.jobserve.com/gb/en/hABC1"
+        }, "source_5")
+        self.assertEqual(record["external_id"], "JS-123")
+        self.assertEqual(record["advertiser"], "Example Recruitment")
+        self.assertEqual(record["contract_type"], "Contract")
+        self.assertEqual(record["salary_min"], 650.0)
+        self.assertEqual(record["posted_at"], "2026-10-08")
 
     def test_reed_shape_normalizes(self):
         record = normalize({
@@ -278,6 +336,55 @@ class TrackerTests(unittest.TestCase):
             self.assertNotIn("description", vacancy)
             self.assertNotIn("raw_json", vacancy)
 
+    def test_store_cross_board_deduplicates_location_variants(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            a = normalize({
+                "id":"tj-2",
+                "title":"Salesforce Developer (Financial Services)",
+                "company":"Morson Edge",
+                "location":"Tower Hill, City of London (EC3), E1W 1WY",
+                "datePosted":"2026-10-06T10:00:00Z",
+                "salary":{"rawText":"£600 - 700 per day","currency":"GBP","period":"day"},
+                "description":"Salesforce Financial Services Cloud implementation.",
+                "url":"https://www.totaljobs.com/job/example-1"
+            }, "source_2")
+            b = normalize({
+                "reference":"js-2",
+                "title":"Salesforce Developer (Financial Services)",
+                "company":"Morson Edge",
+                "location":"London, UK",
+                "postedDateTime":"2026-10-06",
+                "description":"Different board copy for the same Salesforce Financial Services Cloud contract.",
+                "url":"https://www.jobserve.com/gb/en/hXYZ"
+            }, "source_5")
+            with Store(db) as store:
+                self.assertEqual(store.upsert(a), "inserted")
+                self.assertEqual(store.upsert(b), "unchanged")
+                self.assertEqual(store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0], 1)
+                self.assertEqual(store.conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0], 2)
+
+    def test_store_cross_board_deduplicates_exact_title_employer_location(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            a = normalize({
+                "id":"tj-1","title":"Engagement Delivery Director","company":"Salesforce",
+                "location":"London","description":"Long Totaljobs description about delivery.",
+                "url":"https://www.totaljobs.com/job/engagement-delivery-director/salesforce-job1"
+            }, "source_2")
+            b = normalize({
+                "id":"indeed-1","title":"Engagement Delivery Director","company":"Salesforce",
+                "location":"London","snippet":"Short Indeed snippet.",
+                "url":"https://uk.indeed.com/viewjob?jk=abc"
+            }, "source_4")
+            with Store(db) as store:
+                self.assertEqual(store.upsert(a), "inserted")
+                self.assertEqual(store.upsert(b), "unchanged")
+                count = store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+                links = store.conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0]
+            self.assertEqual(count, 1)
+            self.assertEqual(links, 2)
+
     def test_store_cross_board_deduplicates_identical_job_content(self):
         with tempfile.TemporaryDirectory() as d:
             db = Path(d) / "tracker.db"
@@ -387,7 +494,8 @@ class TrackerTests(unittest.TestCase):
     def test_project_preflight_accepts_validated_sources(self):
         result = preflight(ROOT / "config" / "pipeline.json")
         self.assertTrue(result["ok"], result["errors"])
-        self.assertEqual(result["enabled_sources"], 3)
+        self.assertEqual(result["enabled_sources"], 4)
+        self.assertEqual(result["min_sources_succeeded"], 3)
 
 
 if __name__ == "__main__":

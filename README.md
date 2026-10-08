@@ -1,16 +1,16 @@
 # Salesforce Tracker
 
-UK Salesforce hiring-market tracker with three-source incremental ingestion, vacancy normalisation/deduplication, role and sector classification, assurance gates, persistent state and dashboard-ready aggregates.
+UK Salesforce hiring-market tracker with multi-source incremental ingestion, vacancy normalisation/deduplication, role and sector classification, assurance gates, persistent state and dashboard-ready aggregates.
 
 ## Current status
 
-**Live.** The confirmed daily sources are CV-Library, Totaljobs and Reed via saved Apify Tasks. Live schemas are validated, persistent state has been seeded and cross-run deduplication has been proven across separate GitHub runners.
+**Live.** CV-Library, Totaljobs and Reed remain the core daily sources. Indeed UK is validated and active as a fourth enrichment source. JobServe is fully wired and live-schema validated, but temporarily paused until the Apify paid-Actor usage allowance is increased.
 
 The repository contains:
 
 - daily refresh orchestration with a 72-hour overlap window;
-- strict 3/3 source gating;
-- CV-Library, Totaljobs and Reed saved-Task ingestion through Apify;
+- a 3-source minimum publication gate, with enrichment sources allowed to fail without taking the dashboard offline;
+- CV-Library, Totaljobs and Reed saved-Task ingestion plus Indeed UK enrichment through Apify;
 - integrity-checked persistent SQLite state restored between GitHub runners;
 - idempotent vacancy upsert/deduplication;
 - master data **v1.4** and role taxonomy **v2.2**;
@@ -30,9 +30,14 @@ python -m pipeline.daily_refresh --config config/pipeline.json --check
 
 ## Daily sources
 
+Core:
 - CV-Library — `develop_ify/cv-library-scraper-task`
 - Totaljobs — `develop_ify/totaljobs-com-scraper-task`
 - Reed — `develop_ify/uk-jobs-reed-task`
+
+Enrichment:
+- Indeed UK — `wildorigins/indeed-jobs` — active
+- JobServe — `solidcode/jobserve-scraper` — staged; enable after Apify paid-Actor usage is available
 
 Only `APIFY_TOKEN` is required as a source secret.
 
