@@ -1,0 +1,236 @@
+name: Seed captured enrichment sources
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/seed-captured-enrichment.yml"
+
+concurrency:
+  group: salesforce-enrichment-seed
+  cancel-in-progress: false
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: read
+    env:
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore current production state
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Download captured Indeed and JobServe validation datasets
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p validation/captures validation/raw
+          curl -fsSL --location             -H "Authorization: Bearer ${GITHUB_TOKEN}"             -H "Accept: application/vnd.github+json"             -H "X-GitHub-Api-Version: 2022-11-28"             "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/artifacts/11536703393/zip"             -o validation/captures/indeed.zip
+          curl -fsSL --location             -H "Authorization: Bearer ${GITHUB_TOKEN}"             -H "Accept: application/vnd.github+json"             -H "X-GitHub-Api-Version: 2022-11-28"             "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/artifacts/11537322101/zip"             -o validation/captures/jobserve.zip
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          pairs=[
+              ("validation/captures/indeed.zip","raw/source_4.json","validation/raw/source_4.json"),
+              ("validation/captures/jobserve.zip","raw/source_5.json","validation/raw/source_5.json"),
+          ]
+          for archive,member,target in pairs:
+              with zipfile.ZipFile(archive) as zf:
+                  Path(target).write_bytes(zf.read(member))
+          PY
+
+      - name: Apply validated enrichment window
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from collectors.common import _filter_window
+
+          since="2026-10-05T00:00:00Z"
+          until="2026-10-08T23:59:59Z"
+          configs={
+              "source_4":("postedAt",),
+              "source_5":("postedDateTime",),
+          }
+          summary={}
+          for source,(field,) in configs.items():
+              path=Path("validation/raw")/(source+".json")
+              rows=json.loads(path.read_text())
+              filtered=_filter_window(rows,field,since,until)
+              path.write_text(json.dumps(filtered,indent=2)+"\n")
+              summary[source]={"captured":len(rows),"windowed":len(filtered)}
+          Path("state/enrichment_capture_window.json").write_text(json.dumps(summary,indent=2)+"\n")
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Capture master before enrichment
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          payload={
+              "active_before":conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0],
+              "total_before":conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0],
+          }
+          conn.close()
+          Path("state/enrichment_before.json").write_text(json.dumps(payload,indent=2)+"\n")
+          print(json.dumps(payload,indent=2))
+          PY
+
+      - name: Process captured enrichment into persistent master
+        run: >
+          python -m scripts.process_incremental
+          --input-dir validation/raw
+          --run-id enrichment-seed-${{ github.run_id }}
+          --metrics state/enrichment_seed_metrics.json
+          --database "$TRACKER_DATABASE_PATH"
+
+      - name: Verify enrichment quality and source lineage
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+
+          before=json.loads(Path("state/enrichment_before.json").read_text())
+          metrics=json.loads(Path("state/enrichment_seed_metrics.json").read_text())
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          active=conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0]
+          source4=conn.execute("SELECT COUNT(DISTINCT vacancy_id) FROM vacancy_sources WHERE source_name='source_4'").fetchone()[0]
+          source5=conn.execute("SELECT COUNT(DISTINCT vacancy_id) FROM vacancy_sources WHERE source_name='source_5'").fetchone()[0]
+          paralegal=conn.execute("SELECT COUNT(*) FROM vacancies WHERE display_title='Senior Corporate Paralegal, Global Governance'").fetchone()[0]
+
+          duplicate_checks={}
+          for title in [
+              "Engagement Delivery Director",
+              "Forward Deployed Engagement Strategist",
+              "Cloud Account Executive - Partner Cloud",
+              "Senior Project Manager",
+              "Principal AI Architect",
+              "Sr. Enterprise Architect, Agentforce Supply Chain",
+          ]:
+              duplicate_checks[title]=conn.execute(
+                  "SELECT COUNT(*) FROM vacancies WHERE display_title=? AND lower(COALESCE(advertiser,''))='salesforce'",
+                  (title,)
+              ).fetchone()[0]
+
+          market_dupes={
+              "Morson Developer":conn.execute(
+                  "SELECT COUNT(*) FROM vacancies WHERE display_title='Salesforce Developer (Financial Services)' AND lower(COALESCE(advertiser,''))='morson edge'"
+              ).fetchone()[0],
+              "Morson Architect":conn.execute(
+                  "SELECT COUNT(*) FROM vacancies WHERE display_title='Salesforce Functional Architect' AND lower(COALESCE(advertiser,''))='morson edge'"
+              ).fetchone()[0],
+              "Proactive Architect":conn.execute(
+                  "SELECT COUNT(*) FROM vacancies WHERE display_title='Salesforce Technical Architect' AND lower(COALESCE(advertiser,''))='proactive appointments'"
+              ).fetchone()[0],
+              "Michael Page Developer":conn.execute(
+                  "SELECT COUNT(*) FROM vacancies WHERE display_title='Salesforce Developer' AND lower(COALESCE(advertiser,'')) LIKE 'michael page%'"
+              ).fetchone()[0],
+          }
+          conn.close()
+
+          result={
+              "active_before":before["active_before"],
+              "active_after":active,
+              "net_new":active-before["active_before"],
+              "indeed_linked_vacancies":source4,
+              "jobserve_linked_vacancies":source5,
+              "metrics":metrics,
+              "paralegal_rows":paralegal,
+              "known_indeed_duplicate_counts":duplicate_checks,
+              "known_jobserve_duplicate_counts":market_dupes,
+          }
+          if source4 < 9:
+              raise SystemExit(f"expected >=9 Indeed-linked vacancies, got {source4}")
+          if source5 < 10:
+              raise SystemExit(f"expected >=10 JobServe-linked vacancies, got {source5}")
+          if paralegal:
+              raise SystemExit("unrelated Salesforce paralegal role entered master")
+          bad={**{k:v for k,v in duplicate_checks.items() if v != 1}, **{k:v for k,v in market_dupes.items() if v != 1}}
+          if bad:
+              raise SystemExit(f"known cross-board duplicates remain: {bad}")
+          if metrics.get("rejected_rows") != 0:
+              raise SystemExit(f"unexpected processing rejects: {metrics.get('rejected_rows')}")
+
+          Path("state/enrichment_seed_proof.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Remove synthetic enrichment refresh marker
+        run: |
+          python - <<'PY'
+          import sqlite3
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          conn.execute("DELETE FROM refresh_runs WHERE run_id=?", ("enrichment-seed-${{ github.run_id }}",))
+          conn.commit()
+          conn.close()
+          PY
+
+      - name: Rebuild dashboard from enriched master
+        shell: bash
+        run: |
+          set -euo pipefail
+          RUN_ID="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path("state/latest_success.json").read_text())["run_id"])
+          PY
+          )"
+          python -m scripts.publish_dashboard             --run-id "$RUN_ID"             --database "$TRACKER_DATABASE_PATH"             --output dashboard/data.json             --public-output dashboard/live-data.json
+
+      - name: Write verified persistent state manifest
+        run: python -m scripts.state_snapshot --root . --database "$TRACKER_DATABASE_PATH" --write-manifest state/state_manifest.json
+
+      - name: Upload enriched production tracker state
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracker-state
+          path: |
+            data/salesforce_tracker.db
+            state/
+            dashboard/data.json
+            dashboard/live-data.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Publish enriched dashboard JSON to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp dashboard/live-data.json /tmp/live-data.json
+          git config user.name "salesforce-tracker-bot"
+          git config user.email "salesforce-tracker-bot@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B dashboard-publish origin/main
+          cp /tmp/live-data.json dashboard/live-data.json
+          git add dashboard/live-data.json
+          if git diff --cached --quiet; then
+            echo "Public dashboard JSON is unchanged."
+          else
+            git commit -m "Seed Indeed and JobServe enrichment data [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      - name: Upload seed evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrichment-seed-${{ github.run_id }}
+          path: |
+            state/enrichment_*.json
+            dashboard/live-data.json
+          if-no-files-found: warn
+          retention-days: 30
