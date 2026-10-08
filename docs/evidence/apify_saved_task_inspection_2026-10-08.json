@@ -1,0 +1,48 @@
+{
+  "schema": "candidate-saved-task-inspection-summary/v1",
+  "observed_on": "2026-10-08",
+  "run_id": 37784631922,
+  "artifact_id": 11553970809,
+  "inspection_completed": true,
+  "actor_runs_started": 0,
+  "task_updates": 0,
+  "tasks": [
+    {
+      "source": "CV-Library",
+      "task_id": "develop_ify/cv-library-scraper-task",
+      "candidate_search_fields": [
+        "country",
+        "maxResults",
+        "query"
+      ],
+      "other_relevant_fields": [
+        "incrementalMode",
+        "postedWithinDays",
+        "maxPages"
+      ],
+      "input_schema_verified": false,
+      "non_salesforce_search_verified": false
+    },
+    {
+      "source": "Totaljobs",
+      "task_id": "develop_ify/totaljobs-com-scraper-task",
+      "candidate_search_fields": [
+        "keywords"
+      ],
+      "other_relevant_fields": [
+        "maxListings",
+        "postedWithin",
+        "mode"
+      ],
+      "input_schema_verified": false,
+      "non_salesforce_search_verified": false
+    }
+  ],
+  "next_checks": [
+    "Inspect documented Actor input schemas without running Actors",
+    "Confirm supported Task input overrides in isolated, budget-controlled pilot",
+    "Leave production saved Tasks untouched"
+  ],
+  "raw_inputs_included": false,
+  "paid_acquisition_authorised": false
+}
