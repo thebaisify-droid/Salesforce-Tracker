@@ -1,0 +1,9 @@
+{
+  "tracker": "business_product_delivery_security",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "publication_enabled": false,
+  "sources": [],
+  "monthly_acquisition_allocation_usd": 0,
+  "notes": "Specification only. No Apify jobs, GitHub workflow, or live dashboard publication. Apply separate budget gate and validate classifier before activation."
+}
