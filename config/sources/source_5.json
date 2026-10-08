@@ -5,7 +5,7 @@
   "role": "secondary_enrichment_uk_job_board",
   "actor_id": "solidcode/jobserve-scraper",
   "token": "env:APIFY_TOKEN",
-  "timeout_seconds": 480,
+  "timeout_seconds": 600,
   "window_field": "postedDateTime",
   "input": {
     "keywords": [
@@ -24,6 +24,6 @@
     "onlyUniqueJobs": true,
     "maxResults": 75
   },
-  "notes": "JobServe UK enrichment source. Live schema validated 2026-10-08; 72-hour filtering uses postedDateTime.",
+  "notes": "JobServe UK enrichment source. Explicit Salesforce keyword search, full descriptions and deduplication; non-blocking because source_1/source_2/source_3 remain required.",
   "max_charged_results": 75
 }

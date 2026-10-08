@@ -132,7 +132,7 @@ def normalize(raw: dict[str, Any], source_name: str) -> dict[str, Any]:
     location = text_value(first_value(raw, "location", "job_location", "jobLocation", "city", "city_name"))
     url = canonical_url(text_value(first_value(
         raw, "job_url", "jobUrl", "canonicalUrl", "url", "sourceUrl", "source_url",
-        "link", "permalink", "apply_url", "applyUrl", "externalUrl", "redirect_url"
+        "link", "permalink", "application_url", "applicationUrl", "apply_url", "applyUrl", "externalUrl", "redirect_url"
     )))
     external_id = text_value(first_value(
         raw, "id", "job_id", "jobId", "externalId", "jobKey", "jobReference",

@@ -256,6 +256,13 @@ def preflight(config_path: Path) -> dict[str, Any]:
     if any(not n for n in names) or len(names) != len(set(names)): errors.append("source names must be present and unique")
     minimum = int(config.get("min_sources_succeeded", len(sources))) if sources else 0
     if sources and not (1 <= minimum <= len(sources)): errors.append("min_sources_succeeded is invalid")
+    required = config.get("required_sources", [])
+    if not isinstance(required, list) or any(not isinstance(name, str) or not name for name in required):
+        errors.append("required_sources must be a list of source names")
+        required = []
+    unknown_required = sorted(set(required) - set(names))
+    if unknown_required:
+        errors.append("required_sources contains disabled or unknown sources: " + ", ".join(unknown_required))
 
     values = _placeholders(root)
     for source in sources:
@@ -283,7 +290,7 @@ def preflight(config_path: Path) -> dict[str, Any]:
             error = _python_script_error(rendered, root)
             if error: errors.append(f"step {name}: {error}")
     return {"ok":not errors, "project_root":str(root), "config_path":str(config_path), "enabled_sources":len(sources),
-            "min_sources_succeeded":minimum, "errors":errors, "warnings":warnings}
+            "min_sources_succeeded":minimum, "required_sources":required, "errors":errors, "warnings":warnings}
 
 
 def dry_run_plan(config_path: Path) -> dict[str, Any]:
@@ -331,8 +338,20 @@ def execute(config_path: Path, *, force: bool, scheduled: bool, since_override: 
         output=raw_dir/source.get("output",f"{source['name']}.json"); local=dict(values); local["output"]=str(output)
         source_results.append(run_step(f"collect:{source['name']}",render_command(source["command"],local),root,env,output))
     minimum=int(config.get("min_sources_succeeded",len(source_cfgs)))
-    if sum(r.status=="success" for r in source_results) < minimum:
-        status=build_status(run_id,"failed",now,since,until,source_results,None,None,None,None,None,f"source gate failed: {sum(r.status=='success' for r in source_results)}/{len(source_cfgs)} succeeded; minimum is {minimum}",str(config_path),tz_name)
+    succeeded_names={
+        source["name"]
+        for source, result in zip(source_cfgs, source_results)
+        if result.status=="success"
+    }
+    required_names=set(config.get("required_sources", []))
+    missing_required=sorted(required_names - succeeded_names)
+    succeeded_count=len(succeeded_names)
+    if missing_required or succeeded_count < minimum:
+        if missing_required:
+            reason="required source gate failed: " + ", ".join(missing_required)
+        else:
+            reason=f"source gate failed: {succeeded_count}/{len(source_cfgs)} succeeded; minimum is {minimum}"
+        status=build_status(run_id,"failed",now,since,until,source_results,None,None,None,None,None,reason,str(config_path),tz_name)
         persist(state_dir,run_dir,status); print(json.dumps(status,indent=2)); return 2
 
     steps=config["steps"]

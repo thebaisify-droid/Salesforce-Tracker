@@ -94,6 +94,7 @@ class TrackerTests(unittest.TestCase):
             {"title":"Sales, Finance & Marketing Administrator","description":"Update customer records in Salesforce and other internal systems. Salesforce experience helpful."},
             {"title":"IT Program Manager","description":"Programme includes CRM applications such as Salesforce CRM and other enterprise tools."},
             {"title":"Senior Director Enterprise AI & Automation","company":"Worldpay Group Plc","description":"Desirable familiarity with Salesforce, Agentforce, copilots, AI agents, machine learning and enterprise SaaS platforms."},
+            {"title":"Solutions Architect - Integration","company":"Proactive Appointments","description":"Experience with Workato, MuleSoft, Boomi or Azure Integration Services. Familiarity with enterprise platforms such as Salesforce, SAP and ServiceNow."},
         ]
         for sample in samples:
             relevant, reason = salesforce_relevance(sample)
@@ -202,9 +203,11 @@ class TrackerTests(unittest.TestCase):
             "salary_max": 750,
             "salary_currency": "GBP",
             "salary_period": "day",
-            "postedDateTime": "2026-10-08",
+            "posted_at": "2026-10-08",
+            "job_type": "Contract",
             "description": "Salesforce architecture across Service Cloud and Experience Cloud.",
-            "url": "https://www.jobserve.com/gb/en/hABC1"
+            "job_url": "https://www.jobserve.com/gb/en/hABC1",
+            "application_url": "https://www.jobserve.com/gb/en/apply/ABC1"
         }, "source_5")
         self.assertEqual(record["external_id"], "JS-123")
         self.assertEqual(record["advertiser"], "Example Recruitment")
@@ -335,6 +338,68 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(vacancy["salary"]["period"], "day")
             self.assertNotIn("description", vacancy)
             self.assertNotIn("raw_json", vacancy)
+
+    def test_store_cross_board_deduplicates_baseline_agency_mirror(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            with Store(db) as store:
+                base = normalize({
+                    "id":"baseline-qa","title":"SC Cleared QA SDET","company":"",
+                    "location":"City of London, London","datePosted":"2026-10-05",
+                    "description":"Salesforce Provar test automation role.",
+                    "url":"https://www.cv-library.co.uk/job/qa-1"
+                }, "source_1")
+                base["advertiser"] = None
+                base["end_client_name"] = "Unnamed government body"
+                self.assertEqual(store.upsert(base), "inserted")
+                mirror = normalize({
+                    "reference":"js-qa","title":"SC Cleared QA SDET","company":"ARM (Advanced Resource Managers)",
+                    "location":"City of London, UK","postedDateTime":"2026-10-05",
+                    "description":"Provar automation testing for Salesforce applications.",
+                    "url":"https://www.jobserve.com/gb/en/hQA"
+                }, "source_5")
+                self.assertEqual(store.upsert(mirror), "unchanged")
+                self.assertEqual(store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0], 1)
+
+    def test_store_cross_board_deduplicates_reposted_direct_employer_role(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            with Store(db) as store:
+                base = normalize({
+                    "id":"reed-hyde","title":"Salesforce Developer","company":"The Hyde Group",
+                    "location":"London Bridge, London","datePosted":"2026-09-17",
+                    "description":"Salesforce Service Cloud developer.",
+                    "url":"https://www.reed.co.uk/jobs/salesforce-developer/1"
+                }, "source_3")
+                self.assertEqual(store.upsert(base), "inserted")
+                mirror = normalize({
+                    "reference":"js-hyde","title":"Salesforce Developer","company":"The Hyde Group",
+                    "location":"Lambeth, London, UK","postedDateTime":"2026-10-07",
+                    "description":"Salesforce Service Cloud developer role.",
+                    "url":"https://www.jobserve.com/gb/en/hHYDE"
+                }, "source_5")
+                self.assertEqual(store.upsert(mirror), "unchanged")
+                self.assertEqual(store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0], 1)
+
+    def test_store_cross_board_deduplicates_cloned_title_suffix(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            with Store(db) as store:
+                base = normalize({
+                    "id":"reed-crm","title":"CRM Transformation Lead (Salesforce)","company":"Windsor Forest Colleges Group",
+                    "location":"Langley / Windsor, Berkshire","datePosted":"2026-09-25",
+                    "description":"Salesforce CRM transformation lead.",
+                    "url":"https://www.reed.co.uk/jobs/crm-transformation-lead/1"
+                }, "source_3")
+                self.assertEqual(store.upsert(base), "inserted")
+                mirror = normalize({
+                    "reference":"js-crm","title":"CRM Transformation Lead (Salesforce) cloned on 25-09-","company":"Windsor Forest Colleges",
+                    "location":"Slough, Berkshire, UK","postedDateTime":"2026-10-07",
+                    "description":"Salesforce CRM transformation lead.",
+                    "url":"https://www.jobserve.com/gb/en/hCRM"
+                }, "source_5")
+                self.assertEqual(store.upsert(mirror), "unchanged")
+                self.assertEqual(store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0], 1)
 
     def test_store_cross_board_deduplicates_location_variants(self):
         with tempfile.TemporaryDirectory() as d:
@@ -491,11 +556,18 @@ class TrackerTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 safe_extract(archive, root / "restore")
 
+    def test_required_core_source_gate_configuration(self):
+        cfg = json.loads((ROOT / "config" / "pipeline.json").read_text())
+        self.assertEqual(cfg["required_sources"], ["source_1", "source_2", "source_3"])
+        self.assertTrue(next(s for s in cfg["sources"] if s["name"]=="source_4")["enabled"])
+        self.assertTrue(next(s for s in cfg["sources"] if s["name"]=="source_5")["enabled"])
+
     def test_project_preflight_accepts_validated_sources(self):
         result = preflight(ROOT / "config" / "pipeline.json")
         self.assertTrue(result["ok"], result["errors"])
-        self.assertEqual(result["enabled_sources"], 4)
+        self.assertEqual(result["enabled_sources"], 5)
         self.assertEqual(result["min_sources_succeeded"], 3)
+        self.assertEqual(result["required_sources"], ["source_1", "source_2", "source_3"])
 
 
 if __name__ == "__main__":

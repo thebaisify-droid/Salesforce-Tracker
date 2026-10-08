@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "ingestion_platform": "Apify",
   "sources": [
     {
@@ -46,9 +46,9 @@
       "actor": "solidcode/jobserve-scraper",
       "trust_tier": "B",
       "purpose": "Secondary UK IT/contract Salesforce vacancy enrichment and corroboration",
-      "access": "Apify pay-per-result Actor via existing APIFY_TOKEN",
-      "status": "staged_pending_apify_usage"
+      "access": "Apify Actor via existing APIFY_TOKEN",
+      "status": "validated_enrichment"
     }
   ],
-  "assurance_note": "CV-Library, Totaljobs and Reed remain the core publication gate. Indeed UK is an active enrichment source. JobServe is fully wired and schema-validated but temporarily paused because the current Apify account usage allowance is insufficient for another paid Actor run. All underlying job boards are separate data sources, while Apify remains a shared ingestion dependency."
+  "assurance_note": "CV-Library, Totaljobs and Reed are explicit required core sources. Indeed UK and JobServe are validated non-blocking enrichment sources. All five boards are separate datasets; Apify remains a shared ingestion dependency."
 }
