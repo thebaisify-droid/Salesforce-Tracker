@@ -42,10 +42,10 @@
       "slot": "source_5",
       "name": "JobServe",
       "provider": "apify_actor",
-      "actor": "santamaria-automations/jobserve-uk-scraper",
+      "actor": "solidcode/jobserve-scraper",
       "trust_tier": "B",
       "purpose": "Secondary UK IT/contract Salesforce vacancy enrichment and corroboration",
-      "access": "Apify Actor via existing APIFY_TOKEN"
+      "access": "Apify pay-per-result Actor via existing APIFY_TOKEN"
     }
   ],
   "assurance_note": "CV-Library, Totaljobs and Reed remain the core publication gate. Indeed UK and JobServe are secondary enrichment sources: they contribute when healthy but do not individually block publication. All five underlying job boards are separate data sources, while Apify remains a shared ingestion dependency; a platform-wide Apify outage is a common-mode failure."

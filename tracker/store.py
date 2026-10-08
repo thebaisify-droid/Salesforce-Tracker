@@ -82,6 +82,26 @@ class Store:
         cross_source_match = False
 
         if existing is None:
+            title = (record.get("display_title") or "").strip()
+            advertiser = (record.get("advertiser") or "").strip()
+            location = (record.get("location") or "").strip()
+            if title and advertiser and location:
+                identity_candidates = self.conn.execute(
+                    """
+                    SELECT vacancy_id, normalized_hash, display_title, description
+                    FROM vacancies
+                    WHERE lower(display_title)=lower(?)
+                      AND lower(COALESCE(advertiser,''))=lower(?)
+                      AND lower(COALESCE(location,''))=lower(?)
+                    ORDER BY vacancy_id
+                    """,
+                    (title, advertiser, location),
+                ).fetchall()
+                if len(identity_candidates) == 1:
+                    existing = identity_candidates[0]
+                    cross_source_match = True
+
+        if existing is None:
             signature = _content_signature(record.get("display_title"), record.get("description"))
             if signature:
                 candidates = self.conn.execute(

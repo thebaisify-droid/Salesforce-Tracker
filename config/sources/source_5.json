@@ -3,20 +3,26 @@
   "provider": "apify_actor",
   "source_name": "JobServe",
   "role": "secondary_enrichment_uk_job_board",
-  "actor_id": "santamaria-automations/jobserve-uk-scraper",
+  "actor_id": "solidcode/jobserve-scraper",
   "token": "env:APIFY_TOKEN",
   "timeout_seconds": 480,
   "window_field": null,
   "input": {
-    "searchQueries": [
+    "keywords": [
       "salesforce"
     ],
     "location": "",
-    "jobType": "both",
-    "maxItems": 75,
-    "includeJobDetails": true,
-    "includeCompanyDetails": false,
-    "maxConcurrency": 4
+    "country": "gb",
+    "distance": "50",
+    "startUrls": [],
+    "jobType": "",
+    "industries": [],
+    "postedSince": "",
+    "remoteOnly": false,
+    "advertisedBy": "",
+    "includeDescription": true,
+    "onlyUniqueJobs": true,
+    "maxResults": 75
   },
-  "notes": "JobServe UK enrichment source. Exact posted-date field will be pinned after first live schema validation; until then the actor result cap is replayed safely through persistent dedupe."
+  "notes": "JobServe UK enrichment source using explicit keyword filtering. Exact output date field will be pinned after live schema validation."
 }

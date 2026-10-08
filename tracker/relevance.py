@@ -76,6 +76,30 @@ CONTEXT_TITLE_HINTS = (
 
 COMPANY_KEYS = ("advertiser", "company", "company_name", "companyName", "employer", "recruiter")
 
+SALESFORCE_EMPLOYER_ROLE_HINTS = (
+    "architect",
+    "consultant",
+    "developer",
+    "engineer",
+    "engineering",
+    "technical",
+    "platform",
+    "solution",
+    "customer success",
+    "delivery",
+    "engagement",
+    "program",
+    "programme",
+    "project manager",
+    "product",
+    "account executive",
+    "sales",
+    "strategist",
+    "ecosystem",
+    "agentforce",
+    "ai ",
+)
+
 
 def salesforce_relevance(raw: dict[str, Any]) -> tuple[bool, str]:
     title = (text_value(first_value(raw, "title", "title_raw", "job_title", "jobTitle", "position", "name")) or "").lower()
@@ -91,7 +115,9 @@ def salesforce_relevance(raw: dict[str, Any]) -> tuple[bool, str]:
         return True, "title_salesforce_signal"
 
     if company == "salesforce" or company.startswith("salesforce "):
-        return True, "salesforce_direct_employer"
+        if any(hint in title for hint in SALESFORCE_EMPLOYER_ROLE_HINTS):
+            return True, "salesforce_direct_employer"
+        return False, "salesforce_direct_employer_non_ecosystem_role"
 
     strong_hits = [phrase for phrase in STRONG_PLATFORM_PHRASES if phrase in combined]
     if strong_hits:

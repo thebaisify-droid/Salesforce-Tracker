@@ -158,7 +158,7 @@ def normalize(raw: dict[str, Any], source_name: str) -> dict[str, Any]:
         "advertiser": advertiser,
         "location": location,
         "employment_type": _employment_type(raw),
-        "contract_type": text_value(first_value(raw, "contract_type", "contractType", "contract_type_name", "jobType", "job_type")),
+        "contract_type": text_value(first_value(raw, "contract_type", "contractType", "contract_type_name", "jobType", "job_type", "contract_length")),
         "salary_min": salary_min,
         "salary_max": salary_max,
         "salary_currency": salary_currency,

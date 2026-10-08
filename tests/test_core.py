@@ -108,6 +108,22 @@ class TrackerTests(unittest.TestCase):
         self.assertTrue(relevant)
         self.assertEqual(reason, "salesforce_direct_employer")
 
+    def test_salesforce_direct_employer_requires_ecosystem_role_signal(self):
+        relevant, reason = salesforce_relevance({
+            "title":"Senior Corporate Paralegal, Global Governance",
+            "company":"Salesforce",
+            "snippet":"Corporate legal governance role."
+        })
+        self.assertFalse(relevant)
+        self.assertEqual(reason, "salesforce_direct_employer_non_ecosystem_role")
+        relevant, reason = salesforce_relevance({
+            "title":"Life Sciences Program Manager/Program Executive",
+            "company":"Salesforce",
+            "snippet":"Programme leadership for Salesforce customers."
+        })
+        self.assertTrue(relevant)
+        self.assertEqual(reason, "salesforce_direct_employer")
+
     def test_salesforce_relevance_rejects_incidental_crm_mention(self):
         relevant, _ = salesforce_relevance({
             "title": "Sales Account Manager",
@@ -319,6 +335,27 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(vacancy["salary"]["period"], "day")
             self.assertNotIn("description", vacancy)
             self.assertNotIn("raw_json", vacancy)
+
+    def test_store_cross_board_deduplicates_exact_title_employer_location(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            a = normalize({
+                "id":"tj-1","title":"Engagement Delivery Director","company":"Salesforce",
+                "location":"London","description":"Long Totaljobs description about delivery.",
+                "url":"https://www.totaljobs.com/job/engagement-delivery-director/salesforce-job1"
+            }, "source_2")
+            b = normalize({
+                "id":"indeed-1","title":"Engagement Delivery Director","company":"Salesforce",
+                "location":"London","snippet":"Short Indeed snippet.",
+                "url":"https://uk.indeed.com/viewjob?jk=abc"
+            }, "source_4")
+            with Store(db) as store:
+                self.assertEqual(store.upsert(a), "inserted")
+                self.assertEqual(store.upsert(b), "unchanged")
+                count = store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+                links = store.conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0]
+            self.assertEqual(count, 1)
+            self.assertEqual(links, 2)
 
     def test_store_cross_board_deduplicates_identical_job_content(self):
         with tempfile.TemporaryDirectory() as d:
