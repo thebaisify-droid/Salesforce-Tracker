@@ -1,0 +1,25 @@
+name: Audit failed pilot Apify runs (read-only)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit existing task run history only
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.audit_failed_candidate_pilot
+      - uses: actions/upload-artifact@v4
+        with:
+          name: failed-pilot-apify-run-audit
+          path: failed-pilot-run-audit.json
+          retention-days: 7
+          if-no-files-found: error
