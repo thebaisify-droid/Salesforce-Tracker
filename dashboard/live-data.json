@@ -1,24 +1,48 @@
 {
-  "active_vacancies": 45,
+  "active_vacancies": 52,
+  "baseline": {
+    "confirmed_expired": 0,
+    "date": "2026-10-06",
+    "frozen_baseline": 42,
+    "late_discoveries": 3,
+    "master_rows": 45,
+    "post_baseline_new": 7
+  },
+  "by_advertiser_type": [
+    {
+      "label": "MIXED_OR_UNKNOWN",
+      "value": 42
+    },
+    {
+      "label": "DIRECT_EMPLOYER",
+      "value": 6
+    },
+    {
+      "label": "RECRUITMENT_AGENCY",
+      "value": 4
+    }
+  ],
+  "by_relevance": [
+    {
+      "label": "CORE",
+      "value": 30
+    },
+    {
+      "label": "ADJACENT",
+      "value": 22
+    }
+  ],
   "by_role_family": [
     {
       "label": "Architecture",
-      "value": 5
+      "value": 7
     },
     {
       "label": "Delivery / Programme",
       "value": 5
     },
     {
-      "label": "Consulting / Functional",
-      "value": 4
-    },
-    {
       "label": "Development / Engineering",
-      "value": 4
-    },
-    {
-      "label": "Platform / Administration",
       "value": 4
     },
     {
@@ -26,7 +50,15 @@
       "value": 4
     },
     {
+      "label": "Consulting / Functional",
+      "value": 4
+    },
+    {
       "label": "Transformation / Change",
+      "value": 4
+    },
+    {
+      "label": "Platform / Administration",
       "value": 4
     },
     {
@@ -38,6 +70,18 @@
       "value": 3
     },
     {
+      "label": "Engineering / Development",
+      "value": 2
+    },
+    {
+      "label": "Programme / Project Delivery",
+      "value": 2
+    },
+    {
+      "label": "Training / Enablement",
+      "value": 2
+    },
+    {
       "label": "Data / Reporting",
       "value": 2
     },
@@ -46,8 +90,12 @@
       "value": 2
     },
     {
-      "label": "Training / Enablement",
-      "value": 2
+      "label": "Sales / Pre-Sales",
+      "value": 1
+    },
+    {
+      "label": "Testing / QA",
+      "value": 1
     },
     {
       "label": "Customer Success / Adoption",
@@ -55,10 +103,6 @@
     },
     {
       "label": "Sales / Account Management",
-      "value": 1
-    },
-    {
-      "label": "Testing / QA",
       "value": 1
     }
   ],
@@ -76,15 +120,11 @@
       "value": 5
     },
     {
+      "label": "Education & Nonprofit",
+      "value": 4
+    },
+    {
       "label": "Financial Services",
-      "value": 2
-    },
-    {
-      "label": "Financial Services / Payments",
-      "value": 2
-    },
-    {
-      "label": "Financial Services / Wealth Management",
       "value": 2
     },
     {
@@ -92,51 +132,27 @@
       "value": 2
     },
     {
+      "label": "Financial Services / Wealth Management",
+      "value": 2
+    },
+    {
       "label": "Technology Services / Cyber Security",
       "value": 2
     },
     {
-      "label": "Education",
+      "label": "Financial Services / Payments",
+      "value": 2
+    },
+    {
+      "label": "Manufacturing & Engineering",
       "value": 1
     },
     {
-      "label": "Financial Services / Information Services",
+      "label": "Public Sector",
       "value": 1
     },
     {
-      "label": "Food Manufacturing / Ingredients",
-      "value": 1
-    },
-    {
-      "label": "Foodservice / Distribution",
-      "value": 1
-    },
-    {
-      "label": "Housing / Real Estate",
-      "value": 1
-    },
-    {
-      "label": "Legal Services",
-      "value": 1
-    },
-    {
-      "label": "Legal Services / Information Services",
-      "value": 1
-    },
-    {
-      "label": "Manufacturing / Construction Materials",
-      "value": 1
-    },
-    {
-      "label": "Media / Publishing",
-      "value": 1
-    },
-    {
-      "label": "Property / Student Accommodation",
-      "value": 1
-    },
-    {
-      "label": "Public Sector / Government",
+      "label": "Unresolved",
       "value": 1
     },
     {
@@ -144,7 +160,11 @@
       "value": 1
     },
     {
-      "label": "Technology Services / Managed Services",
+      "label": "Public Sector / Government",
+      "value": 1
+    },
+    {
+      "label": "Financial Services / Information Services",
       "value": 1
     },
     {
@@ -152,7 +172,47 @@
       "value": 1
     },
     {
+      "label": "Foodservice / Distribution",
+      "value": 1
+    },
+    {
+      "label": "Legal Services",
+      "value": 1
+    },
+    {
+      "label": "Utilities",
+      "value": 1
+    },
+    {
+      "label": "Media / Publishing",
+      "value": 1
+    },
+    {
+      "label": "Manufacturing / Construction Materials",
+      "value": 1
+    },
+    {
+      "label": "Education",
+      "value": 1
+    },
+    {
+      "label": "Property / Student Accommodation",
+      "value": 1
+    },
+    {
+      "label": "Housing / Real Estate",
+      "value": 1
+    },
+    {
+      "label": "Technology Services / Managed Services",
+      "value": 1
+    },
+    {
       "label": "Technology Services / Software",
+      "value": 1
+    },
+    {
+      "label": "Legal Services / Information Services",
       "value": 1
     },
     {
@@ -160,25 +220,15 @@
       "value": 1
     },
     {
-      "label": "Utilities",
+      "label": "Food Manufacturing / Ingredients",
       "value": 1
-    }
-  ],
-  "by_advertiser_type": [
-    {
-      "label": "MIXED_OR_UNKNOWN",
-      "value": 42
-    },
-    {
-      "label": "RECRUITMENT_AGENCY",
-      "value": 3
     }
   ],
   "by_source": [
     {
       "key": "source_3",
       "label": "Reed",
-      "value": 24
+      "value": 25
     },
     {
       "key": "source_1",
@@ -188,177 +238,377 @@
     {
       "key": "source_2",
       "label": "Totaljobs",
-      "value": 9
+      "value": 15
     }
   ],
-  "review_queue": {
-    "role": 1,
-    "sector": 9
-  },
+  "generated_at": "2026-10-08T04:01:26Z",
   "latest_run": {
-    "run_id": "20261007T112956Z-d3306b65",
-    "started_at": "2026-10-07T11:31:45Z",
-    "finished_at": "2026-10-07T11:31:45Z",
-    "status": "success",
-    "inserted_rows": 3,
-    "updated_rows": 0,
-    "unchanged_rows": 0,
-    "rejected_rows": 0,
+    "finished_at": "2026-10-08T04:01:26Z",
+    "inserted_rows": 7,
     "master_data_version": "1.4",
-    "role_taxonomy_version": "2.2"
+    "rejected_rows": 0,
+    "role_taxonomy_version": "2.2",
+    "run_id": "20261008T035913Z-483b16be",
+    "started_at": "2026-10-08T04:01:26Z",
+    "status": "success",
+    "unchanged_rows": 1,
+    "updated_rows": 0
   },
+  "pipeline": {
+    "irrelevant_records": 23,
+    "quality_passed": true,
+    "raw_records": 31,
+    "rejected_records": 0,
+    "relevant_records": 8,
+    "sources": [
+      {
+        "irrelevant": 0,
+        "key": "source_1",
+        "label": "CV-Library",
+        "raw": 0,
+        "relevant": 0
+      },
+      {
+        "irrelevant": 18,
+        "key": "source_2",
+        "label": "Totaljobs",
+        "raw": 25,
+        "relevant": 7
+      },
+      {
+        "irrelevant": 5,
+        "key": "source_3",
+        "label": "Reed",
+        "raw": 6,
+        "relevant": 1
+      }
+    ]
+  },
+  "refresh": {
+    "finished_at": "2026-10-08T04:01:26Z",
+    "inserted": 7,
+    "master_data_version": "1.4",
+    "rejected": 0,
+    "role_taxonomy_version": "2.2",
+    "started_at": "2026-10-08T04:01:26Z",
+    "status": "success",
+    "unchanged": 1,
+    "updated": 0
+  },
+  "review_queue": {
+    "role": 5,
+    "sector": 14
+  },
+  "run_id": "20261008T035913Z-483b16be",
+  "schema": "salesforce-hiring-dashboard/v1",
   "vacancies": [
     {
-      "id": "MV-000041",
-      "legacy_id": "MV-000041",
-      "title": "E-Commerce & CRM Executive",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Marketing / CRM",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Warner Bros. Discovery",
-      "sector": "Media & Entertainment",
-      "location": "Leavesden",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
       "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.cv-library.co.uk/job/job.3KK1mcwZrjXNgtvq5BbpvfJLtmv/",
-      "posted_at": "2026-10-06",
-      "first_seen_at": "2026-10-06",
-      "last_seen_at": "2026-10-06",
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 47,
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "location": "London",
+      "posted_at": "2026-10-07T20:32:05.693Z",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/job.3KK1mcwZrjXNgtvq5BbpvfJLtmv/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000042",
-      "legacy_id": "MV-000042",
-      "title": "Sales Operations Coordinator",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Sales Operations / CRM Operations",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "DOMO TACTICAL COMMUNICATIONS",
-      "sector": "Technology / Communications Equipment",
-      "location": "PO15, Whiteley, Hampshire",
-      "work_mode": null,
-      "employment_type": "Permanent",
-      "contract_type": null,
+      "role_family": "Architecture",
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
-      "salary_text": "£30,000 – £35,000 per ANNUM",
-      "url": "https://www.cv-library.co.uk/job/225693351/",
-      "posted_at": "2026-10-06",
-      "first_seen_at": "2026-10-06",
-      "last_seen_at": "2026-10-06",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225693351/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000043",
-      "legacy_id": "MV-000043",
-      "title": "Salesforce Developer (Financial Services)",
-      "relevance": "CORE",
-      "advertiser": "Morson Edge",
-      "advertiser_type": "RECRUITMENT_AGENCY",
-      "role_family": "Development / Engineering",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed end client",
-      "sector": "Financial Services",
-      "location": "Tower Hill, City of London (EC3), E1W 1WY",
-      "work_mode": null,
-      "employment_type": "Contract",
-      "contract_type": "12 months",
-      "salary": {
-        "min": 600,
-        "max": 700,
-        "currency": "GBP",
-        "period": "day"
-      },
-      "salary_text": "£600 – 700 per day + 12 months",
-      "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473",
-      "posted_at": "2026-10-06",
-      "first_seen_at": "2026-10-06",
-      "last_seen_at": "2026-10-07T11:31:45Z",
-      "review": {
-        "role": false,
-        "sector": true
-      },
+      "salary_text": null,
+      "sector": "Manufacturing & Engineering",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
-          "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473"
+          "url": "https://www.totaljobs.com/job/sr-enterprise-architect-agentforce-supply-chain/salesforce-job108110305"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Sr. Enterprise Architect, Agentforce Supply Chain",
+      "url": "https://www.totaljobs.com/job/sr-enterprise-architect-agentforce-supply-chain/salesforce-job108110305",
+      "work_mode": null
     },
     {
-      "id": "MV-000045",
-      "legacy_id": "MV-000045",
-      "title": "IT Business Analyst",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Business Analysis",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed end client",
-      "sector": "Unknown",
-      "location": "Doncaster",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
       "contract_type": null,
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 46,
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "location": "London",
+      "posted_at": "2026-10-07T20:32:05.23Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Engineering / Development",
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
-      "salary_text": "£55,000 – £65,000 per ANNUM",
-      "url": "https://www.cv-library.co.uk/job/225695213/",
-      "posted_at": "2026-10-06",
-      "first_seen_at": "2026-10-06",
-      "last_seen_at": "2026-10-06",
+      "salary_text": null,
+      "sector": "Education & Nonprofit",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/forward-deployed-engagement-strategist/salesforce-job108110304"
+        }
+      ],
+      "specialisms": [],
+      "title": "Forward Deployed Engagement Strategist",
+      "url": "https://www.totaljobs.com/job/forward-deployed-engagement-strategist/salesforce-job108110304",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "CONTRACTOR",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 49,
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "location": "London",
+      "posted_at": "2026-10-07T20:32:04.697Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Programme / Project Delivery",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Education & Nonprofit",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/engagement-delivery-director/salesforce-job108110303"
+        }
+      ],
+      "specialisms": [],
+      "title": "Engagement Delivery Director",
+      "url": "https://www.totaljobs.com/job/engagement-delivery-director/salesforce-job108110303",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 50,
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "location": "London",
+      "posted_at": "2026-10-07T20:32:04.21Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": false
+      },
+      "role_family": "Programme / Project Delivery",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Public Sector",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/senior-project-manager/salesforce-job108110302"
+        }
+      ],
+      "specialisms": [],
+      "title": "Senior Project Manager",
+      "url": "https://www.totaljobs.com/job/senior-project-manager/salesforce-job108110302",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 48,
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "location": "London",
+      "posted_at": "2026-10-07T20:32:03.83Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Education & Nonprofit",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/principal-ai-architect/salesforce-job108110301"
+        }
+      ],
+      "specialisms": [
+        "Data Cloud",
+        "MuleSoft / Integration"
+      ],
+      "title": "Principal AI Architect",
+      "url": "https://www.totaljobs.com/job/principal-ai-architect/salesforce-job108110301",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Michael Page Technology",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": "Full-time",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 52,
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "location": "BA201DL",
+      "posted_at": "2026-10-07T00:00:00.000Z",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": true
       },
+      "role_family": "Engineering / Development",
+      "salary": {
+        "currency": "GBP",
+        "max": 65000.0,
+        "min": 50000.0,
+        "period": "Annual"
+      },
+      "salary_text": null,
+      "sector": "Unresolved",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-developer/57432195"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud"
+      ],
+      "title": "Salesforce Developer",
+      "url": "https://www.reed.co.uk/jobs/salesforce-developer/57432195",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 51,
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "location": "London",
+      "posted_at": "2026-10-06T20:32:03.843Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Sales / Pre-Sales",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Education & Nonprofit",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/cloud-account-executive-partner-cloud/salesforce-job108090274"
+        }
+      ],
+      "specialisms": [],
+      "title": "Cloud Account Executive - Partner Cloud",
+      "url": "https://www.totaljobs.com/job/cloud-account-executive-partner-cloud/salesforce-job108090274",
+      "work_mode": null
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Unnamed end client",
+      "first_seen_at": "2026-10-06",
+      "id": "MV-000045",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000045",
+      "location": "Doncaster",
+      "posted_at": "2026-10-06",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Business Analysis",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a355,000 \u2013 \u00a365,000 per ANNUM",
+      "sector": "Unknown",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_1",
@@ -366,119 +616,159 @@
           "url": "https://www.cv-library.co.uk/job/225695213/"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "IT Business Analyst",
+      "url": "https://www.cv-library.co.uk/job/225695213",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000038",
-      "legacy_id": "MV-000038",
-      "title": "Salesforce Technical Architect",
-      "relevance": "CORE",
-      "advertiser": "Proactive Appointments",
+      "advertiser": "Morson Edge",
       "advertiser_type": "RECRUITMENT_AGENCY",
-      "role_family": "Architecture",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Unnamed end client",
-      "sector": "Unknown",
-      "location": "London",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "12 months",
       "employment_type": "Contract",
-      "contract_type": null,
-      "salary": {
-        "min": 500,
-        "max": 550,
-        "currency": "GBP",
-        "period": "Daily"
-      },
-      "salary_text": "GBP 500-550 Daily",
-      "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965",
-      "posted_at": "2026-10-05",
-      "first_seen_at": "2026-10-05",
-      "last_seen_at": "2026-10-07T11:31:45Z",
+      "end_client_name": "Unnamed end client",
+      "first_seen_at": "2026-10-06",
+      "id": "MV-000043",
+      "last_seen_at": "2026-10-08T04:01:26Z",
+      "legacy_id": "MV-000043",
+      "location": "Tower Hill, City of London (EC3), E1W 1WY",
+      "posted_at": "2026-10-06",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": true
       },
+      "role_family": "Development / Engineering",
+      "salary": {
+        "currency": "GBP",
+        "max": 700.0,
+        "min": 600.0,
+        "period": "day"
+      },
+      "salary_text": "\u00a3600 \u2013 700 per day + 12 months",
+      "sector": "Financial Services",
+      "seniority": "Standard",
       "sources": [
         {
-          "key": "source_3",
-          "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965"
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Developer (Financial Services)",
+      "url": "https://www.totaljobs.com/job/salesforce-developer-financial-services/morson-edge-job108085473",
+      "work_mode": ""
     },
     {
-      "id": "MV-000039",
-      "legacy_id": "MV-000039",
-      "title": "SC Cleared QA SDET",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Testing / QA",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed government body",
-      "sector": "Public Sector / Government",
-      "location": "City of London, London",
-      "work_mode": null,
-      "employment_type": "Fixed-term",
-      "contract_type": "12 Months",
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "£500 – £540 per DAY",
-      "url": "https://www.cv-library.co.uk/job/225684594/",
-      "posted_at": "2026-10-05",
-      "first_seen_at": "2026-10-05",
-      "last_seen_at": "2026-10-05",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "DOMO TACTICAL COMMUNICATIONS",
+      "first_seen_at": "2026-10-06",
+      "id": "MV-000042",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000042",
+      "location": "PO15, Whiteley, Hampshire",
+      "posted_at": "2026-10-06",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Sales Operations / CRM Operations",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a330,000 \u2013 \u00a335,000 per ANNUM",
+      "sector": "Technology / Communications Equipment",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_1",
           "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225684594/"
+          "url": "https://www.cv-library.co.uk/job/225693351/"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Sales Operations Coordinator",
+      "url": "https://www.cv-library.co.uk/job/225693351",
+      "work_mode": ""
     },
     {
-      "id": "MV-000040",
-      "legacy_id": "MV-000040",
-      "title": "Salesforce Functional Architect",
-      "relevance": "CORE",
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Warner Bros. Discovery",
+      "first_seen_at": "2026-10-06",
+      "id": "MV-000041",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000041",
+      "location": "Leavesden",
+      "posted_at": "2026-10-06",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Marketing / CRM",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Media & Entertainment",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/job.3KK1mcwZrjXNgtvq5BbpvfJLtmv/"
+        }
+      ],
+      "specialisms": [],
+      "title": "E-Commerce & CRM Executive",
+      "url": "https://www.cv-library.co.uk/job/job.3KK1mcwZrjXNgtvq5BbpvfJLtmv",
+      "work_mode": "hybrid"
+    },
+    {
       "advertiser": "Morson Edge",
       "advertiser_type": "RECRUITMENT_AGENCY",
-      "role_family": "Architecture",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Unnamed leading Wealth Management organisation",
-      "sector": "Financial Services / Wealth Management",
-      "location": "Tower Hill, City of London (EC3), E1W 1WY",
-      "work_mode": null,
-      "employment_type": "Contract",
+      "baseline": true,
       "contract_type": "12 months",
-      "salary": {
-        "min": 600,
-        "max": 750,
-        "currency": "GBP",
-        "period": "day"
-      },
-      "salary_text": "£600 – 750 per day + 12 months",
-      "url": "https://www.totaljobs.com/job/salesforce-functional-architect/morson-edge-job108080984",
-      "posted_at": "2026-10-05",
+      "employment_type": "Contract",
+      "end_client_name": "Unnamed leading Wealth Management organisation",
       "first_seen_at": "2026-10-05",
+      "id": "MV-000040",
       "last_seen_at": "2026-10-07T11:31:45Z",
+      "legacy_id": "MV-000040",
+      "location": "Tower Hill, City of London (EC3), E1W 1WY",
+      "posted_at": "2026-10-05",
+      "relevance": "CORE",
       "review": {
         "role": true,
         "sector": true
       },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": 750.0,
+        "min": 600.0,
+        "period": "day"
+      },
+      "salary_text": "\u00a3600 \u2013 750 per day + 12 months",
+      "sector": "Financial Services / Wealth Management",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_2",
@@ -486,159 +776,119 @@
           "url": "https://www.totaljobs.com/job/salesforce-functional-architect/morson-edge-job108080984"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Functional Architect",
+      "url": "https://www.totaljobs.com/job/salesforce-functional-architect/morson-edge-job108080984",
+      "work_mode": ""
     },
     {
-      "id": "MV-000034",
-      "legacy_id": "MV-000034",
-      "title": "Associate Director – Sales Training Manager, Strategic Accounts",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Training / Enablement",
-      "seniority": "Head / Director",
-      "specialisms": [],
-      "end_client_name": "Moody's",
-      "sector": "Financial Services / Information Services",
-      "location": "London",
-      "work_mode": null,
-      "employment_type": "Full-time / type not stated",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Unspecified",
-      "url": "https://www.totaljobs.com/job/associate-director-sales-training-manager-strategic-accounts/moody-s-job108077747",
-      "posted_at": "2026-10-03",
-      "first_seen_at": "2026-10-03",
-      "last_seen_at": "2026-10-03",
+      "baseline": true,
+      "contract_type": "12 Months",
+      "employment_type": "Fixed-term",
+      "end_client_name": "Unnamed government body",
+      "first_seen_at": "2026-10-05",
+      "id": "MV-000039",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000039",
+      "location": "City of London, London",
+      "posted_at": "2026-10-05",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Testing / QA",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a3500 \u2013 \u00a3540 per DAY",
+      "sector": "Public Sector / Government",
+      "seniority": "Standard",
       "sources": [
         {
-          "key": "source_2",
-          "label": "Totaljobs",
-          "url": "https://www.totaljobs.com/job/associate-director-sales-training-manager-strategic-accounts/moody-s-job108077747"
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225684594/"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "SC Cleared QA SDET",
+      "url": "https://www.cv-library.co.uk/job/225684594",
+      "work_mode": ""
     },
     {
-      "id": "MV-000035",
-      "legacy_id": "MV-000035",
-      "title": "Senior Solution Architect",
+      "advertiser": "Proactive Appointments",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Contract",
+      "end_client_name": "Unnamed end client",
+      "first_seen_at": "2026-10-05",
+      "id": "MV-000038",
+      "last_seen_at": "2026-10-07T11:31:45Z",
+      "legacy_id": "MV-000038",
+      "location": "London",
+      "posted_at": "2026-10-05",
       "relevance": "CORE",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "review": {
+        "role": false,
+        "sector": true
+      },
       "role_family": "Architecture",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Salesforce",
-      "sector": "Technology Services",
-      "location": "London",
-      "work_mode": null,
-      "employment_type": "Full-time / type not stated",
-      "contract_type": null,
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
-        "period": null
+        "max": 550.0,
+        "min": 500.0,
+        "period": "Daily"
       },
-      "salary_text": "Unspecified",
-      "url": "https://www.totaljobs.com/job/senior-solution-architect/salesforce-job108078175",
-      "posted_at": "2026-10-03",
-      "first_seen_at": "2026-10-03",
-      "last_seen_at": "2026-10-03",
-      "review": {
-        "role": false,
-        "sector": false
-      },
+      "salary_text": "GBP 500-550 Daily",
+      "sector": "Unknown",
+      "seniority": "Senior",
       "sources": [
         {
-          "key": "source_2",
-          "label": "Totaljobs",
-          "url": "https://www.totaljobs.com/job/senior-solution-architect/salesforce-job108078175"
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Technical Architect",
+      "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965",
+      "work_mode": ""
     },
     {
-      "id": "MV-000036",
-      "legacy_id": "MV-000036",
-      "title": "Forward Deployed Consultant / Senior Consultant (Value Acceleration)",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Consulting / Functional",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Salesforce",
-      "sector": "Technology Services",
-      "location": "London",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Full-time / type not stated",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Unspecified",
-      "url": "https://www.totaljobs.com/job/forward-deployed-consultant-senior-consultant-value-acceleration/salesforce-job108078177",
-      "posted_at": "2026-10-03",
+      "end_client_name": "Salesforce",
       "first_seen_at": "2026-10-03",
-      "last_seen_at": "2026-10-03",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_2",
-          "label": "Totaljobs",
-          "url": "https://www.totaljobs.com/job/forward-deployed-consultant-senior-consultant-value-acceleration/salesforce-job108078177"
-        }
-      ],
-      "baseline": true
-    },
-    {
       "id": "MV-000037",
+      "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000037",
-      "title": "Senior Agentic Customer Success Manager",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Customer Success / Adoption",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Salesforce",
-      "sector": "Technology Services",
       "location": "London",
-      "work_mode": null,
-      "employment_type": "Full-time / type not stated",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Unspecified",
-      "url": "https://www.totaljobs.com/job/senior-agentic-customer-success-manager/salesforce-job108078178",
       "posted_at": "2026-10-03",
-      "first_seen_at": "2026-10-03",
-      "last_seen_at": "2026-10-03",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Customer Success / Adoption",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Unspecified",
+      "sector": "Technology Services",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_2",
@@ -646,159 +896,159 @@
           "url": "https://www.totaljobs.com/job/senior-agentic-customer-success-manager/salesforce-job108078178"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Senior Agentic Customer Success Manager",
+      "url": "https://www.totaljobs.com/job/senior-agentic-customer-success-manager/salesforce-job108078178",
+      "work_mode": ""
     },
     {
-      "id": "MV-000031",
-      "legacy_id": "MV-000031",
-      "title": "EMEA Renewals Sales Support Coordinator",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Sales Operations / CRM Operations",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed security-technology vendor",
-      "sector": "Technology Services / Cyber Security",
-      "location": "Reading",
-      "work_mode": "hybrid",
-      "employment_type": "Contract",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "£27 per HOUR",
-      "url": "https://www.cv-library.co.uk/job/225680371/",
-      "posted_at": "2026-10-02",
-      "first_seen_at": "2026-10-02",
-      "last_seen_at": "2026-10-02",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225680371/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000032",
-      "legacy_id": "MV-000032",
-      "title": "RVP Forward Deployed Engineering, Salesforce",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Full-time / type not stated",
+      "end_client_name": "Salesforce",
+      "first_seen_at": "2026-10-03",
+      "id": "MV-000036",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000036",
+      "location": "London",
+      "posted_at": "2026-10-03",
       "relevance": "CORE",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Development / Engineering",
-      "seniority": "Executive",
-      "specialisms": [],
-      "end_client_name": "Salesforce",
-      "sector": "Technology Services",
-      "location": "London",
-      "work_mode": null,
-      "employment_type": "Full-time / type not stated",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Unspecified",
-      "url": "https://www.totaljobs.com/job/rvp-forward-deployed-engineering-salesforce/salesforce-job108076889",
-      "posted_at": "2026-10-02",
-      "first_seen_at": "2026-10-02",
-      "last_seen_at": "2026-10-02",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Consulting / Functional",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Unspecified",
+      "sector": "Technology Services",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
-          "url": "https://www.totaljobs.com/job/rvp-forward-deployed-engineering-salesforce/salesforce-job108076889"
+          "url": "https://www.totaljobs.com/job/forward-deployed-consultant-senior-consultant-value-acceleration/salesforce-job108078177"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Forward Deployed Consultant / Senior Consultant (Value Acceleration)",
+      "url": "https://www.totaljobs.com/job/forward-deployed-consultant-senior-consultant-value-acceleration/salesforce-job108078177",
+      "work_mode": ""
     },
     {
-      "id": "MV-000033",
-      "legacy_id": "MV-000033",
-      "title": "Named Account Executive – Water and Utilities",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Sales / Account Management",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Salesforce",
-      "sector": "Technology Services",
-      "location": "London",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Full-time / type not stated",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Unspecified",
-      "url": "https://www.totaljobs.com/job/named-account-executive-water-and-utilities/salesforce-job108076891",
-      "posted_at": "2026-10-02",
-      "first_seen_at": "2026-10-02",
-      "last_seen_at": "2026-10-02",
+      "end_client_name": "Salesforce",
+      "first_seen_at": "2026-10-03",
+      "id": "MV-000035",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000035",
+      "location": "London",
+      "posted_at": "2026-10-03",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Unspecified",
+      "sector": "Technology Services",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
-          "url": "https://www.totaljobs.com/job/named-account-executive-water-and-utilities/salesforce-job108076891"
+          "url": "https://www.totaljobs.com/job/senior-solution-architect/salesforce-job108078175"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Senior Solution Architect",
+      "url": "https://www.totaljobs.com/job/senior-solution-architect/salesforce-job108078175",
+      "work_mode": ""
     },
     {
-      "id": "MV-000044",
-      "legacy_id": "MV-000044",
-      "title": "Project Manager",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Delivery / Programme",
-      "seniority": "Manager",
-      "specialisms": [],
-      "end_client_name": "Unnamed end client",
-      "sector": "Technology Services / SaaS",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Full-time / type not stated",
+      "end_client_name": "Moody's",
+      "first_seen_at": "2026-10-03",
+      "id": "MV-000034",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000034",
       "location": "London",
-      "work_mode": "remote",
-      "employment_type": "Contract",
+      "posted_at": "2026-10-03",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Training / Enablement",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Unspecified",
+      "sector": "Financial Services / Information Services",
+      "seniority": "Head / Director",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/associate-director-sales-training-manager-strategic-accounts/moody-s-job108077747"
+        }
+      ],
+      "specialisms": [],
+      "title": "Associate Director \u2013 Sales Training Manager, Strategic Accounts",
+      "url": "https://www.totaljobs.com/job/associate-director-sales-training-manager-strategic-accounts/moody-s-job108077747",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
       "contract_type": "6-12 months",
+      "employment_type": "Contract",
+      "end_client_name": "Unnamed end client",
+      "first_seen_at": "2026-10-02",
+      "id": "MV-000044",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000044",
+      "location": "London",
+      "posted_at": "2026-10-02",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Delivery / Programme",
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
       "salary_text": "Negotiable",
-      "url": "https://www.totaljobs.com/job/project-manager/robert-half-limited-job108074846",
-      "posted_at": "2026-10-02",
-      "first_seen_at": "2026-10-02",
-      "last_seen_at": "2026-10-02",
-      "review": {
-        "role": false,
-        "sector": false
-      },
+      "sector": "Technology Services / SaaS",
+      "seniority": "Manager",
       "sources": [
         {
           "key": "source_2",
@@ -806,124 +1056,319 @@
           "url": "https://www.totaljobs.com/job/project-manager/robert-half-limited-job108074846"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Project Manager",
+      "url": "https://www.totaljobs.com/job/project-manager/robert-half-limited-job108074846",
+      "work_mode": "remote"
     },
     {
-      "id": "MV-000024",
-      "legacy_id": "MV-000024",
-      "title": "Business Systems Analyst (Salesforce)",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Business Analysis",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed UK technology business",
-      "sector": "Technology Services",
-      "location": "Sheffield",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 45000-52000 Annual",
-      "url": "https://www.reed.co.uk/jobs/business-systems-analyst-salesforce-sheffield-52k-doe/57410405",
-      "posted_at": "2026-10-01",
-      "first_seen_at": "2026-10-01",
-      "last_seen_at": "2026-10-01",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Full-time / type not stated",
+      "end_client_name": "Salesforce",
+      "first_seen_at": "2026-10-02",
+      "id": "MV-000033",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000033",
+      "location": "London",
+      "posted_at": "2026-10-02",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Sales / Account Management",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Unspecified",
+      "sector": "Technology Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/named-account-executive-water-and-utilities/salesforce-job108076891"
+        }
+      ],
+      "specialisms": [],
+      "title": "Named Account Executive \u2013 Water and Utilities",
+      "url": "https://www.totaljobs.com/job/named-account-executive-water-and-utilities/salesforce-job108076891",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Full-time / type not stated",
+      "end_client_name": "Salesforce",
+      "first_seen_at": "2026-10-02",
+      "id": "MV-000032",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000032",
+      "location": "London",
+      "posted_at": "2026-10-02",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Development / Engineering",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Unspecified",
+      "sector": "Technology Services",
+      "seniority": "Executive",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/rvp-forward-deployed-engineering-salesforce/salesforce-job108076889"
+        }
+      ],
+      "specialisms": [],
+      "title": "RVP Forward Deployed Engineering, Salesforce",
+      "url": "https://www.totaljobs.com/job/rvp-forward-deployed-engineering-salesforce/salesforce-job108076889",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Contract",
+      "end_client_name": "Unnamed security-technology vendor",
+      "first_seen_at": "2026-10-02",
+      "id": "MV-000031",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000031",
+      "location": "Reading",
+      "posted_at": "2026-10-02",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Sales Operations / CRM Operations",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a327 per HOUR",
+      "sector": "Technology Services / Cyber Security",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_1",
           "label": "CV-Library",
-          "url": null
-        },
-        {
-          "key": "source_3",
-          "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/business-systems-analyst-salesforce-sheffield-52k-doe/57410405"
+          "url": "https://www.cv-library.co.uk/job/225680371/"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "EMEA Renewals Sales Support Coordinator",
+      "url": "https://www.cv-library.co.uk/job/225680371",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000025",
-      "legacy_id": "MV-000025",
-      "title": "Salesforce Product Owner",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Product / Platform Ownership",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "A&O Shearman",
-      "sector": "Legal Services",
-      "location": "Belfast, Northern Ireland",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/salesforce-product-owner/57413695",
-      "posted_at": "2026-10-01",
+      "end_client_name": "Unnamed global technology and business transformation consultancy",
       "first_seen_at": "2026-10-01",
-      "last_seen_at": "2026-10-01",
+      "id": "MV-000030",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000030",
+      "location": "London",
+      "posted_at": "2026-10-01",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a390,000 \u2013 \u00a3130,000 per ANNUM",
+      "sector": "Technology Services / Consulting",
+      "seniority": "Senior",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225674389/"
+        }
+      ],
+      "specialisms": [],
+      "title": "Enterprise Architect \u2013 AI-Led Transformation",
+      "url": "https://www.cv-library.co.uk/job/225674389",
+      "work_mode": "hybrid"
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "12 Months",
+      "employment_type": "Fixed-term",
+      "end_client_name": "Unnamed payments / financial-services client",
+      "first_seen_at": "2026-10-01",
+      "id": "MV-000029",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000029",
+      "location": "London",
+      "posted_at": "2026-10-01",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Data / Reporting",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a3400 \u2013 \u00a3450 per DAY",
+      "sector": "Financial Services / Payments",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225673185/"
+        }
+      ],
+      "specialisms": [],
+      "title": "Salesforce Data Analyst (Payments)",
+      "url": "https://www.cv-library.co.uk/job/225673185",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "6 Months",
+      "employment_type": "Fixed-term",
+      "end_client_name": "Unnamed global sales organisation",
+      "first_seen_at": "2026-10-01",
+      "id": "MV-000028",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000028",
+      "location": "London",
+      "posted_at": "2026-10-01",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Data / Reporting",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a3650 \u2013 \u00a3700 per DAY",
+      "sector": "Financial Services / Payments",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225673174/"
+        }
+      ],
+      "specialisms": [],
+      "title": "Salesforce Reporting & Forecasting Lead",
+      "url": "https://www.cv-library.co.uk/job/225673174",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Unnamed end client",
+      "first_seen_at": "2026-10-01",
+      "id": "MV-000027",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000027",
+      "location": "Liverpool",
+      "posted_at": "2026-10-01",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Delivery / Programme",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 14.41-14.41 Hourly",
+      "sector": "Unknown",
+      "seniority": "Manager",
       "sources": [
         {
           "key": "source_3",
           "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/salesforce-product-owner/57413695"
+          "url": "https://www.reed.co.uk/jobs/salesforce-technical-delivery-manager/57410350"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Technical Delivery Manager",
+      "url": "https://www.reed.co.uk/jobs/salesforce-technical-delivery-manager/57410350",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000026",
-      "legacy_id": "MV-000026",
-      "title": "Salesforce Sales Cloud Owner",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Product / Platform Ownership",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Sysco",
-      "sector": "Foodservice / Distribution",
-      "location": "Ashford",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/salesforce-sales-cloud-owner/57409124",
-      "posted_at": "2026-10-01",
+      "end_client_name": "Sysco",
       "first_seen_at": "2026-10-01",
-      "last_seen_at": "2026-10-01",
+      "id": "MV-000026",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000026",
+      "location": "Ashford",
+      "posted_at": "2026-10-01",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Product / Platform Ownership",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Foodservice / Distribution",
+      "seniority": "Lead",
       "sources": [
         {
           "key": "source_1",
@@ -936,199 +1381,244 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-sales-cloud-owner/57409124"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Sales Cloud Owner",
+      "url": "https://www.reed.co.uk/jobs/salesforce-sales-cloud-owner/57409124",
+      "work_mode": ""
     },
     {
-      "id": "MV-000027",
-      "legacy_id": "MV-000027",
-      "title": "Salesforce Technical Delivery Manager",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Delivery / Programme",
-      "seniority": "Manager",
-      "specialisms": [],
-      "end_client_name": "Unnamed end client",
-      "sector": "Unknown",
-      "location": "Liverpool",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 14.41-14.41 Hourly",
-      "url": "https://www.reed.co.uk/jobs/salesforce-technical-delivery-manager/57410350",
-      "posted_at": "2026-10-01",
+      "end_client_name": "A&O Shearman",
       "first_seen_at": "2026-10-01",
-      "last_seen_at": "2026-10-01",
+      "id": "MV-000025",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000025",
+      "location": "Belfast, Northern Ireland",
+      "posted_at": "2026-10-01",
+      "relevance": "CORE",
       "review": {
         "role": false,
-        "sector": true
+        "sector": false
       },
+      "role_family": "Product / Platform Ownership",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Legal Services",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_3",
           "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/salesforce-technical-delivery-manager/57410350"
+          "url": "https://www.reed.co.uk/jobs/salesforce-product-owner/57413695"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Product Owner",
+      "url": "https://www.reed.co.uk/jobs/salesforce-product-owner/57413695",
+      "work_mode": ""
     },
     {
-      "id": "MV-000028",
-      "legacy_id": "MV-000028",
-      "title": "Salesforce Reporting & Forecasting Lead",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Data / Reporting",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Unnamed global sales organisation",
-      "sector": "Financial Services / Payments",
-      "location": "London",
-      "work_mode": null,
-      "employment_type": "Fixed-term",
-      "contract_type": "6 Months",
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "£650 – £700 per DAY",
-      "url": "https://www.cv-library.co.uk/job/225673174/",
-      "posted_at": "2026-10-01",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Unnamed UK technology business",
       "first_seen_at": "2026-10-01",
-      "last_seen_at": "2026-10-01",
+      "id": "MV-000024",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000024",
+      "location": "Sheffield",
+      "posted_at": "2026-10-01",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Business Analysis",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 45000-52000 Annual",
+      "sector": "Technology Services",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_1",
           "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225673174/"
+          "url": null
+        },
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/business-systems-analyst-salesforce-sheffield-52k-doe/57410405"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Business Systems Analyst (Salesforce)",
+      "url": "https://www.reed.co.uk/jobs/business-systems-analyst-salesforce-sheffield-52k-doe/57410405",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000029",
-      "legacy_id": "MV-000029",
-      "title": "Salesforce Data Analyst (Payments)",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Data / Reporting",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed payments / financial-services client",
-      "sector": "Financial Services / Payments",
-      "location": "London",
-      "work_mode": null,
-      "employment_type": "Fixed-term",
+      "baseline": true,
       "contract_type": "12 Months",
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "£400 – £450 per DAY",
-      "url": "https://www.cv-library.co.uk/job/225673185/",
-      "posted_at": "2026-10-01",
-      "first_seen_at": "2026-10-01",
-      "last_seen_at": "2026-10-01",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225673185/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000030",
-      "legacy_id": "MV-000030",
-      "title": "Enterprise Architect – AI-Led Transformation",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Architecture",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Unnamed global technology and business transformation consultancy",
-      "sector": "Technology Services / Consulting",
-      "location": "London",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "£90,000 – £130,000 per ANNUM",
-      "url": "https://www.cv-library.co.uk/job/225674389/",
-      "posted_at": "2026-10-01",
-      "first_seen_at": "2026-10-01",
-      "last_seen_at": "2026-10-01",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225674389/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000020",
-      "legacy_id": "MV-000020",
-      "title": "Salesforce Developer",
+      "employment_type": "Fixed-term",
+      "end_client_name": "Unnamed end client",
+      "first_seen_at": "2026-09-30",
+      "id": "MV-000023",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000023",
+      "location": "WS2, Leamore, Walsall",
+      "posted_at": "2026-09-30",
       "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Delivery / Programme",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Unknown",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225667425/"
+        }
+      ],
+      "specialisms": [],
+      "title": "Salesforce Transformation & Delivery Lead",
+      "url": "https://www.cv-library.co.uk/job/225667425",
+      "work_mode": "hybrid"
+    },
+    {
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Development / Engineering",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Foresters Financial",
-      "sector": "Financial Services",
-      "location": "Bromley, Kent",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
+      "end_client_name": "St. James's Place practice (unnamed)",
+      "first_seen_at": "2026-09-30",
+      "id": "MV-000022",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000022",
+      "location": "Hampshire",
+      "posted_at": "2026-09-30",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Transformation / Change",
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a360,000 \u2013 \u00a380,000 per ANNUM",
+      "sector": "Financial Services / Wealth Management",
+      "seniority": "Manager",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225667037/"
+        }
+      ],
+      "specialisms": [],
+      "title": "Client Proposition Manager",
+      "url": "https://www.cv-library.co.uk/job/225667037",
+      "work_mode": "hybrid"
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "18 Months",
+      "employment_type": "Fixed-term",
+      "end_client_name": "Thames Water",
+      "first_seen_at": "2026-09-30",
+      "id": "MV-000021",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000021",
+      "location": "Reading",
+      "posted_at": "2026-09-30",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Transformation / Change",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "\u00a375,000 \u2013 \u00a385,000 per ANNUM",
+      "sector": "Utilities",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225666510/"
+        }
+      ],
+      "specialisms": [],
+      "title": "Business Transformation Lead",
+      "url": "https://www.cv-library.co.uk/job/225666510",
+      "work_mode": "hybrid"
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Foresters Financial",
+      "first_seen_at": "2026-09-30",
+      "id": "MV-000020",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000020",
+      "location": "Bromley, Kent",
+      "posted_at": "2026-09-30",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Development / Engineering",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
       "salary_text": "GBP 60000-60000 Annual",
-      "url": "https://www.reed.co.uk/jobs/salesforce-developer/57407294",
-      "posted_at": "2026-09-30",
-      "first_seen_at": "2026-09-30",
-      "last_seen_at": "2026-09-30",
-      "review": {
-        "role": false,
-        "sector": false
-      },
+      "sector": "Financial Services",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_1",
@@ -1141,239 +1631,39 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-developer/57407294"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Developer",
+      "url": "https://www.reed.co.uk/jobs/salesforce-developer/57407294",
+      "work_mode": ""
     },
     {
-      "id": "MV-000021",
-      "legacy_id": "MV-000021",
-      "title": "Business Transformation Lead",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Transformation / Change",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Thames Water",
-      "sector": "Utilities",
-      "location": "Reading",
-      "work_mode": "hybrid",
-      "employment_type": "Fixed-term",
-      "contract_type": "18 Months",
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "£75,000 – £85,000 per ANNUM",
-      "url": "https://www.cv-library.co.uk/job/225666510/",
-      "posted_at": "2026-09-30",
-      "first_seen_at": "2026-09-30",
-      "last_seen_at": "2026-09-30",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225666510/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000022",
-      "legacy_id": "MV-000022",
-      "title": "Client Proposition Manager",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Transformation / Change",
-      "seniority": "Manager",
-      "specialisms": [],
-      "end_client_name": "St. James's Place practice (unnamed)",
-      "sector": "Financial Services / Wealth Management",
-      "location": "Hampshire",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "£60,000 – £80,000 per ANNUM",
-      "url": "https://www.cv-library.co.uk/job/225667037/",
-      "posted_at": "2026-09-30",
-      "first_seen_at": "2026-09-30",
-      "last_seen_at": "2026-09-30",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225667037/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000023",
-      "legacy_id": "MV-000023",
-      "title": "Salesforce Transformation & Delivery Lead",
-      "relevance": "CORE",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Delivery / Programme",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Unnamed end client",
-      "sector": "Unknown",
-      "location": "WS2, Leamore, Walsall",
-      "work_mode": "hybrid",
-      "employment_type": "Fixed-term",
-      "contract_type": "12 Months",
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.cv-library.co.uk/job/225667425/",
-      "posted_at": "2026-09-30",
-      "first_seen_at": "2026-09-30",
-      "last_seen_at": "2026-09-30",
-      "review": {
-        "role": false,
-        "sector": true
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225667425/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000017",
-      "legacy_id": "MV-000017",
-      "title": "Salesforce Administrator",
-      "relevance": "CORE",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Platform / Administration",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed UK-based client",
-      "sector": "Unknown",
-      "location": "London",
-      "work_mode": "remote",
-      "employment_type": "Contract",
-      "contract_type": "6 months",
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 400-401 Daily",
-      "url": "https://www.reed.co.uk/jobs/salesforce-administrator/57402676",
-      "posted_at": "2026-09-29",
-      "first_seen_at": "2026-09-29",
-      "last_seen_at": "2026-09-29",
-      "review": {
-        "role": false,
-        "sector": true
-      },
-      "sources": [
-        {
-          "key": "source_3",
-          "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/salesforce-administrator/57402676"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000018",
-      "legacy_id": "MV-000018",
-      "title": "Market Manager – Glass",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Marketing / CRM",
-      "seniority": "Manager",
-      "specialisms": [],
-      "end_client_name": "Saint-Gobain",
-      "sector": "Manufacturing / Construction Materials",
-      "location": "Eggborough, North Yorkshire",
-      "work_mode": null,
-      "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.cv-library.co.uk/job/225662761/",
-      "posted_at": "2026-09-29",
-      "first_seen_at": "2026-09-29",
-      "last_seen_at": "2026-09-29",
-      "review": {
-        "role": false,
-        "sector": false
-      },
-      "sources": [
-        {
-          "key": "source_1",
-          "label": "CV-Library",
-          "url": "https://www.cv-library.co.uk/job/225662761/"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000019",
-      "legacy_id": "MV-000019",
-      "title": "Head of Business Systems & IT",
-      "relevance": "CORE",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Platform / Administration",
-      "seniority": "Head / Director",
-      "specialisms": [],
-      "end_client_name": "Outlook Publishing",
-      "sector": "Media / Publishing",
-      "location": "Norwich",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
+      "baseline": true,
       "contract_type": "Full Time, Permanent",
+      "employment_type": "Permanent",
+      "end_client_name": "Outlook Publishing",
+      "first_seen_at": "2026-09-29",
+      "id": "MV-000019",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000019",
+      "location": "Norwich",
+      "posted_at": "2026-09-29",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Platform / Administration",
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
       "salary_text": "GBP 45000-55000 Annual",
-      "url": "https://www.reed.co.uk/jobs/head-of-it/57410307",
-      "posted_at": "2026-09-29",
-      "first_seen_at": "2026-09-29",
-      "last_seen_at": "2026-09-29",
-      "review": {
-        "role": false,
-        "sector": false
-      },
+      "sector": "Media / Publishing",
+      "seniority": "Head / Director",
       "sources": [
         {
           "key": "source_1",
@@ -1386,39 +1676,119 @@
           "url": "https://www.reed.co.uk/jobs/head-of-it/57410307"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Head of Business Systems & IT",
+      "url": "https://www.reed.co.uk/jobs/head-of-it/57410307",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000016",
-      "legacy_id": "MV-000016",
-      "title": "Business Improvement Lead",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Transformation / Change",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Live Nation",
-      "sector": "Media & Entertainment",
-      "location": "London",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/business-improvement-lead/57399582",
-      "posted_at": "2026-09-28",
-      "first_seen_at": "2026-09-28",
-      "last_seen_at": "2026-09-28",
+      "end_client_name": "Saint-Gobain",
+      "first_seen_at": "2026-09-29",
+      "id": "MV-000018",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000018",
+      "location": "Eggborough, North Yorkshire",
+      "posted_at": "2026-09-29",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Marketing / CRM",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Manufacturing / Construction Materials",
+      "seniority": "Manager",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225662761/"
+        }
+      ],
+      "specialisms": [],
+      "title": "Market Manager \u2013 Glass",
+      "url": "https://www.cv-library.co.uk/job/225662761",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "6 months",
+      "employment_type": "Contract",
+      "end_client_name": "Unnamed UK-based client",
+      "first_seen_at": "2026-09-29",
+      "id": "MV-000017",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000017",
+      "location": "London",
+      "posted_at": "2026-09-29",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 400-401 Daily",
+      "sector": "Unknown",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-administrator/57402676"
+        }
+      ],
+      "specialisms": [],
+      "title": "Salesforce Administrator",
+      "url": "https://www.reed.co.uk/jobs/salesforce-administrator/57402676",
+      "work_mode": "remote"
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Live Nation",
+      "first_seen_at": "2026-09-28",
+      "id": "MV-000016",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000016",
+      "location": "London",
+      "posted_at": "2026-09-28",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Transformation / Change",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Media & Entertainment",
+      "seniority": "Lead",
       "sources": [
         {
           "key": "source_3",
@@ -1426,79 +1796,39 @@
           "url": "https://www.reed.co.uk/jobs/business-improvement-lead/57399582"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Business Improvement Lead",
+      "url": "https://www.reed.co.uk/jobs/business-improvement-lead/57399582",
+      "work_mode": ""
     },
     {
-      "id": "MV-000014",
-      "legacy_id": "MV-000014",
-      "title": "CRM Transformation Lead (Salesforce)",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Transformation / Change",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Windsor Forest Colleges Group",
-      "sector": "Education",
-      "location": "Langley / Windsor, Berkshire",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 33615-36353 Annual",
-      "url": "https://www.reed.co.uk/jobs/crm-transformation-lead-salesforce-cloned-on-25-09-26-143450/57393873",
-      "posted_at": "2026-09-25",
+      "end_client_name": "Sopra Steria",
       "first_seen_at": "2026-09-25",
-      "last_seen_at": "2026-09-25",
+      "id": "MV-000015",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000015",
+      "location": "LS101AB",
+      "posted_at": "2026-09-25",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
-      "sources": [
-        {
-          "key": "source_3",
-          "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/crm-transformation-lead-salesforce-cloned-on-25-09-26-143450/57393873"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000015",
-      "legacy_id": "MV-000015",
-      "title": "Cutover Manager",
-      "relevance": "ADJACENT",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
       "role_family": "Delivery / Programme",
-      "seniority": "Manager",
-      "specialisms": [],
-      "end_client_name": "Sopra Steria",
-      "sector": "Technology Services / Consulting",
-      "location": "LS101AB",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
-      "contract_type": null,
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
       "salary_text": "GBP 50000-65000 Annual",
-      "url": "https://www.reed.co.uk/jobs/cutover-manager/57393845",
-      "posted_at": "2026-09-25",
-      "first_seen_at": "2026-09-25",
-      "last_seen_at": "2026-09-25",
-      "review": {
-        "role": false,
-        "sector": false
-      },
+      "sector": "Technology Services / Consulting",
+      "seniority": "Manager",
       "sources": [
         {
           "key": "source_3",
@@ -1506,39 +1836,79 @@
           "url": "https://www.reed.co.uk/jobs/cutover-manager/57393845"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Cutover Manager",
+      "url": "https://www.reed.co.uk/jobs/cutover-manager/57393845",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000013",
-      "legacy_id": "MV-000013",
-      "title": "Salesforce Functional Lead",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Consulting / Functional",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Unnamed AI platform consultancy",
-      "sector": "Technology Services / Consulting",
-      "location": "London",
-      "work_mode": "hybrid",
-      "employment_type": "Contract",
-      "contract_type": "3-6 months",
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/salesforce-functional-lead/57389390",
-      "posted_at": "2026-09-24",
-      "first_seen_at": "2026-09-24",
-      "last_seen_at": "2026-09-24",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Windsor Forest Colleges Group",
+      "first_seen_at": "2026-09-25",
+      "id": "MV-000014",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000014",
+      "location": "Langley / Windsor, Berkshire",
+      "posted_at": "2026-09-25",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Transformation / Change",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 33615-36353 Annual",
+      "sector": "Education",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/crm-transformation-lead-salesforce-cloned-on-25-09-26-143450/57393873"
+        }
+      ],
+      "specialisms": [],
+      "title": "CRM Transformation Lead (Salesforce)",
+      "url": "https://www.reed.co.uk/jobs/crm-transformation-lead-salesforce-cloned-on-25-09-26-143450/57393873",
+      "work_mode": "hybrid"
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "3-6 months",
+      "employment_type": "Contract",
+      "end_client_name": "Unnamed AI platform consultancy",
+      "first_seen_at": "2026-09-24",
+      "id": "MV-000013",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000013",
+      "location": "London",
+      "posted_at": "2026-09-24",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Consulting / Functional",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Technology Services / Consulting",
+      "seniority": "Lead",
       "sources": [
         {
           "key": "source_3",
@@ -1546,39 +1916,39 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-functional-lead/57389390"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Functional Lead",
+      "url": "https://www.reed.co.uk/jobs/salesforce-functional-lead/57389390",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000012",
-      "legacy_id": "MV-000012",
-      "title": "Senior CRM Marketing Manager",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Marketing / CRM",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "UniHomes",
-      "sector": "Property / Student Accommodation",
-      "location": "Sheffield",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 55000-65000 Annual",
-      "url": "https://www.reed.co.uk/jobs/senior-crm-marketing-manager/57377985",
-      "posted_at": "2026-09-22",
+      "end_client_name": "UniHomes",
       "first_seen_at": "2026-09-22",
-      "last_seen_at": "2026-09-22",
+      "id": "MV-000012",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000012",
+      "location": "Sheffield",
+      "posted_at": "2026-09-22",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Marketing / CRM",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 55000-65000 Annual",
+      "sector": "Property / Student Accommodation",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_3",
@@ -1586,39 +1956,39 @@
           "url": "https://www.reed.co.uk/jobs/senior-crm-marketing-manager/57377985"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Senior CRM Marketing Manager",
+      "url": "https://www.reed.co.uk/jobs/senior-crm-marketing-manager/57377985",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000011",
-      "legacy_id": "MV-000011",
-      "title": "Salesforce Delivery Lead",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Delivery / Programme",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "Unnamed Salesforce consultancy",
-      "sector": "Technology Services / Consulting",
-      "location": "London",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 65000-75000 Annual",
-      "url": "https://www.reed.co.uk/jobs/salesforce-delivery-lead/57373526",
-      "posted_at": "2026-09-21",
+      "end_client_name": "Unnamed Salesforce consultancy",
       "first_seen_at": "2026-09-21",
-      "last_seen_at": "2026-09-21",
+      "id": "MV-000011",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000011",
+      "location": "London",
+      "posted_at": "2026-09-21",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Delivery / Programme",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 65000-75000 Annual",
+      "sector": "Technology Services / Consulting",
+      "seniority": "Lead",
       "sources": [
         {
           "key": "source_3",
@@ -1626,39 +1996,39 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-delivery-lead/57373526"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Delivery Lead",
+      "url": "https://www.reed.co.uk/jobs/salesforce-delivery-lead/57373526",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000010",
-      "legacy_id": "MV-000010",
-      "title": "Salesforce Developer",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Development / Engineering",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "The Hyde Group",
-      "sector": "Housing / Real Estate",
-      "location": "London Bridge, London",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 66000-66000 Annual",
-      "url": "https://www.reed.co.uk/jobs/salesforce-developer/57359640",
-      "posted_at": "2026-09-17",
+      "end_client_name": "The Hyde Group",
       "first_seen_at": "2026-09-17",
-      "last_seen_at": "2026-09-17",
+      "id": "MV-000010",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000010",
+      "location": "London Bridge, London",
+      "posted_at": "2026-09-17",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Development / Engineering",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 66000-66000 Annual",
+      "sector": "Housing / Real Estate",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_3",
@@ -1666,79 +2036,39 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-developer/57359640"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Developer",
+      "url": "https://www.reed.co.uk/jobs/salesforce-developer/57359640",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000008",
-      "legacy_id": "MV-000008",
-      "title": "Salesforce Business Analyst",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Business Analysis",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "IRIS",
-      "sector": "Technology Services / Software",
-      "location": "Slough",
-      "work_mode": null,
-      "employment_type": "Fixed-term",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/salesforce-business-analyst/57353859",
-      "posted_at": "2026-09-16",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Unnamed managed services business",
       "first_seen_at": "2026-09-16",
-      "last_seen_at": "2026-09-16",
+      "id": "MV-000009",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000009",
+      "location": "Yeovil",
+      "posted_at": "2026-09-16",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
-      "sources": [
-        {
-          "key": "source_3",
-          "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/salesforce-business-analyst/57353859"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000009",
-      "legacy_id": "MV-000009",
-      "title": "Salesforce Systems Engineer",
-      "relevance": "CORE",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
       "role_family": "Platform / Administration",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed managed services business",
-      "sector": "Technology Services / Managed Services",
-      "location": "Yeovil",
-      "work_mode": "hybrid",
-      "employment_type": "Permanent",
-      "contract_type": null,
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
       "salary_text": "GBP 50000-65000 Annual",
-      "url": "https://www.reed.co.uk/jobs/salesforce-systems-engineer/57352954",
-      "posted_at": "2026-09-16",
-      "first_seen_at": "2026-09-16",
-      "last_seen_at": "2026-09-16",
-      "review": {
-        "role": false,
-        "sector": false
-      },
+      "sector": "Technology Services / Managed Services",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_3",
@@ -1746,79 +2076,79 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-systems-engineer/57352954"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Systems Engineer",
+      "url": "https://www.reed.co.uk/jobs/salesforce-systems-engineer/57352954",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000006",
-      "legacy_id": "MV-000006",
-      "title": "Commercial Operations Analyst – Mat Leave Cover",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Sales Operations / CRM Operations",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Chambers and Partners",
-      "sector": "Legal Services / Information Services",
-      "location": "London",
-      "work_mode": null,
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Fixed-term",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/commercial-operations-analyst-mat-leave-cover/57350392",
-      "posted_at": "2026-09-15",
-      "first_seen_at": "2026-09-15",
-      "last_seen_at": "2026-09-15",
+      "end_client_name": "IRIS",
+      "first_seen_at": "2026-09-16",
+      "id": "MV-000008",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000008",
+      "location": "Slough",
+      "posted_at": "2026-09-16",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Business Analysis",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Technology Services / Software",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_3",
           "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/commercial-operations-analyst-mat-leave-cover/57350392"
+          "url": "https://www.reed.co.uk/jobs/salesforce-business-analyst/57353859"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Business Analyst",
+      "url": "https://www.reed.co.uk/jobs/salesforce-business-analyst/57353859",
+      "work_mode": ""
     },
     {
-      "id": "MV-000007",
-      "legacy_id": "MV-000007",
-      "title": "Senior Consultant, Salesforce Data Cloud and Agentforce",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Consulting / Functional",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Unnamed client / consulting employer",
-      "sector": "Unknown",
-      "location": "London",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 45000-60000 Annual",
-      "url": "https://www.reed.co.uk/jobs/senior-consultant-salesforce-data-cloud-and-agentforce/57346959",
-      "posted_at": "2026-09-15",
+      "end_client_name": "Unnamed client / consulting employer",
       "first_seen_at": "2026-09-15",
-      "last_seen_at": "2026-09-15",
+      "id": "MV-000007",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000007",
+      "location": "London",
+      "posted_at": "2026-09-15",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": true
       },
+      "role_family": "Consulting / Functional",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 45000-60000 Annual",
+      "sector": "Unknown",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_3",
@@ -1826,79 +2156,79 @@
           "url": "https://www.reed.co.uk/jobs/senior-consultant-salesforce-data-cloud-and-agentforce/57346959"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Senior Consultant, Salesforce Data Cloud and Agentforce",
+      "url": "https://www.reed.co.uk/jobs/senior-consultant-salesforce-data-cloud-and-agentforce/57346959",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000004",
-      "legacy_id": "MV-000004",
-      "title": "Salesforce Consultant – London",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Consulting / Functional",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed client",
-      "sector": "Unknown",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Fixed-term",
+      "end_client_name": "Chambers and Partners",
+      "first_seen_at": "2026-09-15",
+      "id": "MV-000006",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000006",
       "location": "London",
-      "work_mode": null,
-      "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 42000-50000 Annual",
-      "url": "https://www.reed.co.uk/jobs/salesforce-consultant-london/57333402",
-      "posted_at": "2026-09-10",
-      "first_seen_at": "2026-09-10",
-      "last_seen_at": "2026-09-10",
-      "review": {
-        "role": false,
-        "sector": true
-      },
-      "sources": [
-        {
-          "key": "source_3",
-          "label": "Reed",
-          "url": "https://www.reed.co.uk/jobs/salesforce-consultant-london/57333402"
-        }
-      ],
-      "baseline": true
-    },
-    {
-      "id": "MV-000005",
-      "legacy_id": "MV-000005",
-      "title": "Salesforce Enterprise Architect",
-      "relevance": "CORE",
-      "advertiser": null,
-      "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Architecture",
-      "seniority": "Senior",
-      "specialisms": [],
-      "end_client_name": "Infoplus Technologies UK Limited",
-      "sector": "Technology Services / Consulting",
-      "location": "London",
-      "work_mode": null,
-      "employment_type": "Contract",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "GBP 500-600 Daily",
-      "url": "https://www.reed.co.uk/jobs/salesforce-enterprise-architect/57330371",
-      "posted_at": "2026-09-10",
-      "first_seen_at": "2026-09-10",
-      "last_seen_at": "2026-09-10",
+      "posted_at": "2026-09-15",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Sales Operations / CRM Operations",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Legal Services / Information Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/commercial-operations-analyst-mat-leave-cover/57350392"
+        }
+      ],
+      "specialisms": [],
+      "title": "Commercial Operations Analyst \u2013 Mat Leave Cover",
+      "url": "https://www.reed.co.uk/jobs/commercial-operations-analyst-mat-leave-cover/57350392",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Contract",
+      "end_client_name": "Infoplus Technologies UK Limited",
+      "first_seen_at": "2026-09-10",
+      "id": "MV-000005",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000005",
+      "location": "London",
+      "posted_at": "2026-09-10",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 500-600 Daily",
+      "sector": "Technology Services / Consulting",
+      "seniority": "Senior",
       "sources": [
         {
           "key": "source_3",
@@ -1906,39 +2236,79 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-enterprise-architect/57330371"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Enterprise Architect",
+      "url": "https://www.reed.co.uk/jobs/salesforce-enterprise-architect/57330371",
+      "work_mode": ""
     },
     {
-      "id": "MV-000003",
-      "legacy_id": "MV-000003",
-      "title": "Salesforce Systems Trainer (Cyber Security Consultancy)",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Training / Enablement",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Unnamed cyber-security software vendor / consultancy",
-      "sector": "Technology Services / Cyber Security",
-      "location": "Lutterworth, Leicestershire",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
+      "end_client_name": "Unnamed client",
+      "first_seen_at": "2026-09-10",
+      "id": "MV-000004",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000004",
+      "location": "London",
+      "posted_at": "2026-09-10",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Consulting / Functional",
       "salary": {
-        "min": null,
-        "max": null,
         "currency": "GBP",
+        "max": null,
+        "min": null,
         "period": null
       },
-      "salary_text": "GBP 45000-50000 Annual",
-      "url": "https://www.reed.co.uk/jobs/salesforce-systems-trainer-cyber-security-consultancy/57411258",
-      "posted_at": "2026-09-09",
+      "salary_text": "GBP 42000-50000 Annual",
+      "sector": "Unknown",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-consultant-london/57333402"
+        }
+      ],
+      "specialisms": [],
+      "title": "Salesforce Consultant \u2013 London",
+      "url": "https://www.reed.co.uk/jobs/salesforce-consultant-london/57333402",
+      "work_mode": ""
+    },
+    {
+      "advertiser": null,
+      "advertiser_type": "MIXED_OR_UNKNOWN",
+      "baseline": true,
+      "contract_type": "",
+      "employment_type": "Permanent",
+      "end_client_name": "Unnamed cyber-security software vendor / consultancy",
       "first_seen_at": "2026-09-09",
-      "last_seen_at": "2026-09-09",
+      "id": "MV-000003",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000003",
+      "location": "Lutterworth, Leicestershire",
+      "posted_at": "2026-09-09",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Training / Enablement",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "GBP 45000-50000 Annual",
+      "sector": "Technology Services / Cyber Security",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_3",
@@ -1946,39 +2316,39 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-systems-trainer-cyber-security-consultancy/57411258"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Systems Trainer (Cyber Security Consultancy)",
+      "url": "https://www.reed.co.uk/jobs/salesforce-systems-trainer-cyber-security-consultancy/57411258",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000002",
-      "legacy_id": "MV-000002",
-      "title": "Salesforce Team Leader",
-      "relevance": "CORE",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Platform / Administration",
-      "seniority": "Lead",
-      "specialisms": [],
-      "end_client_name": "ITS",
-      "sector": "Telecommunications",
-      "location": "Warrington",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/salesforce-team-leader/57323022",
-      "posted_at": "2026-09-08",
+      "end_client_name": "ITS",
       "first_seen_at": "2026-09-08",
-      "last_seen_at": "2026-09-08",
+      "id": "MV-000002",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000002",
+      "location": "Warrington",
+      "posted_at": "2026-09-08",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Telecommunications",
+      "seniority": "Lead",
       "sources": [
         {
           "key": "source_3",
@@ -1986,39 +2356,39 @@
           "url": "https://www.reed.co.uk/jobs/salesforce-team-leader/57323022"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Salesforce Team Leader",
+      "url": "https://www.reed.co.uk/jobs/salesforce-team-leader/57323022",
+      "work_mode": "hybrid"
     },
     {
-      "id": "MV-000001",
-      "legacy_id": "MV-000001",
-      "title": "Project Coordinator – Commercial Pipeline and Innovation",
-      "relevance": "ADJACENT",
       "advertiser": null,
       "advertiser_type": "MIXED_OR_UNKNOWN",
-      "role_family": "Sales Operations / CRM Operations",
-      "seniority": "Standard",
-      "specialisms": [],
-      "end_client_name": "Prinova Europe Limited",
-      "sector": "Food Manufacturing / Ingredients",
-      "location": "Aylesford",
-      "work_mode": "hybrid",
+      "baseline": true,
+      "contract_type": "",
       "employment_type": "Permanent",
-      "contract_type": null,
-      "salary": {
-        "min": null,
-        "max": null,
-        "currency": "GBP",
-        "period": null
-      },
-      "salary_text": "Not disclosed",
-      "url": "https://www.reed.co.uk/jobs/project-coordinator-commercial-pipeline-and-innovation/57319107",
-      "posted_at": "2026-09-07",
+      "end_client_name": "Prinova Europe Limited",
       "first_seen_at": "2026-09-07",
-      "last_seen_at": "2026-09-07",
+      "id": "MV-000001",
+      "last_seen_at": "2026-10-06T19:44:00Z",
+      "legacy_id": "MV-000001",
+      "location": "Aylesford",
+      "posted_at": "2026-09-07",
+      "relevance": "ADJACENT",
       "review": {
         "role": false,
         "sector": false
       },
+      "role_family": "Sales Operations / CRM Operations",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": "Not disclosed",
+      "sector": "Food Manufacturing / Ingredients",
+      "seniority": "Standard",
       "sources": [
         {
           "key": "source_3",
@@ -2026,69 +2396,10 @@
           "url": "https://www.reed.co.uk/jobs/project-coordinator-commercial-pipeline-and-innovation/57319107"
         }
       ],
-      "baseline": true
+      "specialisms": [],
+      "title": "Project Coordinator \u2013 Commercial Pipeline and Innovation",
+      "url": "https://www.reed.co.uk/jobs/project-coordinator-commercial-pipeline-and-innovation/57319107",
+      "work_mode": "hybrid"
     }
-  ],
-  "schema": "salesforce-hiring-dashboard/v1",
-  "run_id": "20261007T112956Z-d3306b65",
-  "generated_at": "2026-10-07T15:50:52Z",
-  "refresh": {
-    "status": "success",
-    "started_at": "2026-10-07T11:31:45Z",
-    "finished_at": "2026-10-07T11:31:45Z",
-    "inserted": 3,
-    "updated": 0,
-    "unchanged": 0,
-    "rejected": 0,
-    "master_data_version": "1.4",
-    "role_taxonomy_version": "2.2"
-  },
-  "pipeline": {
-    "quality_passed": true,
-    "raw_records": 26,
-    "relevant_records": 3,
-    "irrelevant_records": 23,
-    "rejected_records": 0,
-    "sources": [
-      {
-        "key": "source_1",
-        "label": "CV-Library",
-        "raw": 0,
-        "relevant": 0,
-        "irrelevant": 0
-      },
-      {
-        "key": "source_2",
-        "label": "Totaljobs",
-        "raw": 21,
-        "relevant": 2,
-        "irrelevant": 19
-      },
-      {
-        "key": "source_3",
-        "label": "Reed",
-        "raw": 5,
-        "relevant": 1,
-        "irrelevant": 4
-      }
-    ]
-  },
-  "by_relevance": [
-    {
-      "label": "CORE",
-      "value": 29
-    },
-    {
-      "label": "ADJACENT",
-      "value": 16
-    }
-  ],
-  "baseline": {
-    "date": "2026-10-06",
-    "frozen_baseline": 42,
-    "late_discoveries": 3,
-    "confirmed_expired": 0,
-    "post_baseline_new": 0,
-    "master_rows": 45
-  }
+  ]
 }
