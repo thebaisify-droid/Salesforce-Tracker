@@ -96,6 +96,7 @@ def main() -> int:
             "irrelevant_records": int(metrics.get("irrelevant_rows", 0) or 0),
             "rejected_records": int(metrics.get("rejected_rows", 0) or 0),
             "sources": source_pipeline_summary(metrics),
+            "lifecycle_assurance": metrics.get("lifecycle") or {},
         },
     })
 
