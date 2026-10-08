@@ -15,8 +15,16 @@ def analyse(sources: dict[str,list[dict]]) -> dict:
         raise ValueError("sources must be an object")
     result=[]
     seen_global=set()
+    missing_core = [name for name in CORE if name not in sources]
+    supplied = {name for name in sources if name in (*CORE, *OPTIONAL)}
     for source in (*CORE,*OPTIONAL):
-        records=sources.get(source,[])
+        records=sources.get(source)
+        if records is None and source not in sources:
+            result.append({"source":source,"core":source in CORE,"status":"NOT_SUPPLIED",
+                           "raw_records":None,"valid_unique_urls":None,
+                           "relevant_unique_urls":None,"incremental_unique_urls_in_order":None,
+                           "relevant_with_company_and_date":None,"rejected_records":None})
+            continue
         if not isinstance(records,list):
             raise ValueError(f"{source} must be a list")
         valid_urls=set()
@@ -40,7 +48,7 @@ def analyse(sources: dict[str,list[dict]]) -> dict:
         incremental=relevant_urls-seen_global
         # Deterministic ordered attribution; not a causal estimate of provider value.
         seen_global|=relevant_urls
-        result.append({"source":source,"core":source in CORE,"raw_records":len(records),
+        result.append({"source":source,"core":source in CORE,"status":"SUPPLIED", "raw_records":len(records),
                        "valid_unique_urls":len(valid_urls),
                        "relevant_unique_urls":len(relevant_urls),
                        "incremental_unique_urls_in_order":len(incremental),
@@ -49,10 +57,13 @@ def analyse(sources: dict[str,list[dict]]) -> dict:
     return {"schema":"candidate-source-quality/v1","mode":"offline_only",
             "acquisition_enabled":False,"publication_approved":False,
             "source_order":list(CORE)+list(OPTIONAL),"sources":result,
+            "core_exports_supplied":not missing_core,
+            "missing_core_exports":missing_core,
+            "real_source_comparison_complete":False,
             "caveats":["Only URL-identical duplicates are consolidated; cross-board duplicates remain.",
                        "Incremental attribution depends on the fixed listed source order.",
                        "No extrapolation to market-wide coverage or traffic.",
-                       "Missing source exports produce zero rows, not verified zero vacancies."]}
+                       "Missing source exports have status NOT_SUPPLIED and null metrics; even supplied empty exports are not independently verified to mean zero market vacancies."]}
 
 def main():
     p=argparse.ArgumentParser(description="Evaluate existing source exports without acquisition")
