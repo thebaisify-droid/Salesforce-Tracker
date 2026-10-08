@@ -24,5 +24,6 @@
     "onlyUniqueJobs": true,
     "maxResults": 75
   },
-  "notes": "JobServe UK enrichment source. Live schema validated 2026-10-08; 72-hour filtering uses postedDateTime."
+  "notes": "JobServe UK enrichment source. Live schema validated 2026-10-08; 72-hour filtering uses postedDateTime.",
+  "max_charged_results": 75
 }
