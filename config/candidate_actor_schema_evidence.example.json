@@ -1,0 +1,51 @@
+{
+  "schema": "candidate-actor-schema-evidence/v1",
+  "date": "2026-10-08",
+  "offline_only": true,
+  "paid_runs_authorised": false,
+  "task_mutations_authorised": false,
+  "actors": [
+    {
+      "source": "CV-Library",
+      "task": "develop_ify/cv-library-scraper-task",
+      "candidate_actor": "blackfalcondata/cv-library-scraper",
+      "documentation_url": "https://apify.com/blackfalcondata/cv-library-scraper/input-schema",
+      "public_fields": [
+        "query",
+        "maxResults",
+        "incrementalMode",
+        "maxPages"
+      ],
+      "observed_saved_task_fields": [
+        "query",
+        "country",
+        "maxResults",
+        "incrementalMode",
+        "postedWithinDays",
+        "maxPages"
+      ],
+      "actor_id_match_verified": false,
+      "field_support_for_actual_saved_task_verified": false
+    },
+    {
+      "source": "Totaljobs",
+      "task": "develop_ify/totaljobs-com-scraper-task",
+      "candidate_actor": "abotapi/totaljobs-com-scraper",
+      "documentation_url": "https://apify.com/abotapi/totaljobs-com-scraper",
+      "public_fields": [
+        "keywords",
+        "maxListings",
+        "incrementalMode"
+      ],
+      "observed_saved_task_fields": [
+        "keywords",
+        "maxListings",
+        "postedWithin",
+        "mode"
+      ],
+      "actor_id_match_verified": false,
+      "field_support_for_actual_saved_task_verified": false
+    }
+  ],
+  "required_evidence": "Resolve each saved Task actId against public Actor metadata and verify actual build input schema; field-name similarity is not proof."
+}
