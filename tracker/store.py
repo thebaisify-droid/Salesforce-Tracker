@@ -104,7 +104,13 @@ class Store:
             outcome = "inserted"
         else:
             vacancy_id = int(existing["vacancy_id"])
-            if existing["normalized_hash"] == record["normalized_hash"]:
+            if cross_source_match:
+                self.conn.execute(
+                    "UPDATE vacancies SET last_seen_at = ?, is_active = 1 WHERE vacancy_id = ?",
+                    (now, vacancy_id),
+                )
+                outcome = "unchanged"
+            elif existing["normalized_hash"] == record["normalized_hash"]:
                 self.conn.execute(
                     "UPDATE vacancies SET last_seen_at = ?, is_active = 1 WHERE vacancy_id = ?",
                     (now, vacancy_id),
