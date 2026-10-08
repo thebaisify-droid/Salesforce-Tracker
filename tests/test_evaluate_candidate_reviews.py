@@ -43,7 +43,8 @@ class ReviewedMarketAssuranceTests(unittest.TestCase):
                                      reviewer="reviewer-1",reviewed_at="2026-10-08"))
             records=load_reviewed_csv(path)
             self.assertEqual(len(records),1)
-            self.assertTrue(evaluate_reviewed(records,minimum_samples=1)["reviewed_sample_thresholds_met"])\n            self.assertFalse(evaluate_reviewed(records,minimum_samples=1)["real_world_accuracy_validated"])
+            self.assertTrue(evaluate_reviewed(records,minimum_samples=1)["reviewed_sample_thresholds_met"])
+            self.assertFalse(evaluate_reviewed(records,minimum_samples=1)["real_world_accuracy_validated"])
             self.assertFalse(evaluate_reviewed(records,minimum_samples=1)["publication_approved"])
 
 if __name__=="__main__":
