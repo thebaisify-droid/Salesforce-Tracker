@@ -1,0 +1,182 @@
+[
+  {
+    "title": "Senior Business Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Business Analysis"
+  },
+  {
+    "title": "Power BI Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Business Intelligence"
+  },
+  {
+    "title": "Senior Delivery Manager",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Delivery Management"
+  },
+  {
+    "title": "Senior Product Manager",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Product Management"
+  },
+  {
+    "title": "Senior Product Owner",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Product Ownership"
+  },
+  {
+    "title": "Scrum Master",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Agile / Scrum"
+  },
+  {
+    "title": "IT Project Manager",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Project Management"
+  },
+  {
+    "title": "Business Change Manager",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Business Change & Transformation"
+  },
+  {
+    "title": "Programme Manager",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Programme & Portfolio Management"
+  },
+  {
+    "title": "Business Process Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Business Process & Operational Analysis"
+  },
+  {
+    "title": "Agile Coach",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Agile Leadership"
+  },
+  {
+    "title": "Head of Product",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Product Strategy & Operations"
+  },
+  {
+    "title": "Service Designer",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Service Management & Design"
+  },
+  {
+    "title": "Data Governance Manager",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Data & Analytics Management"
+  },
+  {
+    "title": "Cyber Security Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Information Security Analysis"
+  },
+  {
+    "title": "SOC Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Security Operations / SOC"
+  },
+  {
+    "title": "Security Architect",
+    "description": "ISO 27001 NIST cyber security design",
+    "expected_included": true,
+    "expected_family": "Security Architecture"
+  },
+  {
+    "title": "Cyber Security Consultant",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Security Consulting & Advisory"
+  },
+  {
+    "title": "TPRM Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Security Risk & Third-Party Risk"
+  },
+  {
+    "title": "Information Security Manager",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Security Management"
+  },
+  {
+    "title": "IT Security Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "IT Security"
+  },
+  {
+    "title": "Data Analyst",
+    "description": "",
+    "expected_included": true,
+    "expected_family": "Data Analysis"
+  },
+  {
+    "title": "Security Guard",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  },
+  {
+    "title": "Physical Security Manager",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  },
+  {
+    "title": "Door Supervisor",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  },
+  {
+    "title": "Network Engineer",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  },
+  {
+    "title": "Data Scientist",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  },
+  {
+    "title": "Retail Assistant",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  },
+  {
+    "title": "Warehouse Operative",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  },
+  {
+    "title": "Cyber Security Sales Executive",
+    "description": "",
+    "expected_included": false,
+    "expected_family": null
+  }
+]
