@@ -1,0 +1,140 @@
+name: Activate Indeed UK enrichment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/activate-indeed-production.yml"
+
+concurrency:
+  group: salesforce-indeed-activation
+  cancel-in-progress: false
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      contents: write
+      actions: read
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore current production state
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Run four-source production refresh
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --force
+
+      - name: Verify Indeed enrichment and dedupe
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+
+          latest=json.loads(Path("state/latest_success.json").read_text())
+          source4=next((s for s in latest.get("sources",[]) if s.get("name")=="collect:source_4"),None)
+          if not source4 or source4.get("status")!="success":
+              raise SystemExit(f"Indeed UK source did not succeed: {source4}")
+
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          count=conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0]
+          indeed_links=conn.execute("SELECT COUNT(DISTINCT vacancy_id) FROM vacancy_sources WHERE source_name='source_4'").fetchone()[0]
+          paralegal=conn.execute("SELECT COUNT(*) FROM vacancies WHERE display_title='Senior Corporate Paralegal, Global Governance'").fetchone()[0]
+          duplicate_titles=[
+              "Engagement Delivery Director",
+              "Forward Deployed Engagement Strategist",
+              "Cloud Account Executive - Partner Cloud",
+              "Senior Project Manager",
+              "Principal AI Architect",
+              "Sr. Enterprise Architect, Agentforce Supply Chain",
+          ]
+          duplicates={}
+          for title in duplicate_titles:
+              duplicates[title]=conn.execute(
+                  "SELECT COUNT(*) FROM vacancies WHERE display_title=? AND lower(COALESCE(advertiser,''))='salesforce'",
+                  (title,)
+              ).fetchone()[0]
+          conn.close()
+
+          result={
+              "active_vacancies":count,
+              "indeed_source_links":indeed_links,
+              "paralegal_rows":paralegal,
+              "known_cross_board_title_counts":duplicates,
+              "run_id":latest.get("run_id"),
+              "sources_configured":latest.get("summary",{}).get("sources_configured"),
+              "sources_succeeded":latest.get("summary",{}).get("sources_succeeded"),
+              "quality_passed":latest.get("summary",{}).get("quality_passed"),
+              "inserted_rows":latest.get("summary",{}).get("inserted_rows"),
+              "updated_rows":latest.get("summary",{}).get("updated_rows"),
+              "unchanged_rows":latest.get("summary",{}).get("unchanged_rows"),
+          }
+          if count < 55:
+              raise SystemExit(f"expected at least 55 active vacancies after Indeed enrichment, got {count}")
+          if indeed_links < 9:
+              raise SystemExit(f"expected at least 9 Indeed-linked vacancies, got {indeed_links}")
+          if paralegal:
+              raise SystemExit("non-ecosystem Salesforce paralegal role entered the master")
+          bad={k:v for k,v in duplicates.items() if v != 1}
+          if bad:
+              raise SystemExit(f"cross-board duplicates remain: {bad}")
+          if result["quality_passed"] is not True:
+              raise SystemExit("quality gate did not pass")
+
+          Path("state/indeed_activation_proof.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Write verified persistent state manifest
+        run: python -m scripts.state_snapshot --root . --database "$TRACKER_DATABASE_PATH" --write-manifest state/state_manifest.json
+
+      - name: Upload new production tracker state
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracker-state
+          path: |
+            data/salesforce_tracker.db
+            state/
+            dashboard/data.json
+            dashboard/live-data.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Publish dashboard JSON to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp dashboard/live-data.json /tmp/live-data.json
+          git config user.name "salesforce-tracker-bot"
+          git config user.email "salesforce-tracker-bot@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B dashboard-publish origin/main
+          cp /tmp/live-data.json dashboard/live-data.json
+          git add dashboard/live-data.json
+          if git diff --cached --quiet; then
+            echo "Public dashboard JSON is unchanged."
+          else
+            git commit -m "Update Indeed-enriched dashboard data [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      - name: Upload activation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indeed-activation-${{ github.run_id }}
+          path: |
+            state/*.json
+            dashboard/*.json
+          if-no-files-found: warn
+          retention-days: 30
