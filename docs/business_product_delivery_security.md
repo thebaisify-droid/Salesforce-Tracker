@@ -57,3 +57,22 @@ Before launch: validate against representative multi-source samples, verify
 advertiser/location canonicalization, design cross-board deduplication, and
 add an independent persisted store plus quality gate. Strictly prohibit
 published use until the quality review and acquisition account limit are signed off.
+
+## Synthetic fixture assurance gate
+
+The classifier now has an offline validator with explicit precision, recall and
+role-family accuracy thresholds (90% each by default):
+
+```sh
+python -m scripts.validate_candidate_market \
+  --input tests/fixtures/candidate_labelled_synthetic.json \
+  --report runs/candidate_synthetic_assurance.json
+```
+
+**Important:** the 30 manually authored synthetic cases validate deterministic
+behaviour only. They are not independent UK job-board samples, cannot prove
+real-world accuracy, and never grant publication approval. Before production,
+collect a representative, labelled and auditable real vacancy evaluation set,
+including ambiguous cyber/physical security ads, cross-family titles, recruitment
+agency duplicates and descriptions missing from source responses. Independently
+review disagreements and measure performance separately for both tracks.
