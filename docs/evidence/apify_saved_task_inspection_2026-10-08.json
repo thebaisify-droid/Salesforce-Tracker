@@ -23,7 +23,13 @@
       "input_schema_verified": false,
       "non_salesforce_search_verified": false,
       "actor_id": "T0edvAvD8lVcvc58G",
-      "actor_id_observed_from_live_task_metadata": true
+      "actor_id_observed_from_live_task_metadata": true,
+      "actor_schema_metadata_confirmed": true,
+      "actor_schema_source_run": 37795936497,
+      "actor_schema_source_artifact": 11558656387,
+      "actor_owner": "blackfalcondata",
+      "actor_name": "cv-library-scraper",
+      "schema_required_fields": []
     },
     {
       "source": "Totaljobs",
@@ -39,7 +45,15 @@
       "input_schema_verified": false,
       "non_salesforce_search_verified": false,
       "actor_id": "RO7aokuNWfmP0kV0G",
-      "actor_id_observed_from_live_task_metadata": true
+      "actor_id_observed_from_live_task_metadata": true,
+      "actor_schema_metadata_confirmed": true,
+      "actor_schema_source_run": 37795936497,
+      "actor_schema_source_artifact": 11558656387,
+      "actor_owner": "abotapi",
+      "actor_name": "totaljobs-com-scraper",
+      "schema_required_fields": [
+        "mode"
+      ]
     }
   ],
   "next_checks": [
@@ -49,5 +63,6 @@
   ],
   "raw_inputs_included": false,
   "paid_acquisition_authorised": false,
-  "public_actor_listing_identity_verified": false
+  "public_actor_listing_identity_verified": true,
+  "input_values_and_charging_verified": false
 }
