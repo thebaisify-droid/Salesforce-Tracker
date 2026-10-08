@@ -45,8 +45,6 @@ STRONG_PLATFORM_PHRASES = (
     "lightning web component",
     "visualforce",
     "omnistudio",
-    "apex",
-    "mulesoft",
 )
 
 CONTEXTUAL_PHRASES = (

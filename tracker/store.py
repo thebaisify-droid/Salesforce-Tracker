@@ -34,10 +34,19 @@ VACANCY_FIELDS = [
 
 def _norm_company(value: str | None) -> str:
     text = re.sub(r"[^a-z0-9]+", " ", (value or "").lower()).strip()
+    if not text or text.startswith("unnamed ") or text.startswith("unknown "):
+        return ""
     return " ".join(
         part for part in text.split()
-        if part not in {"limited", "ltd", "plc", "llp"}
+        if part not in {"limited", "ltd", "plc", "llp", "group"}
     )
+
+
+def _norm_title(value: str | None) -> str:
+    text = (value or "").lower()
+    text = re.sub(r"\bcloned\s+on\s+\d{1,2}[-/]\d{1,2}(?:[-/]\d{2,4})?.*$", "", text)
+    text = re.sub(r"[^a-z0-9]+", " ", text).strip()
+    return text
 
 
 def _location_words(value: str | None) -> set[str]:
@@ -65,26 +74,31 @@ def _date_value(value: str | None) -> datetime | None:
 
 
 def _market_identity_match(record: dict[str, Any], candidate: sqlite3.Row) -> bool:
-    if _norm_company(record.get("advertiser")) != _norm_company(candidate["advertiser"]):
+    if _norm_title(record.get("display_title")) != _norm_title(candidate["display_title"]):
         return False
-    left_date = _date_value(record.get("posted_at"))
-    right_date = _date_value(candidate["posted_at"])
-    if left_date and right_date and abs((left_date.date() - right_date.date()).days) > 3:
+
+    record_company = _norm_company(record.get("advertiser") or record.get("end_client_name"))
+    candidate_company = _norm_company(candidate["advertiser"] or candidate["end_client_name"])
+    companies_known = bool(record_company and candidate_company)
+    if companies_known and record_company != candidate_company:
         return False
+
     left_location = _location_words(record.get("location"))
     right_location = _location_words(candidate["location"])
     location_match = bool(left_location & right_location)
-    salary_match = (
-        record.get("salary_min") is not None
-        and candidate["salary_min"] is not None
-        and float(record["salary_min"]) == float(candidate["salary_min"])
-        and (
-            record.get("salary_max") is None
-            or candidate["salary_max"] is None
-            or float(record["salary_max"]) == float(candidate["salary_max"])
-        )
-    )
-    return location_match or salary_match
+    if not location_match:
+        return False
+
+    left_date = _date_value(record.get("posted_at"))
+    right_date = _date_value(candidate["posted_at"])
+    date_gap = abs((left_date.date() - right_date.date()).days) if left_date and right_date else None
+    if companies_known:
+        return date_gap is None or date_gap <= 30
+
+    # Baseline rows can intentionally omit the advertiser/end-client identity.
+    # In that case only collapse a mirror when title+location are identical and
+    # the posting dates are close enough to strongly indicate the same vacancy.
+    return date_gap is not None and date_gap <= 3
 
 
 def _content_signature(title: str | None, description: str | None) -> str | None:
@@ -139,16 +153,15 @@ class Store:
 
         if existing is None:
             title = (record.get("display_title") or "").strip()
-            if title and record.get("advertiser"):
+            if title:
                 identity_candidates = self.conn.execute(
                     """
                     SELECT vacancy_id, normalized_hash, display_title, description,
-                           advertiser, location, posted_at, salary_min, salary_max
+                           advertiser, end_client_name, location, posted_at, salary_min, salary_max
                     FROM vacancies
-                    WHERE lower(display_title)=lower(?)
+                    WHERE is_active=1
                     ORDER BY vacancy_id
-                    """,
-                    (title,),
+                    """
                 ).fetchall()
                 matches = [
                     candidate

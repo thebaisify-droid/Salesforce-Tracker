@@ -86,6 +86,20 @@ jobs:
             raise SystemExit("Indeed UK returned zero records in the validation window")
           if len(raw5)==0:
             raise SystemExit("JobServe returned zero records in the validation window")
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          checks={
+              "sc_qa": conn.execute("SELECT COUNT(*) FROM vacancies WHERE display_title='SC Cleared QA SDET'").fetchone()[0],
+              "it_ba": conn.execute("SELECT COUNT(*) FROM vacancies WHERE display_title='IT Business Analyst'").fetchone()[0],
+              "hyde": conn.execute("SELECT COUNT(*) FROM vacancies WHERE display_title='Salesforce Developer' AND (location LIKE '%London%' OR location LIKE '%Lambeth%') AND (advertiser='The Hyde Group' OR end_client_name='The Hyde Group')").fetchone()[0],
+              "crm_transform": conn.execute("SELECT COUNT(*) FROM vacancies WHERE lower(display_title) LIKE 'crm transformation lead (salesforce)%'").fetchone()[0],
+              "integration_false_positive": conn.execute("SELECT COUNT(*) FROM vacancies WHERE display_title='Solutions Architect - Integration'").fetchone()[0],
+          }
+          conn.close()
+          result["dedupe_checks"]=checks
+          if checks["sc_qa"] != 1 or checks["it_ba"] != 1 or checks["hyde"] != 1 or checks["crm_transform"] != 1:
+              raise SystemExit(f"known cross-board mirrors were not collapsed: {checks}")
+          if checks["integration_false_positive"] != 0:
+              raise SystemExit("generic integration architect entered the Salesforce master")
           Path("validation/result.json").write_text(json.dumps(result,indent=2)+"\n")
           print(json.dumps(result,indent=2))
           PY
