@@ -32,5 +32,21 @@
     "Set a separate pilot spend allocation within the shared $19 ceiling",
     "Require explicit approval for one bounded pilot run"
   ],
-  "publication_policy": "Never publish pilot output automatically; independent review and quality gates required."
+  "publication_policy": "Never publish pilot output automatically; independent review and quality gates required.",
+  "proposed_pilot_allocation_usd": 0.5,
+  "pricing_evidence": {
+    "checked_on": "2026-10-08",
+    "actor_rates_are_indicative": true,
+    "indeed_uk": {
+      "actor": "wildorigins/indeed-jobs",
+      "advertised_starting_usd_per_1000_results": 2.8,
+      "url": "https://apify.com/wildorigins/indeed-jobs/api"
+    },
+    "jobserve": {
+      "actor": "solidcode/jobserve-scraper",
+      "advertised_starting_usd_per_1000_results": 2.5,
+      "url": "https://apify.com/solidcode/jobserve-scraper/api"
+    },
+    "notes": "Published starting rates are not a live account invoice or guarantee of full run costs. Paid-run validation remains blocked."
+  }
 }
