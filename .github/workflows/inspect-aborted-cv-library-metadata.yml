@@ -1,0 +1,23 @@
+name: Inspect failed CV-Library run metadata
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read run metadata only
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.inspect_aborted_cv_library_metadata
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv-library-run-metadata
+          path: cv-library-run-metadata.json
+          retention-days: 7
