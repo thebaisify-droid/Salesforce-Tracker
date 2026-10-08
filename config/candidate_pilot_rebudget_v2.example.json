@@ -1,0 +1,33 @@
+{
+  "schema": "candidate-pilot-rebudget/v2",
+  "status": "PROPOSAL_ONLY_BLOCKED",
+  "paid_acquisition_enabled": false,
+  "additional_spend_approved_usd": 0,
+  "prior_failure": {
+    "source": "CV-Library",
+    "run_id": "vYVznbV67JxKMBqbo",
+    "reason": "MAX_TOTAL_CHARGE",
+    "previous_cap_usd": 0.1,
+    "reported_usage_usd": 0.10063571206890212
+  },
+  "proposed_caps_usd": {
+    "CV-Library": 0.3,
+    "Totaljobs": 0.2,
+    "Indeed UK": 0.15,
+    "JobServe": 0.15
+  },
+  "proposed_total_usd": 0.8,
+  "maximum_results_per_source": 10,
+  "shared_monthly_account_limit_usd": 19,
+  "protected_salesforce_headroom_usd": 8,
+  "latest_verified_usage_usd": 6.12,
+  "latest_verified_usage_as_of": "2026-10-08",
+  "approval_conditions": [
+    "Recheck current Apify monthly usage and independently verify unreserved headroom",
+    "Confirm CV-Library minimum viable cost and billing model; $0.30 is a proposal, not a proven sufficient cap",
+    "Confirm other source charges and compatible input values",
+    "Reserve the full $0.80 within the shared budget without jeopardizing scheduled Salesforce acquisitions",
+    "Require a new explicit approval; previous RUN_CAPPED_PILOT approval is invalid"
+  ],
+  "runtime_policy": "Existing pilot remains disabled; do not alter PAID_PILOT_ENABLED, existing CAPS, or deploy a new paid workflow in this PR."
+}
