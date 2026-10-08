@@ -13,7 +13,7 @@ class ActorSchemaEvidenceTests(unittest.TestCase):
         for actor in evidence["actors"]:
             self.assertEqual(actor["saved_task_actor_id"],expected[actor["source"]])
             self.assertTrue(actor["saved_task_actor_id_observed"])
-            self.assertFalse(actor["actor_id_match_verified"])
-            self.assertFalse(actor["field_support_for_actual_saved_task_verified"])
+            self.assertTrue(actor["actor_id_match_verified"])
+            self.assertTrue(actor["field_support_for_actual_saved_task_verified"])\n            self.assertFalse(actor["broad_role_search_execution_verified"])\n            self.assertFalse(actor["paid_charging_verified"])
             self.assertTrue(actor["documentation_url"].startswith("https://apify.com/"))
 if __name__=="__main__":unittest.main()
