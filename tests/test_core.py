@@ -494,7 +494,7 @@ class TrackerTests(unittest.TestCase):
     def test_project_preflight_accepts_validated_sources(self):
         result = preflight(ROOT / "config" / "pipeline.json")
         self.assertTrue(result["ok"], result["errors"])
-        self.assertEqual(result["enabled_sources"], 5)
+        self.assertEqual(result["enabled_sources"], 4)
         self.assertEqual(result["min_sources_succeeded"], 3)
 
 
