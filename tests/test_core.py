@@ -193,24 +193,24 @@ class TrackerTests(unittest.TestCase):
 
     def test_jobserve_shape_normalizes(self):
         record = normalize({
-            "id": "JS-123",
+            "reference": "JS-123",
             "title": "Salesforce Technical Architect",
-            "company_name": "Example Recruitment",
-            "location": "London",
-            "job_type": "Contract",
+            "company": "Example Recruitment",
+            "location": "London, UK",
+            "jobType": "Contract",
             "salary_min": 650,
             "salary_max": 750,
             "salary_currency": "GBP",
             "salary_period": "day",
-            "posted_at": "2026-10-08T00:00:00Z",
-            "description_full": "Salesforce architecture across Service Cloud and Experience Cloud.",
-            "job_url": "https://www.jobserve.com/gb/en/JobLanding.aspx?jid=JS-123"
+            "postedDateTime": "2026-10-08",
+            "description": "Salesforce architecture across Service Cloud and Experience Cloud.",
+            "url": "https://www.jobserve.com/gb/en/hABC1"
         }, "source_5")
         self.assertEqual(record["external_id"], "JS-123")
         self.assertEqual(record["advertiser"], "Example Recruitment")
         self.assertEqual(record["contract_type"], "Contract")
         self.assertEqual(record["salary_min"], 650.0)
-        self.assertEqual(record["posted_at"], "2026-10-08T00:00:00Z")
+        self.assertEqual(record["posted_at"], "2026-10-08")
 
     def test_reed_shape_normalizes(self):
         record = normalize({
@@ -335,6 +335,34 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(vacancy["salary"]["period"], "day")
             self.assertNotIn("description", vacancy)
             self.assertNotIn("raw_json", vacancy)
+
+    def test_store_cross_board_deduplicates_location_variants(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            a = normalize({
+                "id":"tj-2",
+                "title":"Salesforce Developer (Financial Services)",
+                "company":"Morson Edge",
+                "location":"Tower Hill, City of London (EC3), E1W 1WY",
+                "datePosted":"2026-10-06T10:00:00Z",
+                "salary":{"rawText":"£600 - 700 per day","currency":"GBP","period":"day"},
+                "description":"Salesforce Financial Services Cloud implementation.",
+                "url":"https://www.totaljobs.com/job/example-1"
+            }, "source_2")
+            b = normalize({
+                "reference":"js-2",
+                "title":"Salesforce Developer (Financial Services)",
+                "company":"Morson Edge",
+                "location":"London, UK",
+                "postedDateTime":"2026-10-06",
+                "description":"Different board copy for the same Salesforce Financial Services Cloud contract.",
+                "url":"https://www.jobserve.com/gb/en/hXYZ"
+            }, "source_5")
+            with Store(db) as store:
+                self.assertEqual(store.upsert(a), "inserted")
+                self.assertEqual(store.upsert(b), "unchanged")
+                self.assertEqual(store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0], 1)
+                self.assertEqual(store.conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0], 2)
 
     def test_store_cross_board_deduplicates_exact_title_employer_location(self):
         with tempfile.TemporaryDirectory() as d:
