@@ -1,0 +1,137 @@
+name: Activate lifecycle production state
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/activate-lifecycle-production.yml"
+
+concurrency:
+  group: salesforce-daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      actions: read
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore current persistent tracker state
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Preflight lifecycle-enabled pipeline
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --check
+
+      - name: Run lifecycle-enabled production refresh
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --force
+
+      - name: Verify lifecycle persistence
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+
+          latest=json.loads(Path("state/latest_success.json").read_text())
+          run_id=latest["run_id"]
+          report_path=Path("runs")/run_id/"lifecycle_report.json"
+          if not report_path.exists():
+              raise SystemExit(f"missing lifecycle report: {report_path}")
+          lifecycle=json.loads(report_path.read_text())
+          if lifecycle.get("schema")!="salesforce-lifecycle/v1" or lifecycle.get("passed") is not True:
+              raise SystemExit("invalid lifecycle report")
+          if lifecycle.get("dry_run") is not False:
+              raise SystemExit("production lifecycle unexpectedly ran in dry-run mode")
+
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          cols={row[1] for row in conn.execute("PRAGMA table_info(vacancies)")}
+          required={"lifecycle_status","lifecycle_reason","lifecycle_updated_at","last_verified_at","unavailable_streak","unavailable_first_seen_at"}
+          missing=sorted(required-cols)
+          if missing:
+              raise SystemExit(f"missing lifecycle columns: {missing}")
+          checks=conn.execute("SELECT COUNT(*) FROM lifecycle_checks").fetchone()[0]
+          statuses=dict(conn.execute("SELECT lifecycle_status,COUNT(*) FROM vacancies GROUP BY lifecycle_status").fetchall())
+          active=conn.execute("SELECT COUNT(*) FROM vacancies WHERE is_active=1").fetchone()[0]
+          invalid=conn.execute("SELECT COUNT(*) FROM vacancies WHERE lifecycle_status NOT IN ('ACTIVE','POSSIBLY_EXPIRED','CONFIRMED_EXPIRED')").fetchone()[0]
+          conn.close()
+
+          if invalid:
+              raise SystemExit(f"invalid lifecycle statuses: {invalid}")
+          if lifecycle.get("candidates_selected",0) > 0 and checks < lifecycle["candidates_selected"]:
+              raise SystemExit(f"lifecycle evidence missing: {checks} checks for {lifecycle['candidates_selected']} candidates")
+
+          result={
+              "run_id":run_id,
+              "active_vacancies":active,
+              "lifecycle_checks":checks,
+              "lifecycle_statuses":statuses,
+              "candidates_selected":lifecycle.get("candidates_selected"),
+              "observations":lifecycle.get("observations"),
+              "transitions":lifecycle.get("transitions"),
+              "quality_passed":latest["summary"].get("quality_passed"),
+              "sources_succeeded":latest["summary"].get("sources_succeeded"),
+          }
+          if result["quality_passed"] is not True:
+              raise SystemExit("quality gate did not pass")
+          Path("state/lifecycle_activation.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Write verified persistent state manifest
+        run: python -m scripts.state_snapshot --root . --database "$TRACKER_DATABASE_PATH" --write-manifest state/state_manifest.json
+
+      - name: Upload lifecycle-enabled tracker state
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracker-state
+          path: |
+            data/salesforce_tracker.db
+            state/
+            dashboard/data.json
+            dashboard/live-data.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Publish lifecycle-aware dashboard JSON
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp dashboard/live-data.json /tmp/live-data.json
+          git config user.name "salesforce-tracker-bot"
+          git config user.email "salesforce-tracker-bot@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B dashboard-publish origin/main
+          cp /tmp/live-data.json dashboard/live-data.json
+          git add dashboard/live-data.json
+          if git diff --cached --quiet; then
+            echo "Dashboard JSON unchanged."
+          else
+            git commit -m "Update lifecycle-aware dashboard data [skip ci]"
+            git push origin HEAD:main
+          fi
+
+      - name: Upload lifecycle activation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lifecycle-activation-${{ github.run_id }}
+          path: |
+            state/*.json
+            runs/**/lifecycle_report.json
+            runs/**/quality_report.json
+            dashboard/*.json
+          if-no-files-found: warn
+          retention-days: 30
