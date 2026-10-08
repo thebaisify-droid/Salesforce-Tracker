@@ -47,7 +47,6 @@ STRONG_PLATFORM_PHRASES = (
     "omnistudio",
     "apex",
     "mulesoft",
-    "agentforce",
 )
 
 CONTEXTUAL_PHRASES = (
