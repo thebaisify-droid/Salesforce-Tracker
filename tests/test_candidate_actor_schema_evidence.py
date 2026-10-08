@@ -9,7 +9,10 @@ class ActorSchemaEvidenceTests(unittest.TestCase):
         self.assertFalse(evidence["paid_runs_authorised"])
         self.assertFalse(evidence["task_mutations_authorised"])
         self.assertEqual({x["source"] for x in evidence["actors"]},{"CV-Library","Totaljobs"})
+        expected={"CV-Library":"T0edvAvD8lVcvc58G","Totaljobs":"RO7aokuNWfmP0kV0G"}
         for actor in evidence["actors"]:
+            self.assertEqual(actor["saved_task_actor_id"],expected[actor["source"]])
+            self.assertTrue(actor["saved_task_actor_id_observed"])
             self.assertFalse(actor["actor_id_match_verified"])
             self.assertFalse(actor["field_support_for_actual_saved_task_verified"])
             self.assertTrue(actor["documentation_url"].startswith("https://apify.com/"))
