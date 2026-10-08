@@ -1,0 +1,60 @@
+{
+  "checked_on": "2026-10-08",
+  "status": "PUBLIC_PRICING_VERIFIED_ACCOUNT_PRICING_NOT_VERIFIED",
+  "sources": [
+    {
+      "source": "CV-Library",
+      "actor": "blackfalcondata/cv-library-scraper",
+      "published_from_usd_per_1000": 1.5,
+      "run_start_event_usd": 0.005,
+      "per_result_event_usd": 0.0015,
+      "other_costs_possible": true,
+      "url": "https://apify.com/blackfalcondata/cv-library-scraper"
+    },
+    {
+      "source": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "published_from_usd_per_1000": 1.2,
+      "run_start_event_usd": null,
+      "per_result_event_usd": null,
+      "other_costs_possible": true,
+      "url": "https://apify.com/abotapi/totaljobs-com-scraper"
+    },
+    {
+      "source": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "published_from_usd_per_1000": 2.8,
+      "run_start_event_usd": null,
+      "per_result_event_usd": null,
+      "other_costs_possible": true,
+      "url": "https://apify.com/wildorigins/indeed-jobs"
+    },
+    {
+      "source": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "published_from_usd_per_1000": 2.5,
+      "run_start_event_usd": null,
+      "per_result_event_usd": null,
+      "other_costs_possible": true,
+      "url": "https://apify.com/solidcode/jobserve-scraper/api"
+    }
+  ],
+  "account_specific_event_prices_verified": false,
+  "account_specific_platform_fees_verified": false,
+  "cv_library_historical_run": {
+    "run_id": "vYVznbV67JxKMBqbo",
+    "result": "ABORTED_MAX_TOTAL_CHARGE",
+    "cap_usd": 0.1,
+    "reported_usage_usd": 0.10063571206890212
+  },
+  "last_account_usage_snapshot": {
+    "usage_usd": 6.12,
+    "monthly_limit_usd": 19,
+    "remaining_usd": 12.88,
+    "github_run_id": 37802719741,
+    "as_of": "2026-10-08T15:40:54Z"
+  },
+  "fresh_account_usage_check_required": true,
+  "approved_to_execute": false,
+  "warning": "Advertised starting rates do not prove cost of a run. Existing CV-Library run exhausted $0.10. Proposed $0.30 cap is not proven sufficient. Do not restart paid acquisition."
+}
