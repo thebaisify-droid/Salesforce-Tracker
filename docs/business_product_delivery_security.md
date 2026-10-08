@@ -1,7 +1,7 @@
 # Business, Product, Delivery & Cyber Security — classifier-only proposal
 
 This branch contains an **inactive** role taxonomy and candidate relevance rules.
-It does **not** connect to Apify, add sources, change any existing collectors,
+It does **not** connect to Apify, launch source jobs, change any existing collectors,
 change the Salesforce inclusion gate, or publish a second dashboard.
 
 ## Scope
@@ -35,7 +35,7 @@ product/service/reporting titles are placed in the review queue.
 ## Safety invariants
 
 - `config/business_product_delivery_security.example.json` explicitly disables
-  collection and publishing, and defines **no sources**.
+  collection and publishing, and defines **no executable sources**.
 - No scheduled GitHub Action or live dataset is created.
 - Existing Salesforce taxonomy, pipeline config, and collector logic stay unchanged.
 
@@ -152,3 +152,27 @@ and avoid committing private exports or API tokens to GitHub.
 Important: Salesforce-specific datasets may contain very few or no vacancies
 for the wider market. This is a recovery pathway, not a substitute for a
 representative UK-wide acquisition sample.
+
+## Core source policy: JobServe
+
+The new Business, Product, Delivery & Security tracker has **four designated
+core UK vacancy sources**: CV-Library, Totaljobs, Reed, and **JobServe**.
+JobServe is not optional enrichment for this new tracker. The readiness gate
+requires independently reviewed labelled vacancies from all four sources
+before release review may pass.
+
+This core designation is a **policy and QA configuration only**:
+- No JobServe Actor, Task, API request or scheduled acquisition is enabled.
+- The existing Salesforce daily-refresh configuration is unchanged, including
+  its independent three-required-source policy and any JobServe cadence.
+- Source reliability is evidence-based: assess current UK role coverage,
+  deduplication, posting timestamps, descriptions, and observed cost per
+  relevant unique vacancy.
+- The combined Apify spending ceiling remains **$19/month**; JobServe is
+  not assigned a new paid allocation without an explicit budget review.
+- When future acquisition is proposed, failures for a *required* core source
+  must be surfaced as a degraded/unpublishable refresh rather than treated
+  as a successful zero-vacancy scrape.
+
+The release-readiness report now fails with
+`missing_core_source_review_coverage` if JobServe evidence is absent.
