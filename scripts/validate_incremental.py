@@ -45,6 +45,7 @@ def main() -> int:
     report_path = Path(args.report)
     raw_dir = run_dir / "raw"
     metrics_path = run_dir / "metrics.json"
+    lifecycle_path = run_dir / "lifecycle_report.json"
 
     expected_sources = args.expected_sources
     if expected_sources is None:
@@ -93,6 +94,28 @@ def main() -> int:
         metrics = None
 
     checks["metrics_present"] = check_result(isinstance(metrics, dict), bool(isinstance(metrics, dict)))
+
+    try:
+        lifecycle = json.loads(lifecycle_path.read_text(encoding="utf-8"))
+    except Exception:
+        lifecycle = None
+    lifecycle_valid = (
+        isinstance(lifecycle, dict)
+        and lifecycle.get("schema") == "salesforce-lifecycle/v1"
+        and lifecycle.get("passed") is True
+        and lifecycle.get("dry_run") is False
+    )
+    checks["lifecycle_assurance"] = check_result(
+        lifecycle_valid,
+        {
+            "present": isinstance(lifecycle, dict),
+            "schema": lifecycle.get("schema") if isinstance(lifecycle, dict) else None,
+            "checked": lifecycle.get("candidates_selected") if isinstance(lifecycle, dict) else None,
+            "observations": lifecycle.get("observations") if isinstance(lifecycle, dict) else None,
+            "transitions": lifecycle.get("transitions") if isinstance(lifecycle, dict) else None,
+        },
+        "lifecycle report must be a successful non-dry-run salesforce-lifecycle/v1 report",
+    )
     missing_metrics = []
     invalid_counts = []
     if isinstance(metrics, dict):
