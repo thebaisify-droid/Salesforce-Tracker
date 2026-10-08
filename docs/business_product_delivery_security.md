@@ -124,3 +124,31 @@ source authenticity, sample selection, cross-board duplicate handling, and
 representativeness. At present no independently labelled UK market sample
 has been supplied or verified. The report always sets
 `publication_approved=false` and `real_world_accuracy_validated=false`.
+
+## Optional read-only retrieval from an existing Apify dataset
+
+If a pre-existing dataset from a legitimate, already-completed collection run
+contains relevant records, its **dataset ID** can be used with:
+
+```sh
+APIFY_TOKEN=... python -m scripts.read_existing_apify_dataset \
+  --dataset-id EXISTING_DATASET_ID \
+  --source Reed \
+  --limit 100 \
+  --output runs/reed_existing_candidate_export.json
+python -m scripts.prepare_candidate_review \
+  --input runs/reed_existing_candidate_export.json \
+  --output runs/reed_candidate_review.csv
+```
+
+The intake uses an authenticated **GET** on
+`/v2/datasets/{dataset_id}/items`, never an Actor or Task run endpoint.
+It does not change scheduled acquisition, production dashboards or the
+Salesforce pipeline. It does not imply the records have been independently
+verified, or that reading the API is free of any platform/API charges; review
+your Apify plan before using it. Use only datasets you are authorised to access
+and avoid committing private exports or API tokens to GitHub.
+
+Important: Salesforce-specific datasets may contain very few or no vacancies
+for the wider market. This is a recovery pathway, not a substitute for a
+representative UK-wide acquisition sample.
