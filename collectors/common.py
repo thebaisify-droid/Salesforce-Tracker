@@ -224,6 +224,10 @@ def _collect_lightcast_uk(cfg: dict[str, Any], values: dict[str, str]) -> list[d
 
 
 
+class CollectionSkipped(Exception):
+    """Acquisition intentionally skipped; no provider request was launched."""
+
+
 def _budget_authorize(slot: int, cfg: dict[str, Any]) -> bool:
     """Reserve the *maximum* possible cost, never an optimistic cost estimate.
 
@@ -304,7 +308,7 @@ def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
         return _collect_lightcast_uk(cfg, values)
 
     if provider in ("apify_actor", "apify_task") and not _budget_authorize(slot, cfg):
-        return []
+        raise CollectionSkipped(f"source_{slot}: skipped by acquisition schedule or monthly budget")
 
     if provider == "apify_actor":
         actor_id = _apify_named_ref(str(_subst(cfg.get("actor_id") or cfg.get("actor_id_env", "env:APIFY_ACTOR_ID"), values)))
@@ -362,6 +366,12 @@ def run_slot(slot: int) -> int:
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps({"source": slot, "records": len(records), "output": str(output)}))
+        return 0
+    except CollectionSkipped as exc:
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text("[]\\n", encoding="utf-8")
+        print("COLLECTION_SKIPPED: " + str(exc))
         return 0
     except Exception as exc:
         print(f"source_{slot} collection failed: {exc}", file=sys.stderr)
