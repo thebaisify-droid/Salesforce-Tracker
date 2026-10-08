@@ -47,8 +47,8 @@
       "trust_tier": "B",
       "purpose": "Secondary UK IT/contract Salesforce vacancy enrichment and corroboration",
       "access": "Apify Actor via existing APIFY_TOKEN",
-      "status": "validation_pending"
+      "status": "validated_enrichment"
     }
   ],
-  "assurance_note": "CV-Library, Totaljobs and Reed are explicit required core sources. Indeed UK and JobServe are non-blocking enrichment sources. All five boards are separate datasets; Apify remains a shared ingestion dependency."
+  "assurance_note": "CV-Library, Totaljobs and Reed are explicit required core sources. Indeed UK and JobServe are validated non-blocking enrichment sources. All five boards are separate datasets; Apify remains a shared ingestion dependency."
 }
