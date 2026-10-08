@@ -11,6 +11,7 @@ from pathlib import Path
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
+from scripts.extract_candidate_evidence import extract
 
 CAPS={"Totaljobs":0.20,"Indeed UK":0.15,"JobServe":0.15}
 TASKS={"CV-Library":"develop_ify/cv-library-scraper-task","Totaljobs":"develop_ify/totaljobs-com-scraper-task"}
@@ -19,7 +20,7 @@ LIMIT=10
 SAFE_RESERVE_FOR_EXISTING_TRACKER=8.00
 # The prior CV-Library run aborted at its $0.10 charge cap. Fail closed until
 # observed charging and a revised pilot allocation have been separately reviewed.
-PAID_PILOT_ENABLED=True
+PAID_PILOT_ENABLED=False
 BLOCKED_SOURCE="CV-Library"
 
 def request_json(url,token,*,body=None):
@@ -109,14 +110,11 @@ def run(*,token,execute,approval,output):
         except Exception as exc:
             raise RuntimeError(f"Pilot stopped at {source}: {exc}; other sources not attempted") from None
         if not isinstance(response,list): raise RuntimeError(source+" returned non-list response")
-        from urllib.parse import urlsplit
         accepted=[]
         for rec in response[:LIMIT]:
-            if not isinstance(rec,dict): continue
-            title=next((rec.get(k) for k in ("title","jobTitle","job_title") if isinstance(rec.get(k),str)),None)
-            link=next((rec.get(k) for k in ("url","jobUrl","job_url","link") if isinstance(rec.get(k),str)),None)
-            if title and link and urlsplit(link).scheme in ("https","http"):
-                accepted.append({"title":title[:200],"url":link[:1000],"source":source})
+            extracted=extract(rec,source)
+            if extracted is not None:
+                accepted.append(extracted)
         results.append({"source":source,"max_usd":CAPS[source],"raw_count":len(response),
                         "accepted_count":len(accepted),"vacancies":accepted})
         remaining_proposed=round(remaining_proposed-CAPS[source],2)
