@@ -1,0 +1,23 @@
+name: Diagnose historical CV-Library abort (read-only)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect existing run and logs without starting actors
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.classify_cv_library_abort
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv-library-abort-signals
+          path: cv-library-abort-signals.json
+          retention-days: 7
