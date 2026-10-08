@@ -182,3 +182,21 @@ The release-readiness report now fails with
 For the **new** multi-family tracker, the proposed core sources are **CV-Library, Totaljobs, Indeed UK and JobServe**. **Reed is optional enrichment**. The earlier designation of Reed as core is superseded. The release-readiness checker requires labelled evidence from all four current core sources; Reed evidence is useful but not mandatory. This is a coverage hypothesis, not a validated assertion that Indeed supplies more unique relevant vacancies simply because its website has greater traffic. Assess actual incremental relevant roles, unique vacancy contribution, freshness, field completeness, duplication, and cost per accepted unique job before activation.
 
 This is configuration and QA policy only. No new Indeed Actor executions, JobServe executions, cron jobs, live feed deployments or changes to the Salesforce tracker are made. The existing shared $19/month ceiling is not increased.
+
+## Manual Task inspection workflow — staged, not executed
+
+The feature branch now contains
+`.github/workflows/candidate-readonly-apify-inspection.yml` with **manual
+workflow_dispatch only**, least-privilege `contents: read`, existing
+`APIFY_TOKEN` secret, a strict redacted-report validator and seven-day
+artifact retention. It is intentionally **not scheduled** and launches no
+Apify Actor/Task runs.
+
+**GitHub limitation:** workflow_dispatch generally requires the workflow
+file to exist on the default branch before it can be manually dispatched.
+This draft-branch workflow cannot be assumed runnable yet. Do not merge
+the full PR just to activate inspection; either run the read-only
+Python inspector from an authorised local environment, or stage a separate,
+reviewed inspection-only workflow on the default branch. Never print or
+commit raw Apify Task input or token values. The report lists field names
+only and still does **not** validate whether query overrides are supported.
