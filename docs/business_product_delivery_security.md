@@ -76,3 +76,29 @@ collect a representative, labelled and auditable real vacancy evaluation set,
 including ambiguous cyber/physical security ads, cross-family titles, recruitment
 agency duplicates and descriptions missing from source responses. Independently
 review disagreements and measure performance separately for both tracks.
+
+## Preparing real-world review evidence — acquisition remains disabled
+
+The repository itself currently has no raw cross-market vacancy sample.
+When a lawful real-source export becomes available, prepare a **blind-labelling**
+CSV (prediction columns are provided separately from still-empty human labels):
+
+```sh
+python -m scripts.prepare_candidate_review \
+  --input /path/to/real-uk-job-board-export.json \
+  --output runs/candidate_review_unlabelled.csv \
+  --max-per-stratum 20
+```
+
+This creates deterministic samples by source and predicted track, including
+excluded/ambiguous cases, and retains source URL evidence. It removes only
+identical canonical URLs, not cross-board lookalikes. **Do not treat predicted
+labels as ground truth.** Have a reviewer complete `expected_included`,
+`expected_family`, reviewer name/date and evidence notes after reviewing the
+full advertisement. Resolve disagreements and independently check a subset.
+
+Sampling caveat: balanced/stratified samples evaluate different error types but
+do not estimate population-wide job market volumes or unbiased aggregate
+precision/recall. Supplement with a random sample of the full acquisition frame
+before release. The existing synthetic assurance report is not a deployment gate
+for real-world quality.
