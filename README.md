@@ -50,3 +50,10 @@ Each run restores the latest verified `tracker-state` artifact before processing
 ## Secrets
 
 Never commit `.env`, API keys, tokens or database credentials. Store runtime secrets in GitHub Actions Secrets or the deployment environment.
+
+
+## Vacancy lifecycle assurance
+
+Vacancies use a conservative three-state lifecycle: `ACTIVE` → `POSSIBLY_EXPIRED` → `CONFIRMED_EXPIRED`.
+
+Absence from the 72-hour incremental search is never expiry evidence. Older active vacancies are rotated through direct job-page checks. A single explicit unavailable response only marks a vacancy `POSSIBLY_EXPIRED`; two separate explicit unavailable checks at least 12 hours apart are required before it becomes `CONFIRMED_EXPIRED` and leaves active-market KPIs. HTTP blocks, timeouts and ambiguous responses are inconclusive and cannot expire a vacancy. Reappearance in any source immediately reactivates it.

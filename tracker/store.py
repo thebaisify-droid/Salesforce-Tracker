@@ -130,6 +130,45 @@ class Store:
         self.conn.row_factory = sqlite3.Row
         self.conn.execute("PRAGMA foreign_keys = ON")
         self.conn.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
+        self._migrate_schema()
+
+    def _migrate_schema(self) -> None:
+        columns = {
+            row["name"]
+            for row in self.conn.execute("PRAGMA table_info(vacancies)").fetchall()
+        }
+        additions = {
+            "lifecycle_status": "TEXT NOT NULL DEFAULT 'ACTIVE'",
+            "lifecycle_reason": "TEXT",
+            "lifecycle_updated_at": "TEXT",
+            "last_verified_at": "TEXT",
+            "unavailable_streak": "INTEGER NOT NULL DEFAULT 0",
+            "unavailable_first_seen_at": "TEXT",
+        }
+        for name, definition in additions.items():
+            if name not in columns:
+                self.conn.execute(f"ALTER TABLE vacancies ADD COLUMN {name} {definition}")
+        self.conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_vacancies_lifecycle_status ON vacancies(lifecycle_status)"
+        )
+        self.conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS lifecycle_checks (
+              check_id INTEGER PRIMARY KEY AUTOINCREMENT,
+              vacancy_id INTEGER NOT NULL REFERENCES vacancies(vacancy_id) ON DELETE CASCADE,
+              checked_at TEXT NOT NULL,
+              result TEXT NOT NULL,
+              evidence_type TEXT NOT NULL,
+              http_status INTEGER,
+              checked_url TEXT,
+              final_url TEXT,
+              detail TEXT
+            )
+            """
+        )
+        self.conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_lifecycle_checks_vacancy ON lifecycle_checks(vacancy_id, checked_at)"
+        )
 
     def close(self) -> None:
         self.conn.commit()
@@ -218,6 +257,21 @@ class Store:
                 )
                 outcome = "updated"
 
+        self.conn.execute(
+            """
+            UPDATE vacancies SET
+              is_active=1,
+              lifecycle_status='ACTIVE',
+              lifecycle_reason='seen_in_source',
+              lifecycle_updated_at=?,
+              last_verified_at=?,
+              unavailable_streak=0,
+              unavailable_first_seen_at=NULL
+            WHERE vacancy_id=?
+            """,
+            (now, now, vacancy_id),
+        )
+
         source_name = str(record.get("source_name") or "unknown")
         source_record_id = str(record.get("source_record_id") or record["dedupe_key"])
         source_url = record.get("job_url")
@@ -235,6 +289,114 @@ class Store:
             (source_name, source_record_id, vacancy_id, source_url, now, now, raw_hash),
         )
         return outcome
+
+    def record_lifecycle_observation(
+        self,
+        vacancy_id: int,
+        *,
+        result: str,
+        evidence_type: str,
+        checked_at: str,
+        checked_url: str | None = None,
+        final_url: str | None = None,
+        http_status: int | None = None,
+        detail: str | None = None,
+        confirmations: int = 2,
+        min_confirmation_hours: float = 12.0,
+    ) -> str:
+        result = result.upper()
+        if result not in {"AVAILABLE", "UNAVAILABLE", "INCONCLUSIVE"}:
+            raise ValueError(f"unsupported lifecycle result: {result}")
+
+        current = self.conn.execute(
+            """
+            SELECT lifecycle_status, unavailable_streak, unavailable_first_seen_at
+            FROM vacancies WHERE vacancy_id=?
+            """,
+            (vacancy_id,),
+        ).fetchone()
+        if current is None:
+            raise ValueError(f"unknown vacancy_id: {vacancy_id}")
+
+        self.conn.execute(
+            """
+            INSERT INTO lifecycle_checks(
+              vacancy_id, checked_at, result, evidence_type, http_status,
+              checked_url, final_url, detail
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                vacancy_id, checked_at, result, evidence_type, http_status,
+                checked_url, final_url, detail,
+            ),
+        )
+
+        if result == "AVAILABLE":
+            self.conn.execute(
+                """
+                UPDATE vacancies SET
+                  is_active=1,
+                  lifecycle_status='ACTIVE',
+                  lifecycle_reason=?,
+                  lifecycle_updated_at=?,
+                  last_verified_at=?,
+                  unavailable_streak=0,
+                  unavailable_first_seen_at=NULL
+                WHERE vacancy_id=?
+                """,
+                (evidence_type, checked_at, checked_at, vacancy_id),
+            )
+            return "ACTIVE"
+
+        if result == "INCONCLUSIVE":
+            self.conn.execute(
+                """
+                UPDATE vacancies SET
+                  last_verified_at=?,
+                  unavailable_streak=0,
+                  unavailable_first_seen_at=NULL
+                WHERE vacancy_id=?
+                """,
+                (checked_at, vacancy_id),
+            )
+            return str(current["lifecycle_status"] or "ACTIVE")
+
+        streak = int(current["unavailable_streak"] or 0) + 1
+        first_seen = current["unavailable_first_seen_at"] or checked_at
+        confirm = False
+        try:
+            first_dt = datetime.fromisoformat(str(first_seen).replace("Z", "+00:00"))
+            checked_dt = datetime.fromisoformat(str(checked_at).replace("Z", "+00:00"))
+            elapsed_hours = (checked_dt - first_dt).total_seconds() / 3600
+            confirm = streak >= confirmations and elapsed_hours >= min_confirmation_hours
+        except ValueError:
+            confirm = False
+
+        status = "CONFIRMED_EXPIRED" if confirm else "POSSIBLY_EXPIRED"
+        self.conn.execute(
+            """
+            UPDATE vacancies SET
+              is_active=?,
+              lifecycle_status=?,
+              lifecycle_reason=?,
+              lifecycle_updated_at=?,
+              last_verified_at=?,
+              unavailable_streak=?,
+              unavailable_first_seen_at=?
+            WHERE vacancy_id=?
+            """,
+            (
+                0 if confirm else 1,
+                status,
+                evidence_type,
+                checked_at,
+                checked_at,
+                streak,
+                first_seen,
+                vacancy_id,
+            ),
+        )
+        return status
 
     def begin_run(self, run_id: str, master_version: str, taxonomy_version: str) -> None:
         self.conn.execute(
@@ -269,6 +431,9 @@ class Store:
         review = self.conn.execute(
             "SELECT SUM(role_review_required), SUM(sector_review_required) FROM vacancies WHERE is_active=1"
         ).fetchone()
+        lifecycle_rows = self.conn.execute(
+            "SELECT lifecycle_status label, COUNT(*) value FROM vacancies GROUP BY lifecycle_status ORDER BY value DESC, label"
+        ).fetchall()
         latest = self.conn.execute(
             "SELECT run_id, started_at, finished_at, status, inserted_rows, updated_rows, unchanged_rows, rejected_rows, master_data_version, role_taxonomy_version FROM refresh_runs ORDER BY started_at DESC LIMIT 1"
         ).fetchone()
@@ -291,6 +456,7 @@ class Store:
               employment_type, contract_type,
               salary_min, salary_max, salary_currency, salary_period,
               job_url, posted_at, first_seen_at, last_seen_at,
+              lifecycle_status, lifecycle_reason, lifecycle_updated_at, last_verified_at,
               role_review_required, sector_review_required
             FROM vacancies
             WHERE is_active=1
@@ -335,12 +501,29 @@ class Store:
                 "posted_at": row["posted_at"],
                 "first_seen_at": row["first_seen_at"],
                 "last_seen_at": row["last_seen_at"],
+                "lifecycle": {
+                    "status": row["lifecycle_status"] or "ACTIVE",
+                    "reason": row["lifecycle_reason"],
+                    "updated_at": row["lifecycle_updated_at"],
+                    "last_verified_at": row["last_verified_at"],
+                },
                 "review": {
                     "role": bool(row["role_review_required"]),
                     "sector": bool(row["sector_review_required"]),
                 },
                 "sources": sources_by_vacancy.get(vacancy_id, []),
             })
+
+        inactive_vacancies = [
+            dict(row)
+            for row in self.conn.execute(
+                """
+                SELECT job_url url, display_title title, location, posted_at
+                FROM vacancies
+                WHERE lifecycle_status='CONFIRMED_EXPIRED'
+                """
+            ).fetchall()
+        ]
 
         return {
             "active_vacancies": int(total),
@@ -356,6 +539,8 @@ class Store:
                 for row in source_rows
             ],
             "review_queue": {"role": int(review[0] or 0), "sector": int(review[1] or 0)},
+            "lifecycle": {str(row["label"]): int(row["value"]) for row in lifecycle_rows},
+            "_inactive_vacancies": inactive_vacancies,
             "latest_run": dict(latest) if latest else None,
             "vacancies": vacancies,
         }

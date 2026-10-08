@@ -77,6 +77,7 @@ def baseline_vacancy(row: dict[str, Any]) -> dict[str, Any]:
         "posted_at": row.get("posted_at"),
         "first_seen_at": row.get("posted_at"),
         "last_seen_at": row.get("posted_at"),
+        "lifecycle": {"status": "ACTIVE", "reason": "validated_baseline", "updated_at": None, "last_verified_at": None},
         "review": {"role": False, "sector": sector in {"Unknown", "Unresolved"}},
         "sources": _source_items(row),
         "baseline": True,
@@ -118,12 +119,17 @@ def _merge_sources(left: list[dict[str, Any]], right: list[dict[str, Any]]) -> l
 def merge_with_baseline(live_snapshot: dict[str, Any], baseline: dict[str, Any]) -> dict[str, Any]:
     by_key: dict[str, dict[str, Any]] = {}
     baseline_keys: set[str] = set()
+    excluded_keys = {
+        _key(item.get("url"), item.get("title"), item.get("location"), item.get("posted_at"))
+        for item in (live_snapshot.get("_inactive_vacancies") or [])
+    }
 
     for row in baseline.get("rows") or []:
         vacancy = baseline_vacancy(row)
         key = _key(vacancy.get("url"), vacancy.get("title"), vacancy.get("location"), vacancy.get("posted_at"))
-        by_key[key] = vacancy
         baseline_keys.add(key)
+        if key not in excluded_keys:
+            by_key[key] = vacancy
 
     for raw in live_snapshot.get("vacancies") or []:
         live = dict(raw)
@@ -146,6 +152,7 @@ def merge_with_baseline(live_snapshot: dict[str, Any], baseline: dict[str, Any])
             base["advertiser"] = live.get("advertiser") or base.get("advertiser")
             base["advertiser_type"] = live.get("advertiser_type") or base.get("advertiser_type")
             base["review"] = live.get("review") or base.get("review")
+            base["lifecycle"] = live.get("lifecycle") or base.get("lifecycle")
             salary = live.get("salary") or {}
             if salary.get("min") is not None or salary.get("max") is not None:
                 base["salary"] = salary
@@ -172,6 +179,10 @@ def merge_with_baseline(live_snapshot: dict[str, Any], baseline: dict[str, Any])
     review_role = sum(bool((item.get("review") or {}).get("role")) for item in vacancies)
     review_sector = sum(bool((item.get("review") or {}).get("sector")) for item in vacancies)
 
+    lifecycle_counts = dict(live_snapshot.get("lifecycle") or {})
+    if not lifecycle_counts:
+        lifecycle_counts = dict(Counter((item.get("lifecycle") or {}).get("status", "ACTIVE") for item in vacancies))
+
     baseline_date = baseline.get("baseline_date")
     post_baseline_new = sum(
         1
@@ -191,14 +202,17 @@ def merge_with_baseline(live_snapshot: dict[str, Any], baseline: dict[str, Any])
             for key, value in source_counts.most_common()
         ],
         "review_queue": {"role": review_role, "sector": review_sector},
+        "lifecycle": {str(key): int(value) for key, value in lifecycle_counts.items()},
         "vacancies": vacancies,
         "baseline": {
             "date": baseline_date,
             "frozen_baseline": int(baseline.get("frozen_baseline") or 0),
             "late_discoveries": int(baseline.get("late_discoveries") or 0),
-            "confirmed_expired": int(baseline.get("confirmed_expired") or 0),
+            "confirmed_expired": int(lifecycle_counts.get("CONFIRMED_EXPIRED", 0) or 0),
+            "possibly_expired": int(lifecycle_counts.get("POSSIBLY_EXPIRED", 0) or 0),
             "post_baseline_new": post_baseline_new,
             "master_rows": int(baseline.get("active_vacancies") or 0),
         },
     })
+    merged.pop("_inactive_vacancies", None)
     return merged

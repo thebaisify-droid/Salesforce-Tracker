@@ -48,12 +48,21 @@
   "steps": {
     "transform": "python -m scripts.process_incremental --input-dir {raw_dir} --run-id {run_id} --metrics {metrics}",
     "quality": "python -m scripts.validate_incremental --run-id {run_id} --report {quality_report}",
-    "publish": "python -m scripts.publish_dashboard --run-id {run_id}"
+    "publish": "python -m scripts.publish_dashboard --run-id {run_id}",
+    "lifecycle": "python -m scripts.verify_lifecycle --report {lifecycle_report} --metrics {metrics} --min-age-days 14 --limit 20 --confirmations 2 --min-confirmation-hours 12"
   },
   "assurance": {
     "expected_master_data_version": "1.4",
     "expected_role_taxonomy_version": "2.2",
-    "max_rejection_rate": 0.15
+    "max_rejection_rate": 0.15,
+    "lifecycle": {
+      "enabled": true,
+      "min_age_days": 14,
+      "daily_check_limit": 20,
+      "confirmations_required": 2,
+      "min_confirmation_hours": 12,
+      "policy": "No vacancy is expired from search absence alone. Two explicit unavailable checks are required."
+    }
   },
   "required_sources": [
     "source_1",

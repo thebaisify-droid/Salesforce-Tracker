@@ -13,6 +13,7 @@ from tracker.classify import classify, versions
 from tracker.dashboard import merge_with_baseline
 from tracker.normalize import normalize
 from tracker.relevance import salesforce_relevance
+from tracker.lifecycle import assess_response
 from tracker.store import Store
 from scripts.state_snapshot import build_manifest, safe_extract, verify_manifest
 from scripts.restore_github_state import select_latest_artifact
@@ -312,6 +313,129 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(relevance["ADJACENT"], 16)
         self.assertEqual(merged["baseline"]["post_baseline_new"], 0)
 
+    def test_lifecycle_requires_two_separate_unavailable_checks(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            raw = {
+                "id":"life-1",
+                "title":"Salesforce Administrator",
+                "company":"Example Ltd",
+                "description":"Salesforce administration.",
+                "url":"https://example.com/job/life-1",
+                "datePosted":"2026-09-01",
+            }
+            with Store(db) as store:
+                record = normalize(raw, "source_1")
+                store.upsert(record)
+                vacancy_id = int(store.conn.execute("SELECT vacancy_id FROM vacancies").fetchone()[0])
+                first = store.record_lifecycle_observation(
+                    vacancy_id,
+                    result="UNAVAILABLE",
+                    evidence_type="HTTP_404",
+                    checked_at="2026-10-08T00:00:00Z",
+                    http_status=404,
+                    confirmations=2,
+                    min_confirmation_hours=12,
+                )
+                self.assertEqual(first, "POSSIBLY_EXPIRED")
+                row = store.conn.execute("SELECT is_active,lifecycle_status FROM vacancies WHERE vacancy_id=?", (vacancy_id,)).fetchone()
+                self.assertEqual(int(row["is_active"]), 1)
+                self.assertEqual(row["lifecycle_status"], "POSSIBLY_EXPIRED")
+
+                second = store.record_lifecycle_observation(
+                    vacancy_id,
+                    result="UNAVAILABLE",
+                    evidence_type="HTTP_404",
+                    checked_at="2026-10-08T13:00:00Z",
+                    http_status=404,
+                    confirmations=2,
+                    min_confirmation_hours=12,
+                )
+                self.assertEqual(second, "CONFIRMED_EXPIRED")
+                row = store.conn.execute("SELECT is_active,lifecycle_status FROM vacancies WHERE vacancy_id=?", (vacancy_id,)).fetchone()
+                self.assertEqual(int(row["is_active"]), 0)
+                self.assertEqual(row["lifecycle_status"], "CONFIRMED_EXPIRED")
+
+                # Reappearance in any source is stronger evidence and reactivates the vacancy.
+                self.assertIn(store.upsert(record), {"unchanged", "updated"})
+                row = store.conn.execute("SELECT is_active,lifecycle_status,unavailable_streak FROM vacancies WHERE vacancy_id=?", (vacancy_id,)).fetchone()
+                self.assertEqual(int(row["is_active"]), 1)
+                self.assertEqual(row["lifecycle_status"], "ACTIVE")
+                self.assertEqual(int(row["unavailable_streak"]), 0)
+
+    def test_lifecycle_inconclusive_check_never_confirms_expiry(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            with Store(db) as store:
+                record = normalize({
+                    "id":"life-2","title":"Salesforce Developer","company":"Example",
+                    "description":"Salesforce development.","url":"https://example.com/job/life-2"
+                }, "source_2")
+                store.upsert(record)
+                vacancy_id = int(store.conn.execute("SELECT vacancy_id FROM vacancies").fetchone()[0])
+                store.record_lifecycle_observation(
+                    vacancy_id, result="UNAVAILABLE", evidence_type="HTTP_404",
+                    checked_at="2026-10-08T00:00:00Z", confirmations=2, min_confirmation_hours=12,
+                )
+                store.record_lifecycle_observation(
+                    vacancy_id, result="INCONCLUSIVE", evidence_type="HTTP_403",
+                    checked_at="2026-10-08T13:00:00Z", confirmations=2, min_confirmation_hours=12,
+                )
+                status = store.record_lifecycle_observation(
+                    vacancy_id, result="UNAVAILABLE", evidence_type="HTTP_404",
+                    checked_at="2026-10-09T13:00:00Z", confirmations=2, min_confirmation_hours=12,
+                )
+                self.assertEqual(status, "POSSIBLY_EXPIRED")
+                row = store.conn.execute("SELECT is_active,unavailable_streak FROM vacancies WHERE vacancy_id=?", (vacancy_id,)).fetchone()
+                self.assertEqual(int(row["is_active"]), 1)
+                self.assertEqual(int(row["unavailable_streak"]), 1)
+
+    def test_lifecycle_http_evidence_classification(self):
+        self.assertEqual(
+            assess_response(checked_url="https://x/job/1", http_status=404, body="").result,
+            "UNAVAILABLE",
+        )
+        self.assertEqual(
+            assess_response(
+                checked_url="https://x/job/1",
+                http_status=200,
+                body="<html>This job is no longer available</html>",
+                final_url="https://x/job/1",
+            ).result,
+            "UNAVAILABLE",
+        )
+        self.assertEqual(
+            assess_response(checked_url="https://x/job/1", http_status=403, body="").result,
+            "INCONCLUSIVE",
+        )
+        self.assertEqual(
+            assess_response(
+                checked_url="https://x/job/1",
+                http_status=200,
+                body="<html>Apply now</html>",
+                final_url="https://x/job/1",
+            ).result,
+            "AVAILABLE",
+        )
+
+    def test_dashboard_excludes_confirmed_expired_baseline_vacancy(self):
+        baseline = json.loads((ROOT / "config" / "baseline_2026-10-06.json").read_text())
+        row = baseline["rows"][0]
+        live = {
+            "vacancies": [],
+            "_inactive_vacancies": [{
+                "url": row["apply_url"],
+                "title": row["title"],
+                "location": row["location"],
+                "posted_at": row["posted_at"],
+            }],
+            "lifecycle": {"ACTIVE": 44, "CONFIRMED_EXPIRED": 1},
+        }
+        merged = merge_with_baseline(live, baseline)
+        self.assertEqual(merged["active_vacancies"], 44)
+        self.assertEqual(merged["baseline"]["confirmed_expired"], 1)
+        self.assertNotIn("_inactive_vacancies", merged)
+
     def test_dashboard_snapshot_is_public_safe(self):
         with tempfile.TemporaryDirectory() as d:
             db = Path(d) / "tracker.db"
@@ -338,6 +462,7 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(vacancy["salary"]["period"], "day")
             self.assertNotIn("description", vacancy)
             self.assertNotIn("raw_json", vacancy)
+            self.assertEqual(vacancy["lifecycle"]["status"], "ACTIVE")
 
     def test_store_cross_board_deduplicates_baseline_agency_mirror(self):
         with tempfile.TemporaryDirectory() as d:

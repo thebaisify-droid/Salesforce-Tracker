@@ -33,6 +33,12 @@ CREATE TABLE IF NOT EXISTS vacancies (
   first_seen_at TEXT NOT NULL,
   last_seen_at TEXT NOT NULL,
   is_active INTEGER NOT NULL DEFAULT 1,
+  lifecycle_status TEXT NOT NULL DEFAULT 'ACTIVE',
+  lifecycle_reason TEXT,
+  lifecycle_updated_at TEXT,
+  last_verified_at TEXT,
+  unavailable_streak INTEGER NOT NULL DEFAULT 0,
+  unavailable_first_seen_at TEXT,
   normalized_hash TEXT NOT NULL,
   raw_json TEXT,
   master_data_version TEXT NOT NULL,
@@ -69,3 +75,17 @@ CREATE TABLE IF NOT EXISTS refresh_runs (
   master_data_version TEXT,
   role_taxonomy_version TEXT
 );
+
+CREATE TABLE IF NOT EXISTS lifecycle_checks (
+  check_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  vacancy_id INTEGER NOT NULL REFERENCES vacancies(vacancy_id) ON DELETE CASCADE,
+  checked_at TEXT NOT NULL,
+  result TEXT NOT NULL,
+  evidence_type TEXT NOT NULL,
+  http_status INTEGER,
+  checked_url TEXT,
+  final_url TEXT,
+  detail TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_lifecycle_checks_vacancy ON lifecycle_checks(vacancy_id, checked_at);

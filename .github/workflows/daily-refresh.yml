@@ -96,6 +96,7 @@ jobs:
             runs/**/run_status.json
             runs/**/metrics.json
             runs/**/quality_report.json
+            runs/**/lifecycle_report.json
             dashboard/data.json
             dashboard/live-data.json
           if-no-files-found: ignore
