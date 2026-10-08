@@ -267,6 +267,10 @@ def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
         token = _subst(cfg.get("token", "env:APIFY_TOKEN"), values)
         actor_input = _subst(cfg.get("input", {}), values)
         params = {"format": "json", "clean": "true"}
+        if cfg.get("max_charged_results") is not None:
+            params["maxItems"] = str(int(cfg["max_charged_results"]))
+        if cfg.get("max_total_charge_usd") is not None:
+            params["maxTotalChargeUsd"] = str(float(cfg["max_total_charge_usd"]))
         url = f"https://api.apify.com/v2/acts/{quote(actor_id, safe='~')}/run-sync-get-dataset-items?{urlencode(params)}"
         payload = _request_json(
             url,
