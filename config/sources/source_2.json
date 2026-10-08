@@ -8,5 +8,6 @@
   "timeout_seconds": 300,
   "window_field": "datePosted",
   "notes": "Live Task and schema validated 2026-10-07.",
-  "max_charged_results": 100
+  "max_charged_results": 100,
+  "max_total_charge_usd": 0.15
 }
