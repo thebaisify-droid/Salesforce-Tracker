@@ -43,7 +43,7 @@
       "slot": "source_5",
       "name": "JobServe",
       "provider": "apify_actor",
-      "actor": "santamaria-automations/jobserve-uk-scraper",
+      "actor": "solidcode/jobserve-scraper",
       "trust_tier": "B",
       "purpose": "Secondary UK IT/contract Salesforce vacancy enrichment and corroboration",
       "access": "Apify Actor via existing APIFY_TOKEN",
