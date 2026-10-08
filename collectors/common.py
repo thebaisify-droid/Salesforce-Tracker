@@ -370,7 +370,7 @@ def run_slot(slot: int) -> int:
     except CollectionSkipped as exc:
         output = Path(args.output)
         output.parent.mkdir(parents=True, exist_ok=True)
-        output.write_text("[]\\n", encoding="utf-8")
+        output.write_text("[]" + chr(10), encoding="utf-8")
         print("COLLECTION_SKIPPED: " + str(exc))
         return 0
     except Exception as exc:
