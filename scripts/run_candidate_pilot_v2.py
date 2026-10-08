@@ -19,7 +19,7 @@ LIMIT=10
 SAFE_RESERVE_FOR_EXISTING_TRACKER=8.00
 # The prior CV-Library run aborted at its $0.10 charge cap. Fail closed until
 # observed charging and a revised pilot allocation have been separately reviewed.
-PAID_PILOT_ENABLED=True
+PAID_PILOT_ENABLED=False
 BLOCKED_SOURCE="CV-Library"
 
 def request_json(url,token,*,body=None):
