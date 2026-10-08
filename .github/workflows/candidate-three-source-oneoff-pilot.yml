@@ -1,0 +1,36 @@
+name: Three-source one-off $0.50 pilot
+on:
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: 'Enter AUTHORISE_THREE_SOURCE_050_PILOT to execute a paid run'
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+jobs:
+  run:
+    if: ${{ inputs.approval == 'AUTHORISE_THREE_SOURCE_050_PILOT' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run one capped three-source pilot
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          PILOT_APPROVAL: ${{ inputs.approval }}
+        run: python -m scripts.run_candidate_three_source_pilot --execute
+      - name: Preserve result artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: three-source-pilot-evidence
+          path: candidate-pilot-evidence.json
+          if-no-files-found: warn
+          retention-days: 7
