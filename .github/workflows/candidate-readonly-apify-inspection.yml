@@ -1,0 +1,34 @@
+name: Read-only Apify Task evidence (manual)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Inspect saved task metadata only
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${APIFY_TOKEN:-}" ]; then
+            echo "Missing APIFY_TOKEN secret"
+            exit 1
+          fi
+          python -m scripts.inspect_candidate_apify_tasks --output /tmp/apify-task-inspection.json
+          python -m scripts.validate_task_inspection_report --input /tmp/apify-task-inspection.json
+      - name: Upload redacted field-name evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-task-input-field-evidence
+          path: /tmp/apify-task-inspection.json
+          retention-days: 7
+          if-no-files-found: error
