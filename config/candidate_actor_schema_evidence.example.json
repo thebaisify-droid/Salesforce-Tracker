@@ -28,7 +28,14 @@
       "field_support_for_actual_saved_task_verified": false,
       "saved_task_actor_id": "T0edvAvD8lVcvc58G",
       "saved_task_actor_id_observed": true,
-      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified."
+      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified.",
+      "observed_task_act_id": "T0edvAvD8lVcvc58G",
+      "observed_task_act_id_evidence": {
+        "github_workflow_run_id": 37784631922,
+        "artifact_id": 11553970809
+      },
+      "candidate_actor_public_listing_match_verified": false,
+      "task_actor_identity_observed_from_apify_metadata": true
     },
     {
       "source": "Totaljobs",
@@ -50,10 +57,17 @@
       "field_support_for_actual_saved_task_verified": false,
       "saved_task_actor_id": "RO7aokuNWfmP0kV0G",
       "saved_task_actor_id_observed": true,
-      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified."
+      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified.",
+      "observed_task_act_id": "RO7aokuNWfmP0kV0G",
+      "observed_task_act_id_evidence": {
+        "github_workflow_run_id": 37784631922,
+        "artifact_id": 11553970809
+      },
+      "candidate_actor_public_listing_match_verified": false,
+      "task_actor_identity_observed_from_apify_metadata": true
     }
   ],
-  "required_evidence": "Known saved-task Actor IDs recorded. Independently resolve ID to Actor metadata/input schema; do not infer owner/name from matching field names.",
+  "required_evidence": "Saved Task actId values verified in live read-only metadata; match these opaque Actor IDs to an authoritative Actor identity/input schema. Public listing candidates are not confirmed as the same Actors. No broad-role search behaviour or billing has been validated.",
   "evidence_run_id": 37784631922,
   "evidence_artifact_id": 11553970809
 }
