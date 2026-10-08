@@ -1,0 +1,36 @@
+{
+  "schema": "candidate-acquisition-pilot/v1",
+  "status": "PLANNED_NOT_AUTHORISED",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "production_publication_enabled": false,
+  "core_sources": [
+    "CV-Library",
+    "Totaljobs",
+    "Indeed UK",
+    "JobServe"
+  ],
+  "optional_sources": [
+    "Reed"
+  ],
+  "shared_account_monthly_limit_usd": 19,
+  "additional_spend_approved_usd": 0,
+  "scheduled_runs": [],
+  "actor_runs_to_launch": 0,
+  "proposed_per_source_max_usd": {
+    "CV-Library": 0.1,
+    "Totaljobs": 0.1,
+    "Indeed UK": 0.15,
+    "JobServe": 0.15
+  },
+  "proposed_total_max_usd": 0.5,
+  "proposed_max_results_per_source": 30,
+  "requires": [
+    "Confirm independent Apify account limit at or below $19",
+    "Reconcile existing Salesforce reservation ledger and actual account remaining balance",
+    "Validate actor/task input schemas and price models for expanded keywords",
+    "Set a separate pilot spend allocation within the shared $19 ceiling",
+    "Require explicit approval for one bounded pilot run"
+  ],
+  "publication_policy": "Never publish pilot output automatically; independent review and quality gates required."
+}
