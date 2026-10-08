@@ -215,6 +215,7 @@ def _placeholders(root: Path) -> dict[str, str]:
         "run_id":"PRECHECK", "run_dir":str(run), "raw_dir":str(run / "raw"),
         "since":"2026-10-01T00:00:00Z", "until":"2026-10-02T00:00:00Z",
         "metrics":str(run / "metrics.json"), "quality_report":str(run / "quality_report.json"),
+        "lifecycle_report":str(run / "lifecycle_report.json"),
         "status":str(root / "state" / "latest_refresh.json"), "output":str(run / "raw" / "source.json"),
     }
 
@@ -281,7 +282,7 @@ def preflight(config_path: Path) -> dict[str, Any]:
 
     steps = config.get("steps", {})
     if config.get("strict_mode", True):
-        for name in ("transform", "quality", "publish"):
+        for name in ("transform", "lifecycle", "quality", "publish"):
             if not isinstance(steps.get(name), str) or not steps[name].strip(): errors.append(f"required step '{name}' is missing")
     for name, command in steps.items():
         if isinstance(command, str) and command.strip():
@@ -330,7 +331,7 @@ def execute(config_path: Path, *, force: bool, scheduled: bool, since_override: 
     env.update({"PIPELINE_RUN_ID":run_id,"PIPELINE_SINCE":iso_z(since),"PIPELINE_UNTIL":iso_z(until),"PIPELINE_RUN_DIR":str(run_dir),"PIPELINE_MIN_SOURCES":str(config.get("min_sources_succeeded",3))})
     for cfg_key, env_key in (("expected_master_data_version","PIPELINE_EXPECTED_MASTER_DATA_VERSION"),("expected_role_taxonomy_version","PIPELINE_EXPECTED_ROLE_TAXONOMY_VERSION"),("max_rejection_rate","PIPELINE_MAX_REJECTION_RATE")):
         if assurance.get(cfg_key) is not None: env[env_key] = str(assurance[cfg_key])
-    values = {"run_id":run_id,"run_dir":str(run_dir),"raw_dir":str(raw_dir),"since":iso_z(since),"until":iso_z(until),"metrics":str(run_dir/"metrics.json"),"quality_report":str(run_dir/"quality_report.json"),"status":str(state_dir/"latest_refresh.json")}
+    values = {"run_id":run_id,"run_dir":str(run_dir),"raw_dir":str(raw_dir),"since":iso_z(since),"until":iso_z(until),"metrics":str(run_dir/"metrics.json"),"quality_report":str(run_dir/"quality_report.json"),"lifecycle_report":str(run_dir/"lifecycle_report.json"),"status":str(state_dir/"latest_refresh.json")}
 
     source_results=[]
     source_cfgs=[s for s in config["sources"] if s.get("enabled",True)]
@@ -361,6 +362,11 @@ def execute(config_path: Path, *, force: bool, scheduled: bool, since_override: 
     metrics=load_json(run_dir/"metrics.json")
     if config.get("require_metrics_report",True) and not isinstance(metrics,dict):
         status=build_status(run_id,"failed",now,since,until,source_results,transform,None,None,None,None,"transform completed but metrics.json is missing or invalid",str(config_path),tz_name); persist(state_dir,run_dir,status); print(json.dumps(status,indent=2)); return 3
+
+    lifecycle_step=run_step("lifecycle",render_command(steps["lifecycle"],values),root,env)
+    if lifecycle_step.status!="success":
+        status=build_status(run_id,"failed",now,since,until,source_results,transform,None,None,metrics,None,"lifecycle assurance step failed",str(config_path),tz_name); persist(state_dir,run_dir,status); print(json.dumps(status,indent=2)); return 3
+    metrics=load_json(run_dir/"metrics.json")
 
     quality_step=run_step("quality",render_command(steps["quality"],values),root,env); quality=load_json(run_dir/"quality_report.json")
     valid_quality=isinstance(quality,dict) and isinstance(quality.get("passed"),bool)
