@@ -286,6 +286,10 @@ def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
         task_id = _apify_named_ref(str(_subst(cfg.get("task_id") or cfg.get("task_id_env", "env:APIFY_TASK_ID"), values)))
         token = _subst(cfg.get("token", "env:APIFY_TOKEN"), values)
         params = {"format": "json", "clean": "true"}
+        if cfg.get("max_charged_results") is not None:
+            params["maxItems"] = str(int(cfg["max_charged_results"]))
+        if cfg.get("max_total_charge_usd") is not None:
+            params["maxTotalChargeUsd"] = str(float(cfg["max_total_charge_usd"]))
         url = f"https://api.apify.com/v2/actor-tasks/{quote(task_id, safe='~')}/run-sync-get-dataset-items?{urlencode(params)}"
         override_input = _subst(cfg.get("input"), values) if "input" in cfg else None
         payload = _request_json(
