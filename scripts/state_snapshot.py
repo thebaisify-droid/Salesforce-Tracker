@@ -55,6 +55,10 @@ def inspect_database(path: Path) -> dict[str, Any]:
             "vacancy_sources": int(conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0]),
             "refresh_runs": int(conn.execute("SELECT COUNT(*) FROM refresh_runs").fetchone()[0]),
         }
+        if "lifecycle_checks" in tables:
+            counts["lifecycle_checks"] = int(conn.execute("SELECT COUNT(*) FROM lifecycle_checks").fetchone()[0])
+            for row in conn.execute("SELECT lifecycle_status, COUNT(*) FROM vacancies GROUP BY lifecycle_status"):
+                counts["lifecycle_" + str(row[0]).lower()] = int(row[1])
         latest = conn.execute(
             "SELECT run_id, status, finished_at FROM refresh_runs ORDER BY started_at DESC LIMIT 1"
         ).fetchone()
