@@ -1,0 +1,42 @@
+{
+  "schema": "three-source-pilot/v1",
+  "status": "NOT_AUTHORISED",
+  "paid_execution_enabled": false,
+  "excluded_sources": {
+    "CV-Library": "Two MAX_TOTAL_CHARGE aborts at $0.10 and $0.30; suspend pending price-model review"
+  },
+  "sources": [
+    {
+      "source": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "cap_usd": 0.2,
+      "max_results": 10
+    },
+    {
+      "source": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "cap_usd": 0.15,
+      "max_results": 10
+    },
+    {
+      "source": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "cap_usd": 0.15,
+      "max_results": 10
+    }
+  ],
+  "maximum_total_usd": 0.5,
+  "account_monthly_ceiling_usd": 19,
+  "minimum_protected_salesforce_headroom_usd": 8,
+  "prior_usage_snapshot_usd": 6.12,
+  "prior_usage_snapshot_obsolete": true,
+  "allowed_actor_runs": 0,
+  "execution_prerequisites": [
+    "Refresh Apify account usage after $0.30 CV-Library attempt",
+    "Reconcile reported run usage against actual billing",
+    "Verify per-source pricing and payload schema",
+    "Explicit new user authorisation for one capped three-source pilot",
+    "Implement separate manual-only execution workflow and validate"
+  ],
+  "publication_enabled": false
+}
