@@ -1,0 +1,329 @@
+{
+  "version": "1.0",
+  "market": "UK Business Analysis, Product, Delivery & Cyber Security",
+  "role_families": [
+    {
+      "name": "Business Analysis",
+      "titles": [
+        "business analyst",
+        "business systems analyst",
+        "systems business analyst",
+        "it business analyst",
+        "digital business analyst",
+        "functional business analyst",
+        "lead ba",
+        "senior ba"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Data Analysis",
+      "titles": [
+        "data analyst",
+        "senior data analyst",
+        "lead data analyst",
+        "junior data analyst"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Business Intelligence",
+      "titles": [
+        "business intelligence analyst",
+        "bi analyst",
+        "power bi analyst",
+        "senior bi analyst"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Delivery Management",
+      "titles": [
+        "delivery manager",
+        "senior delivery manager",
+        "digital delivery manager",
+        "agile delivery manager",
+        "technical delivery manager"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Product Ownership",
+      "titles": [
+        "product owner",
+        "senior product owner",
+        "lead product owner",
+        "digital product owner",
+        "technical product owner"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Product Management",
+      "titles": [
+        "product manager",
+        "senior product manager",
+        "lead product manager",
+        "digital product manager",
+        "technical product manager"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Agile / Scrum",
+      "titles": [
+        "scrum master",
+        "senior scrum master"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Project Management",
+      "titles": [
+        "project manager",
+        "senior project manager",
+        "it project manager",
+        "digital project manager",
+        "technical project manager"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Business Change & Transformation",
+      "titles": [
+        "business change manager",
+        "senior business change manager",
+        "change analyst",
+        "business transformation manager",
+        "digital transformation manager",
+        "transformation lead"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Programme & Portfolio Management",
+      "titles": [
+        "programme manager",
+        "program manager",
+        "senior programme manager",
+        "programme delivery manager",
+        "portfolio manager",
+        "pmo manager"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Business Process & Operational Analysis",
+      "titles": [
+        "business process analyst",
+        "process improvement analyst",
+        "business process manager",
+        "operational excellence analyst",
+        "continuous improvement manager"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Agile Leadership",
+      "titles": [
+        "agile coach",
+        "senior agile coach",
+        "agile delivery lead",
+        "agile transformation lead",
+        "head of agile delivery"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Product Strategy & Operations",
+      "titles": [
+        "product analyst",
+        "product operations manager",
+        "product lead",
+        "group product manager",
+        "head of product",
+        "product director"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Service Management & Design",
+      "titles": [
+        "service owner",
+        "service designer",
+        "service delivery manager",
+        "service transition manager"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Data & Analytics Management",
+      "titles": [
+        "analytics manager",
+        "insights analyst",
+        "reporting analyst",
+        "performance analyst",
+        "data product manager",
+        "data governance manager"
+      ],
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "name": "Information Security Analysis",
+      "titles": [
+        "information security analyst",
+        "infosec analyst",
+        "information assurance analyst",
+        "cyber security analyst",
+        "cybersecurity analyst",
+        "cyber security specialist",
+        "cybersecurity specialist"
+      ],
+      "track": "SECURITY"
+    },
+    {
+      "name": "Security Operations / SOC",
+      "titles": [
+        "soc analyst",
+        "security operations centre analyst",
+        "security operations center analyst",
+        "soc lead",
+        "soc manager",
+        "security operations analyst",
+        "security monitoring analyst"
+      ],
+      "track": "SECURITY"
+    },
+    {
+      "name": "Security Architecture",
+      "titles": [
+        "security architect",
+        "cyber security architect",
+        "cybersecurity architect",
+        "information security architect",
+        "it security architect",
+        "cloud security architect"
+      ],
+      "track": "SECURITY"
+    },
+    {
+      "name": "Security Consulting & Advisory",
+      "titles": [
+        "cyber security consultant",
+        "cybersecurity consultant",
+        "information security consultant",
+        "security advisor",
+        "security adviser",
+        "cyber security advisor",
+        "security assurance consultant"
+      ],
+      "track": "SECURITY"
+    },
+    {
+      "name": "Security Risk & Third-Party Risk",
+      "titles": [
+        "security risk manager",
+        "information security risk manager",
+        "cyber risk manager",
+        "third party risk manager",
+        "third-party risk manager",
+        "third party risk analyst",
+        "third-party risk analyst",
+        "tprm analyst",
+        "tprm manager",
+        "third party risk management analyst",
+        "technology risk manager"
+      ],
+      "track": "SECURITY"
+    },
+    {
+      "name": "Security Management",
+      "titles": [
+        "information security manager",
+        "cyber security manager",
+        "cybersecurity manager",
+        "head of information security",
+        "head of cyber security",
+        "information security lead"
+      ],
+      "track": "SECURITY"
+    },
+    {
+      "name": "IT Security",
+      "titles": [
+        "it security analyst",
+        "it security manager",
+        "it security specialist",
+        "it security lead",
+        "information technology security analyst"
+      ],
+      "track": "SECURITY"
+    }
+  ],
+  "context_required_titles": [
+    "security architect",
+    "security advisor",
+    "security adviser",
+    "security risk manager",
+    "security consultant",
+    "service delivery manager",
+    "service owner",
+    "service designer",
+    "performance analyst",
+    "reporting analyst",
+    "insights analyst",
+    "analytics manager",
+    "product analyst",
+    "product lead",
+    "change analyst",
+    "transformation lead",
+    "delivery manager",
+    "delivery lead",
+    "project manager",
+    "programme manager",
+    "program manager",
+    "portfolio manager",
+    "product manager",
+    "product owner",
+    "it security analyst",
+    "it security manager",
+    "technology risk manager"
+  ],
+  "security_context_terms": [
+    "cyber security",
+    "cybersecurity",
+    "information security",
+    "infosec",
+    "it security",
+    "network security",
+    "cloud security",
+    "soc",
+    "siem",
+    "iso 27001",
+    "nist",
+    "security controls",
+    "security operations",
+    "cyber risk",
+    "third party risk",
+    "third-party risk",
+    "tprm",
+    "security assurance",
+    "vulnerability management",
+    "identity and access",
+    "iam",
+    "penetration testing"
+  ],
+  "excluded_title_phrases": [
+    "physical security",
+    "security guard",
+    "security officer",
+    "door supervisor",
+    "loss prevention",
+    "building security",
+    "fire safety",
+    "site security",
+    "health and safety",
+    "financial security advisor"
+  ],
+  "notes": "Strict title matching with bounded terms; security-adjacent ambiguous titles require cyber/information/IT security context. Role-family overlap resolved with longest matching title phrase, then listed family order. This config is for validation only."
+}
