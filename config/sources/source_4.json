@@ -12,5 +12,6 @@
     "country": "uk",
     "maxResults": 75
   },
-  "notes": "Indeed UK enrichment source. Uses uk.indeed.com and is non-blocking because pipeline min_sources_succeeded remains 3."
+  "notes": "Indeed UK enrichment source. Uses uk.indeed.com and is non-blocking because pipeline min_sources_succeeded remains 3.",
+  "max_charged_results": 75
 }
