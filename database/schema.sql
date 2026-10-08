@@ -49,7 +49,6 @@ CREATE INDEX IF NOT EXISTS idx_vacancies_posted_at ON vacancies(posted_at);
 CREATE INDEX IF NOT EXISTS idx_vacancies_role_family ON vacancies(role_family);
 CREATE INDEX IF NOT EXISTS idx_vacancies_sector ON vacancies(end_client_sector);
 CREATE INDEX IF NOT EXISTS idx_vacancies_advertiser_type ON vacancies(advertiser_type);
-CREATE INDEX IF NOT EXISTS idx_vacancies_lifecycle_status ON vacancies(lifecycle_status);
 
 CREATE TABLE IF NOT EXISTS vacancy_sources (
   source_name TEXT NOT NULL,
