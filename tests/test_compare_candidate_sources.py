@@ -11,11 +11,24 @@ class SourceQualityTests(unittest.TestCase):
         r=analyse(rows)
         self.assertEqual([x["source"] for x in r["sources"]],
                          ["CV-Library","Totaljobs","Indeed UK","JobServe","Reed"])
+        self.assertEqual(r["sources"][1]["status"],"NOT_SUPPLIED")
+        self.assertIsNone(r["sources"][1]["raw_records"])
+        self.assertIn("Totaljobs",r["missing_core_exports"])
+        self.assertFalse(r["core_exports_supplied"])
         self.assertEqual(r["sources"][2]["relevant_unique_urls"],2)
         self.assertEqual(r["sources"][2]["incremental_unique_urls_in_order"],1)
         self.assertEqual(r["sources"][4]["relevant_unique_urls"],0)
         self.assertFalse(r["acquisition_enabled"])
         self.assertFalse(r["publication_approved"])
+    def test_explicit_empty_export_not_confused_with_missing(self):
+        data={name:[] for name in ("CV-Library","Totaljobs","Indeed UK","JobServe")}
+        r=analyse(data)
+        self.assertTrue(r["core_exports_supplied"])
+        self.assertFalse(r["real_source_comparison_complete"])
+        self.assertEqual(r["sources"][1]["raw_records"],0)
+        self.assertEqual(r["sources"][1]["status"],"SUPPLIED")
+        self.assertEqual(r["sources"][4]["status"],"NOT_SUPPLIED")
+
     def test_malformed_source_fails(self):
         with self.assertRaises(ValueError):
             analyse({"JobServe":{"records":[]}})
