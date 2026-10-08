@@ -1,0 +1,39 @@
+name: One-off UK job market pilot (manual, $0.50 maximum)
+on:
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: 'Enter RUN_CAPPED_PILOT to approve one bounded run'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+
+jobs:
+  pilot:
+    if: ${{ inputs.approval == 'RUN_CAPPED_PILOT' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute capped, isolated pilot
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          PILOT_APPROVAL: ${{ inputs.approval }}
+        run: python -m scripts.run_candidate_pilot --execute
+      - name: Upload pilot review evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-four-source-pilot-evidence
+          path: candidate-pilot-evidence.json
+          retention-days: 7
+          if-no-files-found: error
