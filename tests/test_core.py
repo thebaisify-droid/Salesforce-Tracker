@@ -181,6 +181,41 @@ class TrackerTests(unittest.TestCase):
         b = normalize({"id":"2","title":"Salesforce Business Analyst","company":"Example","url":"https://example.com/job/1?utm_medium=y"}, "s2")
         self.assertEqual(a["dedupe_key"], b["dedupe_key"])
 
+    def test_dashboard_normalizes_live_taxonomy_for_continuity(self):
+        baseline = json.loads((ROOT / "config" / "baseline_2026-10-06.json").read_text())
+        live = {
+            "vacancies": [
+                {
+                    "id": 200,
+                    "title": "Engagement Delivery Director",
+                    "advertiser": "Salesforce",
+                    "advertiser_type": "DIRECT_EMPLOYER",
+                    "role_family": "Programme / Project Delivery",
+                    "seniority": "Lead",
+                    "specialisms": [],
+                    "end_client_name": None,
+                    "sector": "Education & Nonprofit",
+                    "location": "London",
+                    "employment_type": "FULL_TIME",
+                    "contract_type": None,
+                    "salary": {"min": None, "max": None, "currency": "GBP", "period": None},
+                    "url": "https://example.com/new-salesforce-delivery",
+                    "posted_at": "2026-10-07T20:00:00Z",
+                    "first_seen_at": "2026-10-08T04:00:00Z",
+                    "last_seen_at": "2026-10-08T04:00:00Z",
+                    "review": {"role": False, "sector": True},
+                    "sources": [{"key":"source_2","label":"Totaljobs","url":"https://example.com/new-salesforce-delivery"}],
+                }
+            ]
+        }
+        merged = merge_with_baseline(live, baseline)
+        new = next(v for v in merged["vacancies"] if v.get("url") == "https://example.com/new-salesforce-delivery")
+        self.assertEqual(new["role_family"], "Delivery / Programme")
+        self.assertEqual(new["sector"], "Technology Services")
+        self.assertFalse(new["review"]["sector"])
+        labels = {row["label"] for row in merged["by_role_family"]}
+        self.assertNotIn("Programme / Project Delivery", labels)
+
     def test_dashboard_baseline_restores_45_without_duplicate_live_rows(self):
         baseline = json.loads((ROOT / "config" / "baseline_2026-10-06.json").read_text())
         self.assertEqual(len(baseline["rows"]), 45)

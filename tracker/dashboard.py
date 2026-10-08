@@ -12,6 +12,20 @@ SOURCE_LABELS = {
     "source_3": "Reed",
 }
 
+ROLE_DISPLAY_ALIASES = {
+    "Engineering / Development": "Development / Engineering",
+    "Programme / Project Delivery": "Delivery / Programme",
+    "Functional Consulting": "Consulting / Functional",
+    "Administration / Platform": "Platform / Administration",
+    "Product / Ownership": "Product / Platform Ownership",
+    "Sales / Pre-Sales": "Sales / Account Management",
+    "Quality / Release / DevOps": "Testing / QA",
+}
+
+SECTOR_DISPLAY_ALIASES = {
+    "Unresolved": "Unknown",
+}
+
 
 def _key(url: str | None, title: str | None, location: str | None, posted_at: str | None) -> str:
     clean = canonical_url(url)
@@ -67,6 +81,19 @@ def baseline_vacancy(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def canonical_role_family(value: str | None) -> str:
+    value = value or "Unresolved"
+    return ROLE_DISPLAY_ALIASES.get(value, value)
+
+
+def canonical_sector(vacancy: dict[str, Any]) -> str:
+    advertiser = (vacancy.get("advertiser") or "").strip().lower()
+    if advertiser == "salesforce" or advertiser.startswith("salesforce "):
+        return "Technology Services"
+    value = vacancy.get("sector") or "Unknown"
+    return SECTOR_DISPLAY_ALIASES.get(value, value)
+
+
 def live_relevance(vacancy: dict[str, Any]) -> str:
     title = (vacancy.get("title") or "").lower()
     direct = ("salesforce", "sfdc", "mulesoft", "sales cloud", "service cloud", "experience cloud", "marketing cloud")
@@ -99,6 +126,12 @@ def merge_with_baseline(live_snapshot: dict[str, Any], baseline: dict[str, Any])
     for raw in live_snapshot.get("vacancies") or []:
         live = dict(raw)
         live["relevance"] = live_relevance(live)
+        live["role_family"] = canonical_role_family(live.get("role_family"))
+        live["sector"] = canonical_sector(live)
+        if (live.get("advertiser") or "").strip().lower() == "salesforce":
+            review = dict(live.get("review") or {})
+            review["sector"] = False
+            live["review"] = review
         live["salary_text"] = None
         live["work_mode"] = live.get("work_mode")
         live["baseline"] = False
