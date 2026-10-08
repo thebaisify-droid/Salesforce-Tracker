@@ -89,10 +89,10 @@ def make_request(source,token):
     return url,payload
 
 def run(*,token,execute,approval,output):
-    if not PAID_PILOT_ENABLED:
-        raise RuntimeError("Pilot disabled: CV-Library MAX_TOTAL_CHARGE abort requires revised, reviewed caps and budget")
     if not execute or approval!="RUN_CAPPED_PILOT":
         raise ValueError("Explicit single-run pilot approval required")
+    if not PAID_PILOT_ENABLED:
+        raise RuntimeError("Pilot disabled: CV-Library MAX_TOTAL_CHARGE abort requires revised, reviewed caps and budget")
     if not token: raise ValueError("Missing APIFY_TOKEN")
     results=[]
     remaining_proposed=round(sum(CAPS.values()),2)
