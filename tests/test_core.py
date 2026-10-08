@@ -93,6 +93,7 @@ class TrackerTests(unittest.TestCase):
             {"title":"Field Sales Executive","description":"Use Salesforce CRM for prospecting and customer records. Salesforce experience preferred."},
             {"title":"Sales, Finance & Marketing Administrator","description":"Update customer records in Salesforce and other internal systems. Salesforce experience helpful."},
             {"title":"IT Program Manager","description":"Programme includes CRM applications such as Salesforce CRM and other enterprise tools."},
+            {"title":"Senior Director Enterprise AI & Automation","company":"Worldpay Group Plc","description":"Desirable familiarity with Salesforce, Agentforce, copilots, AI agents, machine learning and enterprise SaaS platforms."},
         ]
         for sample in samples:
             relevant, reason = salesforce_relevance(sample)
