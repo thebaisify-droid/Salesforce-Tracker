@@ -105,21 +105,42 @@ class CandidateStore:
         return stats
 
     def snapshot(self) -> dict[str, Any]:
-        from scripts.build_candidate_market_dashboard import build_snapshot
+        """Export stored classifications as-is; never reclassify without descriptions."""
+        from collections import Counter
+        from tracker.business_product_delivery_security import taxonomy
         self.conn.row_factory = sqlite3.Row
-        rows = [dict(r) for r in self.conn.execute("SELECT * FROM candidate_vacancies ORDER BY posted_at DESC, identity_key")]
-        data = [{"title": r["title"], "url": r["url"], "company": r["advertiser"],
-                 "location": r["location"], "posted_at": r["posted_at"]} for r in rows]
-        snapshot = build_snapshot(data)
-        snapshot["mode"] = "offline_sqlite_candidate_only"
-        snapshot["review_required"] = sum(int(r["review_required"]) for r in rows)
-        snapshot["vacancies"] = [
-            {**item, "first_seen_at": rows_by_url[item["url"]]["first_seen_at"],
-             "last_seen_at": rows_by_url[item["url"]]["last_seen_at"],
-             "sources": self._sources(rows_by_url[item["url"]]["identity_key"])}
-            for item in snapshot["vacancies"]
-        ] if (rows_by_url := {r["url"]: r for r in rows}) else []
-        return snapshot
+        rows = [dict(r) for r in self.conn.execute(
+            "SELECT * FROM candidate_vacancies ORDER BY posted_at DESC, identity_key")]
+        by_track = Counter(r["track"] for r in rows)
+        by_family = Counter(r["role_family"] for r in rows)
+        vacancies = []
+        for row in rows:
+            vacancies.append({
+                "title": row["title"], "url": row["url"],
+                "advertiser": row["advertiser"], "location": row["location"],
+                "posted_at": row["posted_at"], "track": row["track"],
+                "role_family": row["role_family"],
+                "matched_title": row["matched_title"],
+                "review_required": bool(row["review_required"]),
+                "first_seen_at": row["first_seen_at"],
+                "last_seen_at": row["last_seen_at"],
+                "sources": self._sources(row["identity_key"]),
+            })
+        return {
+            "schema": "uk-business-product-delivery-security/v1",
+            "mode": "offline_sqlite_candidate_only",
+            "publication_approved": False,
+            "acquisition_enabled": False,
+            "taxonomy_version": taxonomy()["version"],
+            "total_vacancies": len(vacancies),
+            "review_required": sum(r["review_required"] for r in rows),
+            "by_track": [{"label": name, "value": by_track.get(name, 0)}
+                         for name in ("BUSINESS_PRODUCT_DELIVERY", "SECURITY")],
+            "by_role_family": [{"label": f["name"], "track": f["track"],
+                                "value": by_family.get(f["name"], 0)}
+                               for f in taxonomy()["role_families"]],
+            "vacancies": vacancies,
+        }
 
     def _sources(self, key: str) -> list[str]:
         return [r[0] for r in self.conn.execute(
