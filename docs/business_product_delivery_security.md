@@ -38,3 +38,22 @@ product/service/reporting titles are placed in the review queue.
   collection and publishing, and defines **no sources**.
 - No scheduled GitHub Action or live dataset is created.
 - Existing Salesforce taxonomy, pipeline config, and collector logic stay unchanged.
+
+## Offline dashboard candidate build
+
+Only from an existing local JSON array of records (no network/acquisition):
+
+```sh
+python -m scripts.build_candidate_market_dashboard --input /path/to/labelled-vacancies.json --output dashboard/business-product-delivery-security-candidate.json
+python -m unittest discover -s tests -v
+```
+
+The generated file is **not** uploaded or automatically deployed. It contains separate
+BUSINESS_PRODUCT_DELIVERY and SECURITY tracks, per-family aggregates, records
+flagged for review, URL-based deduplication and basic validation counts.
+
+This prototype does not provide historical trends or real UK vacancy figures.
+Before launch: validate against representative multi-source samples, verify
+advertiser/location canonicalization, design cross-board deduplication, and
+add an independent persisted store plus quality gate. Strictly prohibit
+published use until the quality review and acquisition account limit are signed off.
