@@ -1,0 +1,23 @@
+name: Read-only Apify Actor schema (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read existing default-build input schemas only
+        run: python -m scripts.inspect_candidate_actor_schemas --output /tmp/candidate-actor-schemas.json
+      - name: Upload redacted schema fields
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-actor-schema-evidence
+          path: /tmp/candidate-actor-schemas.json
+          retention-days: 7
+          if-no-files-found: error
