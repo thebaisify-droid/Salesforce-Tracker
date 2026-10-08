@@ -41,7 +41,12 @@
       "broad_role_search_execution_verified": false,
       "paid_charging_verified": false,
       "schema_run_id": 37795936497,
-      "schema_artifact_id": 11558656387
+      "schema_artifact_id": 11558656387,
+      "actor_input_schema_verified": true,
+      "evidence_run_id": 37795936497,
+      "evidence_artifact_id": 11558656387,
+      "schema_build_id": "pJCmniuSNrJ4FfJ4R",
+      "required_fields": []
     },
     {
       "source": "Totaljobs",
@@ -76,10 +81,17 @@
       "broad_role_search_execution_verified": false,
       "paid_charging_verified": false,
       "schema_run_id": 37795936497,
-      "schema_artifact_id": 11558656387
+      "schema_artifact_id": 11558656387,
+      "actor_input_schema_verified": true,
+      "evidence_run_id": 37795936497,
+      "evidence_artifact_id": 11558656387,
+      "schema_build_id": "M9VrohtP98oQxsFHI",
+      "required_fields": [
+        "mode"
+      ]
     }
   ],
-  "required_evidence": "Authoritative live Actor metadata and default-build input schema verified for both saved Tasks. Runtime search behaviour, enum/value constraints and actual charges remain unverified; no paid acquisition authorised.",
+  "required_evidence": "Actual Actor identities and default-build input field names verified via authenticated read-only Apify metadata. Search output quality, input value constraints, pricing, budget reservation, and non-Salesforce job collection remain unverified. Paid acquisition not authorised by this record.",
   "evidence_run_id": 37784631922,
   "evidence_artifact_id": 11553970809
 }
