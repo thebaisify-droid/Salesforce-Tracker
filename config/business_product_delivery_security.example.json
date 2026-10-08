@@ -5,5 +5,12 @@
   "publication_enabled": false,
   "sources": [],
   "monthly_acquisition_allocation_usd": 0,
-  "notes": "Specification only. No Apify jobs, GitHub workflow, or live dashboard publication. Apply separate budget gate and validate classifier before activation."
+  "notes": "Specification only. No Apify jobs, GitHub workflow, or live dashboard publication. Apply separate budget gate and validate classifier before activation.",
+  "core_sources": [
+    "CV-Library",
+    "Totaljobs",
+    "Reed",
+    "JobServe"
+  ],
+  "core_source_policy": "JobServe is a required core source for QA and eventual launch; this configuration has no acquisition jobs and paid acquisition remains disabled."
 }
