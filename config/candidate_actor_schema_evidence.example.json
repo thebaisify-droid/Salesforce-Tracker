@@ -25,7 +25,10 @@
         "maxPages"
       ],
       "actor_id_match_verified": false,
-      "field_support_for_actual_saved_task_verified": false
+      "field_support_for_actual_saved_task_verified": false,
+      "saved_task_actor_id": "T0edvAvD8lVcvc58G",
+      "saved_task_actor_id_observed": true,
+      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified."
     },
     {
       "source": "Totaljobs",
@@ -44,8 +47,13 @@
         "mode"
       ],
       "actor_id_match_verified": false,
-      "field_support_for_actual_saved_task_verified": false
+      "field_support_for_actual_saved_task_verified": false,
+      "saved_task_actor_id": "RO7aokuNWfmP0kV0G",
+      "saved_task_actor_id_observed": true,
+      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified."
     }
   ],
-  "required_evidence": "Resolve each saved Task actId against public Actor metadata and verify actual build input schema; field-name similarity is not proof."
+  "required_evidence": "Known saved-task Actor IDs recorded. Independently resolve ID to Actor metadata/input schema; do not infer owner/name from matching field names.",
+  "evidence_run_id": 37784631922,
+  "evidence_artifact_id": 11553970809
 }
