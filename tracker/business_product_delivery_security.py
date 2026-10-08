@@ -32,7 +32,7 @@ def classify_market_role(title: str | None, description: str | None = None) -> d
     cfg = taxonomy()
     if not title:
         return {"included": False, "reason": "missing_title", "role_family": None, "track": None, "review_required": True}
-    if any(_has_phrase(title, phrase) for phrase in cfg["excluded_title_phrases"]):
+    if title.startswith(("assistant to ", "pa to ", "secretary to ")) or any(_has_phrase(title, phrase) for phrase in cfg["excluded_title_phrases"]):
         return {"included": False, "reason": "excluded_title", "role_family": None, "track": None, "review_required": False}
     matched = []
     for index, family in enumerate(cfg["role_families"]):
