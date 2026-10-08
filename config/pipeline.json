@@ -1,7 +1,7 @@
 {
   "timezone": "Europe/London",
   "scheduled_local_time": "07:15",
-  "lookback_hours": 72,
+  "lookback_hours": 48,
   "state_dir": "state",
   "runs_dir": "runs",
   "strict_mode": true,
@@ -68,5 +68,10 @@
     "source_1",
     "source_2",
     "source_3"
-  ]
+  ],
+  "apify_budget": {
+    "monthly_usd": 19,
+    "account_limit_required": true,
+    "accounting": "worst_case_reserved_charges; not actual invoiced usage"
+  }
 }

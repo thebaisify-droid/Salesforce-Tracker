@@ -115,6 +115,8 @@ def run_step(name: str, command: str, cwd: Path, env: dict[str, str], output: Pa
     status = "success" if proc.returncode == 0 else "failed"
     if output is not None:
         count, valid, error = inspect_record_artifact(output)
+        if proc.returncode == 0 and "COLLECTION_SKIPPED:" in (proc.stdout or ""):
+            status = "skipped"
         if proc.returncode == 0 and not valid:
             status = "failed"
     return StepResult(
@@ -265,6 +267,8 @@ def preflight(config_path: Path) -> dict[str, Any]:
     if unknown_required:
         errors.append("required_sources contains disabled or unknown sources: " + ", ".join(unknown_required))
 
+    if float(config.get("apify_budget", {}).get("monthly_usd", 0)) <= 0:
+        errors.append("apify_budget.monthly_usd must be positive")
     values = _placeholders(root)
     for source in sources:
         name = source.get("name", "<unnamed>")
@@ -272,6 +276,8 @@ def preflight(config_path: Path) -> dict[str, Any]:
             source_cfg = load_json(root / source["config"])
             if not isinstance(source_cfg, dict): errors.append(f"source {name}: source config is missing or invalid")
             elif not source_cfg.get("ready", False): errors.append(f"source {name}: live provider is not configured yet ({root / source['config']})")
+            elif source_cfg.get("provider") in ("apify_actor", "apify_task") and not (isinstance(source_cfg.get("max_total_charge_usd"), (int, float)) and 0 < source_cfg["max_total_charge_usd"] <= 1):
+                errors.append(f"source {name}: Apify maximum charge must be set in (0, 1] USD")
         command = source.get("command")
         if not isinstance(command, str) or not command.strip():
             errors.append(f"source {name}: command is missing"); continue
@@ -328,6 +334,7 @@ def execute(config_path: Path, *, force: bool, scheduled: bool, since_override: 
             print(json.dumps(status, indent=2)); return 0
 
     env = os.environ.copy(); assurance = config.get("assurance", {})
+    env["APIFY_MONTHLY_BUDGET_USD"] = str(config["apify_budget"]["monthly_usd"])
     env.update({"PIPELINE_RUN_ID":run_id,"PIPELINE_SINCE":iso_z(since),"PIPELINE_UNTIL":iso_z(until),"PIPELINE_RUN_DIR":str(run_dir),"PIPELINE_MIN_SOURCES":str(config.get("min_sources_succeeded",3))})
     for cfg_key, env_key in (("expected_master_data_version","PIPELINE_EXPECTED_MASTER_DATA_VERSION"),("expected_role_taxonomy_version","PIPELINE_EXPECTED_ROLE_TAXONOMY_VERSION"),("max_rejection_rate","PIPELINE_MAX_REJECTION_RATE")):
         if assurance.get(cfg_key) is not None: env[env_key] = str(assurance[cfg_key])

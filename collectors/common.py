@@ -223,6 +223,51 @@ def _collect_lightcast_uk(cfg: dict[str, Any], values: dict[str, str]) -> list[d
     return _filter_window(rows, "posted", values["since"], values["until"])
 
 
+
+class CollectionSkipped(Exception):
+    """Acquisition intentionally skipped; no provider request was launched."""
+
+
+def _budget_authorize(slot: int, cfg: dict[str, Any]) -> bool:
+    """Reserve the *maximum* possible cost, never an optimistic cost estimate.
+
+    The ledger must be persisted across GitHub Actions runs. It is an upper-bound
+    reservation ledger, not a substitute for Apify's account billing limit.
+    """
+    from datetime import datetime, timezone
+    cap = cfg.get("max_total_charge_usd")
+    if cap is None or float(cap) <= 0:
+        raise RuntimeError(f"source_{slot} has no positive max_total_charge_usd")
+    today = datetime.now(timezone.utc)
+    weekdays = cfg.get("schedule_weekdays_utc")
+    if weekdays is not None and today.weekday() not in weekdays:
+        print(f"source_{slot}: skipped by weekday acquisition schedule")
+        return False
+    budget = float(os.environ.get("APIFY_MONTHLY_BUDGET_USD", "30"))
+    ledger = ROOT / "state" / "apify_budget_ledger.ndjson"
+    ledger.parent.mkdir(parents=True, exist_ok=True)
+    period = today.strftime("%Y-%m")
+    reserved = 0.0
+    if ledger.exists():
+        for line in ledger.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            if record.get("month") == period:
+                reserved += float(record["reserved_usd"])
+    if reserved + float(cap) > budget + 1e-9:
+        print(f"source_{slot}: skipped, monthly reservation budget ${budget:.2f} exhausted (${reserved:.2f} reserved)")
+        return False
+    record = {
+        "month": period, "timestamp": today.isoformat(), "slot": slot,
+        "reserved_usd": float(cap), "budget_usd": budget,
+        "kind": "worst_case_reservation_not_actual_cost",
+    }
+    with ledger.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(record, sort_keys=True) + "\n")
+    print(f"source_{slot}: reserved up to ${float(cap):.2f}; monthly reservations ${reserved + float(cap):.2f}/${budget:.2f}")
+    return True
+
 def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
     path = ROOT / "config" / "sources" / f"source_{slot}.json"
     cfg = json.loads(path.read_text(encoding="utf-8"))
@@ -261,6 +306,9 @@ def collect(slot: int, *, since: str, until: str) -> list[dict[str, Any]]:
 
     if provider == "lightcast_uk":
         return _collect_lightcast_uk(cfg, values)
+
+    if provider in ("apify_actor", "apify_task") and not _budget_authorize(slot, cfg):
+        raise CollectionSkipped(f"source_{slot}: skipped by acquisition schedule or monthly budget")
 
     if provider == "apify_actor":
         actor_id = _apify_named_ref(str(_subst(cfg.get("actor_id") or cfg.get("actor_id_env", "env:APIFY_ACTOR_ID"), values)))
@@ -318,6 +366,12 @@ def run_slot(slot: int) -> int:
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps({"source": slot, "records": len(records), "output": str(output)}))
+        return 0
+    except CollectionSkipped as exc:
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text("[]" + chr(10), encoding="utf-8")
+        print("COLLECTION_SKIPPED: " + str(exc))
         return 0
     except Exception as exc:
         print(f"source_{slot} collection failed: {exc}", file=sys.stderr)

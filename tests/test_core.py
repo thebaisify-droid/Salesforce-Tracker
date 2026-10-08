@@ -6,9 +6,10 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
-from collectors.common import _apify_named_ref, _filter_window
-from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command
+from collectors.common import _apify_named_ref, _filter_window, _budget_authorize
+from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command, run_step
 from tracker.classify import classify, versions
 from tracker.dashboard import merge_with_baseline
 from tracker.normalize import normalize
@@ -59,6 +60,38 @@ class TrackerTests(unittest.TestCase):
     def test_apify_console_task_ref_converts_to_api_ref(self):
         self.assertEqual(_apify_named_ref("develop_ify/cv-library-scraper-task"), "develop_ify~cv-library-scraper-task")
         self.assertEqual(_apify_named_ref("develop_ify~cv-library-scraper-task"), "develop_ify~cv-library-scraper-task")
+
+    def test_apify_budget_reserves_worst_case_and_skips_when_exhausted(self):
+        with tempfile.TemporaryDirectory() as d:
+            import collectors.common as common
+            with patch.object(common, "ROOT", Path(d)), patch.dict(os.environ, {"APIFY_MONTHLY_BUDGET_USD": "0.30"}):
+                cfg = {"max_total_charge_usd": 0.20}
+                self.assertTrue(_budget_authorize(1, cfg))
+                self.assertFalse(_budget_authorize(2, cfg))
+                ledger = Path(d) / "state" / "apify_budget_ledger.ndjson"
+                rows = [json.loads(line) for line in ledger.read_text().splitlines()]
+                self.assertEqual(len(rows), 1)
+                self.assertEqual(rows[0]["reserved_usd"], 0.20)
+
+    def test_skipped_collector_does_not_count_as_success(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            out = root / "collected.json"
+            cmd = (
+                "python -c 'from pathlib import Path; "
+                "Path(\"collected.json\").write_text(\"[]\"); "
+                "print(\"COLLECTION_SKIPPED: budget limit\")'"
+            )
+            result = run_step("collect:test", cmd, root, os.environ.copy(), out)
+            self.assertEqual(result.status, "skipped")
+            self.assertTrue(result.artifact_valid)
+
+    def test_apify_budget_requires_per_run_cap(self):
+        with tempfile.TemporaryDirectory() as d:
+            import collectors.common as common
+            with patch.object(common, "ROOT", Path(d)):
+                with self.assertRaises(RuntimeError):
+                    _budget_authorize(1, {})
 
     def test_date_only_boundary_is_preserved(self):
         rows = [{"datePosted": "2026-10-04", "id": "boundary"}, {"datePosted": "2026-10-03", "id": "old"}]
