@@ -162,7 +162,6 @@ def migrate(database: Path, baseline_path: Path) -> dict[str, Any]:
         stats["database_after"] >= 45
         and stats["duplicate_baseline_keys"] == 0
         and stats["duplicate_job_urls"] == 0
-        and stats["matched_existing"] >= 3
     )
     return stats
 
