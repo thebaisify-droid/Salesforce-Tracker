@@ -6,6 +6,7 @@
     "frozen_baseline": 42,
     "late_discoveries": 3,
     "master_rows": 45,
+    "possibly_expired": 0,
     "post_baseline_new": 28
   },
   "by_advertiser_type": [
@@ -251,32 +252,50 @@
       "value": 9
     }
   ],
-  "generated_at": "2026-10-08T10:15:44Z",
+  "generated_at": "2026-10-08T11:10:01Z",
   "latest_run": {
-    "finished_at": "2026-10-08T10:15:43Z",
-    "inserted_rows": 10,
+    "finished_at": "2026-10-08T11:09:59Z",
+    "inserted_rows": 0,
     "master_data_version": "1.4",
     "rejected_rows": 0,
     "role_taxonomy_version": "2.2",
-    "run_id": "20261008T101051Z-69c09102",
-    "started_at": "2026-10-08T10:15:43Z",
+    "run_id": "20261008T105914Z-e92271f5",
+    "started_at": "2026-10-08T11:09:58Z",
     "status": "success",
-    "unchanged_rows": 33,
+    "unchanged_rows": 34,
     "updated_rows": 0
   },
+  "lifecycle": {
+    "ACTIVE": 73
+  },
   "pipeline": {
-    "irrelevant_records": 56,
+    "irrelevant_records": 52,
+    "lifecycle_assurance": {
+      "candidates_selected": 13,
+      "checked_at": "2026-10-08T11:09:59Z",
+      "counts": {
+        "ACTIVE": 73
+      },
+      "dry_run": false,
+      "observations": {
+        "AVAILABLE": 13
+      },
+      "passed": true,
+      "transitions": {
+        "ACTIVE->ACTIVE": 13
+      }
+    },
     "quality_passed": true,
-    "raw_records": 99,
+    "raw_records": 86,
     "rejected_records": 0,
-    "relevant_records": 43,
+    "relevant_records": 34,
     "sources": [
       {
-        "irrelevant": 4,
+        "irrelevant": 1,
         "key": "source_1",
         "label": "CV-Library",
-        "raw": 5,
-        "relevant": 1
+        "raw": 1,
+        "relevant": 0
       },
       {
         "irrelevant": 18,
@@ -293,13 +312,6 @@
         "relevant": 1
       },
       {
-        "irrelevant": 1,
-        "key": "source_4",
-        "label": "Indeed UK",
-        "raw": 9,
-        "relevant": 8
-      },
-      {
         "irrelevant": 29,
         "key": "source_5",
         "label": "JobServe",
@@ -309,21 +321,21 @@
     ]
   },
   "refresh": {
-    "finished_at": "2026-10-08T10:15:43Z",
-    "inserted": 10,
+    "finished_at": "2026-10-08T11:09:59Z",
+    "inserted": 0,
     "master_data_version": "1.4",
     "rejected": 0,
     "role_taxonomy_version": "2.2",
-    "started_at": "2026-10-08T10:15:43Z",
+    "started_at": "2026-10-08T11:09:58Z",
     "status": "success",
-    "unchanged": 33,
+    "unchanged": 34,
     "updated": 0
   },
   "review_queue": {
     "role": 12,
     "sector": 27
   },
-  "run_id": "20261008T101051Z-69c09102",
+  "run_id": "20261008T105914Z-e92271f5",
   "schema": "salesforce-hiring-dashboard/v1",
   "vacancies": [
     {
@@ -336,6 +348,12 @@
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 64,
       "last_seen_at": "2026-10-08T10:15:43Z",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-08T09:08:07Z",
       "relevance": "ADJACENT",
@@ -377,7 +395,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 66,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Milton Keynes, Buckinghamshire, UK",
       "posted_at": "2026-10-08",
       "relevance": "CORE",
@@ -416,7 +440,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 47,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London",
       "posted_at": "2026-10-07T20:32:05.693Z",
       "relevance": "ADJACENT",
@@ -460,7 +490,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 46,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London",
       "posted_at": "2026-10-07T20:32:05.23Z",
       "relevance": "ADJACENT",
@@ -504,7 +540,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 49,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London",
       "posted_at": "2026-10-07T20:32:04.697Z",
       "relevance": "ADJACENT",
@@ -548,7 +590,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 50,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London",
       "posted_at": "2026-10-07T20:32:04.21Z",
       "relevance": "ADJACENT",
@@ -592,7 +640,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 48,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London",
       "posted_at": "2026-10-07T20:32:03.83Z",
       "relevance": "ADJACENT",
@@ -640,6 +694,12 @@
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 55,
       "last_seen_at": "2026-10-08T10:15:43Z",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
       "relevance": "ADJACENT",
@@ -679,6 +739,12 @@
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 54,
       "last_seen_at": "2026-10-08T10:15:43Z",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
       "relevance": "ADJACENT",
@@ -718,6 +784,12 @@
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 53,
       "last_seen_at": "2026-10-08T10:15:43Z",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
       "relevance": "ADJACENT",
@@ -756,7 +828,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 52,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "BA201DL",
       "posted_at": "2026-10-07T00:00:00.000Z",
       "relevance": "CORE",
@@ -803,7 +881,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 71,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Gloucester, Gloucestershire, UK",
       "posted_at": "2026-10-07",
       "relevance": "CORE",
@@ -847,7 +931,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 67,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London, UK",
       "posted_at": "2026-10-07",
       "relevance": "CORE",
@@ -888,7 +978,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 63,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Bradford, Remote, UK",
       "posted_at": "2026-10-07",
       "relevance": "CORE",
@@ -929,7 +1025,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 62,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Walsall, UK",
       "posted_at": "2026-10-07",
       "relevance": "CORE",
@@ -972,7 +1074,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 51,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London",
       "posted_at": "2026-10-06T20:32:03.843Z",
       "relevance": "ADJACENT",
@@ -1016,8 +1124,14 @@
       "end_client_name": "Unnamed end client",
       "first_seen_at": "2026-10-06",
       "id": "MV-000045",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000045",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Doncaster",
       "posted_at": "2026-10-06",
       "relevance": "ADJACENT",
@@ -1061,8 +1175,14 @@
       "end_client_name": "Unnamed end client",
       "first_seen_at": "2026-10-06",
       "id": "MV-000043",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000043",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Tower Hill, City of London (EC3), E1W 1WY",
       "posted_at": "2026-10-06",
       "relevance": "CORE",
@@ -1108,6 +1228,12 @@
       "id": "MV-000042",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000042",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "PO15, Whiteley, Hampshire",
       "posted_at": "2026-10-06",
       "relevance": "ADJACENT",
@@ -1148,6 +1274,12 @@
       "id": "MV-000041",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000041",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Leavesden",
       "posted_at": "2026-10-06",
       "relevance": "ADJACENT",
@@ -1186,7 +1318,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 73,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:59Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London, UK",
       "posted_at": "2026-10-06",
       "relevance": "ADJACENT",
@@ -1225,7 +1363,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 68,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London, UK",
       "posted_at": "2026-10-06",
       "relevance": "CORE",
@@ -1266,7 +1410,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 60,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "West Midlands, UK",
       "posted_at": "2026-10-06",
       "relevance": "CORE",
@@ -1309,7 +1459,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 59,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Birmingham, UK",
       "posted_at": "2026-10-06",
       "relevance": "CORE",
@@ -1348,7 +1504,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 58,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Remote , UK",
       "posted_at": "2026-10-06",
       "relevance": "CORE",
@@ -1390,7 +1552,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 57,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London, UK",
       "posted_at": "2026-10-06",
       "relevance": "CORE",
@@ -1433,7 +1601,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 56,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London, UK",
       "posted_at": "2026-10-06",
       "relevance": "CORE",
@@ -1474,8 +1648,14 @@
       "end_client_name": "Unnamed leading Wealth Management organisation",
       "first_seen_at": "2026-10-05",
       "id": "MV-000040",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000040",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Tower Hill, City of London (EC3), E1W 1WY",
       "posted_at": "2026-10-05",
       "relevance": "CORE",
@@ -1519,8 +1699,14 @@
       "end_client_name": "Unnamed government body",
       "first_seen_at": "2026-10-05",
       "id": "MV-000039",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000039",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "City of London, London",
       "posted_at": "2026-10-05",
       "relevance": "CORE",
@@ -1564,8 +1750,14 @@
       "end_client_name": "Unnamed end client",
       "first_seen_at": "2026-10-05",
       "id": "MV-000038",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000038",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "London",
       "posted_at": "2026-10-05",
       "relevance": "CORE",
@@ -1609,7 +1801,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 72,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:59Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Winnersh, Berkshire, UK",
       "posted_at": "2026-10-05",
       "relevance": "CORE",
@@ -1650,7 +1848,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 70,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Winnersh, Berkshire, UK",
       "posted_at": "2026-10-05",
       "relevance": "CORE",
@@ -1691,7 +1895,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 69,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Manchester, UK",
       "posted_at": "2026-10-05",
       "relevance": "CORE",
@@ -1730,7 +1940,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 65,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Exeter, Devon, UK",
       "posted_at": "2026-10-05",
       "relevance": "ADJACENT",
@@ -1769,7 +1985,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 61,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "St Albans, Hertfordshire, UK",
       "posted_at": "2026-10-05",
       "relevance": "CORE",
@@ -1813,6 +2035,12 @@
       "id": "MV-000037",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000037",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-03",
       "relevance": "ADJACENT",
@@ -1853,6 +2081,12 @@
       "id": "MV-000036",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000036",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-03",
       "relevance": "CORE",
@@ -1893,6 +2127,12 @@
       "id": "MV-000035",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000035",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-03",
       "relevance": "CORE",
@@ -1933,6 +2173,12 @@
       "id": "MV-000034",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000034",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-03",
       "relevance": "ADJACENT",
@@ -1973,6 +2219,12 @@
       "id": "MV-000044",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000044",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-02",
       "relevance": "ADJACENT",
@@ -2013,6 +2265,12 @@
       "id": "MV-000033",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000033",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-02",
       "relevance": "ADJACENT",
@@ -2053,6 +2311,12 @@
       "id": "MV-000032",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000032",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-02",
       "relevance": "CORE",
@@ -2093,6 +2357,12 @@
       "id": "MV-000031",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000031",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Reading",
       "posted_at": "2026-10-02",
       "relevance": "ADJACENT",
@@ -2133,6 +2403,12 @@
       "id": "MV-000030",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000030",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-01",
       "relevance": "ADJACENT",
@@ -2173,6 +2449,12 @@
       "id": "MV-000029",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000029",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-01",
       "relevance": "CORE",
@@ -2213,6 +2495,12 @@
       "id": "MV-000028",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000028",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-10-01",
       "relevance": "CORE",
@@ -2253,6 +2541,12 @@
       "id": "MV-000027",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000027",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Liverpool",
       "posted_at": "2026-10-01",
       "relevance": "CORE",
@@ -2293,6 +2587,12 @@
       "id": "MV-000026",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000026",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Ashford",
       "posted_at": "2026-10-01",
       "relevance": "CORE",
@@ -2338,6 +2638,12 @@
       "id": "MV-000025",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000025",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Belfast, Northern Ireland",
       "posted_at": "2026-10-01",
       "relevance": "CORE",
@@ -2378,6 +2684,12 @@
       "id": "MV-000024",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000024",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Sheffield",
       "posted_at": "2026-10-01",
       "relevance": "CORE",
@@ -2423,6 +2735,12 @@
       "id": "MV-000023",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000023",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "WS2, Leamore, Walsall",
       "posted_at": "2026-09-30",
       "relevance": "CORE",
@@ -2463,6 +2781,12 @@
       "id": "MV-000022",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000022",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Hampshire",
       "posted_at": "2026-09-30",
       "relevance": "ADJACENT",
@@ -2503,6 +2827,12 @@
       "id": "MV-000021",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000021",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Reading",
       "posted_at": "2026-09-30",
       "relevance": "ADJACENT",
@@ -2541,8 +2871,14 @@
       "end_client_name": "Foresters Financial",
       "first_seen_at": "2026-09-30",
       "id": "MV-000020",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000020",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:58Z"
+      },
       "location": "Bromley, Kent",
       "posted_at": "2026-09-30",
       "relevance": "CORE",
@@ -2593,6 +2929,12 @@
       "id": "MV-000019",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000019",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Norwich",
       "posted_at": "2026-09-29",
       "relevance": "CORE",
@@ -2638,6 +2980,12 @@
       "id": "MV-000018",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000018",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "Eggborough, North Yorkshire",
       "posted_at": "2026-09-29",
       "relevance": "ADJACENT",
@@ -2678,6 +3026,12 @@
       "id": "MV-000017",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000017",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-09-29",
       "relevance": "CORE",
@@ -2718,6 +3072,12 @@
       "id": "MV-000016",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000016",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "London",
       "posted_at": "2026-09-28",
       "relevance": "ADJACENT",
@@ -2758,6 +3118,12 @@
       "id": "MV-000015",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000015",
+      "lifecycle": {
+        "last_verified_at": null,
+        "reason": null,
+        "status": "ACTIVE",
+        "updated_at": null
+      },
       "location": "LS101AB",
       "posted_at": "2026-09-25",
       "relevance": "ADJACENT",
@@ -2796,8 +3162,14 @@
       "end_client_name": "Windsor Forest Colleges Group",
       "first_seen_at": "2026-09-25",
       "id": "MV-000014",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:59Z",
       "legacy_id": "MV-000014",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Langley / Windsor, Berkshire",
       "posted_at": "2026-09-25",
       "relevance": "CORE",
@@ -2843,6 +3215,12 @@
       "id": "MV-000013",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000013",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London",
       "posted_at": "2026-09-24",
       "relevance": "CORE",
@@ -2883,6 +3261,12 @@
       "id": "MV-000012",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000012",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Sheffield",
       "posted_at": "2026-09-22",
       "relevance": "CORE",
@@ -2923,6 +3307,12 @@
       "id": "MV-000011",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000011",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London",
       "posted_at": "2026-09-21",
       "relevance": "CORE",
@@ -2961,8 +3351,14 @@
       "end_client_name": "The Hyde Group",
       "first_seen_at": "2026-09-17",
       "id": "MV-000010",
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000010",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London Bridge, London",
       "posted_at": "2026-09-17",
       "relevance": "CORE",
@@ -3008,6 +3404,12 @@
       "id": "MV-000009",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000009",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Yeovil",
       "posted_at": "2026-09-16",
       "relevance": "CORE",
@@ -3048,6 +3450,12 @@
       "id": "MV-000008",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000008",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Slough",
       "posted_at": "2026-09-16",
       "relevance": "CORE",
@@ -3088,6 +3496,12 @@
       "id": "MV-000007",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000007",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London",
       "posted_at": "2026-09-15",
       "relevance": "CORE",
@@ -3128,6 +3542,12 @@
       "id": "MV-000006",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000006",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London",
       "posted_at": "2026-09-15",
       "relevance": "ADJACENT",
@@ -3168,6 +3588,12 @@
       "id": "MV-000005",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000005",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London",
       "posted_at": "2026-09-10",
       "relevance": "CORE",
@@ -3208,6 +3634,12 @@
       "id": "MV-000004",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000004",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "London",
       "posted_at": "2026-09-10",
       "relevance": "CORE",
@@ -3248,6 +3680,12 @@
       "id": "MV-000003",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000003",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Lutterworth, Leicestershire",
       "posted_at": "2026-09-09",
       "relevance": "CORE",
@@ -3288,6 +3726,12 @@
       "id": "MV-000002",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000002",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Warrington",
       "posted_at": "2026-09-08",
       "relevance": "CORE",
@@ -3328,6 +3772,12 @@
       "id": "MV-000001",
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000001",
+      "lifecycle": {
+        "last_verified_at": "2026-10-08T11:09:59Z",
+        "reason": "HTTP_SUCCESS",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-08T11:09:59Z"
+      },
       "location": "Aylesford",
       "posted_at": "2026-09-07",
       "relevance": "ADJACENT",
