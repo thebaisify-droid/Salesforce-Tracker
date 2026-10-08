@@ -12,7 +12,7 @@ class CandidateBetaIsolationTests(unittest.TestCase):
   self.assertTrue(all(r["publication_ready"] is False for r in self.data["records"]))
  def test_no_production_link_or_fake_metrics(self):
   self.assertIn("BETA",self.html)
-  self.assertIn("not representative",self.html)
+  self.assertIn("not</strong> representative",self.html)
   self.assertNotIn("dashboard/live-data.json",self.html)
   self.assertIn("textNode(r.title)",self.html)
  def test_external_links_safe(self):
