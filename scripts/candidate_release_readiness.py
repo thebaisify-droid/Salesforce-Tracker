@@ -7,7 +7,7 @@ import argparse
 import json
 from pathlib import Path
 
-EXPECTED_SOURCES = {"CV-Library", "Totaljobs", "Reed"}
+EXPECTED_SOURCES = {"CV-Library", "Totaljobs", "Reed", "JobServe"}
 EXPECTED_FAMILIES = 22
 
 def assess(*, assurance: dict, evidence: dict, source_names=EXPECTED_SOURCES):
