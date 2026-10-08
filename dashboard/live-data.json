@@ -1,12 +1,12 @@
 {
-  "active_vacancies": 52,
+  "active_vacancies": 63,
   "baseline": {
     "confirmed_expired": 0,
     "date": "2026-10-06",
     "frozen_baseline": 42,
     "late_discoveries": 3,
     "master_rows": 45,
-    "post_baseline_new": 7
+    "post_baseline_new": 18
   },
   "by_advertiser_type": [
     {
@@ -15,35 +15,39 @@
     },
     {
       "label": "DIRECT_EMPLOYER",
-      "value": 6
+      "value": 12
     },
     {
       "label": "RECRUITMENT_AGENCY",
-      "value": 4
+      "value": 9
     }
   ],
   "by_relevance": [
     {
       "label": "CORE",
-      "value": 30
+      "value": 38
     },
     {
       "label": "ADJACENT",
-      "value": 22
+      "value": 25
     }
   ],
   "by_role_family": [
     {
+      "label": "Delivery / Programme",
+      "value": 9
+    },
+    {
       "label": "Architecture",
+      "value": 8
+    },
+    {
+      "label": "Platform / Administration",
       "value": 7
     },
     {
-      "label": "Delivery / Programme",
-      "value": 5
-    },
-    {
       "label": "Development / Engineering",
-      "value": 4
+      "value": 6
     },
     {
       "label": "Sales Operations / CRM Operations",
@@ -58,8 +62,8 @@
       "value": 4
     },
     {
-      "label": "Platform / Administration",
-      "value": 4
+      "label": "Other / Unresolved",
+      "value": 3
     },
     {
       "label": "Business Analysis",
@@ -70,11 +74,11 @@
       "value": 3
     },
     {
-      "label": "Engineering / Development",
+      "label": "Data / Integration",
       "value": 2
     },
     {
-      "label": "Programme / Project Delivery",
+      "label": "Sales / Account Management",
       "value": 2
     },
     {
@@ -90,41 +94,33 @@
       "value": 2
     },
     {
-      "label": "Sales / Pre-Sales",
-      "value": 1
-    },
-    {
       "label": "Testing / QA",
       "value": 1
     },
     {
       "label": "Customer Success / Adoption",
       "value": 1
-    },
-    {
-      "label": "Sales / Account Management",
-      "value": 1
     }
   ],
   "by_sector": [
     {
-      "label": "Unknown",
-      "value": 7
+      "label": "Technology Services",
+      "value": 15
     },
     {
-      "label": "Technology Services",
-      "value": 6
+      "label": "Unknown",
+      "value": 10
     },
     {
       "label": "Technology Services / Consulting",
       "value": 5
     },
     {
-      "label": "Education & Nonprofit",
-      "value": 4
+      "label": "Financial Services",
+      "value": 3
     },
     {
-      "label": "Financial Services",
+      "label": "Energy & Utilities",
       "value": 2
     },
     {
@@ -144,19 +140,19 @@
       "value": 2
     },
     {
-      "label": "Manufacturing & Engineering",
-      "value": 1
-    },
-    {
-      "label": "Public Sector",
-      "value": 1
-    },
-    {
-      "label": "Unresolved",
+      "label": "Education & Nonprofit",
       "value": 1
     },
     {
       "label": "Technology / Communications Equipment",
+      "value": 1
+    },
+    {
+      "label": "Retail & Consumer",
+      "value": 1
+    },
+    {
+      "label": "Manufacturing & Engineering",
       "value": 1
     },
     {
@@ -239,9 +235,19 @@
       "key": "source_2",
       "label": "Totaljobs",
       "value": 15
+    },
+    {
+      "key": "source_5",
+      "label": "JobServe",
+      "value": 12
+    },
+    {
+      "key": "source_4",
+      "label": "Indeed UK",
+      "value": 9
     }
   ],
-  "generated_at": "2026-10-08T04:01:26Z",
+  "generated_at": "2026-10-08T08:45:40Z",
   "latest_run": {
     "finished_at": "2026-10-08T04:01:26Z",
     "inserted_rows": 7,
@@ -296,8 +302,8 @@
     "updated": 0
   },
   "review_queue": {
-    "role": 5,
-    "sector": 14
+    "role": 9,
+    "sector": 18
   },
   "run_id": "20261008T035913Z-483b16be",
   "schema": "salesforce-hiring-dashboard/v1",
@@ -311,7 +317,7 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 47,
-      "last_seen_at": "2026-10-08T04:01:26Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "location": "London",
       "posted_at": "2026-10-07T20:32:05.693Z",
       "relevance": "ADJACENT",
@@ -327,13 +333,18 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Manufacturing & Engineering",
+      "sector": "Technology Services",
       "seniority": "Senior",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
           "url": "https://www.totaljobs.com/job/sr-enterprise-architect-agentforce-supply-chain/salesforce-job108110305"
+        },
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=423af6d4d85d9636"
         }
       ],
       "specialisms": [],
@@ -350,15 +361,15 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 46,
-      "last_seen_at": "2026-10-08T04:01:26Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "location": "London",
       "posted_at": "2026-10-07T20:32:05.23Z",
       "relevance": "ADJACENT",
       "review": {
         "role": true,
-        "sector": true
+        "sector": false
       },
-      "role_family": "Engineering / Development",
+      "role_family": "Development / Engineering",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -366,13 +377,18 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Education & Nonprofit",
+      "sector": "Technology Services",
       "seniority": "Standard",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
           "url": "https://www.totaljobs.com/job/forward-deployed-engagement-strategist/salesforce-job108110304"
+        },
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=2b24f9914dfe6f76"
         }
       ],
       "specialisms": [],
@@ -389,15 +405,15 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 49,
-      "last_seen_at": "2026-10-08T04:01:26Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "location": "London",
       "posted_at": "2026-10-07T20:32:04.697Z",
       "relevance": "ADJACENT",
       "review": {
         "role": true,
-        "sector": true
+        "sector": false
       },
-      "role_family": "Programme / Project Delivery",
+      "role_family": "Delivery / Programme",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -405,13 +421,18 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Education & Nonprofit",
+      "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
           "url": "https://www.totaljobs.com/job/engagement-delivery-director/salesforce-job108110303"
+        },
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=fcfd1d358e70ad08"
         }
       ],
       "specialisms": [],
@@ -428,7 +449,7 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 50,
-      "last_seen_at": "2026-10-08T04:01:26Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "location": "London",
       "posted_at": "2026-10-07T20:32:04.21Z",
       "relevance": "ADJACENT",
@@ -436,7 +457,7 @@
         "role": true,
         "sector": false
       },
-      "role_family": "Programme / Project Delivery",
+      "role_family": "Delivery / Programme",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -444,13 +465,18 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Public Sector",
+      "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
           "url": "https://www.totaljobs.com/job/senior-project-manager/salesforce-job108110302"
+        },
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=ce03bf9922600618"
         }
       ],
       "specialisms": [],
@@ -467,13 +493,13 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 48,
-      "last_seen_at": "2026-10-08T04:01:26Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "location": "London",
       "posted_at": "2026-10-07T20:32:03.83Z",
       "relevance": "ADJACENT",
       "review": {
         "role": true,
-        "sector": true
+        "sector": false
       },
       "role_family": "Architecture",
       "salary": {
@@ -483,13 +509,18 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Education & Nonprofit",
+      "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
           "url": "https://www.totaljobs.com/job/principal-ai-architect/salesforce-job108110301"
+        },
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=070594908aaf6426"
         }
       ],
       "specialisms": [
@@ -501,6 +532,123 @@
       "work_mode": null
     },
     {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 55,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "London",
+      "posted_at": "2026-10-07T05:00:00.000Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": false
+      },
+      "role_family": "Other / Unresolved",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=f0bcf3078da6ca1f"
+        }
+      ],
+      "specialisms": [],
+      "title": "Director, Industry Strategist, Life Sciences Acceleration Hub",
+      "url": "https://uk.indeed.com/viewjob?jk=f0bcf3078da6ca1f",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 54,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "London",
+      "posted_at": "2026-10-07T05:00:00.000Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": false
+      },
+      "role_family": "Other / Unresolved",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=be0e8a7bfecea24b"
+        }
+      ],
+      "specialisms": [],
+      "title": "Life Sciences Ecosystem Lead Director",
+      "url": "https://uk.indeed.com/viewjob?jk=be0e8a7bfecea24b",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 53,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "London",
+      "posted_at": "2026-10-07T05:00:00.000Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": false
+      },
+      "role_family": "Other / Unresolved",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=416e11f5e34d0ca1"
+        }
+      ],
+      "specialisms": [],
+      "title": "Life Sciences Program Manager/Program Executive",
+      "url": "https://uk.indeed.com/viewjob?jk=416e11f5e34d0ca1",
+      "work_mode": null
+    },
+    {
       "advertiser": "Michael Page Technology",
       "advertiser_type": "RECRUITMENT_AGENCY",
       "baseline": false,
@@ -509,7 +657,7 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 52,
-      "last_seen_at": "2026-10-08T04:01:26Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "location": "BA201DL",
       "posted_at": "2026-10-07T00:00:00.000Z",
       "relevance": "CORE",
@@ -517,7 +665,7 @@
         "role": false,
         "sector": true
       },
-      "role_family": "Engineering / Development",
+      "role_family": "Development / Engineering",
       "salary": {
         "currency": "GBP",
         "max": 65000.0,
@@ -525,13 +673,18 @@
         "period": "Annual"
       },
       "salary_text": null,
-      "sector": "Unresolved",
+      "sector": "Unknown",
       "seniority": "Standard",
       "sources": [
         {
           "key": "source_3",
           "label": "Reed",
           "url": "https://www.reed.co.uk/jobs/salesforce-developer/57432195"
+        },
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hChGP"
         }
       ],
       "specialisms": [
@@ -543,23 +696,23 @@
       "work_mode": null
     },
     {
-      "advertiser": "Salesforce",
-      "advertiser_type": "DIRECT_EMPLOYER",
+      "advertiser": "Logix Resourcing",
+      "advertiser_type": "RECRUITMENT_AGENCY",
       "baseline": false,
-      "contract_type": null,
-      "employment_type": "FULL_TIME",
+      "contract_type": "Permanent",
+      "employment_type": null,
       "end_client_name": null,
-      "first_seen_at": "2026-10-08T04:01:26Z",
-      "id": 51,
-      "last_seen_at": "2026-10-08T04:01:26Z",
-      "location": "London",
-      "posted_at": "2026-10-06T20:32:03.843Z",
-      "relevance": "ADJACENT",
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 63,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "Bradford, Remote, UK",
+      "posted_at": "2026-10-07",
+      "relevance": "CORE",
       "review": {
         "role": false,
         "sector": true
       },
-      "role_family": "Sales / Pre-Sales",
+      "role_family": "Platform / Administration",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -568,12 +721,101 @@
       },
       "salary_text": null,
       "sector": "Education & Nonprofit",
+      "seniority": "Senior",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hCfRv"
+        }
+      ],
+      "specialisms": [
+        "Experience Cloud"
+      ],
+      "title": "Senior Salesforce Administrator (Fully remote working)",
+      "url": "https://www.jobserve.com/gb/en/hCfRv",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Vallum",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Contract/Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 62,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "Walsall, UK",
+      "posted_at": "2026-10-07",
+      "relevance": "CORE",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Data / Integration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Energy & Utilities",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/g9Wst"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "Experience Cloud"
+      ],
+      "title": "Salesforce Technical Lead/Consultant",
+      "url": "https://www.jobserve.com/gb/en/g9Wst",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T04:01:26Z",
+      "id": 51,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "London",
+      "posted_at": "2026-10-06T20:32:03.843Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Sales / Account Management",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
       "seniority": "Standard",
       "sources": [
         {
           "key": "source_2",
           "label": "Totaljobs",
           "url": "https://www.totaljobs.com/job/cloud-account-executive-partner-cloud/salesforce-job108090274"
+        },
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=c55bd85534b7231a"
         }
       ],
       "specialisms": [],
@@ -630,7 +872,7 @@
       "end_client_name": "Unnamed end client",
       "first_seen_at": "2026-10-06",
       "id": "MV-000043",
-      "last_seen_at": "2026-10-08T04:01:26Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "legacy_id": "MV-000043",
       "location": "Tower Hill, City of London (EC3), E1W 1WY",
       "posted_at": "2026-10-06",
@@ -650,6 +892,11 @@
       "sector": "Financial Services",
       "seniority": "Standard",
       "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hCGTj"
+        },
         {
           "key": "source_2",
           "label": "Totaljobs",
@@ -742,6 +989,214 @@
       "work_mode": "hybrid"
     },
     {
+      "advertiser": "Opus Recruitment Solutions Ltd",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Contract/Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 60,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "West Midlands, UK",
+      "posted_at": "2026-10-06",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Delivery / Programme",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Retail & Consumer",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hCGjh"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "Experience Cloud"
+      ],
+      "title": "SalesForce Programme Manager",
+      "url": "https://www.jobserve.com/gb/en/hCGjh",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Opus Recruitment Solutions Ltd",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Contract",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 59,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "Birmingham, UK",
+      "posted_at": "2026-10-06",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Delivery / Programme",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Energy & Utilities",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hCGji"
+        }
+      ],
+      "specialisms": [],
+      "title": "Salesforce Programme Manager | 12-Month Contract | Outside IR35 | \u00a3500",
+      "url": "https://www.jobserve.com/gb/en/hCGji",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Hamilton Barnes",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Contract",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 58,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "Remote , UK",
+      "posted_at": "2026-10-06",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Unknown",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hCI88"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud"
+      ],
+      "title": "Salesforce Administrator - 6 months - Fully Remote - Outside IR35",
+      "url": "https://www.jobserve.com/gb/en/hCI88",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Rothstein Recruitment Ltd",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Contract",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 57,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "London, UK",
+      "posted_at": "2026-10-06",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Financial Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hCIZV"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "Experience Cloud"
+      ],
+      "title": "Salesforce Architect - Functional - Banking",
+      "url": "https://www.jobserve.com/gb/en/hCIZV",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Arrows Group Professional Limited",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 56,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "London, UK",
+      "posted_at": "2026-10-06",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Data / Integration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Manufacturing & Engineering",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hCGS9"
+        }
+      ],
+      "specialisms": [
+        "Data Cloud"
+      ],
+      "title": "Salesforce Data Engineer",
+      "url": "https://www.jobserve.com/gb/en/hCGS9",
+      "work_mode": null
+    },
+    {
       "advertiser": "Morson Edge",
       "advertiser_type": "RECRUITMENT_AGENCY",
       "baseline": true,
@@ -750,7 +1205,7 @@
       "end_client_name": "Unnamed leading Wealth Management organisation",
       "first_seen_at": "2026-10-05",
       "id": "MV-000040",
-      "last_seen_at": "2026-10-07T11:31:45Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "legacy_id": "MV-000040",
       "location": "Tower Hill, City of London (EC3), E1W 1WY",
       "posted_at": "2026-10-05",
@@ -770,6 +1225,11 @@
       "sector": "Financial Services / Wealth Management",
       "seniority": "Senior",
       "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hBn0a"
+        },
         {
           "key": "source_2",
           "label": "Totaljobs",
@@ -830,7 +1290,7 @@
       "end_client_name": "Unnamed end client",
       "first_seen_at": "2026-10-05",
       "id": "MV-000038",
-      "last_seen_at": "2026-10-07T11:31:45Z",
+      "last_seen_at": "2026-10-08T08:45:40Z",
       "legacy_id": "MV-000038",
       "location": "London",
       "posted_at": "2026-10-05",
@@ -851,6 +1311,11 @@
       "seniority": "Senior",
       "sources": [
         {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hBmPp"
+        },
+        {
           "key": "source_3",
           "label": "Reed",
           "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965"
@@ -860,6 +1325,48 @@
       "title": "Salesforce Technical Architect",
       "url": "https://www.reed.co.uk/jobs/salesforce-technical-architect/57421965",
       "work_mode": ""
+    },
+    {
+      "advertiser": "Hurren and Hope Holdings Ltd",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-08T08:45:40Z",
+      "id": 61,
+      "last_seen_at": "2026-10-08T08:45:40Z",
+      "location": "St Albans, Hertfordshire, UK",
+      "posted_at": "2026-10-05",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Unknown",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hBocY"
+        }
+      ],
+      "specialisms": [
+        "MuleSoft / Integration",
+        "Platform / Apex / LWC"
+      ],
+      "title": "SalesForce Administrator",
+      "url": "https://www.jobserve.com/gb/en/hBocY",
+      "work_mode": null
     },
     {
       "advertiser": null,
