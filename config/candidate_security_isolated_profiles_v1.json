@@ -1,0 +1,56 @@
+{
+  "schema": "candidate-security-isolated-profiles/v1",
+  "enabled": false,
+  "execution_approved": false,
+  "max_new_paid_actor_runs": 0,
+  "publication_approved": false,
+  "protected_monthly_limit_usd": 19,
+  "protected_salesforce_reserve_usd": 8,
+  "purpose": "Test coverage of seven security families in a future independently approved acquisition; planning only.",
+  "queries": [
+    {
+      "family": "Information Security Analysis",
+      "query": "information security analyst"
+    },
+    {
+      "family": "Security Operations / SOC",
+      "query": "SOC analyst"
+    },
+    {
+      "family": "Security Architecture",
+      "query": "cyber security architect"
+    },
+    {
+      "family": "Security Consulting & Advisory",
+      "query": "cyber security consultant"
+    },
+    {
+      "family": "Security Risk & Third-Party Risk",
+      "query": "third party risk analyst"
+    },
+    {
+      "family": "Security Management",
+      "query": "information security manager"
+    },
+    {
+      "family": "IT Security",
+      "query": "IT security analyst"
+    }
+  ],
+  "sources": [
+    "Totaljobs",
+    "Indeed UK",
+    "JobServe"
+  ],
+  "country": "United Kingdom",
+  "minimum_review_per_family": 1,
+  "guardrails": [
+    "Check Actor-compatible input schemas per source before executing",
+    "Do not run all seven profiles automatically",
+    "Check current $19 Apify account budget and preserve $8 Salesforce headroom",
+    "Obtain fresh explicit authorisation for any paid pilot",
+    "Record posted date, description, employer, UK location and stable job identifier where allowed",
+    "Human verify active status, family assignment and cross-source duplicates",
+    "Never publish directly to Salesforce production dashboard"
+  ]
+}
