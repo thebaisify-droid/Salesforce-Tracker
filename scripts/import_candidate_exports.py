@@ -13,6 +13,10 @@ from typing import Any
 
 from scripts.build_candidate_market_dashboard import _field, ALLOWED, URL_KEYS, COMPANY_KEYS, LOCATION_KEYS, DATE_KEYS
 
+EXTENDED_COMPANY_KEYS = COMPANY_KEYS + ("companyName", "employerName", "recruiter", "organisation")
+EXTENDED_URL_KEYS = URL_KEYS + ("jobLink", "applyUrl", "job_url_original")
+EXTENDED_DATE_KEYS = DATE_KEYS + ("date_posted", "created", "publicationDate")
+
 DESCRIPTION_KEYS = ("description", "descriptionText", "job_description", "jobDescription", "summary", "snippet", "body")
 
 def load_export(path: str | Path, source: str) -> list[dict[str, Any]]:
@@ -37,11 +41,11 @@ def load_export(path: str | Path, source: str) -> list[dict[str, Any]]:
             continue
         row = {
             "title": _field(raw, ALLOWED),
-            "url": _field(raw, URL_KEYS),
+            "url": _field(raw, EXTENDED_URL_KEYS),
             "description": _field(raw, DESCRIPTION_KEYS),
-            "company": _field(raw, COMPANY_KEYS),
+            "company": _field(raw, EXTENDED_COMPANY_KEYS),
             "location": _field(raw, LOCATION_KEYS),
-            "posted_at": _field(raw, DATE_KEYS),
+            "posted_at": _field(raw, EXTENDED_DATE_KEYS),
             "source": source,
         }
         if row["title"] and row["url"]:
