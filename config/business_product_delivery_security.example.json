@@ -9,8 +9,11 @@
   "core_sources": [
     "CV-Library",
     "Totaljobs",
-    "Reed",
+    "Indeed UK",
     "JobServe"
   ],
-  "core_source_policy": "JobServe is a required core source for QA and eventual launch; this configuration has no acquisition jobs and paid acquisition remains disabled."
+  "core_source_policy": "Indeed UK and JobServe are core sources for the new tracker; Reed is optional enrichment. This remains an inactive acquisition specification.",
+  "optional_enrichment_sources": [
+    "Reed"
+  ]
 }
