@@ -16,11 +16,10 @@ TITLE_DIRECT = (
     "commerce cloud",
     "data cloud",
     "revenue cloud",
+    "agentforce",
 )
 
-PLATFORM_PHRASES = (
-    "salesforce platform",
-    "salesforce crm",
+STRONG_PLATFORM_PHRASES = (
     "salesforce sales cloud",
     "salesforce service cloud",
     "salesforce experience cloud",
@@ -41,36 +40,46 @@ PLATFORM_PHRASES = (
     "salesforce business analyst",
     "salesforce product owner",
     "salesforce trainer",
-    "salesforce ecosystem",
     "salesforce org",
     "salesforce flows",
     "lightning web component",
     "visualforce",
+    "omnistudio",
+    "apex",
     "mulesoft",
 )
 
-TITLE_ROLE_HINTS = (
+CONTEXTUAL_PHRASES = (
+    "salesforce crm",
+    "salesforce platform",
+    "salesforce ecosystem",
+)
+
+CONTEXT_TITLE_HINTS = (
     "business analyst",
     "product owner",
     "product manager",
-    "administrator",
     "developer",
     "architect",
-    "technical consultant",
-    "functional consultant",
+    "consultant",
     "crm",
     "platform",
     "integration",
-    "systems trainer",
-    "salesforce trainer",
+    "systems",
     "devops",
-    "release manager",
-    "test analyst",
+    "release",
+    "test",
+    "qa",
+    "customer success",
+    "delivery",
 )
+
+COMPANY_KEYS = ("advertiser", "company", "company_name", "companyName", "employer", "recruiter")
 
 
 def salesforce_relevance(raw: dict[str, Any]) -> tuple[bool, str]:
     title = (text_value(first_value(raw, "title", "title_raw", "job_title", "jobTitle", "position", "name")) or "").lower()
+    company = (text_value(first_value(raw, *COMPANY_KEYS)) or "").lower().strip()
     description = (text_value(first_value(
         raw, "description", "descriptionText", "job_description", "jobDescription",
         "body", "summary", "descriptionSnippet", "textSnippet"
@@ -80,12 +89,20 @@ def salesforce_relevance(raw: dict[str, Any]) -> tuple[bool, str]:
     if any(term in title for term in TITLE_DIRECT):
         return True, "title_salesforce_signal"
 
-    phrase_hits = [phrase for phrase in PLATFORM_PHRASES if phrase in combined]
-    if phrase_hits:
-        return True, "platform_signal:" + phrase_hits[0]
+    if company == "salesforce" or company.startswith("salesforce "):
+        return True, "salesforce_direct_employer"
+
+    strong_hits = [phrase for phrase in STRONG_PLATFORM_PHRASES if phrase in combined]
+    if strong_hits:
+        return True, "platform_signal:" + strong_hits[0]
 
     salesforce_mentions = len(re.findall(r"\bsalesforce\b", combined))
-    if salesforce_mentions >= 2 and any(hint in title for hint in TITLE_ROLE_HINTS):
+    contextual_hits = [phrase for phrase in CONTEXTUAL_PHRASES if phrase in combined]
+    if (
+        salesforce_mentions >= 2
+        and contextual_hits
+        and any(hint in title for hint in CONTEXT_TITLE_HINTS)
+    ):
         return True, "role_plus_salesforce_context"
 
     return False, "generic_or_incidental_salesforce_mention"
