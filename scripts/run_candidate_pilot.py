@@ -17,6 +17,10 @@ TASKS={"CV-Library":"develop_ify/cv-library-scraper-task","Totaljobs":"develop_i
 ACTORS={"Indeed UK":"wildorigins/indeed-jobs","JobServe":"solidcode/jobserve-scraper"}
 LIMIT=15
 SAFE_RESERVE_FOR_EXISTING_TRACKER=8.00
+# The prior CV-Library run aborted at its $0.10 charge cap. Fail closed until
+# observed charging and a revised pilot allocation have been separately reviewed.
+PAID_PILOT_ENABLED=False
+BLOCKED_SOURCE="CV-Library"
 
 def request_json(url,token,*,body=None):
     method="POST" if body is not None else "GET"
@@ -87,6 +91,8 @@ def make_request(source,token):
 def run(*,token,execute,approval,output):
     if not execute or approval!="RUN_CAPPED_PILOT":
         raise ValueError("Explicit single-run pilot approval required")
+    if not PAID_PILOT_ENABLED:
+        raise RuntimeError("Pilot disabled: CV-Library MAX_TOTAL_CHARGE abort requires revised, reviewed caps and budget")
     if not token: raise ValueError("Missing APIFY_TOKEN")
     results=[]
     remaining_proposed=round(sum(CAPS.values()),2)
