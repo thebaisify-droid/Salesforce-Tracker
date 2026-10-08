@@ -1,0 +1,22 @@
+{
+  "ready": true,
+  "provider": "apify_actor",
+  "source_name": "JobServe",
+  "role": "secondary_enrichment_uk_job_board",
+  "actor_id": "santamaria-automations/jobserve-uk-scraper",
+  "token": "env:APIFY_TOKEN",
+  "timeout_seconds": 480,
+  "window_field": null,
+  "input": {
+    "searchQueries": [
+      "salesforce"
+    ],
+    "location": "",
+    "jobType": "both",
+    "maxItems": 75,
+    "includeJobDetails": true,
+    "includeCompanyDetails": false,
+    "maxConcurrency": 4
+  },
+  "notes": "JobServe UK enrichment source. Exact posted-date field will be pinned after first live schema validation; until then the actor result cap is replayed safely through persistent dedupe."
+}

@@ -154,6 +154,48 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(record["salary_period"], "day")
         self.assertEqual(record["employment_type"], "CONTRACTOR")
 
+    def test_indeed_uk_shape_normalizes(self):
+        record = normalize({
+            "jobId": "abc123",
+            "title": "Salesforce Administrator",
+            "company": "Example Ltd",
+            "location": "Manchester",
+            "jobTypes": ["Full-time", "Permanent"],
+            "salaryMin": 50000,
+            "salaryMax": 60000,
+            "salaryCurrency": "GBP",
+            "salaryPeriod": "year",
+            "postedAt": "2026-10-08T00:00:00.000Z",
+            "snippet": "Administer Sales Cloud and Salesforce Flow.",
+            "url": "https://uk.indeed.com/viewjob?jk=abc123"
+        }, "source_4")
+        self.assertEqual(record["external_id"], "abc123")
+        self.assertEqual(record["employment_type"], "Full-time, Permanent")
+        self.assertEqual(record["posted_at"], "2026-10-08T00:00:00.000Z")
+        self.assertEqual(record["salary_min"], 50000.0)
+        self.assertEqual(record["salary_period"], "year")
+
+    def test_jobserve_shape_normalizes(self):
+        record = normalize({
+            "id": "JS-123",
+            "title": "Salesforce Technical Architect",
+            "company_name": "Example Recruitment",
+            "location": "London",
+            "job_type": "Contract",
+            "salary_min": 650,
+            "salary_max": 750,
+            "salary_currency": "GBP",
+            "salary_period": "day",
+            "posted_at": "2026-10-08T00:00:00Z",
+            "description_full": "Salesforce architecture across Service Cloud and Experience Cloud.",
+            "job_url": "https://www.jobserve.com/gb/en/JobLanding.aspx?jid=JS-123"
+        }, "source_5")
+        self.assertEqual(record["external_id"], "JS-123")
+        self.assertEqual(record["advertiser"], "Example Recruitment")
+        self.assertEqual(record["contract_type"], "Contract")
+        self.assertEqual(record["salary_min"], 650.0)
+        self.assertEqual(record["posted_at"], "2026-10-08T00:00:00Z")
+
     def test_reed_shape_normalizes(self):
         record = normalize({
             "jobId": 57407294,
@@ -387,7 +429,8 @@ class TrackerTests(unittest.TestCase):
     def test_project_preflight_accepts_validated_sources(self):
         result = preflight(ROOT / "config" / "pipeline.json")
         self.assertTrue(result["ok"], result["errors"])
-        self.assertEqual(result["enabled_sources"], 3)
+        self.assertEqual(result["enabled_sources"], 5)
+        self.assertEqual(result["min_sources_succeeded"], 3)
 
 
 if __name__ == "__main__":

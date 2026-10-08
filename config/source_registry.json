@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "ingestion_platform": "Apify",
   "sources": [
     {
@@ -28,7 +28,25 @@
       "trust_tier": "A",
       "purpose": "Third UK Salesforce vacancy feed and market-coverage cross-check",
       "access": "Existing saved Apify Task"
+    },
+    {
+      "slot": "source_4",
+      "name": "Indeed UK",
+      "provider": "apify_actor",
+      "actor": "wildorigins/indeed-jobs",
+      "trust_tier": "B",
+      "purpose": "Secondary UK Salesforce vacancy enrichment and corroboration",
+      "access": "Apify Actor via existing APIFY_TOKEN"
+    },
+    {
+      "slot": "source_5",
+      "name": "JobServe",
+      "provider": "apify_actor",
+      "actor": "santamaria-automations/jobserve-uk-scraper",
+      "trust_tier": "B",
+      "purpose": "Secondary UK IT/contract Salesforce vacancy enrichment and corroboration",
+      "access": "Apify Actor via existing APIFY_TOKEN"
     }
   ],
-  "assurance_note": "The three underlying job boards are separate data sources, but Apify is a shared ingestion dependency. A platform-wide Apify outage is a common-mode failure, not three independent source failures."
+  "assurance_note": "CV-Library, Totaljobs and Reed remain the core publication gate. Indeed UK and JobServe are secondary enrichment sources: they contribute when healthy but do not individually block publication. All five underlying job boards are separate data sources, while Apify remains a shared ingestion dependency; a platform-wide Apify outage is a common-mode failure."
 }

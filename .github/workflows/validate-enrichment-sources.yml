@@ -1,0 +1,128 @@
+name: Validate Indeed UK and JobServe
+
+on:
+  push:
+    branches:
+      - build/indeed-jobserve-sources
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore current production master
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Capture before-state
+        run: |
+          mkdir -p validation/raw validation/out
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          payload={
+            "count":conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0],
+            "keys":[row[0] for row in conn.execute("SELECT dedupe_key FROM vacancies ORDER BY dedupe_key")],
+          }
+          conn.close()
+          Path("validation/out/before.json").write_text(json.dumps(payload,indent=2)+"\n")
+          print(json.dumps({"vacancies_before":payload["count"]},indent=2))
+          PY
+
+      - name: Collect Indeed UK
+        run: >
+          python -m collectors.source_4
+          --incremental
+          --since 2026-10-05T00:00:00Z
+          --until 2026-10-08T23:59:59Z
+          --output validation/raw/source_4.json
+
+      - name: Collect JobServe
+        run: >
+          python -m collectors.source_5
+          --incremental
+          --since 2026-10-05T00:00:00Z
+          --until 2026-10-08T23:59:59Z
+          --output validation/raw/source_5.json
+
+      - name: Inspect live schemas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary={}
+          for source in ("source_4","source_5"):
+              rows=json.loads((Path("validation/raw")/(source+".json")).read_text())
+              summary[source]={
+                  "records":len(rows),
+                  "fields":sorted({k for row in rows[:10] for k in row}),
+                  "sample":rows[0] if rows else None,
+              }
+          Path("validation/out/schema_summary.json").write_text(json.dumps(summary,indent=2,default=str)+"\n")
+          print(json.dumps({k:{"records":v["records"],"fields":v["fields"]} for k,v in summary.items()},indent=2))
+          PY
+
+      - name: Process enrichment sources against production master copy
+        run: >
+          python -m scripts.process_incremental
+          --input-dir validation/raw
+          --run-id enrichment-validation-${{ github.run_id }}
+          --metrics validation/out/metrics.json
+          --database "$TRACKER_DATABASE_PATH"
+
+      - name: Report unique impact
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          before=json.loads(Path("validation/out/before.json").read_text())
+          metrics=json.loads(Path("validation/out/metrics.json").read_text())
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          conn.row_factory=sqlite3.Row
+          after=conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+          new=[dict(row) for row in conn.execute(
+              "SELECT vacancy_id,display_title,advertiser,location,role_family,end_client_sector,job_url,posted_at "
+              "FROM vacancies WHERE dedupe_key NOT IN (%s) ORDER BY vacancy_id" %
+              ",".join("?" for _ in before["keys"]),
+              before["keys"],
+          )] if before["keys"] else []
+          source_counts={
+              row["source_name"]:row["c"]
+              for row in conn.execute("SELECT source_name,COUNT(DISTINCT vacancy_id) c FROM vacancy_sources WHERE source_name IN ('source_4','source_5') GROUP BY source_name")
+          }
+          conn.close()
+          result={
+              "vacancies_before":before["count"],
+              "vacancies_after":after,
+              "net_new_vacancies":after-before["count"],
+              "metrics":metrics,
+              "source_vacancy_links":source_counts,
+              "new_vacancies":new,
+          }
+          Path("validation/out/impact.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indeed-jobserve-validation-${{ github.run_id }}
+          path: |
+            validation/out/*.json
+            validation/raw/*.json
+          if-no-files-found: warn
+          retention-days: 7

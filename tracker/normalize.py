@@ -111,7 +111,7 @@ def _salary(raw: dict[str, Any]) -> tuple[float | None, float | None, str, str |
 
 
 def _employment_type(raw: dict[str, Any]) -> str | None:
-    value = first_value(raw, "employment_type", "employmentType", "employment_type_name", "workType")
+    value = first_value(raw, "employment_type", "employmentType", "employment_type_name", "workType", "jobTypes", "job_type", "jobType", "working_pattern")
     if value not in (None, "", [], {}):
         return text_value(value)
     if raw.get("isFullTime") is True:
@@ -123,22 +123,24 @@ def _employment_type(raw: dict[str, Any]) -> str | None:
 
 def normalize(raw: dict[str, Any], source_name: str) -> dict[str, Any]:
     title = text_value(first_value(raw, "title", "title_raw", "job_title", "jobTitle", "position", "name"))
-    advertiser = text_value(first_value(raw, "advertiser", "company", "company_name", "companyName", "employer", "recruiter"))
+    advertiser = text_value(first_value(raw, "advertiser", "company", "company_name", "companyName", "employer", "recruiter", "posted_by"))
     description = text_value(first_value(
-        raw, "description", "descriptionText", "job_description", "jobDescription",
-        "body", "summary", "descriptionSnippet", "textSnippet"
+        raw, "description", "descriptionText", "description_full", "descriptionFull",
+        "job_description", "jobDescription", "body", "summary", "snippet",
+        "descriptionSnippet", "description_snippet", "textSnippet", "skills_text"
     )) or ""
     location = text_value(first_value(raw, "location", "job_location", "jobLocation", "city", "city_name"))
     url = canonical_url(text_value(first_value(
-        raw, "job_url", "jobUrl", "canonicalUrl", "url", "sourceUrl",
-        "link", "apply_url", "applyUrl", "externalUrl", "redirect_url"
+        raw, "job_url", "jobUrl", "canonicalUrl", "url", "sourceUrl", "source_url",
+        "link", "permalink", "apply_url", "applyUrl", "externalUrl", "redirect_url"
     )))
     external_id = text_value(first_value(
         raw, "id", "job_id", "jobId", "externalId", "jobKey", "jobReference",
-        "reference", "vacancy_id", "guid"
+        "reference", "ref", "vacancy_id", "guid"
     )) or url
     posted_at = text_value(first_value(
-        raw, "posted_at", "postedAt", "datePosted", "publishFromDate", "posted",
+        raw, "posted_at", "postedAt", "posted_at_datetime", "posted_date_time",
+        "posted_date", "datePosted", "publishFromDate", "posted",
         "published_at", "publishedAt", "date", "created", "created_at", "createdAt"
     ))
     salary_min, salary_max, salary_currency, salary_period = _salary(raw)

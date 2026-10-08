@@ -81,8 +81,9 @@ def salesforce_relevance(raw: dict[str, Any]) -> tuple[bool, str]:
     title = (text_value(first_value(raw, "title", "title_raw", "job_title", "jobTitle", "position", "name")) or "").lower()
     company = (text_value(first_value(raw, *COMPANY_KEYS)) or "").lower().strip()
     description = (text_value(first_value(
-        raw, "description", "descriptionText", "job_description", "jobDescription",
-        "body", "summary", "descriptionSnippet", "textSnippet"
+        raw, "description", "descriptionText", "description_full", "descriptionFull",
+        "job_description", "jobDescription", "body", "summary", "snippet",
+        "descriptionSnippet", "description_snippet", "textSnippet", "skills_text"
     )) or "").lower()
     combined = f"{title}\n{description}"
 

@@ -10,6 +10,8 @@ SOURCE_LABELS = {
     "source_1": "CV-Library",
     "source_2": "Totaljobs",
     "source_3": "Reed",
+    "source_4": "Indeed UK",
+    "source_5": "JobServe",
 }
 
 ROLE_DISPLAY_ALIASES = {

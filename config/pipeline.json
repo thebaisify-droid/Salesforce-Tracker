@@ -9,9 +9,41 @@
   "require_quality_report": true,
   "min_sources_succeeded": 3,
   "sources": [
-    {"name":"source_1","enabled":true,"config":"config/sources/source_1.json","output":"source_1.json","command":"python -m collectors.source_1 --incremental --since {since} --until {until} --output {output}"},
-    {"name":"source_2","enabled":true,"config":"config/sources/source_2.json","output":"source_2.json","command":"python -m collectors.source_2 --incremental --since {since} --until {until} --output {output}"},
-    {"name":"source_3","enabled":true,"config":"config/sources/source_3.json","output":"source_3.json","command":"python -m collectors.source_3 --incremental --since {since} --until {until} --output {output}"}
+    {
+      "name": "source_1",
+      "enabled": true,
+      "config": "config/sources/source_1.json",
+      "output": "source_1.json",
+      "command": "python -m collectors.source_1 --incremental --since {since} --until {until} --output {output}"
+    },
+    {
+      "name": "source_2",
+      "enabled": true,
+      "config": "config/sources/source_2.json",
+      "output": "source_2.json",
+      "command": "python -m collectors.source_2 --incremental --since {since} --until {until} --output {output}"
+    },
+    {
+      "name": "source_3",
+      "enabled": true,
+      "config": "config/sources/source_3.json",
+      "output": "source_3.json",
+      "command": "python -m collectors.source_3 --incremental --since {since} --until {until} --output {output}"
+    },
+    {
+      "name": "source_4",
+      "enabled": true,
+      "config": "config/sources/source_4.json",
+      "output": "source_4.json",
+      "command": "python -m collectors.source_4 --incremental --since {since} --until {until} --output {output}"
+    },
+    {
+      "name": "source_5",
+      "enabled": true,
+      "config": "config/sources/source_5.json",
+      "output": "source_5.json",
+      "command": "python -m collectors.source_5 --incremental --since {since} --until {until} --output {output}"
+    }
   ],
   "steps": {
     "transform": "python -m scripts.process_incremental --input-dir {raw_dir} --run-id {run_id} --metrics {metrics}",
