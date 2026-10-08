@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
+from urllib.error import HTTPError
 
 CAPS={"CV-Library":0.10,"Totaljobs":0.10,"Indeed UK":0.15,"JobServe":0.15}
 TASKS={"CV-Library":"develop_ify/cv-library-scraper-task","Totaljobs":"develop_ify/totaljobs-com-scraper-task"}
@@ -22,8 +23,20 @@ def request_json(url,token,*,body=None):
     req=Request(url,method=method,headers={"Authorization":"Bearer "+token,
         "Accept":"application/json",**({"Content-Type":"application/json"} if body is not None else {})},
         data=json.dumps(body).encode() if body is not None else None)
-    with urlopen(req,timeout=660 if body is not None else 45) as response:
-        return json.load(response)
+    try:
+        with urlopen(req,timeout=660 if body is not None else 45) as response:
+            return json.load(response)
+    except HTTPError as exc:
+        # Log structured provider error type only; never log tokens, inputs or raw messages.
+        error_type = "unknown"
+        try:
+            details = json.loads(exc.read(4096))
+            candidate = details.get("error", {}).get("type", "")
+            if isinstance(candidate, str) and candidate.isascii() and candidate.replace("_", "").replace("-", "").isalnum():
+                error_type = candidate[:80]
+        except (ValueError, AttributeError, TypeError):
+            pass
+        raise RuntimeError(f"Apify HTTP {exc.code}; error_type={error_type}") from None
 
 def remaining_headroom(limits):
     payload=limits.get("data",{})
@@ -84,7 +97,11 @@ def run(*,token,execute,approval,output):
             raise RuntimeError("Insufficient headroom after preserving $8 for existing tracker")
         url,payload=make_request(source,token)
         # Output only public vacancy metadata, no raw descriptions or email/phone data.
-        response=request_json(url,token,body=payload)
+        print(f"Submitting capped request for {source} (max ${CAPS[source]:.2f}); no retry on failure", flush=True)
+        try:
+            response=request_json(url,token,body=payload)
+        except Exception as exc:
+            raise RuntimeError(f"Pilot stopped at {source}: {exc}; other sources not attempted") from None
         if not isinstance(response,list): raise RuntimeError(source+" returned non-list response")
         from urllib.parse import urlsplit
         accepted=[]
