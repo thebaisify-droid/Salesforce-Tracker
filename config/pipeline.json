@@ -39,7 +39,7 @@
     },
     {
       "name": "source_5",
-      "enabled": false,
+      "enabled": true,
       "config": "config/sources/source_5.json",
       "output": "source_5.json",
       "command": "python -m collectors.source_5 --incremental --since {since} --until {until} --output {output}"
@@ -54,5 +54,10 @@
     "expected_master_data_version": "1.4",
     "expected_role_taxonomy_version": "2.2",
     "max_rejection_rate": 0.15
-  }
+  },
+  "required_sources": [
+    "source_1",
+    "source_2",
+    "source_3"
+  ]
 }

@@ -1,0 +1,102 @@
+name: Validate Indeed UK and JobServe enrichment
+
+on:
+  push:
+    branches:
+      - build/indeed-jobserve-five-source
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore current 52+ vacancy production master
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+
+      - name: Collect Indeed UK enrichment
+        run: |
+          mkdir -p validation/raw
+          python -m collectors.source_4 --incremental --since "$(date -u -d '72 hours ago' +%Y-%m-%dT%H:%M:%SZ)" --until "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --output validation/raw/source_4.json
+
+      - name: Collect JobServe enrichment
+        run: |
+          python -m collectors.source_5 --incremental --since "$(date -u -d '72 hours ago' +%Y-%m-%dT%H:%M:%SZ)" --until "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --output validation/raw/source_5.json
+
+      - name: Snapshot database before enrichment
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          before=conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+          conn.close()
+          Path("validation/before.json").write_text(json.dumps({"vacancies":before},indent=2)+"\n")
+          print(json.dumps({"vacancies_before":before},indent=2))
+          PY
+
+      - name: Process only Indeed and JobServe against restored master
+        run: >
+          python -m scripts.process_incremental
+          --input-dir validation/raw
+          --run-id enrichment-validation-${{ github.run_id }}
+          --metrics validation/metrics.json
+          --database "$TRACKER_DATABASE_PATH"
+
+      - name: Report enrichment overlap and additions
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          before=json.loads(Path("validation/before.json").read_text())["vacancies"]
+          metrics=json.loads(Path("validation/metrics.json").read_text())
+          raw4=json.loads(Path("validation/raw/source_4.json").read_text())
+          raw5=json.loads(Path("validation/raw/source_5.json").read_text())
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          after=conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+          source_counts=dict(conn.execute("SELECT source_name,COUNT(DISTINCT vacancy_id) FROM vacancy_sources WHERE source_name IN ('source_4','source_5') GROUP BY source_name").fetchall())
+          conn.close()
+          result={
+            "vacancies_before":before,
+            "vacancies_after":after,
+            "net_new":after-before,
+            "indeed_raw_72h":len(raw4),
+            "jobserve_raw_72h":len(raw5),
+            "inserted_rows":metrics.get("inserted_rows",0),
+            "updated_rows":metrics.get("updated_rows",0),
+            "unchanged_rows":metrics.get("unchanged_rows",0),
+            "irrelevant_rows":metrics.get("irrelevant_rows",0),
+            "source_relevant_rows":metrics.get("source_relevant_rows",{}),
+            "source_irrelevant_rows":metrics.get("source_irrelevant_rows",{}),
+            "master_source_links":source_counts,
+          }
+          if len(raw4)==0:
+            raise SystemExit("Indeed UK returned zero records in the validation window")
+          if len(raw5)==0:
+            raise SystemExit("JobServe returned zero records in the validation window")
+          Path("validation/result.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indeed-jobserve-validation-${{ github.run_id }}
+          path: |
+            validation/*.json
+            validation/raw/*.json
+          if-no-files-found: warn
+          retention-days: 7

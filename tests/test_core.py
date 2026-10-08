@@ -202,9 +202,11 @@ class TrackerTests(unittest.TestCase):
             "salary_max": 750,
             "salary_currency": "GBP",
             "salary_period": "day",
-            "postedDateTime": "2026-10-08",
+            "posted_at": "2026-10-08",
+            "job_type": "Contract",
             "description": "Salesforce architecture across Service Cloud and Experience Cloud.",
-            "url": "https://www.jobserve.com/gb/en/hABC1"
+            "job_url": "https://www.jobserve.com/gb/en/hABC1",
+            "application_url": "https://www.jobserve.com/gb/en/apply/ABC1"
         }, "source_5")
         self.assertEqual(record["external_id"], "JS-123")
         self.assertEqual(record["advertiser"], "Example Recruitment")
@@ -491,11 +493,18 @@ class TrackerTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 safe_extract(archive, root / "restore")
 
+    def test_required_core_source_gate_configuration(self):
+        cfg = json.loads((ROOT / "config" / "pipeline.json").read_text())
+        self.assertEqual(cfg["required_sources"], ["source_1", "source_2", "source_3"])
+        self.assertTrue(next(s for s in cfg["sources"] if s["name"]=="source_4")["enabled"])
+        self.assertTrue(next(s for s in cfg["sources"] if s["name"]=="source_5")["enabled"])
+
     def test_project_preflight_accepts_validated_sources(self):
         result = preflight(ROOT / "config" / "pipeline.json")
         self.assertTrue(result["ok"], result["errors"])
-        self.assertEqual(result["enabled_sources"], 4)
+        self.assertEqual(result["enabled_sources"], 5)
         self.assertEqual(result["min_sources_succeeded"], 3)
+        self.assertEqual(result["required_sources"], ["source_1", "source_2", "source_3"])
 
 
 if __name__ == "__main__":
