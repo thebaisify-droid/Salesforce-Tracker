@@ -21,6 +21,14 @@ def validate(p):
     else:
         if abs(sum(costs.values())-p.get("proposed_total_max_usd",0))>0.000001:
             errors.append("pilot_cost_sum_mismatch")
+    allocation=p.get("proposed_pilot_allocation_usd")
+    if not isinstance(allocation,(int,float)) or isinstance(allocation,bool) or allocation<=0 or allocation>19:
+        errors.append("invalid_pilot_allocation")
+    elif isinstance(p.get("proposed_total_max_usd"),(int,float)) and p["proposed_total_max_usd"]>allocation:
+        errors.append("pilot_exceeds_reserved_allocation")
+    evidence=p.get("pricing_evidence",{})
+    if not evidence.get("actor_rates_are_indicative") or not evidence.get("indeed_uk",{}).get("url") or not evidence.get("jobserve",{}).get("url"):
+        errors.append("incomplete_pricing_evidence")
     return {"passed":not errors,"errors":errors,"pilot_authorised":False,"paid_acquisition_enabled":False}
 
 def main():
