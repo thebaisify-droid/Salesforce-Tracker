@@ -4,6 +4,7 @@ import html
 import json
 import re
 import sqlite3
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -29,6 +30,61 @@ VACANCY_FIELDS = [
     "salary_period", "job_url", "description", "posted_at", "normalized_hash", "raw_json",
     "master_data_version", "role_taxonomy_version"
 ]
+
+
+def _norm_company(value: str | None) -> str:
+    text = re.sub(r"[^a-z0-9]+", " ", (value or "").lower()).strip()
+    return " ".join(
+        part for part in text.split()
+        if part not in {"limited", "ltd", "plc", "llp"}
+    )
+
+
+def _location_words(value: str | None) -> set[str]:
+    stop = {"uk", "england", "united", "kingdom", "city", "remote", "hybrid"}
+    return {
+        token
+        for token in re.findall(r"[a-z]+", (value or "").lower())
+        if len(token) >= 4 and token not in stop
+    }
+
+
+def _date_value(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    text = str(value).strip()
+    try:
+        if len(text) == 10 and text[4] == "-" and text[7] == "-":
+            return datetime.fromisoformat(text).replace(tzinfo=timezone.utc)
+        if text.endswith("Z"):
+            text = text[:-1] + "+00:00"
+        parsed = datetime.fromisoformat(text)
+        return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+
+
+def _market_identity_match(record: dict[str, Any], candidate: sqlite3.Row) -> bool:
+    if _norm_company(record.get("advertiser")) != _norm_company(candidate["advertiser"]):
+        return False
+    left_date = _date_value(record.get("posted_at"))
+    right_date = _date_value(candidate["posted_at"])
+    if left_date and right_date and abs((left_date.date() - right_date.date()).days) > 3:
+        return False
+    left_location = _location_words(record.get("location"))
+    right_location = _location_words(candidate["location"])
+    location_match = bool(left_location & right_location)
+    salary_match = (
+        record.get("salary_min") is not None
+        and candidate["salary_min"] is not None
+        and float(record["salary_min"]) == float(candidate["salary_min"])
+        and (
+            record.get("salary_max") is None
+            or candidate["salary_max"] is None
+            or float(record["salary_max"]) == float(candidate["salary_max"])
+        )
+    )
+    return location_match or salary_match
 
 
 def _content_signature(title: str | None, description: str | None) -> str | None:
@@ -83,22 +139,24 @@ class Store:
 
         if existing is None:
             title = (record.get("display_title") or "").strip()
-            advertiser = (record.get("advertiser") or "").strip()
-            location = (record.get("location") or "").strip()
-            if title and advertiser and location:
+            if title and record.get("advertiser"):
                 identity_candidates = self.conn.execute(
                     """
-                    SELECT vacancy_id, normalized_hash, display_title, description
+                    SELECT vacancy_id, normalized_hash, display_title, description,
+                           advertiser, location, posted_at, salary_min, salary_max
                     FROM vacancies
                     WHERE lower(display_title)=lower(?)
-                      AND lower(COALESCE(advertiser,''))=lower(?)
-                      AND lower(COALESCE(location,''))=lower(?)
                     ORDER BY vacancy_id
                     """,
-                    (title, advertiser, location),
+                    (title,),
                 ).fetchall()
-                if len(identity_candidates) == 1:
-                    existing = identity_candidates[0]
+                matches = [
+                    candidate
+                    for candidate in identity_candidates
+                    if _market_identity_match(record, candidate)
+                ]
+                if len(matches) == 1:
+                    existing = matches[0]
                     cross_source_match = True
 
         if existing is None:
