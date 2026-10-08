@@ -44,7 +44,8 @@ def evaluate_reviewed(rows, *, minimum_samples=100):
     report = evaluate(rows)
     source_counts = Counter(r["source"] for r in rows)
     report["evidence_level"] = "human_labelled_source_records"
-    report["real_world_accuracy_validated"] = False\n    report["reviewed_sample_thresholds_met"] = bool(report["passed"] and len(rows) >= minimum_samples)
+    report["real_world_accuracy_validated"] = False
+    report["reviewed_sample_thresholds_met"] = bool(report["passed"] and len(rows) >= minimum_samples)
     report["publication_approved"] = False
     report["minimum_samples"] = minimum_samples
     report["sample_size_gate_passed"] = len(rows) >= minimum_samples
