@@ -42,8 +42,13 @@ jobs:
           print(json.dumps({"vacancies_before":payload["count"]},indent=2))
           PY
 
-      - name: Reuse Indeed validation as empty input for JobServe retest
-        run: echo '[]' > validation/raw/source_4.json
+      - name: Collect Indeed UK
+        run: >
+          python -m collectors.source_4
+          --incremental
+          --since 2026-10-05T00:00:00Z
+          --until 2026-10-08T23:59:59Z
+          --output validation/raw/source_4.json
 
       - name: Collect JobServe
         run: >
