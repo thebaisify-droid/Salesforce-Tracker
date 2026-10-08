@@ -115,6 +115,8 @@ def run_step(name: str, command: str, cwd: Path, env: dict[str, str], output: Pa
     status = "success" if proc.returncode == 0 else "failed"
     if output is not None:
         count, valid, error = inspect_record_artifact(output)
+        if proc.returncode == 0 and "COLLECTION_SKIPPED:" in (proc.stdout or ""):
+            status = "skipped"
         if proc.returncode == 0 and not valid:
             status = "failed"
     return StepResult(
