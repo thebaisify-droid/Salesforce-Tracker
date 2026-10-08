@@ -176,3 +176,9 @@ This core designation is a **policy and QA configuration only**:
 
 The release-readiness report now fails with
 `missing_core_source_review_coverage` if JobServe evidence is absent.
+
+## Revised source priority — 8 October 2026
+
+For the **new** multi-family tracker, the proposed core sources are **CV-Library, Totaljobs, Indeed UK and JobServe**. **Reed is optional enrichment**. The earlier designation of Reed as core is superseded. The release-readiness checker requires labelled evidence from all four current core sources; Reed evidence is useful but not mandatory. This is a coverage hypothesis, not a validated assertion that Indeed supplies more unique relevant vacancies simply because its website has greater traffic. Assess actual incremental relevant roles, unique vacancy contribution, freshness, field completeness, duplication, and cost per accepted unique job before activation.
+
+This is configuration and QA policy only. No new Indeed Actor executions, JobServe executions, cron jobs, live feed deployments or changes to the Salesforce tracker are made. The existing shared $19/month ceiling is not increased.
