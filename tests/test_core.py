@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from collectors.common import _apify_named_ref, _filter_window, _budget_authorize
-from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command
+from pipeline.daily_refresh import due_now, inspect_record_artifact, preflight, render_command, run_step
 from tracker.classify import classify, versions
 from tracker.dashboard import merge_with_baseline
 from tracker.normalize import normalize
@@ -72,6 +72,19 @@ class TrackerTests(unittest.TestCase):
                 rows = [json.loads(line) for line in ledger.read_text().splitlines()]
                 self.assertEqual(len(rows), 1)
                 self.assertEqual(rows[0]["reserved_usd"], 0.20)
+
+    def test_skipped_collector_does_not_count_as_success(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            out = root / "collected.json"
+            cmd = (
+                "python -c 'from pathlib import Path; "
+                "Path(\"collected.json\").write_text(\"[]\"); "
+                "print(\"COLLECTION_SKIPPED: budget limit\")'"
+            )
+            result = run_step("collect:test", cmd, root, os.environ.copy(), out)
+            self.assertEqual(result.status, "skipped")
+            self.assertTrue(result.artifact_valid)
 
     def test_apify_budget_requires_per_run_cap(self):
         with tempfile.TemporaryDirectory() as d:
