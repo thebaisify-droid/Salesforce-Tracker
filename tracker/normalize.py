@@ -140,7 +140,7 @@ def normalize(raw: dict[str, Any], source_name: str) -> dict[str, Any]:
     )) or url
     posted_at = text_value(first_value(
         raw, "posted_at", "postedAt", "posted_at_datetime", "posted_date_time",
-        "posted_date", "datePosted", "publishFromDate", "posted",
+        "postedDateTime", "posted_date", "postedDate", "datePosted", "publishFromDate", "posted",
         "published_at", "publishedAt", "date", "created", "created_at", "createdAt"
     ))
     salary_min, salary_max, salary_currency, salary_period = _salary(raw)
