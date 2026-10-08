@@ -8,6 +8,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.error import HTTPError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
@@ -45,8 +46,16 @@ def _request_json(
     if data is not None:
         request_headers["Content-Type"] = "application/json"
     req = Request(url, data=data, method=method, headers=request_headers)
-    with urlopen(req, timeout=timeout) as response:
-        return json.loads(response.read().decode("utf-8"))
+    try:
+        with urlopen(req, timeout=timeout) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except HTTPError as exc:
+        try:
+            detail = exc.read().decode("utf-8", errors="replace")[:4000]
+        except Exception:
+            detail = ""
+        suffix = f": {detail}" if detail else ""
+        raise RuntimeError(f"HTTP {exc.code} from provider{suffix}") from exc
 
 
 def _request_form_json(url: str, form: dict[str, str], timeout: int = 60) -> Any:
