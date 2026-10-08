@@ -3,24 +3,27 @@
   "provider": "apify_actor",
   "source_name": "JobServe",
   "role": "secondary_enrichment_uk_job_board",
-  "actor_id": "santamaria-automations/jobserve-uk-scraper",
+  "actor_id": "solidcode/jobserve-scraper",
   "token": "env:APIFY_TOKEN",
   "timeout_seconds": 600,
-  "window_field": "posted_at",
+  "window_field": "postedDateTime",
   "input": {
-    "searchQueries": [
+    "keywords": [
       "salesforce"
     ],
     "location": "",
-    "radius": 20,
+    "country": "gb",
+    "distance": "50",
+    "startUrls": [],
     "jobType": "",
-    "maxItems": 75,
-    "maxResultsPerQuery": 200,
-    "maxJobsPerCompany": 0,
-    "includeJobDetails": true,
-    "includeCompanyDetails": false,
-    "maxConcurrency": 4
+    "industries": [],
+    "postedSince": "",
+    "remoteOnly": false,
+    "advertisedBy": "",
+    "includeDescription": true,
+    "onlyUniqueJobs": true,
+    "maxResults": 75
   },
-  "notes": "JobServe UK enrichment source. UK-wide Salesforce search with detail enrichment; non-blocking because only source_1/source_2/source_3 are required.",
+  "notes": "JobServe UK enrichment source. Explicit Salesforce keyword search, full descriptions and deduplication; non-blocking because source_1/source_2/source_3 remain required.",
   "max_charged_results": 75
 }
