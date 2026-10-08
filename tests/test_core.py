@@ -87,6 +87,26 @@ class TrackerTests(unittest.TestCase):
         })
         self.assertTrue(relevant)
 
+    def test_salesforce_relevance_rejects_generic_sales_roles(self):
+        samples = [
+            {"title":"Head of Sales","description":"Own pipeline health and progression through Salesforce CRM."},
+            {"title":"Field Sales Executive","description":"Use Salesforce CRM for prospecting and customer records. Salesforce experience preferred."},
+            {"title":"Sales, Finance & Marketing Administrator","description":"Update customer records in Salesforce and other internal systems. Salesforce experience helpful."},
+            {"title":"IT Program Manager","description":"Programme includes CRM applications such as Salesforce CRM and other enterprise tools."},
+        ]
+        for sample in samples:
+            relevant, reason = salesforce_relevance(sample)
+            self.assertFalse(relevant, (sample["title"], reason))
+
+    def test_salesforce_relevance_accepts_direct_salesforce_employer(self):
+        relevant, reason = salesforce_relevance({
+            "title":"Engagement Delivery Director",
+            "company":"Salesforce",
+            "description":"Customer Success leadership role.",
+        })
+        self.assertTrue(relevant)
+        self.assertEqual(reason, "salesforce_direct_employer")
+
     def test_salesforce_relevance_rejects_incidental_crm_mention(self):
         relevant, _ = salesforce_relevance({
             "title": "Sales Account Manager",
@@ -221,6 +241,26 @@ class TrackerTests(unittest.TestCase):
             self.assertEqual(vacancy["salary"]["period"], "day")
             self.assertNotIn("description", vacancy)
             self.assertNotIn("raw_json", vacancy)
+
+    def test_store_cross_board_deduplicates_identical_job_content(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "tracker.db"
+            desc = "Our client is bringing Salesforce in house from a third party consultancy. " * 20
+            a = normalize({
+                "id":"cv-1","title":"Salesforce Developer","company":"Michael Page",
+                "description":desc,"url":"https://www.cv-library.co.uk/job/111"
+            }, "source_1")
+            b = normalize({
+                "id":"reed-1","title":"Salesforce Developer","company":"Michael Page Technology",
+                "description":desc,"url":"https://www.reed.co.uk/jobs/salesforce-developer/222"
+            }, "source_3")
+            with Store(db) as store:
+                self.assertEqual(store.upsert(a), "inserted")
+                self.assertEqual(store.upsert(b), "unchanged")
+                count = store.conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+                links = store.conn.execute("SELECT COUNT(*) FROM vacancy_sources").fetchone()[0]
+            self.assertEqual(count, 1)
+            self.assertEqual(links, 2)
 
     def test_store_insert_unchanged_update(self):
         with tempfile.TemporaryDirectory() as d:

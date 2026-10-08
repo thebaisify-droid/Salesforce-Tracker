@@ -76,6 +76,15 @@ jobs:
               raise SystemExit(f"master continuity failed: {count} total / {active} active")
           if dup:
               raise SystemExit(f"canonical URL duplicates detected: {dup}")
+          false_positive_titles = {"Head of Sales","Field Sales Executive","Sales, Finance & Marketing Administrator","IT Program Manager"}
+          conn=sqlite3.connect("data/salesforce_tracker.db")
+          found={row[0] for row in conn.execute("SELECT display_title FROM vacancies WHERE display_title IN ('Head of Sales','Field Sales Executive','Sales, Finance & Marketing Administrator','IT Program Manager')")}
+          developer_count=conn.execute("SELECT COUNT(*) FROM vacancies WHERE display_title='Salesforce Developer' AND (advertiser LIKE 'Michael Page%' OR location LIKE '%Yeovil%' OR location='BA201DL')").fetchone()[0]
+          conn.close()
+          if found:
+              raise SystemExit(f"incidental Salesforce roles entered master: {sorted(found)}")
+          if developer_count != 1:
+              raise SystemExit(f"expected one Michael Page Salesforce Developer after cross-board dedupe, got {developer_count}")
           if result["sources_succeeded"] != 3 or result["quality_passed"] is not True:
               raise SystemExit("live refresh did not pass the 3-source assurance gate")
           Path("state/baseline_refresh_proof.json").write_text(json.dumps(result,indent=2)+"\n")

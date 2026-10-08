@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import html
 import json
+import re
 import sqlite3
 from pathlib import Path
 from typing import Any
@@ -25,6 +27,17 @@ VACANCY_FIELDS = [
     "salary_period", "job_url", "description", "posted_at", "normalized_hash", "raw_json",
     "master_data_version", "role_taxonomy_version"
 ]
+
+
+def _content_signature(title: str | None, description: str | None) -> str | None:
+    if not title or not description or len(description) < 200:
+        return None
+    clean_title = re.sub(r"\W+", " ", title.lower()).strip()
+    clean_description = html.unescape(re.sub(r"<[^>]+>", " ", description))
+    clean_description = re.sub(r"\W+", " ", clean_description.lower()).strip()
+    if len(clean_description) < 160:
+        return None
+    return clean_title + "\n" + clean_description
 
 
 def _specialisms(value: str | None) -> list[str]:
@@ -64,6 +77,20 @@ class Store:
             "SELECT vacancy_id, normalized_hash FROM vacancies WHERE dedupe_key = ?",
             (record["dedupe_key"],),
         ).fetchone()
+        cross_source_match = False
+
+        if existing is None:
+            signature = _content_signature(record.get("display_title"), record.get("description"))
+            if signature:
+                candidates = self.conn.execute(
+                    "SELECT vacancy_id, normalized_hash, display_title, description FROM vacancies WHERE lower(display_title)=lower(?)",
+                    (record.get("display_title"),),
+                ).fetchall()
+                for candidate in candidates:
+                    if _content_signature(candidate["display_title"], candidate["description"]) == signature:
+                        existing = candidate
+                        cross_source_match = True
+                        break
 
         if existing is None:
             fields = ["dedupe_key", *VACANCY_FIELDS, "first_seen_at", "last_seen_at"]
