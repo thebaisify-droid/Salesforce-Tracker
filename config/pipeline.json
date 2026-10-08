@@ -39,7 +39,7 @@
     },
     {
       "name": "source_5",
-      "enabled": true,
+      "enabled": false,
       "config": "config/sources/source_5.json",
       "output": "source_5.json",
       "command": "python -m collectors.source_5 --incremental --since {since} --until {until} --output {output}"
