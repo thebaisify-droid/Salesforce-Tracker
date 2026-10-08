@@ -39,10 +39,18 @@
     },
     {
       "label": "Delivery / Programme",
-      "value": 5
+      "value": 7
     },
     {
       "label": "Development / Engineering",
+      "value": 6
+    },
+    {
+      "label": "Consulting / Functional",
+      "value": 4
+    },
+    {
+      "label": "Platform / Administration",
       "value": 4
     },
     {
@@ -50,15 +58,7 @@
       "value": 4
     },
     {
-      "label": "Consulting / Functional",
-      "value": 4
-    },
-    {
       "label": "Transformation / Change",
-      "value": 4
-    },
-    {
-      "label": "Platform / Administration",
       "value": 4
     },
     {
@@ -70,18 +70,6 @@
       "value": 3
     },
     {
-      "label": "Engineering / Development",
-      "value": 2
-    },
-    {
-      "label": "Programme / Project Delivery",
-      "value": 2
-    },
-    {
-      "label": "Training / Enablement",
-      "value": 2
-    },
-    {
       "label": "Data / Reporting",
       "value": 2
     },
@@ -90,53 +78,37 @@
       "value": 2
     },
     {
-      "label": "Sales / Pre-Sales",
-      "value": 1
+      "label": "Sales / Account Management",
+      "value": 2
     },
     {
-      "label": "Testing / QA",
-      "value": 1
+      "label": "Training / Enablement",
+      "value": 2
     },
     {
       "label": "Customer Success / Adoption",
       "value": 1
     },
     {
-      "label": "Sales / Account Management",
+      "label": "Testing / QA",
       "value": 1
     }
   ],
   "by_sector": [
     {
-      "label": "Unknown",
-      "value": 7
+      "label": "Technology Services",
+      "value": 12
     },
     {
-      "label": "Technology Services",
-      "value": 6
+      "label": "Unknown",
+      "value": 8
     },
     {
       "label": "Technology Services / Consulting",
       "value": 5
     },
     {
-      "label": "Education & Nonprofit",
-      "value": 4
-    },
-    {
       "label": "Financial Services",
-      "value": 2
-    },
-    {
-      "label": "Media & Entertainment",
-      "value": 2
-    },
-    {
-      "label": "Financial Services / Wealth Management",
-      "value": 2
-    },
-    {
-      "label": "Technology Services / Cyber Security",
       "value": 2
     },
     {
@@ -144,23 +116,19 @@
       "value": 2
     },
     {
-      "label": "Manufacturing & Engineering",
-      "value": 1
+      "label": "Financial Services / Wealth Management",
+      "value": 2
     },
     {
-      "label": "Public Sector",
-      "value": 1
+      "label": "Media & Entertainment",
+      "value": 2
     },
     {
-      "label": "Unresolved",
-      "value": 1
+      "label": "Technology Services / Cyber Security",
+      "value": 2
     },
     {
-      "label": "Technology / Communications Equipment",
-      "value": 1
-    },
-    {
-      "label": "Public Sector / Government",
+      "label": "Education",
       "value": 1
     },
     {
@@ -168,7 +136,7 @@
       "value": 1
     },
     {
-      "label": "Technology Services / SaaS",
+      "label": "Food Manufacturing / Ingredients",
       "value": 1
     },
     {
@@ -176,39 +144,11 @@
       "value": 1
     },
     {
-      "label": "Legal Services",
-      "value": 1
-    },
-    {
-      "label": "Utilities",
-      "value": 1
-    },
-    {
-      "label": "Media / Publishing",
-      "value": 1
-    },
-    {
-      "label": "Manufacturing / Construction Materials",
-      "value": 1
-    },
-    {
-      "label": "Education",
-      "value": 1
-    },
-    {
-      "label": "Property / Student Accommodation",
-      "value": 1
-    },
-    {
       "label": "Housing / Real Estate",
       "value": 1
     },
     {
-      "label": "Technology Services / Managed Services",
-      "value": 1
-    },
-    {
-      "label": "Technology Services / Software",
+      "label": "Legal Services",
       "value": 1
     },
     {
@@ -216,11 +156,43 @@
       "value": 1
     },
     {
+      "label": "Manufacturing / Construction Materials",
+      "value": 1
+    },
+    {
+      "label": "Media / Publishing",
+      "value": 1
+    },
+    {
+      "label": "Property / Student Accommodation",
+      "value": 1
+    },
+    {
+      "label": "Public Sector / Government",
+      "value": 1
+    },
+    {
+      "label": "Technology / Communications Equipment",
+      "value": 1
+    },
+    {
+      "label": "Technology Services / Managed Services",
+      "value": 1
+    },
+    {
+      "label": "Technology Services / SaaS",
+      "value": 1
+    },
+    {
+      "label": "Technology Services / Software",
+      "value": 1
+    },
+    {
       "label": "Telecommunications",
       "value": 1
     },
     {
-      "label": "Food Manufacturing / Ingredients",
+      "label": "Utilities",
       "value": 1
     }
   ],
@@ -241,7 +213,7 @@
       "value": 15
     }
   ],
-  "generated_at": "2026-10-08T04:01:26Z",
+  "generated_at": "2026-10-08T04:05:21Z",
   "latest_run": {
     "finished_at": "2026-10-08T04:01:26Z",
     "inserted_rows": 7,
@@ -297,7 +269,7 @@
   },
   "review_queue": {
     "role": 5,
-    "sector": 14
+    "sector": 10
   },
   "run_id": "20261008T035913Z-483b16be",
   "schema": "salesforce-hiring-dashboard/v1",
@@ -327,7 +299,7 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Manufacturing & Engineering",
+      "sector": "Technology Services",
       "seniority": "Senior",
       "sources": [
         {
@@ -356,9 +328,9 @@
       "relevance": "ADJACENT",
       "review": {
         "role": true,
-        "sector": true
+        "sector": false
       },
-      "role_family": "Engineering / Development",
+      "role_family": "Development / Engineering",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -366,7 +338,7 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Education & Nonprofit",
+      "sector": "Technology Services",
       "seniority": "Standard",
       "sources": [
         {
@@ -395,9 +367,9 @@
       "relevance": "ADJACENT",
       "review": {
         "role": true,
-        "sector": true
+        "sector": false
       },
-      "role_family": "Programme / Project Delivery",
+      "role_family": "Delivery / Programme",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -405,7 +377,7 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Education & Nonprofit",
+      "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
         {
@@ -436,7 +408,7 @@
         "role": true,
         "sector": false
       },
-      "role_family": "Programme / Project Delivery",
+      "role_family": "Delivery / Programme",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -444,7 +416,7 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Public Sector",
+      "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
         {
@@ -473,7 +445,7 @@
       "relevance": "ADJACENT",
       "review": {
         "role": true,
-        "sector": true
+        "sector": false
       },
       "role_family": "Architecture",
       "salary": {
@@ -483,7 +455,7 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Education & Nonprofit",
+      "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
         {
@@ -517,15 +489,15 @@
         "role": false,
         "sector": true
       },
-      "role_family": "Engineering / Development",
+      "role_family": "Development / Engineering",
       "salary": {
         "currency": "GBP",
-        "max": 65000.0,
-        "min": 50000.0,
+        "max": 65000,
+        "min": 50000,
         "period": "Annual"
       },
       "salary_text": null,
-      "sector": "Unresolved",
+      "sector": "Unknown",
       "seniority": "Standard",
       "sources": [
         {
@@ -557,9 +529,9 @@
       "relevance": "ADJACENT",
       "review": {
         "role": false,
-        "sector": true
+        "sector": false
       },
-      "role_family": "Sales / Pre-Sales",
+      "role_family": "Sales / Account Management",
       "salary": {
         "currency": "GBP",
         "max": null,
@@ -567,7 +539,7 @@
         "period": null
       },
       "salary_text": null,
-      "sector": "Education & Nonprofit",
+      "sector": "Technology Services",
       "seniority": "Standard",
       "sources": [
         {
@@ -606,7 +578,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a355,000 \u2013 \u00a365,000 per ANNUM",
+      "salary_text": "£55,000 – £65,000 per ANNUM",
       "sector": "Unknown",
       "seniority": "Standard",
       "sources": [
@@ -642,11 +614,11 @@
       "role_family": "Development / Engineering",
       "salary": {
         "currency": "GBP",
-        "max": 700.0,
-        "min": 600.0,
+        "max": 700,
+        "min": 600,
         "period": "day"
       },
-      "salary_text": "\u00a3600 \u2013 700 per day + 12 months",
+      "salary_text": "£600 – 700 per day + 12 months",
       "sector": "Financial Services",
       "seniority": "Standard",
       "sources": [
@@ -686,7 +658,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a330,000 \u2013 \u00a335,000 per ANNUM",
+      "salary_text": "£30,000 – £35,000 per ANNUM",
       "sector": "Technology / Communications Equipment",
       "seniority": "Standard",
       "sources": [
@@ -762,11 +734,11 @@
       "role_family": "Architecture",
       "salary": {
         "currency": "GBP",
-        "max": 750.0,
-        "min": 600.0,
+        "max": 750,
+        "min": 600,
         "period": "day"
       },
-      "salary_text": "\u00a3600 \u2013 750 per day + 12 months",
+      "salary_text": "£600 – 750 per day + 12 months",
       "sector": "Financial Services / Wealth Management",
       "seniority": "Senior",
       "sources": [
@@ -806,7 +778,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a3500 \u2013 \u00a3540 per DAY",
+      "salary_text": "£500 – £540 per DAY",
       "sector": "Public Sector / Government",
       "seniority": "Standard",
       "sources": [
@@ -842,8 +814,8 @@
       "role_family": "Architecture",
       "salary": {
         "currency": "GBP",
-        "max": 550.0,
-        "min": 500.0,
+        "max": 550,
+        "min": 500,
         "period": "Daily"
       },
       "salary_text": "GBP 500-550 Daily",
@@ -1017,7 +989,7 @@
         }
       ],
       "specialisms": [],
-      "title": "Associate Director \u2013 Sales Training Manager, Strategic Accounts",
+      "title": "Associate Director – Sales Training Manager, Strategic Accounts",
       "url": "https://www.totaljobs.com/job/associate-director-sales-training-manager-strategic-accounts/moody-s-job108077747",
       "work_mode": ""
     },
@@ -1097,7 +1069,7 @@
         }
       ],
       "specialisms": [],
-      "title": "Named Account Executive \u2013 Water and Utilities",
+      "title": "Named Account Executive – Water and Utilities",
       "url": "https://www.totaljobs.com/job/named-account-executive-water-and-utilities/salesforce-job108076891",
       "work_mode": ""
     },
@@ -1166,7 +1138,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a327 per HOUR",
+      "salary_text": "£27 per HOUR",
       "sector": "Technology Services / Cyber Security",
       "seniority": "Standard",
       "sources": [
@@ -1206,7 +1178,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a390,000 \u2013 \u00a3130,000 per ANNUM",
+      "salary_text": "£90,000 – £130,000 per ANNUM",
       "sector": "Technology Services / Consulting",
       "seniority": "Senior",
       "sources": [
@@ -1217,7 +1189,7 @@
         }
       ],
       "specialisms": [],
-      "title": "Enterprise Architect \u2013 AI-Led Transformation",
+      "title": "Enterprise Architect – AI-Led Transformation",
       "url": "https://www.cv-library.co.uk/job/225674389",
       "work_mode": "hybrid"
     },
@@ -1246,7 +1218,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a3400 \u2013 \u00a3450 per DAY",
+      "salary_text": "£400 – £450 per DAY",
       "sector": "Financial Services / Payments",
       "seniority": "Standard",
       "sources": [
@@ -1286,7 +1258,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a3650 \u2013 \u00a3700 per DAY",
+      "salary_text": "£650 – £700 per DAY",
       "sector": "Financial Services / Payments",
       "seniority": "Lead",
       "sources": [
@@ -1536,7 +1508,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a360,000 \u2013 \u00a380,000 per ANNUM",
+      "salary_text": "£60,000 – £80,000 per ANNUM",
       "sector": "Financial Services / Wealth Management",
       "seniority": "Manager",
       "sources": [
@@ -1576,7 +1548,7 @@
         "min": null,
         "period": null
       },
-      "salary_text": "\u00a375,000 \u2013 \u00a385,000 per ANNUM",
+      "salary_text": "£75,000 – £85,000 per ANNUM",
       "sector": "Utilities",
       "seniority": "Lead",
       "sources": [
@@ -1717,7 +1689,7 @@
         }
       ],
       "specialisms": [],
-      "title": "Market Manager \u2013 Glass",
+      "title": "Market Manager – Glass",
       "url": "https://www.cv-library.co.uk/job/225662761",
       "work_mode": ""
     },
@@ -2197,7 +2169,7 @@
         }
       ],
       "specialisms": [],
-      "title": "Commercial Operations Analyst \u2013 Mat Leave Cover",
+      "title": "Commercial Operations Analyst – Mat Leave Cover",
       "url": "https://www.reed.co.uk/jobs/commercial-operations-analyst-mat-leave-cover/57350392",
       "work_mode": ""
     },
@@ -2277,7 +2249,7 @@
         }
       ],
       "specialisms": [],
-      "title": "Salesforce Consultant \u2013 London",
+      "title": "Salesforce Consultant – London",
       "url": "https://www.reed.co.uk/jobs/salesforce-consultant-london/57333402",
       "work_mode": ""
     },
@@ -2397,7 +2369,7 @@
         }
       ],
       "specialisms": [],
-      "title": "Project Coordinator \u2013 Commercial Pipeline and Innovation",
+      "title": "Project Coordinator – Commercial Pipeline and Innovation",
       "url": "https://www.reed.co.uk/jobs/project-coordinator-commercial-pipeline-and-innovation/57319107",
       "work_mode": "hybrid"
     }
