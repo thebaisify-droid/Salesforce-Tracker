@@ -25,3 +25,9 @@ On merges to `main` that modify files under `candidate-beta/`, the `Candidate be
 Reviewers should confirm the run is green, the artifact contains `candidate-beta/index.html`, `candidate-beta/data/pilot-snapshot.json`, and `candidate-beta/README.md`, then serve the extracted directory with a local static server and exercise title, source, provisional family and evidence filters. Confirm the beta warning persists and **zero** records display as publication-verified. Do not share the preview publicly.
 
 A successful archive build alone does not prove browser rendering, links, vacancies or representative coverage. Record human browser QA and independent source evidence separately before requesting release approval.
+
+## Beta handoff (9 October 2026)
+
+The candidate beta is available as a **private GitHub Actions artifact**, not as a public hiring-data website. Open the latest successful **Candidate beta offline preview** workflow and download the **candidate-beta-preview** ZIP. Serve its extracted folder with `python -m http.server 8000` from the containing directory; then open `/candidate-beta/` in a browser. GitHub pull requests affecting this beta also build an artifact for review.
+
+The dashboard's 30 listings are a historical demonstration only. All remain unverified for publication; do not make live hiring or market-share claims based on them.
