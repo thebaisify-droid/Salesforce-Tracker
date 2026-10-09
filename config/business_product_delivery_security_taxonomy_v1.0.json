@@ -190,7 +190,8 @@
         "soc lead",
         "soc manager",
         "security operations analyst",
-        "security monitoring analyst"
+        "security monitoring analyst",
+        "cyber threat detection & response"
       ],
       "track": "SECURITY"
     },
@@ -202,7 +203,8 @@
         "cybersecurity architect",
         "information security architect",
         "it security architect",
-        "cloud security architect"
+        "cloud security architect",
+        "cyber architect"
       ],
       "track": "SECURITY"
     },
@@ -255,7 +257,11 @@
         "it security manager",
         "it security specialist",
         "it security lead",
-        "information technology security analyst"
+        "information technology security analyst",
+        "cyber security engineer",
+        "cybersecurity engineer",
+        "it security & compliance manager",
+        "it security and compliance manager"
       ],
       "track": "SECURITY"
     }
