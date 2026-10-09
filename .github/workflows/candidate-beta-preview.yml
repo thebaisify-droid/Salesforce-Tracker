@@ -1,6 +1,10 @@
 name: Candidate beta offline preview
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'candidate-beta/**'
+      - '.github/workflows/candidate-beta-preview.yml'
   push:
     branches: [main]
     paths:
