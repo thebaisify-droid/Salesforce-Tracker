@@ -15,6 +15,8 @@ class CandidateBetaIsolationTests(unittest.TestCase):
   self.assertIn("not</strong> representative",self.html)
   self.assertNotIn("dashboard/live-data.json",self.html)
   self.assertIn("textNode(r.title)",self.html)
+  self.assertIn('id="family"',self.html)
+  self.assertIn("x.provisional_family===family",self.html)
  def test_external_links_safe(self):
   from urllib.parse import urlsplit
   self.assertTrue(all(urlsplit(r["url"]).scheme=="https" for r in self.data["records"]))
