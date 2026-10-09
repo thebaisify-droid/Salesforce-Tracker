@@ -1,0 +1,31 @@
+name: Cyber pilot Apify GET-only preflight
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/candidate-cyber-readonly-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  verify-readonly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check current account cap and Actor pricing (GET only)
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          set -euo pipefail
+          python -m scripts.cyber_apify_readonly_preflight
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate-cyber-readonly-preflight
+          path: candidate-cyber-readonly-preflight.json
+          retention-days: 3
+          if-no-files-found: ignore
