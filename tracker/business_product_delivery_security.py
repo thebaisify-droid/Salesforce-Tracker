@@ -52,6 +52,19 @@ def classify_market_role(title: str | None, description: str | None = None) -> d
         "third-party risk manager", "risk analyst (third party risk)",
         "risk analyst (third-party risk)",
     }
+    # A generic third-party/vendor-risk title does not by itself establish
+    # cyber/information-security specialism. Requiring independent cyber context
+    # avoids treating procurement, finance or operational TPRM as cyber roles.
+    if is_security and phrase in {
+        "third party risk analyst", "third-party risk analyst",
+        "third party risk manager", "third-party risk manager",
+        "risk analyst (third party risk)", "risk analyst (third-party risk)",
+    }:
+        cyber_context = any(
+            _has_phrase(title + " " + description, term)
+            for term in cfg["security_context_terms"]
+            if term not in {"third party risk", "third-party risk", "tprm"}
+        )
     if ambiguous_security and not cyber_context:
         return {"included": False, "reason": "ambiguous_security_context", "role_family": family["name"],
                 "track": family["track"], "matched_title": phrase, "review_required": True}
