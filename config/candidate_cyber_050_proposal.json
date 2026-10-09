@@ -1,0 +1,80 @@
+{
+  "schema": "candidate-cyber-pilot-proposal/v1",
+  "mode": "OFFLINE_ONLY",
+  "actor_runs_allowed": 0,
+  "approved_spend_usd": 0,
+  "proposed_total_cap_usd": 0.5,
+  "monthly_account_ceiling_usd": 19,
+  "salesforce_reserve_usd": 8,
+  "last_observed_usage_usd": 6.94,
+  "last_observed_usage_source": "User-supplied Apify billing screenshots, 2026-10-09; NOT a fresh live API reading",
+  "fresh_account_usage_verified": false,
+  "run_charge_floor_verified": false,
+  "jobserve_multikeyword_semantics_verified": false,
+  "actor_pricing_snapshot_verified": false,
+  "publication_approved": false,
+  "automatic_retries": false,
+  "scheduled": false,
+  "source_runs": [
+    {
+      "source": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "max_total_charge_usd": 0.25,
+      "proposed_input": {
+        "query": "cyber security",
+        "country": "uk",
+        "location": "",
+        "maxResults": 15
+      },
+      "input_schema_public_documented": true,
+      "pricing_evidence_usd_per_result": 0.003668
+    },
+    {
+      "source": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "max_total_charge_usd": 0.25,
+      "proposed_input": {
+        "keywords": [
+          "information security analyst",
+          "SOC analyst",
+          "security architect",
+          "cyber security consultant",
+          "third party risk",
+          "information security manager",
+          "IT security engineer"
+        ],
+        "country": "gb",
+        "location": "",
+        "distance": "50",
+        "startUrls": [],
+        "jobType": "",
+        "industries": [],
+        "postedSince": "",
+        "remoteOnly": false,
+        "advertisedBy": "",
+        "includeDescription": true,
+        "onlyUniqueJobs": true,
+        "maxResults": 15
+      },
+      "input_schema_public_documented": true,
+      "pricing_evidence_usd_per_result": 0.002856,
+      "pricing_evidence_usd_per_start": 0.005
+    }
+  ],
+  "target_families": [
+    "Information Security Analysis",
+    "Security Operations / SOC",
+    "Security Architecture",
+    "Security Consulting & Advisory",
+    "Security Risk & Third-Party Risk",
+    "Security Management",
+    "IT Security"
+  ],
+  "limitations": [
+    "Two Actor runs cannot guarantee coverage of all seven families",
+    "JobServe keyword-array breadth and charging not verified against live Actor",
+    "Exact runtime minimum accepted maxTotalChargeUsd not verified",
+    "Actual billed rates and account usage may change before execution",
+    "No Actor execution authorised"
+  ]
+}
