@@ -1,0 +1,45 @@
+{
+  "schema": "candidate-cyber-official-employer-evidence/v1",
+  "source_run_id": "7SvLoLd7RZpCjO0Hq",
+  "dataset_id": "2uG7TW13hpphfQ0P8",
+  "observed_on": "2026-10-09",
+  "publication_approved": false,
+  "records": [
+    {
+      "source_job_id": "efbcdd8118a397fa",
+      "source_job_url": "https://uk.indeed.com/viewjob?jk=efbcdd8118a397fa",
+      "official_title": "Cyber Threat Detection & Response Apprentice",
+      "official_evidence_url": "https://www.findapprenticeship.service.gov.uk/apprenticeship/VAC2000049619",
+      "government_vacancy_reference": "VAC2000049619",
+      "hiring_employer": "Specialist Network Operations",
+      "training_provider": "QA LIMITED",
+      "government_posted_date": "2026-08-24",
+      "government_closing_date": "2026-10-16",
+      "observed_on": "2026-10-09",
+      "evidence_type": "UK_GOV_APPRENTICESHIP_LISTING",
+      "live_vacancy_verified": false,
+      "human_approved": false
+    },
+    {
+      "source_job_id": "20fdf094041231b1",
+      "source_job_url": "https://uk.indeed.com/viewjob?jk=20fdf094041231b1",
+      "official_title": "Cyber Security Engineer Apprentice",
+      "official_evidence_url": "https://www.findapprenticeship.service.gov.uk/apprenticeship/VAC2000049612",
+      "government_vacancy_reference": "VAC2000049612",
+      "hiring_employer": "Specialist Network Operations",
+      "training_provider": "QA LIMITED",
+      "government_posted_date": "2026-08-24",
+      "government_closing_date": "2026-10-16",
+      "observed_on": "2026-10-09",
+      "evidence_type": "UK_GOV_APPRENTICESHIP_LISTING",
+      "live_vacancy_verified": false,
+      "human_approved": false
+    }
+  ],
+  "limitations": [
+    "A public government registry listing supports employer and trainer attribution, but not human adjudication of ongoing vacancy status.",
+    "Two GOV vacancy references are distinct and must not be merged automatically even if titles, provider and location resemble each other.",
+    "Source's postedAt field differs from GOV.UK posted date for both apprenticeships.",
+    "No raw Apify dataset, credentials, person data, or publication-approval claims are included."
+  ]
+}
