@@ -25,6 +25,12 @@ jobs:
           data=json.loads((root/"data/pilot-snapshot.json").read_text())
           assert data["sample_only"] is True and data["publication_approved"] is False
           assert len(data["records"])==30
+          assert data["verified_representative_coverage"] is False
+          assert data["beta_display_only"] is True
+          assert data["record_count"] == len(data["records"])
+          assert all(record["publication_ready"] is False for record in data["records"])
+          assert all(record["verification"] in {"SOURCE_ONLY_UNVERIFIED", "PAGE_VIEWED_NOT_VERIFIED"} for record in data["records"])
+          assert len({record["id"] for record in data["records"]}) == len(data["records"])
           with zipfile.ZipFile("candidate-beta-preview.zip","w",zipfile.ZIP_DEFLATED) as archive:
               for name in ("index.html","data/pilot-snapshot.json","README.md"):
                   archive.write(root/name,arcname="candidate-beta/"+name)
