@@ -1,5 +1,5 @@
 {
-  "active_vacancies": 73,
+  "active_vacancies": 78,
   "baseline": {
     "confirmed_expired": 0,
     "date": "2026-10-06",
@@ -7,7 +7,7 @@
     "late_discoveries": 3,
     "master_rows": 45,
     "possibly_expired": 0,
-    "post_baseline_new": 28
+    "post_baseline_new": 33
   },
   "by_advertiser_type": [
     {
@@ -16,7 +16,7 @@
     },
     {
       "label": "DIRECT_EMPLOYER",
-      "value": 17
+      "value": 22
     },
     {
       "label": "RECRUITMENT_AGENCY",
@@ -26,11 +26,11 @@
   "by_relevance": [
     {
       "label": "CORE",
-      "value": 45
+      "value": 48
     },
     {
       "label": "ADJACENT",
-      "value": 28
+      "value": 30
     }
   ],
   "by_role_family": [
@@ -51,11 +51,15 @@
       "value": 8
     },
     {
-      "label": "Other / Unresolved",
-      "value": 4
+      "label": "Data / Integration",
+      "value": 6
     },
     {
       "label": "Business Analysis",
+      "value": 5
+    },
+    {
+      "label": "Other / Unresolved",
       "value": 4
     },
     {
@@ -71,16 +75,12 @@
       "value": 4
     },
     {
-      "label": "Data / Integration",
+      "label": "Sales / Account Management",
       "value": 3
     },
     {
       "label": "Marketing / CRM",
       "value": 3
-    },
-    {
-      "label": "Sales / Account Management",
-      "value": 2
     },
     {
       "label": "Training / Enablement",
@@ -106,7 +106,7 @@
   "by_sector": [
     {
       "label": "Technology Services",
-      "value": 15
+      "value": 17
     },
     {
       "label": "Unknown",
@@ -114,19 +114,19 @@
     },
     {
       "label": "Financial Services",
-      "value": 6
+      "value": 7
     },
     {
       "label": "Technology Services / Consulting",
       "value": 5
     },
     {
-      "label": "Energy & Utilities",
+      "label": "Manufacturing & Engineering",
       "value": 3
     },
     {
-      "label": "Manufacturing & Engineering",
-      "value": 2
+      "label": "Energy & Utilities",
+      "value": 3
     },
     {
       "label": "Media & Entertainment",
@@ -147,6 +147,10 @@
     {
       "label": "Financial Services / Payments",
       "value": 2
+    },
+    {
+      "label": "Healthcare & Life Sciences",
+      "value": 1
     },
     {
       "label": "Education & Nonprofit",
@@ -227,117 +231,324 @@
   ],
   "by_source": [
     {
+      "key": "source_3",
+      "label": "Reed",
+      "value": 26
+    },
+    {
       "key": "source_5",
       "label": "JobServe",
       "value": 26
     },
     {
-      "key": "source_3",
-      "label": "Reed",
-      "value": 25
+      "key": "source_2",
+      "label": "Totaljobs",
+      "value": 21
     },
     {
       "key": "source_1",
       "label": "CV-Library",
-      "value": 17
-    },
-    {
-      "key": "source_2",
-      "label": "Totaljobs",
-      "value": 15
+      "value": 19
     },
     {
       "key": "source_4",
       "label": "Indeed UK",
-      "value": 9
+      "value": 10
     }
   ],
-  "generated_at": "2026-10-08T11:10:01Z",
+  "generated_at": "2026-10-09T06:44:01Z",
   "latest_run": {
-    "finished_at": "2026-10-08T11:09:59Z",
-    "inserted_rows": 0,
+    "finished_at": "2026-10-09T06:43:58Z",
+    "inserted_rows": 5,
     "master_data_version": "1.4",
     "rejected_rows": 0,
     "role_taxonomy_version": "2.2",
-    "run_id": "20261008T105914Z-e92271f5",
-    "started_at": "2026-10-08T11:09:58Z",
+    "run_id": "20261009T063950Z-f55bddec",
+    "started_at": "2026-10-09T06:43:58Z",
     "status": "success",
-    "unchanged_rows": 34,
+    "unchanged_rows": 13,
     "updated_rows": 0
   },
   "lifecycle": {
-    "ACTIVE": 73
+    "ACTIVE": 78
   },
   "pipeline": {
-    "irrelevant_records": 52,
+    "irrelevant_records": 18,
     "lifecycle_assurance": {
-      "candidates_selected": 13,
-      "checked_at": "2026-10-08T11:09:59Z",
+      "candidates_selected": 15,
+      "checked_at": "2026-10-09T06:43:58Z",
       "counts": {
-        "ACTIVE": 73
+        "ACTIVE": 78
       },
       "dry_run": false,
       "observations": {
-        "AVAILABLE": 13
+        "AVAILABLE": 15
       },
       "passed": true,
       "transitions": {
-        "ACTIVE->ACTIVE": 13
+        "ACTIVE->ACTIVE": 15
       }
     },
     "quality_passed": true,
-    "raw_records": 86,
+    "raw_records": 36,
     "rejected_records": 0,
-    "relevant_records": 34,
+    "relevant_records": 18,
     "sources": [
       {
-        "irrelevant": 1,
+        "irrelevant": 5,
         "key": "source_1",
         "label": "CV-Library",
-        "raw": 1,
-        "relevant": 0
+        "raw": 8,
+        "relevant": 3
       },
       {
-        "irrelevant": 18,
+        "irrelevant": 12,
         "key": "source_2",
         "label": "Totaljobs",
         "raw": 25,
-        "relevant": 7
+        "relevant": 13
       },
       {
-        "irrelevant": 4,
+        "irrelevant": 1,
         "key": "source_3",
         "label": "Reed",
-        "raw": 5,
+        "raw": 2,
         "relevant": 1
       },
       {
-        "irrelevant": 29,
+        "irrelevant": 0,
+        "key": "source_4",
+        "label": "Indeed UK",
+        "raw": 1,
+        "relevant": 1
+      },
+      {
+        "irrelevant": 0,
         "key": "source_5",
         "label": "JobServe",
-        "raw": 55,
-        "relevant": 26
+        "raw": 0,
+        "relevant": 0
       }
     ]
   },
   "refresh": {
-    "finished_at": "2026-10-08T11:09:59Z",
-    "inserted": 0,
+    "finished_at": "2026-10-09T06:43:58Z",
+    "inserted": 5,
     "master_data_version": "1.4",
     "rejected": 0,
     "role_taxonomy_version": "2.2",
-    "started_at": "2026-10-08T11:09:58Z",
+    "started_at": "2026-10-09T06:43:58Z",
     "status": "success",
-    "unchanged": 34,
+    "unchanged": 13,
     "updated": 0
   },
   "review_queue": {
-    "role": 12,
-    "sector": 27
+    "role": 15,
+    "sector": 30
   },
-  "run_id": "20261008T105914Z-e92271f5",
+  "run_id": "20261009T063950Z-f55bddec",
   "schema": "salesforce-hiring-dashboard/v1",
   "vacancies": [
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-09T06:43:58Z",
+      "id": 76,
+      "last_seen_at": "2026-10-09T06:43:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-09T06:43:58Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-08T20:32:04.65Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": false
+      },
+      "role_family": "Data / Integration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/deployment-strategist-public-sector-nonprofit-and-education/salesforce-job108116159"
+        }
+      ],
+      "specialisms": [
+        "Data Cloud",
+        "Platform / Apex / LWC"
+      ],
+      "title": "Deployment Strategist - Public Sector, Nonprofit and Education",
+      "url": "https://www.totaljobs.com/job/deployment-strategist-public-sector-nonprofit-and-education/salesforce-job108116159",
+      "work_mode": null
+    },
+    {
+      "advertiser": "83zero Ltd",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-09T06:43:58Z",
+      "id": 74,
+      "last_seen_at": "2026-10-09T06:43:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-09T06:43:58Z"
+      },
+      "location": "City of London, London",
+      "posted_at": "2026-10-08T17:40:07Z",
+      "relevance": "CORE",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Data / Integration",
+      "salary": {
+        "currency": "GBP",
+        "max": 90000.0,
+        "min": 75000.0,
+        "period": "ANNUM"
+      },
+      "salary_text": null,
+      "sector": "Manufacturing & Engineering",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225705869"
+        },
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/salesforce-ai-engineer/83zero-limited-job108115609"
+        },
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-ai-engineer/57438532"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "Experience Cloud",
+        "Data Cloud",
+        "MuleSoft / Integration",
+        "Platform / Apex / LWC"
+      ],
+      "title": "Salesforce AI Engineer",
+      "url": "https://www.cv-library.co.uk/job/225705869",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Experis",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-09T06:43:58Z",
+      "id": 75,
+      "last_seen_at": "2026-10-09T06:43:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-09T06:43:58Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-08T15:09:19Z",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Business Analysis",
+      "salary": {
+        "currency": "GBP",
+        "max": 91000.0,
+        "min": 85000.0,
+        "period": "ANNUM"
+      },
+      "salary_text": null,
+      "sector": "Healthcare & Life Sciences",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_1",
+          "label": "CV-Library",
+          "url": "https://www.cv-library.co.uk/job/225704964"
+        }
+      ],
+      "specialisms": [],
+      "title": "Business Analyst - Salesforce",
+      "url": "https://www.cv-library.co.uk/job/225704964",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Valcon Group",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "CONTRACTOR, REMOTE_WORKING",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-09T06:43:58Z",
+      "id": 77,
+      "last_seen_at": "2026-10-09T06:43:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-09T06:43:58Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-08T11:04:16.34Z",
+      "relevance": "CORE",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Data / Integration",
+      "salary": {
+        "currency": "GBP",
+        "max": 700.0,
+        "min": null,
+        "period": "day"
+      },
+      "salary_text": null,
+      "sector": "Financial Services",
+      "seniority": "Senior",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/senior-data-modeller-salesforce-enterprise-data/valcon-group-job108113232"
+        }
+      ],
+      "specialisms": [],
+      "title": "Senior Data Modeller (Salesforce & Enterprise Data)",
+      "url": "https://www.totaljobs.com/job/senior-data-modeller-salesforce-enterprise-data/valcon-group-job108113232",
+      "work_mode": null
+    },
     {
       "advertiser": "Datatech",
       "advertiser_type": "DIRECT_EMPLOYER",
@@ -384,6 +595,51 @@
       ],
       "title": "Data Engineer",
       "url": "https://www.cv-library.co.uk/job/225701993",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-09T06:43:58Z",
+      "id": 78,
+      "last_seen_at": "2026-10-09T06:43:58Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-09T06:43:58Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-08T05:00:00.000Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Sales / Account Management",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=0bfaa84c9a7093b8"
+        }
+      ],
+      "specialisms": [],
+      "title": "Agentforce Account Executive",
+      "url": "https://uk.indeed.com/viewjob?jk=0bfaa84c9a7093b8",
       "work_mode": null
     },
     {
@@ -440,12 +696,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 47,
-      "last_seen_at": "2026-10-08T11:09:58Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:58Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:58Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T20:32:05.693Z",
@@ -490,12 +746,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 46,
-      "last_seen_at": "2026-10-08T11:09:58Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:58Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:58Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T20:32:05.23Z",
@@ -540,12 +796,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 49,
-      "last_seen_at": "2026-10-08T11:09:58Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:58Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:58Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T20:32:04.697Z",
@@ -590,12 +846,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 50,
-      "last_seen_at": "2026-10-08T11:09:58Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:58Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:58Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T20:32:04.21Z",
@@ -640,12 +896,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T04:01:26Z",
       "id": 48,
-      "last_seen_at": "2026-10-08T11:09:58Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:58Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:58Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T20:32:03.83Z",
@@ -693,12 +949,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 55,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": null,
-        "reason": null,
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": null
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
@@ -718,6 +974,11 @@
       "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/director-industry-strategist-life-sciences-acceleration-hub/salesforce-job108116160"
+        },
         {
           "key": "source_4",
           "label": "Indeed UK",
@@ -738,12 +999,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 54,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": null,
-        "reason": null,
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": null
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
@@ -764,6 +1025,11 @@
       "seniority": "Lead",
       "sources": [
         {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/life-sciences-ecosystem-lead-director/salesforce-job108116162"
+        },
+        {
           "key": "source_4",
           "label": "Indeed UK",
           "url": "https://uk.indeed.com/viewjob?jk=be0e8a7bfecea24b"
@@ -783,12 +1049,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 53,
-      "last_seen_at": "2026-10-08T10:15:43Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "lifecycle": {
-        "last_verified_at": null,
-        "reason": null,
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": null
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
@@ -808,6 +1074,21 @@
       "sector": "Technology Services",
       "seniority": "Lead",
       "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/life-sciences-program-manager-program-executive/salesforce-job108116164"
+        },
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/life-sciences-program-manager-program-executive/salesforce-job108116163"
+        },
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/life-sciences-program-manager-program-executive/salesforce-job108116161"
+        },
         {
           "key": "source_4",
           "label": "Indeed UK",
@@ -1272,13 +1553,13 @@
       "end_client_name": "Warner Bros. Discovery",
       "first_seen_at": "2026-10-06",
       "id": "MV-000041",
-      "last_seen_at": "2026-10-06T19:44:00Z",
+      "last_seen_at": "2026-10-09T06:43:58Z",
       "legacy_id": "MV-000041",
       "lifecycle": {
-        "last_verified_at": null,
-        "reason": null,
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": null
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Leavesden",
       "posted_at": "2026-10-06",
@@ -3119,10 +3400,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000015",
       "lifecycle": {
-        "last_verified_at": null,
-        "reason": null,
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": null
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "LS101AB",
       "posted_at": "2026-09-25",
@@ -3165,10 +3446,10 @@
       "last_seen_at": "2026-10-08T11:09:59Z",
       "legacy_id": "MV-000014",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
-        "reason": "seen_in_source",
+        "last_verified_at": "2026-10-09T06:43:58Z",
+        "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Langley / Windsor, Berkshire",
       "posted_at": "2026-09-25",
@@ -3216,10 +3497,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000013",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-09-24",
@@ -3262,10 +3543,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000012",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Sheffield",
       "posted_at": "2026-09-22",
@@ -3308,10 +3589,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000011",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-09-21",
@@ -3354,10 +3635,10 @@
       "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000010",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London Bridge, London",
       "posted_at": "2026-09-17",
@@ -3405,10 +3686,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000009",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Yeovil",
       "posted_at": "2026-09-16",
@@ -3451,10 +3732,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000008",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Slough",
       "posted_at": "2026-09-16",
@@ -3497,10 +3778,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000007",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-09-15",
@@ -3543,10 +3824,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000006",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-09-15",
@@ -3589,10 +3870,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000005",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-09-10",
@@ -3635,10 +3916,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000004",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "London",
       "posted_at": "2026-09-10",
@@ -3681,10 +3962,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000003",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Lutterworth, Leicestershire",
       "posted_at": "2026-09-09",
@@ -3727,10 +4008,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000002",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Warrington",
       "posted_at": "2026-09-08",
@@ -3773,10 +4054,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000001",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:59Z",
+        "last_verified_at": "2026-10-09T06:43:58Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:59Z"
+        "updated_at": "2026-10-09T06:43:58Z"
       },
       "location": "Aylesford",
       "posted_at": "2026-09-07",
