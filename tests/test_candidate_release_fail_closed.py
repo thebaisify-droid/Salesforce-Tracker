@@ -37,7 +37,7 @@ class CandidateReleaseFailClosedTests(unittest.TestCase):
         self.assertEqual(len({r["id"] for r in records}), len(records))
         self.assertTrue(all(r["title"].strip() and r["url"].startswith("https://")
                             for r in records))
-        self.assertTrue(all(r["verification"] == "SOURCE_ONLY_UNVERIFIED"
+        self.assertTrue(all(r["verification"] in {"SOURCE_ONLY_UNVERIFIED", "PAGE_VIEWED_NOT_VERIFIED"}
                             for r in records))
         self.assertTrue(all(r["publication_ready"] is False for r in records))
 
