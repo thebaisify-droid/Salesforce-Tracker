@@ -1,0 +1,37 @@
+name: Candidate beta offline preview
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'candidate-beta/**'
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify beta data and isolation
+        run: python -m unittest discover -s tests -p test_candidate_beta_isolation.py -v
+      - name: Build downloadable offline preview bundle
+        run: |
+          python - <<'PY'
+          import json, pathlib, zipfile
+          root=pathlib.Path("candidate-beta")
+          data=json.loads((root/"data/pilot-snapshot.json").read_text())
+          assert data["sample_only"] is True and data["publication_approved"] is False
+          assert len(data["records"])==30
+          with zipfile.ZipFile("candidate-beta-preview.zip","w",zipfile.ZIP_DEFLATED) as archive:
+              for name in ("index.html","data/pilot-snapshot.json","README.md"):
+                  archive.write(root/name,arcname="candidate-beta/"+name)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: candidate-beta-preview
+          path: candidate-beta-preview.zip
+          retention-days: 14
+          if-no-files-found: error
