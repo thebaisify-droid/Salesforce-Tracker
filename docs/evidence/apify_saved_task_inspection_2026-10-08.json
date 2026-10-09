@@ -1,0 +1,68 @@
+{
+  "schema": "candidate-saved-task-inspection-summary/v1",
+  "observed_on": "2026-10-08",
+  "run_id": 37784631922,
+  "artifact_id": 11553970809,
+  "inspection_completed": true,
+  "actor_runs_started": 0,
+  "task_updates": 0,
+  "tasks": [
+    {
+      "source": "CV-Library",
+      "task_id": "develop_ify/cv-library-scraper-task",
+      "candidate_search_fields": [
+        "country",
+        "maxResults",
+        "query"
+      ],
+      "other_relevant_fields": [
+        "incrementalMode",
+        "postedWithinDays",
+        "maxPages"
+      ],
+      "input_schema_verified": false,
+      "non_salesforce_search_verified": false,
+      "actor_id": "T0edvAvD8lVcvc58G",
+      "actor_id_observed_from_live_task_metadata": true,
+      "actor_schema_metadata_confirmed": true,
+      "actor_schema_source_run": 37795936497,
+      "actor_schema_source_artifact": 11558656387,
+      "actor_owner": "blackfalcondata",
+      "actor_name": "cv-library-scraper",
+      "schema_required_fields": []
+    },
+    {
+      "source": "Totaljobs",
+      "task_id": "develop_ify/totaljobs-com-scraper-task",
+      "candidate_search_fields": [
+        "keywords"
+      ],
+      "other_relevant_fields": [
+        "maxListings",
+        "postedWithin",
+        "mode"
+      ],
+      "input_schema_verified": false,
+      "non_salesforce_search_verified": false,
+      "actor_id": "RO7aokuNWfmP0kV0G",
+      "actor_id_observed_from_live_task_metadata": true,
+      "actor_schema_metadata_confirmed": true,
+      "actor_schema_source_run": 37795936497,
+      "actor_schema_source_artifact": 11558656387,
+      "actor_owner": "abotapi",
+      "actor_name": "totaljobs-com-scraper",
+      "schema_required_fields": [
+        "mode"
+      ]
+    }
+  ],
+  "next_checks": [
+    "Inspect documented Actor input schemas without running Actors",
+    "Confirm supported Task input overrides in isolated, budget-controlled pilot",
+    "Leave production saved Tasks untouched"
+  ],
+  "raw_inputs_included": false,
+  "paid_acquisition_authorised": false,
+  "public_actor_listing_identity_verified": true,
+  "input_values_and_charging_verified": false
+}

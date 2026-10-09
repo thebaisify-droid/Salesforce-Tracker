@@ -1,0 +1,97 @@
+{
+  "schema": "candidate-actor-schema-evidence/v1",
+  "date": "2026-10-08",
+  "offline_only": true,
+  "paid_runs_authorised": false,
+  "task_mutations_authorised": false,
+  "actors": [
+    {
+      "source": "CV-Library",
+      "task": "develop_ify/cv-library-scraper-task",
+      "candidate_actor": "blackfalcondata/cv-library-scraper",
+      "documentation_url": "https://apify.com/blackfalcondata/cv-library-scraper/input-schema",
+      "public_fields": [
+        "query",
+        "maxResults",
+        "incrementalMode",
+        "maxPages"
+      ],
+      "observed_saved_task_fields": [
+        "query",
+        "country",
+        "maxResults",
+        "incrementalMode",
+        "postedWithinDays",
+        "maxPages"
+      ],
+      "actor_id_match_verified": true,
+      "field_support_for_actual_saved_task_verified": true,
+      "saved_task_actor_id": "T0edvAvD8lVcvc58G",
+      "saved_task_actor_id_observed": true,
+      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified.",
+      "observed_task_act_id": "T0edvAvD8lVcvc58G",
+      "observed_task_act_id_evidence": {
+        "github_workflow_run_id": 37784631922,
+        "artifact_id": 11553970809
+      },
+      "candidate_actor_public_listing_match_verified": true,
+      "task_actor_identity_observed_from_apify_metadata": true,
+      "input_schema_available": true,
+      "input_field_names_verified": true,
+      "broad_role_search_execution_verified": false,
+      "paid_charging_verified": false,
+      "schema_run_id": 37795936497,
+      "schema_artifact_id": 11558656387,
+      "actor_input_schema_verified": true,
+      "evidence_run_id": 37795936497,
+      "evidence_artifact_id": 11558656387,
+      "schema_build_id": "pJCmniuSNrJ4FfJ4R",
+      "required_fields": []
+    },
+    {
+      "source": "Totaljobs",
+      "task": "develop_ify/totaljobs-com-scraper-task",
+      "candidate_actor": "abotapi/totaljobs-com-scraper",
+      "documentation_url": "https://apify.com/abotapi/totaljobs-com-scraper",
+      "public_fields": [
+        "keywords",
+        "maxListings",
+        "incrementalMode"
+      ],
+      "observed_saved_task_fields": [
+        "keywords",
+        "maxListings",
+        "postedWithin",
+        "mode"
+      ],
+      "actor_id_match_verified": true,
+      "field_support_for_actual_saved_task_verified": true,
+      "saved_task_actor_id": "RO7aokuNWfmP0kV0G",
+      "saved_task_actor_id_observed": true,
+      "actor_identity_note": "Exact actId read from authenticated saved Task inspection; public owner/name mapping and actor input schema still unverified.",
+      "observed_task_act_id": "RO7aokuNWfmP0kV0G",
+      "observed_task_act_id_evidence": {
+        "github_workflow_run_id": 37784631922,
+        "artifact_id": 11553970809
+      },
+      "candidate_actor_public_listing_match_verified": true,
+      "task_actor_identity_observed_from_apify_metadata": true,
+      "input_schema_available": true,
+      "input_field_names_verified": true,
+      "broad_role_search_execution_verified": false,
+      "paid_charging_verified": false,
+      "schema_run_id": 37795936497,
+      "schema_artifact_id": 11558656387,
+      "actor_input_schema_verified": true,
+      "evidence_run_id": 37795936497,
+      "evidence_artifact_id": 11558656387,
+      "schema_build_id": "M9VrohtP98oQxsFHI",
+      "required_fields": [
+        "mode"
+      ]
+    }
+  ],
+  "required_evidence": "Actual Actor identities and default-build input field names verified via authenticated read-only Apify metadata. Search output quality, input value constraints, pricing, budget reservation, and non-Salesforce job collection remain unverified. Paid acquisition not authorised by this record.",
+  "evidence_run_id": 37784631922,
+  "evidence_artifact_id": 11553970809
+}

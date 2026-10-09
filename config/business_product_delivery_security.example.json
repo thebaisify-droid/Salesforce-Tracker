@@ -1,0 +1,19 @@
+{
+  "tracker": "business_product_delivery_security",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "publication_enabled": false,
+  "sources": [],
+  "monthly_acquisition_allocation_usd": 0,
+  "notes": "Specification only. No Apify jobs, GitHub workflow, or live dashboard publication. Apply separate budget gate and validate classifier before activation.",
+  "core_sources": [
+    "CV-Library",
+    "Totaljobs",
+    "Indeed UK",
+    "JobServe"
+  ],
+  "core_source_policy": "Indeed UK and JobServe are core sources for the new tracker; Reed is optional enrichment. This remains an inactive acquisition specification.",
+  "optional_enrichment_sources": [
+    "Reed"
+  ]
+}

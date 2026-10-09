@@ -1,0 +1,27 @@
+{
+  "evidence_type": "historical_job_board_exports_not_representative",
+  "observed_on": "2026-10-08",
+  "github_workflow_run_id": 37761552670,
+  "github_artifact_id": 11541864875,
+  "sources": [
+    {
+      "name": "Indeed UK",
+      "records": 9,
+      "preliminary_title_keyword_candidates": 2
+    },
+    {
+      "name": "JobServe",
+      "records": 55,
+      "preliminary_title_keyword_candidates": 10
+    }
+  ],
+  "scope": "Salesforce-focused validation run; not broad 22-family market coverage.",
+  "limitations": [
+    "Counts are preliminary title keyword screening, not validated role classifications.",
+    "No independent human labelling or statistical accuracy evidence.",
+    "No coverage inference about new UK Business/Product/Delivery/Security tracker.",
+    "No raw records or potential recruiter contact details committed."
+  ],
+  "paid_acquisition_triggered": false,
+  "publication_approved": false
+}

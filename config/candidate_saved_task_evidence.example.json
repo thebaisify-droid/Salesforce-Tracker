@@ -1,0 +1,22 @@
+{
+  "schema": "saved-task-override-evidence/v1",
+  "status": "UNVERIFIED",
+  "paid_calls_permitted": false,
+  "task_checks": [
+    {
+      "source": "CV-Library",
+      "task_id": "develop_ify/cv-library-scraper-task",
+      "task_definition_exported": false,
+      "input_schema_verified": false,
+      "non_salesforce_search_verified": false
+    },
+    {
+      "source": "Totaljobs",
+      "task_id": "develop_ify/totaljobs-com-scraper-task",
+      "task_definition_exported": false,
+      "input_schema_verified": false,
+      "non_salesforce_search_verified": false
+    }
+  ],
+  "next_action": "Obtain redacted read-only Apify saved Task input definitions and record actual supported search fields. Never modify saved production tasks."
+}
