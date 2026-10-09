@@ -1,0 +1,74 @@
+{
+  "schema": "candidate-search-dry-run/v1",
+  "mode": "OFFLINE_ONLY",
+  "actor_runs_allowed": 0,
+  "approved_spend_usd": 0,
+  "shared_budget_usd": 19,
+  "source_inputs": [
+    {
+      "source": "Indeed UK",
+      "provider": "apify_actor",
+      "actor": "wildorigins/indeed-jobs",
+      "schema_status": "PUBLIC_INPUT_SCHEMA_VERIFIED",
+      "example_input": {
+        "query": "business analyst",
+        "country": "uk",
+        "location": "",
+        "maxResults": 15
+      },
+      "max_total_charge_usd": 0.15,
+      "notes": "One query per test; do not expand into 22 paid searches without a total-cost and coverage plan."
+    },
+    {
+      "source": "JobServe",
+      "provider": "apify_actor",
+      "actor": "solidcode/jobserve-scraper",
+      "schema_status": "PUBLIC_API_EXAMPLE_VERIFIED",
+      "example_input": {
+        "keywords": [
+          "business analyst"
+        ],
+        "location": "",
+        "country": "gb",
+        "distance": "50",
+        "startUrls": [],
+        "jobType": "",
+        "industries": [],
+        "postedSince": "",
+        "remoteOnly": false,
+        "advertisedBy": "",
+        "includeDescription": true,
+        "onlyUniqueJobs": true,
+        "maxResults": 15
+      },
+      "max_total_charge_usd": 0.15,
+      "notes": "Keyword array supported in published example; query coverage/charging across multiple keywords still requires proof."
+    },
+    {
+      "source": "CV-Library",
+      "provider": "apify_task",
+      "task": "develop_ify/cv-library-scraper-task",
+      "schema_status": "SAVED_TASK_INPUT_OVERRIDE_NOT_VERIFIED",
+      "example_input": null,
+      "max_total_charge_usd": 0.1,
+      "notes": "Do not assume saved Salesforce task can be overridden for new roles."
+    },
+    {
+      "source": "Totaljobs",
+      "provider": "apify_task",
+      "task": "develop_ify/totaljobs-com-scraper-task",
+      "schema_status": "SAVED_TASK_INPUT_OVERRIDE_NOT_VERIFIED",
+      "example_input": null,
+      "max_total_charge_usd": 0.1,
+      "notes": "Do not assume saved Salesforce task can be overridden for new roles."
+    }
+  ],
+  "explicitly_not_authorised": [
+    "Starting Apify runs",
+    "Changing saved Apify tasks",
+    "Installing schedules",
+    "Merging PR #28",
+    "Publishing dashboard"
+  ],
+  "sources": "Public input schema for wildorigins/indeed-jobs; public API sample for solidcode/jobserve-scraper; GitHub existing source configuration for saved tasks."
+}
