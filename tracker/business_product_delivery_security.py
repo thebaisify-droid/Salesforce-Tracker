@@ -47,19 +47,43 @@ def classify_market_role(title: str | None, description: str | None = None) -> d
     ambiguous_security = is_security and phrase in {
         "security architect", "security advisor", "security adviser",
         "security risk manager", "security assurance consultant",
-        "technology risk manager",
+        "technology risk manager", "third party risk analyst",
+        "third-party risk analyst", "third party risk manager",
+        "third-party risk manager", "risk analyst (third party risk)",
+        "risk analyst (third-party risk)",
     }
+    # A generic third-party/vendor-risk title does not by itself establish
+    # cyber/information-security specialism. Requiring independent cyber context
+    # avoids treating procurement, finance or operational TPRM as cyber roles.
+    if is_security and phrase in {
+        "third party risk analyst", "third-party risk analyst",
+        "third party risk manager", "third-party risk manager",
+        "risk analyst (third party risk)", "risk analyst (third-party risk)",
+    }:
+        cyber_context = any(
+            _has_phrase(title + " " + description, term)
+            for term in cfg["security_context_terms"]
+            if term not in {"third party risk", "third-party risk", "tprm"}
+        )
     if ambiguous_security and not cyber_context:
         return {"included": False, "reason": "ambiguous_security_context", "role_family": family["name"],
                 "track": family["track"], "matched_title": phrase, "review_required": True}
     # Operational roles can also be ambiguous; flag for QA rather than discarding
     # every valid job with a minimal snippet.
-    review = (not is_security and phrase in {
-        "delivery manager", "service owner", "service designer",
-        "service delivery manager", "product analyst", "product lead",
-        "change analyst", "transformation lead", "reporting analyst",
-        "insights analyst", "performance analyst", "analytics manager"
-    })
+    review = (
+        (not is_security and phrase in {
+            "delivery manager", "service owner", "service designer",
+            "service delivery manager", "product analyst", "product lead",
+            "change analyst", "transformation lead", "reporting analyst",
+            "insights analyst", "performance analyst", "analytics manager"
+        })
+        or (is_security and phrase in {
+            "analyst, information security",
+            "risk analyst (third party risk)", "risk analyst (third-party risk)",
+            "third party risk analyst", "third-party risk analyst",
+            "third party risk manager", "third-party risk manager",
+        })
+    )
     return {"included": True, "reason": "matched_title", "role_family": family["name"],
             "track": family["track"], "matched_title": phrase, "review_required": review}
 

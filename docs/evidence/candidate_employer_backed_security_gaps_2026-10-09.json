@@ -1,0 +1,54 @@
+{
+  "schema": "candidate-employer-security-gap-leads/v1",
+  "observed_on": "2026-10-09",
+  "source_method": "READ_ONLY_EMPLOYER_BACKED_WEB_DISCOVERY",
+  "paid_apify_runs_started": 0,
+  "new_apify_spend_authorised_usd": 0,
+  "publication_approved": false,
+  "verified_representative_coverage": false,
+  "disclaimer": "These are two external vacancy leads for private human QA, not an Apify acquisition dataset and not verified live market metrics.",
+  "leads": [
+    {
+      "lead_id": "sony-pictures-JR114830",
+      "original_title": "Analyst, Information Security",
+      "employer_name": "Sony Pictures Entertainment",
+      "location": "London, United Kingdom",
+      "employer_reference": "JR114830",
+      "source_type": "EMPLOYER_CAREERS_PAGE",
+      "evidence_url": "https://www.sonypicturesjobs.com/job/london/analyst-information-security/22978/101665903600",
+      "application_link": "https://spe.wd1.myworkdayjobs.com/SonyPicturesEntertainment/job/London-United-Kingdom/Analyst--Information-Security_JR114830/apply",
+      "posting_date_claim": "2026-10-07",
+      "closing_date_claim": null,
+      "source_claim_context": "Incident response, information security and security operations analyst work in an employer-hosted career advert",
+      "proposed_family": "Information Security Analysis",
+      "proposed_family_requires_human_review": true,
+      "application_flow_independently_tested": false,
+      "vacancy_live_independently_confirmed": false,
+      "human_role_label_approved": false,
+      "publication_ready": false
+    },
+    {
+      "lead_id": "maritime-coastguard-482482",
+      "original_title": "Information Security - Risk Analyst (Third Party Risk)",
+      "employer_name": "Maritime and Coastguard Agency",
+      "location": "Southampton, United Kingdom",
+      "employer_reference": "482482",
+      "source_type": "PUBLIC_SECTOR_SYNDICATED_ADVERT",
+      "evidence_url": "https://www.jobsgopublic.com/job/information-security-risk-analyst-third-party-risk-93756",
+      "crosscheck_urls": [
+        "https://www.inclusivejobs.co.uk/vacancies/information-security-risk-analyst-third-party-risk/",
+        "https://uk.indeed.com/viewjob?jk=e624e828e0f0427f"
+      ],
+      "application_link": null,
+      "posting_date_claim": null,
+      "closing_date_claim": "2026-10-19",
+      "source_claim_context": "Supplier information security risk assessments, supplier assurance, third-party cyber and information security governance",
+      "proposed_family": "Security Risk & Third-Party Risk",
+      "proposed_family_requires_human_review": true,
+      "application_flow_independently_tested": false,
+      "vacancy_live_independently_confirmed": false,
+      "human_role_label_approved": false,
+      "publication_ready": false
+    }
+  ]
+}
