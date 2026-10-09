@@ -17,3 +17,11 @@ This integration brings the offline taxonomy, classifier, isolated candidate sto
 ## Release constraints
 
 This is a research beta, not a go-live declaration. The separate 22-family release gate still requires unbiased sampling, validated active vacancies and posting dates, real-world precision/recall, cross-source deduplication, database restore testing, website filter testing and independent review. Any future paid Apify collection needs new budget/authorisation.
+
+## Private preview artifact verification
+
+On merges to `main` that modify files under `candidate-beta/`, the `Candidate beta offline preview` GitHub Actions workflow should run and retain a `candidate-beta-preview` ZIP artifact for 14 days. The ZIP is a **private review deliverable**, not a public deployment or evidence of verified job listings.
+
+Reviewers should confirm the run is green, the artifact contains `candidate-beta/index.html`, `candidate-beta/data/pilot-snapshot.json`, and `candidate-beta/README.md`, then serve the extracted directory with a local static server and exercise title, source, provisional family and evidence filters. Confirm the beta warning persists and **zero** records display as publication-verified. Do not share the preview publicly.
+
+A successful archive build alone does not prove browser rendering, links, vacancies or representative coverage. Record human browser QA and independent source evidence separately before requesting release approval.
