@@ -36,3 +36,39 @@ Exclude old/expired or unverified adverts without inventing status.
 
 See the machine-readable, unapproved evidence file at
 `docs/evidence/candidate_employer_backed_security_gaps_2026-10-09.json`.
+
+## 10 October 2026 — application journey status check (read-only)
+
+Evidence recorded in `docs/evidence/candidate_cyber_application_checks_2026-10-10.json`.
+
+| Lead | Listing checked | Official application destination | Outcome |
+|---|---|---|---|
+| Sony Pictures JR114830 | Employer careers page loads with full role and **Apply** link | Sony Workday `.../Analyst--Information-Security_JR114830/apply` | Automated application page fetch inaccessible. **Do not report live form verified.** |
+| MCA 482482 | Jobsgopublic advert and multiple syndicated corroborations readable; 19 October closing date claimed | Civil Service Jobs `https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?jcode=2015051` | Followed official link, but portal requires human verification. **Do not report live form verified.** |
+
+For Sony, original job title suggests *Information Security Analysis*, but actual alert
+triage, EDR/SIEM and incident-response responsibilities overlap *Security Operations
+/ SOC*. Human role-family classification must resolve that overlap.
+
+For MCA, the job description clearly centres supplier information-security
+assessment and third-party risk, supporting the proposed risk family. The
+syndicated employer reference **482482** and Civil Service portal job code
+**2015051** are distinct numbering systems; do not claim a fully verified
+cross-system mapping until the protected official page is reviewed by a person.
+
+**Manual human reviewer tasks before publication:** open the Sony Workday
+application link and official Civil Service Jobs link in a normal browser;
+confirm both requisitions are accepting applications; record check timestamp,
+actual employer and reference, and separately approve one primary role family;
+check exact and cross-source duplicates; record named dated sign-off.
+Do not attempt to bypass login, CAPTCHA or site access controls.
+
+To validate the current unapproved evidence without any network calls:
+
+```bash
+python -m scripts.assess_candidate_application_evidence --output /private/cyber-application-review.json
+```
+
+This creates a **private reviewer handoff**, not publishable jobs. The validator
+fails if the checks falsely claim live status, human review or publication.
+No new Apify run or website update is authorised by this evidence.
