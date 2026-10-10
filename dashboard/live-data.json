@@ -1,5 +1,5 @@
 {
-  "active_vacancies": 78,
+  "active_vacancies": 91,
   "baseline": {
     "confirmed_expired": 0,
     "date": "2026-10-06",
@@ -7,7 +7,7 @@
     "late_discoveries": 3,
     "master_rows": 45,
     "possibly_expired": 0,
-    "post_baseline_new": 33
+    "post_baseline_new": 46
   },
   "by_advertiser_type": [
     {
@@ -16,51 +16,51 @@
     },
     {
       "label": "DIRECT_EMPLOYER",
-      "value": 22
+      "value": 30
     },
     {
       "label": "RECRUITMENT_AGENCY",
-      "value": 14
+      "value": 19
     }
   ],
   "by_relevance": [
     {
       "label": "CORE",
-      "value": 48
+      "value": 57
     },
     {
       "label": "ADJACENT",
-      "value": 30
+      "value": 34
     }
   ],
   "by_role_family": [
     {
       "label": "Development / Engineering",
+      "value": 13
+    },
+    {
+      "label": "Platform / Administration",
       "value": 12
+    },
+    {
+      "label": "Architecture",
+      "value": 11
     },
     {
       "label": "Delivery / Programme",
       "value": 9
     },
     {
-      "label": "Architecture",
-      "value": 8
+      "label": "Other / Unresolved",
+      "value": 7
     },
     {
-      "label": "Platform / Administration",
-      "value": 8
+      "label": "Business Analysis",
+      "value": 6
     },
     {
       "label": "Data / Integration",
       "value": 6
-    },
-    {
-      "label": "Business Analysis",
-      "value": 5
-    },
-    {
-      "label": "Other / Unresolved",
-      "value": 4
     },
     {
       "label": "Sales Operations / CRM Operations",
@@ -73,6 +73,10 @@
     {
       "label": "Transformation / Change",
       "value": 4
+    },
+    {
+      "label": "Product / Platform Ownership",
+      "value": 3
     },
     {
       "label": "Sales / Account Management",
@@ -91,10 +95,6 @@
       "value": 2
     },
     {
-      "label": "Product / Platform Ownership",
-      "value": 2
-    },
-    {
       "label": "Testing / QA",
       "value": 1
     },
@@ -106,15 +106,15 @@
   "by_sector": [
     {
       "label": "Technology Services",
-      "value": 17
+      "value": 19
     },
     {
       "label": "Unknown",
-      "value": 13
+      "value": 15
     },
     {
       "label": "Financial Services",
-      "value": 7
+      "value": 12
     },
     {
       "label": "Technology Services / Consulting",
@@ -122,6 +122,10 @@
     },
     {
       "label": "Manufacturing & Engineering",
+      "value": 4
+    },
+    {
+      "label": "Professional Services",
       "value": 3
     },
     {
@@ -129,11 +133,15 @@
       "value": 3
     },
     {
-      "label": "Media & Entertainment",
+      "label": "Healthcare & Life Sciences",
       "value": 2
     },
     {
-      "label": "Professional Services",
+      "label": "Retail & Consumer",
+      "value": 2
+    },
+    {
+      "label": "Media & Entertainment",
       "value": 2
     },
     {
@@ -149,19 +157,11 @@
       "value": 2
     },
     {
-      "label": "Healthcare & Life Sciences",
-      "value": 1
-    },
-    {
       "label": "Education & Nonprofit",
       "value": 1
     },
     {
       "label": "Technology / Communications Equipment",
-      "value": 1
-    },
-    {
-      "label": "Retail & Consumer",
       "value": 1
     },
     {
@@ -231,19 +231,19 @@
   ],
   "by_source": [
     {
-      "key": "source_3",
-      "label": "Reed",
-      "value": 26
-    },
-    {
       "key": "source_5",
       "label": "JobServe",
-      "value": 26
+      "value": 37
+    },
+    {
+      "key": "source_3",
+      "label": "Reed",
+      "value": 29
     },
     {
       "key": "source_2",
       "label": "Totaljobs",
-      "value": 21
+      "value": 24
     },
     {
       "key": "source_1",
@@ -253,32 +253,32 @@
     {
       "key": "source_4",
       "label": "Indeed UK",
-      "value": 10
+      "value": 12
     }
   ],
-  "generated_at": "2026-10-09T06:44:01Z",
+  "generated_at": "2026-10-10T06:41:44Z",
   "latest_run": {
-    "finished_at": "2026-10-09T06:43:58Z",
-    "inserted_rows": 5,
+    "finished_at": "2026-10-10T06:41:39Z",
+    "inserted_rows": 13,
     "master_data_version": "1.4",
     "rejected_rows": 0,
     "role_taxonomy_version": "2.2",
-    "run_id": "20261009T063950Z-f55bddec",
-    "started_at": "2026-10-09T06:43:58Z",
+    "run_id": "20261010T063707Z-07424d2e",
+    "started_at": "2026-10-10T06:41:39Z",
     "status": "success",
-    "unchanged_rows": 13,
+    "unchanged_rows": 18,
     "updated_rows": 0
   },
   "lifecycle": {
-    "ACTIVE": 78
+    "ACTIVE": 91
   },
   "pipeline": {
-    "irrelevant_records": 18,
+    "irrelevant_records": 40,
     "lifecycle_assurance": {
       "candidates_selected": 15,
-      "checked_at": "2026-10-09T06:43:58Z",
+      "checked_at": "2026-10-10T06:41:39Z",
       "counts": {
-        "ACTIVE": 78
+        "ACTIVE": 91
       },
       "dry_run": false,
       "observations": {
@@ -290,65 +290,592 @@
       }
     },
     "quality_passed": true,
-    "raw_records": 36,
+    "raw_records": 71,
     "rejected_records": 0,
-    "relevant_records": 18,
+    "relevant_records": 31,
     "sources": [
       {
         "irrelevant": 5,
         "key": "source_1",
         "label": "CV-Library",
-        "raw": 8,
-        "relevant": 3
+        "raw": 6,
+        "relevant": 1
       },
       {
-        "irrelevant": 12,
+        "irrelevant": 13,
         "key": "source_2",
         "label": "Totaljobs",
-        "raw": 25,
-        "relevant": 13
+        "raw": 24,
+        "relevant": 11
       },
       {
         "irrelevant": 1,
         "key": "source_3",
         "label": "Reed",
-        "raw": 2,
-        "relevant": 1
+        "raw": 4,
+        "relevant": 3
       },
       {
         "irrelevant": 0,
         "key": "source_4",
         "label": "Indeed UK",
-        "raw": 1,
-        "relevant": 1
+        "raw": 2,
+        "relevant": 2
       },
       {
-        "irrelevant": 0,
+        "irrelevant": 21,
         "key": "source_5",
         "label": "JobServe",
-        "raw": 0,
-        "relevant": 0
+        "raw": 35,
+        "relevant": 14
       }
     ]
   },
   "refresh": {
-    "finished_at": "2026-10-09T06:43:58Z",
-    "inserted": 5,
+    "finished_at": "2026-10-10T06:41:39Z",
+    "inserted": 13,
     "master_data_version": "1.4",
     "rejected": 0,
     "role_taxonomy_version": "2.2",
-    "started_at": "2026-10-09T06:43:58Z",
+    "started_at": "2026-10-10T06:41:39Z",
     "status": "success",
-    "unchanged": 13,
+    "unchanged": 18,
     "updated": 0
   },
   "review_queue": {
-    "role": 15,
-    "sector": 30
+    "role": 19,
+    "sector": 39
   },
-  "run_id": "20261009T063950Z-f55bddec",
+  "run_id": "20261010T063707Z-07424d2e",
   "schema": "salesforce-hiring-dashboard/v1",
   "vacancies": [
+    {
+      "advertiser": "Entrust",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 80,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-09T19:24:03.32Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Other / Unresolved",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Manufacturing & Engineering",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/customer-escalations-manager/entrust-job108124143"
+        }
+      ],
+      "specialisms": [
+        "Service Cloud"
+      ],
+      "title": "Customer Escalations Manager",
+      "url": "https://www.totaljobs.com/job/customer-escalations-manager/entrust-job108124143",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Morson Edge",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Temporary Contract; On-site",
+      "employment_type": "FULL_TIME",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 79,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "Tower Hill, City of London (EC3), E1W 1WY",
+      "posted_at": "2026-10-09T15:28:34.32Z",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Product / Platform Ownership",
+      "salary": {
+        "currency": "GBP",
+        "max": 750.0,
+        "min": 600.0,
+        "period": "day"
+      },
+      "salary_text": null,
+      "sector": "Financial Services",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/salesforce-product-manager/morson-edge-job108123302"
+        },
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDkBi"
+        }
+      ],
+      "specialisms": [],
+      "title": "Salesforce Product Manager",
+      "url": "https://www.totaljobs.com/job/salesforce-product-manager/morson-edge-job108123302",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 85,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-09T05:00:00.000Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
+      "seniority": "Senior",
+      "sources": [
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=2bc2b1ce41c262e7"
+        }
+      ],
+      "specialisms": [],
+      "title": "Technical Architect/Senior Technical Architect",
+      "url": "https://uk.indeed.com/viewjob?jk=2bc2b1ce41c262e7",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Salesforce",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": null,
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 84,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-09T05:00:00.000Z",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": false
+      },
+      "role_family": "Other / Unresolved",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Technology Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_4",
+          "label": "Indeed UK",
+          "url": "https://uk.indeed.com/viewjob?jk=d43d8e906d42bfe3"
+        }
+      ],
+      "specialisms": [],
+      "title": "Forward Deployed Engineer - Public Sector",
+      "url": "https://uk.indeed.com/viewjob?jk=d43d8e906d42bfe3",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Hydrogen Group",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": "Full-time",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 83,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "London",
+      "posted_at": "2026-10-09T00:00:00.000Z",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Business Analysis",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": "Annual"
+      },
+      "salary_text": null,
+      "sector": "Unknown",
+      "seniority": "Senior",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-senior-business-analyst-hybrid-working/57443023"
+        },
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDkIN"
+        }
+      ],
+      "specialisms": [
+        "Marketing Cloud"
+      ],
+      "title": "Salesforce Senior Business Analyst - Hybrid Working",
+      "url": "https://www.reed.co.uk/jobs/salesforce-senior-business-analyst-hybrid-working/57443023",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Orka Financial",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Temporary",
+      "employment_type": "Full-time",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 82,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "Marlow",
+      "posted_at": "2026-10-09T00:00:00.000Z",
+      "relevance": "CORE",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": 225.0,
+        "min": 200.0,
+        "period": "Daily"
+      },
+      "salary_text": null,
+      "sector": "Unknown",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/business-systems-administrator-salesforce/57443005"
+        }
+      ],
+      "specialisms": [
+        "Platform / Apex / LWC"
+      ],
+      "title": "Business Systems Administrator - Salesforce",
+      "url": "https://www.reed.co.uk/jobs/business-systems-administrator-salesforce/57443005",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Proactive Appointments",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Contract",
+      "employment_type": "Full-time",
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 81,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "W21NY",
+      "posted_at": "2026-10-09T00:00:00.000Z",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": 400.0,
+        "min": 350.0,
+        "period": "Daily"
+      },
+      "salary_text": null,
+      "sector": "Financial Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_3",
+          "label": "Reed",
+          "url": "https://www.reed.co.uk/jobs/salesforce-administrator/57440640"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "MuleSoft / Integration"
+      ],
+      "title": "Salesforce Administrator",
+      "url": "https://www.reed.co.uk/jobs/salesforce-administrator/57440640",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Cooper Parry",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 91,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "Derby, Derbyshire, UK",
+      "posted_at": "2026-10-09",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Professional Services",
+      "seniority": "Junior",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDTbM"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "Experience Cloud"
+      ],
+      "title": "Junior Salesforce Administrator",
+      "url": "https://www.jobserve.com/gb/en/hDTbM",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Places for People",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 90,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "Northwich, Cheshire, UK",
+      "posted_at": "2026-10-09",
+      "relevance": "ADJACENT",
+      "review": {
+        "role": true,
+        "sector": true
+      },
+      "role_family": "Other / Unresolved",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Financial Services",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDVlA"
+        }
+      ],
+      "specialisms": [
+        "Service Cloud"
+      ],
+      "title": "Customer Service Manager",
+      "url": "https://www.jobserve.com/gb/en/hDVlA",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Places for People",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Permanent",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 88,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "United Kingdom",
+      "posted_at": "2026-10-09",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Development / Engineering",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Healthcare & Life Sciences",
+      "seniority": "Senior",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDVj8"
+        }
+      ],
+      "specialisms": [
+        "Service Cloud"
+      ],
+      "title": "Senior Salesforce Engineer",
+      "url": "https://www.jobserve.com/gb/en/hDVj8",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Proactive Appointments",
+      "advertiser_type": "RECRUITMENT_AGENCY",
+      "baseline": false,
+      "contract_type": "Contract",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 86,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "London, Greater London, England, UK",
+      "posted_at": "2026-10-09",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": true
+      },
+      "role_family": "Platform / Administration",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Financial Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDfNP"
+        }
+      ],
+      "specialisms": [
+        "Sales Cloud",
+        "Service Cloud",
+        "MuleSoft / Integration"
+      ],
+      "title": "Salesforce Administrator",
+      "url": "https://www.jobserve.com/gb/en/hDfNP",
+      "work_mode": null
+    },
     {
       "advertiser": "Salesforce",
       "advertiser_type": "DIRECT_EMPLOYER",
@@ -358,12 +885,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-09T06:43:58Z",
       "id": 76,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-10-08T20:32:04.65Z",
@@ -406,12 +933,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-09T06:43:58Z",
       "id": 74,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "City of London, London",
       "posted_at": "2026-10-08T17:40:07Z",
@@ -445,6 +972,11 @@
           "key": "source_3",
           "label": "Reed",
           "url": "https://www.reed.co.uk/jobs/salesforce-ai-engineer/57438532"
+        },
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDJ8y"
         }
       ],
       "specialisms": [
@@ -468,12 +1000,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-09T06:43:58Z",
       "id": 75,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-10-08T15:09:19Z",
@@ -497,6 +1029,11 @@
           "key": "source_1",
           "label": "CV-Library",
           "url": "https://www.cv-library.co.uk/job/225704964"
+        },
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDG56"
         }
       ],
       "specialisms": [],
@@ -513,12 +1050,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-09T06:43:58Z",
       "id": 77,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-10-08T11:04:16.34Z",
@@ -606,12 +1143,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-09T06:43:58Z",
       "id": 78,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-10-08T05:00:00.000Z",
@@ -632,6 +1169,11 @@
       "seniority": "Standard",
       "sources": [
         {
+          "key": "source_2",
+          "label": "Totaljobs",
+          "url": "https://www.totaljobs.com/job/agentforce-account-executive/salesforce-job108124323"
+        },
+        {
           "key": "source_4",
           "label": "Indeed UK",
           "url": "https://uk.indeed.com/viewjob?jk=0bfaa84c9a7093b8"
@@ -640,6 +1182,99 @@
       "specialisms": [],
       "title": "Agentforce Account Executive",
       "url": "https://uk.indeed.com/viewjob?jk=0bfaa84c9a7093b8",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Valcon Group UK",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Contract",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 89,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "Remote - Occasion London travel, UK",
+      "posted_at": "2026-10-08",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Financial Services",
+      "seniority": "Standard",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDDaO"
+        }
+      ],
+      "specialisms": [],
+      "title": "Solution Architect - Salesforce",
+      "url": "https://www.jobserve.com/gb/en/hDDaO",
+      "work_mode": null
+    },
+    {
+      "advertiser": "Smart-Sourcer",
+      "advertiser_type": "DIRECT_EMPLOYER",
+      "baseline": false,
+      "contract_type": "Contract",
+      "employment_type": null,
+      "end_client_name": null,
+      "first_seen_at": "2026-10-10T06:41:39Z",
+      "id": 87,
+      "last_seen_at": "2026-10-10T06:41:39Z",
+      "lifecycle": {
+        "last_verified_at": "2026-10-10T06:41:39Z",
+        "reason": "seen_in_source",
+        "status": "ACTIVE",
+        "updated_at": "2026-10-10T06:41:39Z"
+      },
+      "location": "Reading & 80% remote, UK",
+      "posted_at": "2026-10-08",
+      "relevance": "CORE",
+      "review": {
+        "role": false,
+        "sector": false
+      },
+      "role_family": "Architecture",
+      "salary": {
+        "currency": "GBP",
+        "max": null,
+        "min": null,
+        "period": null
+      },
+      "salary_text": null,
+      "sector": "Retail & Consumer",
+      "seniority": "Lead",
+      "sources": [
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDHf3"
+        }
+      ],
+      "specialisms": [
+        "Marketing Cloud",
+        "Data Cloud"
+      ],
+      "title": "Lead Salesforce Solution Architect - Marketing Cloud, Data Cloud, Personalisation - Global Retailer",
+      "url": "https://www.jobserve.com/gb/en/hDHf3",
       "work_mode": null
     },
     {
@@ -949,12 +1584,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 55,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
@@ -999,12 +1634,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 54,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
@@ -1049,12 +1684,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T08:45:40Z",
       "id": 53,
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-10-07T05:00:00.000Z",
@@ -1553,13 +2188,13 @@
       "end_client_name": "Warner Bros. Discovery",
       "first_seen_at": "2026-10-06",
       "id": "MV-000041",
-      "last_seen_at": "2026-10-09T06:43:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "legacy_id": "MV-000041",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Leavesden",
       "posted_at": "2026-10-06",
@@ -1583,6 +2218,11 @@
           "key": "source_1",
           "label": "CV-Library",
           "url": "https://www.cv-library.co.uk/job/job.3KK1mcwZrjXNgtvq5BbpvfJLtmv/"
+        },
+        {
+          "key": "source_5",
+          "label": "JobServe",
+          "url": "https://www.jobserve.com/gb/en/hDdkx"
         }
       ],
       "specialisms": [],
@@ -1644,12 +2284,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 68,
-      "last_seen_at": "2026-10-08T11:09:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London, UK",
       "posted_at": "2026-10-06",
@@ -1672,7 +2312,7 @@
         {
           "key": "source_5",
           "label": "JobServe",
-          "url": "https://www.jobserve.com/gb/en/hCJiI"
+          "url": "https://www.jobserve.com/gb/en/hDor0"
         }
       ],
       "specialisms": [
@@ -2176,12 +2816,12 @@
       "end_client_name": null,
       "first_seen_at": "2026-10-08T10:15:43Z",
       "id": 69,
-      "last_seen_at": "2026-10-08T11:09:58Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "lifecycle": {
-        "last_verified_at": "2026-10-08T11:09:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "seen_in_source",
         "status": "ACTIVE",
-        "updated_at": "2026-10-08T11:09:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Manchester, UK",
       "posted_at": "2026-10-05",
@@ -2204,7 +2844,7 @@
         {
           "key": "source_5",
           "label": "JobServe",
-          "url": "https://www.jobserve.com/gb/en/hBa2y"
+          "url": "https://www.jobserve.com/gb/en/hDnZJ"
         }
       ],
       "specialisms": [],
@@ -3400,10 +4040,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000015",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "LS101AB",
       "posted_at": "2026-09-25",
@@ -3443,13 +4083,13 @@
       "end_client_name": "Windsor Forest Colleges Group",
       "first_seen_at": "2026-09-25",
       "id": "MV-000014",
-      "last_seen_at": "2026-10-08T11:09:59Z",
+      "last_seen_at": "2026-10-10T06:41:39Z",
       "legacy_id": "MV-000014",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Langley / Windsor, Berkshire",
       "posted_at": "2026-09-25",
@@ -3472,7 +4112,7 @@
         {
           "key": "source_5",
           "label": "JobServe",
-          "url": "https://www.jobserve.com/gb/en/hCVlP"
+          "url": "https://www.jobserve.com/gb/en/hDizA"
         },
         {
           "key": "source_3",
@@ -3497,10 +4137,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000013",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-09-24",
@@ -3543,10 +4183,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000012",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Sheffield",
       "posted_at": "2026-09-22",
@@ -3589,10 +4229,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000011",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-09-21",
@@ -3635,10 +4275,10 @@
       "last_seen_at": "2026-10-08T11:09:58Z",
       "legacy_id": "MV-000010",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London Bridge, London",
       "posted_at": "2026-09-17",
@@ -3686,10 +4326,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000009",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Yeovil",
       "posted_at": "2026-09-16",
@@ -3732,10 +4372,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000008",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Slough",
       "posted_at": "2026-09-16",
@@ -3778,10 +4418,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000007",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-09-15",
@@ -3824,10 +4464,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000006",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-09-15",
@@ -3870,10 +4510,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000005",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-09-10",
@@ -3916,10 +4556,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000004",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "London",
       "posted_at": "2026-09-10",
@@ -3962,10 +4602,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000003",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Lutterworth, Leicestershire",
       "posted_at": "2026-09-09",
@@ -4008,10 +4648,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000002",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Warrington",
       "posted_at": "2026-09-08",
@@ -4054,10 +4694,10 @@
       "last_seen_at": "2026-10-06T19:44:00Z",
       "legacy_id": "MV-000001",
       "lifecycle": {
-        "last_verified_at": "2026-10-09T06:43:58Z",
+        "last_verified_at": "2026-10-10T06:41:39Z",
         "reason": "HTTP_SUCCESS",
         "status": "ACTIVE",
-        "updated_at": "2026-10-09T06:43:58Z"
+        "updated_at": "2026-10-10T06:41:39Z"
       },
       "location": "Aylesford",
       "posted_at": "2026-09-07",
