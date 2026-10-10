@@ -1,0 +1,65 @@
+{
+  "schema": "candidate-cyber-application-observation/v1",
+  "observed_on": "2026-10-10",
+  "observation_mode": "READ_ONLY_NON_AUTHENTICATED",
+  "new_apify_paid_runs": 0,
+  "publication_approved": false,
+  "verified_live_vacancies": 0,
+  "human_role_families_approved": 0,
+  "records": [
+    {
+      "lead_id": "sony-pictures-JR114830",
+      "employer_reference": "JR114830",
+      "source_page_url": "https://www.sonypicturesjobs.com/job/london/analyst-information-security/22978/101665903600",
+      "source_kind": "EMPLOYER_DIRECT",
+      "source_page_access": "ACCESSIBLE_WITH_ROLE_DETAILS",
+      "source_page_apply_link_displayed": true,
+      "observed_apply_destination": "https://spe.wd1.myworkdayjobs.com/SonyPicturesEntertainment/job/London-United-Kingdom/Analyst--Information-Security_JR114830/apply",
+      "application_destination_outcome": "AUTOMATED_FETCH_INACCESSIBLE",
+      "application_status": "NOT_VERIFIED",
+      "employer_and_title_correlated_to_source": true,
+      "job_freshness_observation": "EMPLOYER_POSTING_DATE_2026_10_07",
+      "proposed_primary_family": "Information Security Analysis",
+      "secondary_family_to_review": "Security Operations / SOC",
+      "role_family_human_approved": false,
+      "requisition_identity_verified": true,
+      "duplicate_review_outcome": "NO_MATCH_IDENTIFIED_IN_EXISTING_SMALL_QA_SAMPLES_NOT_MARKET_WIDE",
+      "vacancy_live_independently_verified": false,
+      "human_publication_signoff": false,
+      "publication_ready": false,
+      "evidence_urls": [
+        "https://www.sonypicturesjobs.com/job/london/analyst-information-security/22978/101665903600"
+      ],
+      "verification_notes": "An official Sony careers job page with apply link was directly readable on 2026-10-10; the linked Workday application flow was not accessible for automated confirmation. Page duties emphasise SIEM/EDR incident-response and SOC-like work, so classification needs human resolution."
+    },
+    {
+      "lead_id": "maritime-coastguard-482482",
+      "employer_reference": "482482",
+      "source_page_url": "https://www.jobsgopublic.com/job/information-security-risk-analyst-third-party-risk-93756",
+      "source_kind": "SYNDICATED_PUBLIC_SECTOR",
+      "source_page_access": "ACCESSIBLE_WITH_ROLE_DETAILS",
+      "source_page_apply_link_displayed": null,
+      "observed_apply_destination": "https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?jcode=2015051",
+      "official_portal_job_code": "2015051",
+      "application_destination_outcome": "OFFICIAL_PORTAL_HUMAN_VERIFICATION_GATE",
+      "application_status": "NOT_VERIFIED",
+      "employer_and_title_correlated_to_source": true,
+      "job_freshness_observation": "SYNDICATED_CLOSING_DATE_2026_10_19",
+      "proposed_primary_family": "Security Risk & Third-Party Risk",
+      "secondary_family_to_review": null,
+      "role_family_human_approved": false,
+      "requisition_identity_verified": false,
+      "duplicate_review_outcome": "SAME_482482_ADVERT_REPUBLISHED_ACROSS_AGGREGATORS_KEEP_ONE_CANDIDATE",
+      "vacancy_live_independently_verified": false,
+      "human_publication_signoff": false,
+      "publication_ready": false,
+      "evidence_urls": [
+        "https://www.jobsgopublic.com/job/information-security-risk-analyst-third-party-risk-93756",
+        "https://www.inclusivejobs.co.uk/vacancies/information-security-risk-analyst-third-party-risk/",
+        "https://civiljobs.co.uk/jobs/information-security-risk-analyst-third-party-risk-ref-482482/",
+        "https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?jcode=2015051"
+      ],
+      "verification_notes": "Public-sector board advert names employer MCA, ref 482482, 19 Oct closing date and supplier-security duties. Followed official Civil Service Jobs link and observed jcode 2015051 but the official service requires human verification, so could not confirm open application or canonical requisition ownership from that page."
+    }
+  ]
+}
