@@ -3,9 +3,18 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.import_candidate_apify_runs import acquire
+from scripts.import_candidate_apify_runs import acquire, ACTOR_IDS
 
 class CompletedDatasetImportTests(unittest.TestCase):
+    def test_all_five_actor_ids_are_pinned(self):
+        self.assertEqual(ACTOR_IDS, {
+            "JobServe":"iEeTOwSjZDvAshw7Y",
+            "Indeed UK":"BkcKc9frZp43LeRM7",
+            "Totaljobs":"RO7aokuNWfmP0kV0G",
+            "CV-Library":"T0edvAvD8lVcvc58G",
+            "Reed":"4iavHborUyvW5vQgz",
+        })
+
     def test_succeeded_dataset_is_read_only_and_unpublished(self):
         calls = []
         def get(route, token):
