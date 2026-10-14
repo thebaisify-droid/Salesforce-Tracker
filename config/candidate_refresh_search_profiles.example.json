@@ -1,0 +1,160 @@
+{
+  "schema": "candidate-inactive-refresh-search-profiles/v1",
+  "status": "PROPOSAL_NOT_EXECUTABLE",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "publication_enabled": false,
+  "actor_runs_allowed": 0,
+  "approved_spend_usd": 0,
+  "shared_account_limit_usd": 19,
+  "protected_salesforce_reserve_usd": 8,
+  "refresh_schedule": [],
+  "source_policy": "Use independent candidate Actor inputs/tasks only after schema, pricing and budget approval; do not mutate existing Salesforce saved tasks.",
+  "sources": [
+    {
+      "source": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "actor_input_validated": false,
+      "paid_run_authorised": false
+    },
+    {
+      "source": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "actor_input_validated": false,
+      "paid_run_authorised": false
+    },
+    {
+      "source": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "actor_input_validated": false,
+      "paid_run_authorised": false
+    },
+    {
+      "source": "CV-Library",
+      "actor": "blackfalcondata/cv-library-scraper",
+      "actor_input_validated": false,
+      "paid_run_authorised": false,
+      "notes": "Expiry event semantics and charging must be reviewed before future acquisition"
+    },
+    {
+      "source": "Reed",
+      "actor": "wildorigins/uk-jobs-reed",
+      "actor_input_validated": false,
+      "paid_run_authorised": false,
+      "optional": true
+    }
+  ],
+  "role_search_examples": [
+    {
+      "family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "business analyst"
+    },
+    {
+      "family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "data analyst"
+    },
+    {
+      "family": "Business Intelligence",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "business intelligence analyst"
+    },
+    {
+      "family": "Delivery Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "delivery manager"
+    },
+    {
+      "family": "Product Ownership",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "product owner"
+    },
+    {
+      "family": "Product Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "product manager"
+    },
+    {
+      "family": "Agile / Scrum",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "scrum master"
+    },
+    {
+      "family": "Project Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "IT project manager"
+    },
+    {
+      "family": "Business Change & Transformation",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "business change manager"
+    },
+    {
+      "family": "Programme & Portfolio Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "programme manager"
+    },
+    {
+      "family": "Business Process & Operational Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "business process analyst"
+    },
+    {
+      "family": "Agile Leadership",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "agile coach"
+    },
+    {
+      "family": "Product Strategy & Operations",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "product operations manager"
+    },
+    {
+      "family": "Service Management & Design",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "service designer"
+    },
+    {
+      "family": "Data & Analytics Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY",
+      "query": "analytics manager"
+    },
+    {
+      "family": "Information Security Analysis",
+      "track": "SECURITY",
+      "query": "information security analyst"
+    },
+    {
+      "family": "Security Operations / SOC",
+      "track": "SECURITY",
+      "query": "SOC analyst"
+    },
+    {
+      "family": "Security Architecture",
+      "track": "SECURITY",
+      "query": "cyber security architect"
+    },
+    {
+      "family": "Security Consulting & Advisory",
+      "track": "SECURITY",
+      "query": "cyber security consultant"
+    },
+    {
+      "family": "Security Risk & Third-Party Risk",
+      "track": "SECURITY",
+      "query": "third party risk analyst cyber"
+    },
+    {
+      "family": "Security Management",
+      "track": "SECURITY",
+      "query": "information security manager"
+    },
+    {
+      "family": "IT Security",
+      "track": "SECURITY",
+      "query": "IT security analyst"
+    }
+  ],
+  "publication_gate": "Never publish from this proposal. Require verified active status, freshness, semantic deduplication, representative independent human-labelled QA and separate release approval."
+}
