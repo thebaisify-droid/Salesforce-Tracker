@@ -21,7 +21,7 @@ class WP_REST_Request {
  public function get_json_params() {return $this->data;}
  public function get_body() {return json_encode($this->data);}
 }
-function add_action($event,$callback) {}
+function add_action($event,$callback) {if ($event==='rest_api_init') {$callback();}}
 function register_rest_route($space,$route,$config) {$GLOBALS['permission']=$config['permission_callback'];}
 function is_user_logged_in() {return (bool) $GLOBALS['logged_in'];}
 function current_user_can($permission) {return $permission==='sf_deliver_snapshot' && (bool) $GLOBALS['has_cap'];}
