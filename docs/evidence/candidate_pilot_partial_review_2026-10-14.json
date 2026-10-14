@@ -1,0 +1,80 @@
+{
+  "schema": "candidate-source-review/v1",
+  "review_date": "2026-10-14",
+  "scope": "Read-only review of selected October 8 historical pilot URLs; not a representative sample.",
+  "not_authorized_for_publication": true,
+  "source_page_checks": [
+    {
+      "source": "Indeed UK",
+      "job_key": "19995f7a0af37a48",
+      "title": "Data Analyst",
+      "employer": "Falkirk Council",
+      "location": "Grangemouth FK3 8EB",
+      "url": "https://uk.indeed.com/viewjob?jk=19995f7a0af37a48",
+      "source_page_readable": true,
+      "title_employer_location_observed": true,
+      "posting_date_verified": false,
+      "independent_employer_site_verified": false,
+      "currently_open_verified": false,
+      "publication_ready": false
+    },
+    {
+      "source": "Indeed UK",
+      "job_key": "89ee0d1533a05cad",
+      "title": "Business Analyst",
+      "employer": "Clackmannanshire Council",
+      "location": "Alloa FK10 1EB",
+      "url": "https://uk.indeed.com/viewjob?jk=89ee0d1533a05cad",
+      "source_page_readable": true,
+      "title_employer_location_observed": true,
+      "posting_date_verified": false,
+      "independent_employer_site_verified": false,
+      "currently_open_verified": false,
+      "publication_ready": false
+    },
+    {
+      "source": "Indeed UK",
+      "job_key": "0c6fe01819784876",
+      "title": "Data Product Owner",
+      "employer": "Bupa",
+      "location": "London EC2R",
+      "url": "https://uk.indeed.com/viewjob?jk=0c6fe01819784876",
+      "source_page_readable": true,
+      "title_employer_location_observed": true,
+      "posting_date_verified": false,
+      "independent_employer_site_verified": false,
+      "currently_open_verified": false,
+      "publication_ready": false
+    },
+    {
+      "source": "Indeed UK",
+      "job_key": "97bafb1336f9b30c",
+      "title": "Senior Product Analyst",
+      "employer": null,
+      "location": null,
+      "url": "https://uk.indeed.com/viewjob?jk=97bafb1336f9b30c",
+      "source_page_readable": true,
+      "title_employer_location_observed": false,
+      "posting_date_verified": false,
+      "independent_employer_site_verified": false,
+      "currently_open_verified": false,
+      "publication_ready": false
+    }
+  ],
+  "blocked_source_checks": [
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst/heathrow-airport-job108115901",
+      "outcome": "FETCH_502",
+      "publication_ready": false
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hBsAV",
+      "outcome": "NOT_ACCESSIBLE",
+      "publication_ready": false
+    }
+  ],
+  "quality_gate": "NO_GO",
+  "notes": "Observed public job-board pages are not independent validation of current vacancy status or posting dates. No source records were published; no Actor was run."
+}
