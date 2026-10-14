@@ -1,0 +1,22 @@
+name: Salesforce five-source metadata preflight (GET only)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline preflight tests
+        run: python -m unittest tests.test_salesforce_five_source_readonly_preflight
+      - name: Read Apify Task and Actor metadata, never run Actors
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.salesforce_five_source_readonly_preflight
