@@ -1,0 +1,29 @@
+{
+  "schema": "candidate-apify-existing-runs/v1",
+  "mode": "HISTORICAL_REVIEW_ONLY",
+  "publication_approved": false,
+  "paid_runs_authorised": false,
+  "actor_runs_to_launch": 0,
+  "runs": [
+    {
+      "source": "JobServe",
+      "run_id": "jkPgvZAyg5zmbaP2v"
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "3zNVAXaNhVcAGzn0i"
+    },
+    {
+      "source": "Reed",
+      "run_id": "lJOF9SFilveRKDszw"
+    },
+    {
+      "source": "Totaljobs",
+      "run_id": "g6Z4jdRj36GqfmUDs"
+    },
+    {
+      "source": "CV-Library",
+      "run_id": "t1a4Vr9xsLYoSk61N"
+    }
+  ]
+}
