@@ -29,6 +29,17 @@ def fetch(url, token):
         "Authorization": "Bearer " + token, "Accept": "application/json"})
     with urlopen(req, timeout=35) as response:
         data = json.load(response)
+    # Apify metadata GET responses use {"data": {...}} while the
+    # saved Task /input endpoint returns the raw input JSON object.
+    # Do not emit the response or any input values into workflow logs.
+    if not isinstance(data, dict):
+        raise ValueError("Apify response must be an object")
+    if url.endswith("/input"):
+        if "data" in data and isinstance(data["data"], dict) and len(data) == 1:
+            return data["data"]
+        return data
+    if not isinstance(data.get("data"), dict):
+        raise ValueError("Apify metadata response missing data object")
     return data["data"]
 
 

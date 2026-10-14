@@ -1,4 +1,7 @@
 import unittest
+import io
+from unittest.mock import patch
+from scripts.salesforce_five_source_readonly_preflight import fetch
 from scripts.salesforce_five_source_readonly_preflight import inspect, BASE, TASKS, OTHER_ACTORS
 
 
@@ -30,3 +33,21 @@ class FiveSourceReadOnlyTests(unittest.TestCase):
     def test_missing_token_rejected(self):
         with self.assertRaises(ValueError):
             inspect("")
+
+    def test_raw_task_input_json_response(self):
+        class Response:
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def read(self, *args): return b'{"query":"Salesforce","maxResults":12}'
+        with patch("scripts.salesforce_five_source_readonly_preflight.urlopen",return_value=Response()):
+            response=fetch(BASE+"actor-tasks/develop_ify~uk-jobs-reed-task/input","dummy")
+        self.assertEqual(response,{"query":"Salesforce","maxResults":12})
+
+    def test_metadata_without_data_is_rejected(self):
+        class Response:
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def read(self, *args): return b'{"error":"unexpected"}'
+        with patch("scripts.salesforce_five_source_readonly_preflight.urlopen",return_value=Response()):
+            with self.assertRaisesRegex(ValueError,"metadata response missing"):
+                fetch(BASE+"actor-tasks/develop_ify~uk-jobs-reed-task","dummy")
