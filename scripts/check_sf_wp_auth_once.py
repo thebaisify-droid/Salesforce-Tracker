@@ -30,14 +30,19 @@ def check(username: str, password: str, opener=None):
         with transport.open(request, timeout=15):
             raise RuntimeError("Unexpected successful upload response")
     except HTTPError as exc:
-        if exc.code != 400:
-            raise RuntimeError("Auth probe failed (unexpected HTTP status)") from None
+        # Only emit a numeric status and a very small allowlist of WordPress
+        # error codes. Never print the response body, headers or credentials.
+        allowed = {"rest_forbidden", "rest_not_logged_in", "invalid_username",
+                   "incorrect_password", "application_passwords_disabled",
+                   "sf_bad_envelope", "rest_no_route"}
         try:
-            result = json.loads(exc.read())
+            result = json.loads(exc.read(4096))
+            code = result.get("code", "unknown") if isinstance(result, dict) else "unknown"
         except (ValueError, TypeError):
-            raise RuntimeError("Auth probe failed (unrecognised response)") from None
-        if result.get("code") != "sf_bad_envelope":
-            raise RuntimeError("Auth probe failed (unexpected error code)")
+            code = "unknown"
+        safe_code = code if isinstance(code, str) and code in allowed else "other"
+        if exc.code != 400 or safe_code != "sf_bad_envelope":
+            raise RuntimeError(f"Auth probe failed (HTTP {exc.code}; code {safe_code})") from None
     return {"authenticated": True, "receiver_permission_confirmed": True,
             "snapshot_uploaded": False, "actors_started": 0}
 
