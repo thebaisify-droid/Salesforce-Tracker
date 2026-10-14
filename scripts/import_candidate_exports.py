@@ -15,7 +15,7 @@ from scripts.build_candidate_market_dashboard import _field, ALLOWED, URL_KEYS, 
 
 EXTENDED_COMPANY_KEYS = COMPANY_KEYS + ("companyName", "employerName", "recruiter", "organisation")
 EXTENDED_URL_KEYS = URL_KEYS + ("jobLink", "applyUrl", "job_url_original")
-EXTENDED_DATE_KEYS = DATE_KEYS + ("date_posted", "created", "publicationDate")
+EXTENDED_DATE_KEYS = DATE_KEYS + ("postedDate", "postedDateTime", "date_posted", "created", "publicationDate")
 
 DESCRIPTION_KEYS = ("description", "descriptionText", "job_description", "jobDescription", "summary", "snippet", "body")
 
