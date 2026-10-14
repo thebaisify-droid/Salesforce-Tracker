@@ -72,14 +72,15 @@ def assess_refresh_quality(
             invalid_source += 1
             continue
         source = row.get("source")
-        if source not in ALLOWED_SOURCES:
+        if not isinstance(source, str) or source not in ALLOWED_SOURCES:
             invalid_source += 1
             continue
         sources_seen.add(source)
         decision = classify_raw(row)
         if not decision["included"]:
             continue
-        url = _clean_url(row.get("url"))
+        raw_url = row.get("url")
+        url = _clean_url(raw_url) if isinstance(raw_url, str) else None
         if not url or not url.startswith("https://"):
             invalid_source += 1
             continue
