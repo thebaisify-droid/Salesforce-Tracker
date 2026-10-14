@@ -18,7 +18,7 @@ from pathlib import Path
 
 from scripts.import_candidate_exports import load_export
 
-ACTOR_IDS = {"JobServe": "iEeTOwSjZDvAshw7Y"}
+ACTOR_IDS = {"JobServe": "iEeTOwSjZDvAshw7Y", "Indeed UK": "BkcKc9frZp43LeRM7", "Totaljobs": "RO7aokuNWfmP0kV0G", "CV-Library": "T0edvAvD8lVcvc58G", "Reed": "4iavHborUyvW5vQgz"}
 
 SOURCES = {"CV-Library", "Totaljobs", "Indeed UK", "JobServe", "Reed"}
 SOURCE_SLUGS = {"CV-Library":"cv-library","Totaljobs":"totaljobs","Indeed UK":"indeed-uk","JobServe":"jobserve","Reed":"reed"}
