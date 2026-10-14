@@ -1,4 +1,4 @@
-name: Apify billing read-only snapshot (pilot preflight)
+name: Apify billing read-only snapshot (post pilot)
 on:
   push:
     branches:
