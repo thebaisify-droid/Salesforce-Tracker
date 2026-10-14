@@ -115,7 +115,7 @@ jobs:
           assert data["real_world_accuracy_validated"] is False
           assert data["raw_rows"] == 213, "Historical source datasets changed"
           assert data["expiry_events_review_only"] == 19
-          assert data["normalized_job_rows"] <= 194
+          assert data["normalized_job_rows"] == 194, "Unexpected normalised job count"
           assert len(data["source_checks"]) == 5
           print("Aggregate checks passed: five sources, 213 historical rows, no publication")
           PY
