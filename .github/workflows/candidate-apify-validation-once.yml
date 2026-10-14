@@ -1,0 +1,129 @@
+name: Candidate Apify completed-run validation (manual, one-time)
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_historical_read_only:
+        description: "I approve one read-only verification of the five existing Apify runs"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: candidate-apify-completed-runs-one-time
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: ${{ inputs.confirm_historical_read_only == true }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Refuse a repeat after any successful manual verification
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          repository = os.environ["GITHUB_REPOSITORY"]
+          endpoint = (
+              "https://api.github.com/repos/" + repository
+              + "/actions/workflows/candidate-apify-validation-once.yml/runs"
+              + "?event=workflow_dispatch&status=success&per_page=1"
+          )
+          request = urllib.request.Request(endpoint, headers={
+              "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+          })
+          with urllib.request.urlopen(request, timeout=20) as response:
+              history = json.load(response)
+          if history.get("total_count", 0) > 0:
+              raise SystemExit("Already completed successfully: refusing another validation")
+          print("No previous successful manual validation found")
+          PY
+
+      - name: Checkout audited candidate importer at an immutable commit
+        uses: actions/checkout@v4
+        with:
+          ref: 3cf8916fa04158837cd168be2ab005cf033c3ac9
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Assert the exact approved historical run manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("config/candidate_apify_completed_runs_2026-10-10.example.json")
+          manifest = json.loads(path.read_text(encoding="utf-8"))
+          expected = {
+              ("JobServe", "jkPgvZAyg5zmbaP2v"),
+              ("Indeed UK", "3zNVAXaNhVcAGzn0i"),
+              ("Reed", "lJOF9SFilveRKDszw"),
+              ("Totaljobs", "g6Z4jdRj36GqfmUDs"),
+              ("CV-Library", "t1a4Vr9xsLYoSk61N"),
+          }
+          runs = manifest.get("runs", [])
+          actual = {(r["source"], r["run_id"]) for r in runs}
+          assert len(runs) == len(actual) == len(expected) == 5
+          assert actual == expected, "Unapproved run ID or source in manifest"
+          assert manifest.get("publication_approved") is False
+          assert manifest.get("actor_runs_to_launch") == 0
+          print("Historical run manifest verified; zero Actor starts authorised")
+          PY
+
+      - name: Validate completed datasets without starting Actors
+        shell: bash
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$APIFY_TOKEN" ]; then
+            echo "Missing APIFY_TOKEN repository secret"
+            exit 1
+          fi
+          python -m scripts.validate_candidate_apify_completed > "$RUNNER_TEMP/candidate-apify-aggregate-qa.json"
+
+      - name: Fail closed on unexpected output
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          path = Path(os.environ["RUNNER_TEMP"]) / "candidate-apify-aggregate-qa.json"
+          data = json.loads(path.read_text(encoding="utf-8"))
+          assert data["run_count"] == 5
+          assert data["actor_runs_started"] == 0
+          assert data["acquisition_enabled"] is False
+          assert data["publication_approved"] is False
+          assert data["real_world_accuracy_validated"] is False
+          assert data["raw_rows"] == 213, "Historical source datasets changed"
+          assert data["expiry_events_review_only"] == 19
+          assert data["normalized_job_rows"] <= 194
+          assert len(data["source_checks"]) == 5
+          print("Aggregate checks passed: five sources, 213 historical rows, no publication")
+          PY
+
+      - name: Retain aggregate-only QA report for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-apify-historical-aggregate-qa
+          path: ${{ runner.temp }}/candidate-apify-aggregate-qa.json
+          retention-days: 7
+          if-no-files-found: error
