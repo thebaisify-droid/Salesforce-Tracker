@@ -46,6 +46,10 @@ class ApifyCompletedPythonValidationTests(unittest.TestCase):
         self.assertFalse(report["publication_approved"])
         self.assertFalse(report["acquisition_enabled"])
         self.assertEqual(report["actor_runs_started"],0)
+        self.assertFalse(report["refresh_quality"]["ready_for_publication"])
+        self.assertEqual(report["refresh_quality"]["classified_rows"],4)
+        self.assertEqual(report["refresh_quality"]["classified_fresh"],3)
+        self.assertEqual(report["refresh_quality"]["classified_stale"],1)
         self.assertEqual(len(calls),15)
         self.assertTrue(all(s.startswith(("actor-runs/","datasets/")) for s in calls))
 

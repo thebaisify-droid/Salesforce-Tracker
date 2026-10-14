@@ -15,6 +15,7 @@ from pathlib import Path
 
 from scripts.import_candidate_apify_runs import acquire, SOURCE_SLUGS
 from scripts.build_candidate_market_dashboard import build_snapshot
+from scripts.candidate_refresh_assurance import assess_refresh_quality
 
 def posting_day(value: object) -> date | None:
     if not isinstance(value, str) or not value.strip():
@@ -61,6 +62,7 @@ def validate_completed_runs(manifest: dict, *, token: str, getter=None, today: d
             })
         # This calls the production Python candidate classifier, not a title heuristic.
         snapshot = build_snapshot(records, datetime.now(timezone.utc).isoformat())
+        refresh_quality = assess_refresh_quality(records, as_of=today)
         families = [{"family": i["label"], "count": i["value"]} for i in snapshot["by_role_family"] if i["value"]]
         return {
             "schema": "candidate-apify-live-python-validation/v1",
@@ -75,6 +77,7 @@ def validate_completed_runs(manifest: dict, *, token: str, getter=None, today: d
             "track_counts": snapshot["by_track"],
             "classification_review_required": snapshot["review_required"],
             "rejections": snapshot["rejections"],
+            "refresh_quality": refresh_quality,
             "exact_url_duplicates": snapshot["rejections"].get("duplicate", 0),
             "real_world_accuracy_validated": False,
             "publication_approved": False,
