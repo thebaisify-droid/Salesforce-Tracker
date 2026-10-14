@@ -18,6 +18,8 @@ from pathlib import Path
 
 from scripts.import_candidate_exports import load_export
 
+ACTOR_IDS = {"JobServe": "iEeTOwSjZDvAshw7Y"}
+
 SOURCES = {"CV-Library", "Totaljobs", "Indeed UK", "JobServe", "Reed"}
 SOURCE_SLUGS = {"CV-Library":"cv-library","Totaljobs":"totaljobs","Indeed UK":"indeed-uk","JobServe":"jobserve","Reed":"reed"}
 RUN_ID = re.compile(r"^[A-Za-z0-9_-]{6,100}$")
@@ -52,6 +54,8 @@ def acquire(manifest: dict, output_dir: Path, token: str, getter=get_json):
         run = getter("actor-runs/" + run_id, token)["data"]
         if run.get("status") != "SUCCEEDED" or not run.get("defaultDatasetId"):
             raise ValueError("Run is not SUCCEEDED or has no dataset: " + run_id)
+        if source in ACTOR_IDS and run.get("actId") != ACTOR_IDS[source]:
+            raise ValueError("Actor identity mismatch for source: " + source)
         dataset_id = run["defaultDatasetId"]
         if not re.fullmatch(r"[A-Za-z0-9_-]{6,100}", dataset_id):
             raise ValueError("Unexpected dataset ID")
@@ -61,6 +65,9 @@ def acquire(manifest: dict, output_dir: Path, token: str, getter=get_json):
             raise ValueError("Unexpected dataset response")
         if len(payload) >= 1000:
             raise ValueError("Dataset at safety limit; require paginated review")
+        info = getter("datasets/" + dataset_id, token)["data"]
+        if info.get("itemCount") != len(payload):
+            raise ValueError("Dataset count mismatch; partial retrieval is not allowed")
         output_dir.mkdir(parents=True, exist_ok=True)
         raw_path = output_dir / (SOURCE_SLUGS[source] + "-" + run_id + "-raw.json")
         normalized_path = output_dir / (SOURCE_SLUGS[source] + "-" + run_id + "-candidate.json")
