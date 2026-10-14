@@ -1,0 +1,38 @@
+name: Salesforce five-source one-time capped pilot
+on:
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: 'Exact approval phrase: AUTHORISE_SALESFORCE_FIVE_SOURCE_090_ONCE'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+jobs:
+  acquisition:
+    if: ${{ inputs.approval == 'AUTHORISE_SALESFORCE_FIVE_SOURCE_090_ONCE' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify acquisition guards before any paid call
+        run: python -m unittest tests.test_execute_salesforce_five_source_pilot_once
+      - name: Execute single capped five-source pilot (approval required)
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          PILOT_APPROVAL: ${{ inputs.approval }}
+        run: python -m scripts.execute_salesforce_five_source_pilot_once
+      - name: Save non-publication run status evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: salesforce-five-source-pilot-run-status
+          path: salesforce-five-source-pilot-evidence.json
+          if-no-files-found: warn
+          retention-days: 7
