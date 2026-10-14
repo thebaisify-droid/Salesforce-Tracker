@@ -54,6 +54,28 @@ class CompletedDatasetImportTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Dataset count mismatch"):
                 acquire({"runs":[{"source":"JobServe","run_id":"runABCDE"}]},Path(temp)/"review","dummy",get)
 
+    def test_source_mappings_and_expiry_privacy(self):
+        from scripts.candidate_apify_mapping import normalise_dataset
+        fixtures = [
+          ("Indeed UK", [{"title":"Business Analyst","url":"https://indeed.test/1","company":"Acme","postedAt":"2026-10-10","contactEmail":"private@example.org"}]),
+          ("Reed", [{"title":"Product Owner","url":"https://reed.test/1","employer":"Acme","datePosted":"2026-10-10","contactPhone":"1234"}]),
+          ("Totaljobs", [{"title":"Data Analyst","jobUrl":"https://totaljobs.test/1","company":{"name":"Acme"},"location":{"text":"London"},"datePosted":"2026-10-10","contactName":"Private"}]),
+          ("CV-Library", [{"title":"Project Manager","canonicalUrl":"https://cv-library.test/1","postedAt":"2026-10-10"},{"jobId":"abc","changeType":"EXPIRED","expiredAt":"2026-10-10T00:00:00Z"}]),
+        ]
+        for source, payload in fixtures:
+            with self.subTest(source=source):
+                jobs, events, stats = normalise_dataset(payload, source)
+                self.assertEqual(len(jobs),1)
+                self.assertEqual(jobs[0]["posted_at"],"2026-10-10")
+                self.assertFalse(jobs[0]["publication_approved"])
+                self.assertFalse(any(k in json.dumps(jobs) for k in ("private@example.org","1234","Private")))
+                if source == "Totaljobs":
+                    self.assertEqual(jobs[0]["company"],"Acme")
+                    self.assertEqual(jobs[0]["location"],"London")
+                if source == "CV-Library":
+                    self.assertEqual(len(events),1)
+                    self.assertEqual(events[0]["status"],"REVIEW_ONLY_NOT_APPLIED")
+
     def test_failed_run_never_downloads_or_writes(self):
         calls=[]
         def get(route, token):
