@@ -16,7 +16,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from scripts.import_candidate_exports import load_export
+from scripts.candidate_apify_mapping import normalise_dataset
 
 ACTOR_IDS = {"JobServe": "iEeTOwSjZDvAshw7Y", "Indeed UK": "BkcKc9frZp43LeRM7", "Totaljobs": "RO7aokuNWfmP0kV0G", "CV-Library": "T0edvAvD8lVcvc58G", "Reed": "4iavHborUyvW5vQgz"}
 
@@ -60,7 +60,7 @@ def acquire(manifest: dict, output_dir: Path, token: str, getter=get_json):
         if not re.fullmatch(r"[A-Za-z0-9_-]{6,100}", dataset_id):
             raise ValueError("Unexpected dataset ID")
         # Bounded fetch; require complete output to avoid silent partial ingestion.
-        payload = getter("datasets/" + dataset_id + "/items?clean=true&limit=1000", token)
+        payload = getter("datasets/" + dataset_id + "/items?clean=false&limit=1000", token)
         if not isinstance(payload, list):
             raise ValueError("Unexpected dataset response")
         if len(payload) >= 1000:
@@ -68,17 +68,19 @@ def acquire(manifest: dict, output_dir: Path, token: str, getter=get_json):
         info = getter("datasets/" + dataset_id, token)["data"]
         if info.get("itemCount") != len(payload):
             raise ValueError("Dataset count mismatch; partial retrieval is not allowed")
+        # Never archive the unfiltered Actor response: it can contain contact
+        # names, emails, phone numbers, HTML and other unnecessary personal data.
+        normalized, expiry_events, stats = normalise_dataset(payload, source)
         output_dir.mkdir(parents=True, exist_ok=True)
-        raw_path = output_dir / (SOURCE_SLUGS[source] + "-" + run_id + "-raw.json")
         normalized_path = output_dir / (SOURCE_SLUGS[source] + "-" + run_id + "-candidate.json")
-        if raw_path.exists() or normalized_path.exists():
-            raise FileExistsError("Existing archive cannot be silently overwritten")
-        raw_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        normalized = load_export(raw_path, source)
+        expiry_path = output_dir / (SOURCE_SLUGS[source] + "-" + run_id + "-expiry-review.json")
+        if normalized_path.exists() or expiry_path.exists():
+            raise FileExistsError("Existing review output cannot be overwritten")
         normalized_path.write_text(json.dumps(normalized, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        expiry_path.write_text(json.dumps(expiry_events, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         results.append({"source":source,"run_id":run_id,"dataset_id":dataset_id,
                         "run_started_at":run.get("startedAt"),"run_finished_at":run.get("finishedAt"),
-                        "dataset_rows":len(payload),"normalized_rows":len(normalized),
+                        "dataset_rows":len(payload),"normalized_rows":len(normalized),"expiry_events":len(expiry_events),"invalid_rows":stats["invalid_rows"],
                         "publication_approved":False,"provenance_verified_from_run_api":True})
     return {"schema":"candidate-apify-completed-runs/v1","mode":"read_only_completed_runs",
             "actor_runs_started":0,"publication_approved":False,"results":results}
