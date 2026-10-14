@@ -10,7 +10,7 @@ import json
 import os
 from pathlib import Path
 from urllib.parse import urlsplit
-from urllib.request import Request, build_opener, HTTPHandler, HTTPSHandler
+from urllib.request import Request, build_opener, HTTPRedirectHandler, HTTPSHandler
 from scripts.validate_salesforce_wordpress_delivery import inspect
 
 ENDPOINT = "https://jobs.zarafytek.com/wp-json/salesforce-tracker/v1/snapshot"
@@ -28,8 +28,9 @@ def verify_destination(value: str) -> None:
         raise ValueError("Only the exact HTTPS WordPress site is authorised")
 
 
-class NoRedirect(HTTPHandler):
-    pass
+class NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, *args, **kwargs):
+        raise ValueError("WordPress delivery redirects are forbidden")
 
 
 def publish_once(raw: bytes, username: str, app_password: str, *, opener=None) -> dict:
@@ -41,7 +42,7 @@ def publish_once(raw: bytes, username: str, app_password: str, *, opener=None) -
                       headers={"Authorization": "Basic " + token, "Content-Type": "application/json",
                                "Accept": "application/json", "User-Agent": "sf-one-shot-publisher/1"})
     # Caller only supplies preverified, current snapshots. One request only.
-    transport = opener or build_opener(HTTPSHandler())
+    transport = opener or build_opener(HTTPSHandler(), NoRedirect())
     with transport.open(request, timeout=20) as response:
         payload = json.load(response)
     if payload.get("accepted") is not True or payload.get("sha256") != envelope["sha256"]:
