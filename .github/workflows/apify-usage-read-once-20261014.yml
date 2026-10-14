@@ -1,0 +1,90 @@
+name: Apify billing read-only snapshot (one-shot)
+on:
+  push:
+    branches:
+      - audit/apify-usage-once-20261014
+    paths:
+      - .github/workflows/apify-usage-read-once-20261014.yml
+permissions:
+  contents: read
+concurrency:
+  group: apify-billing-read-only-20261014
+  cancel-in-progress: false
+jobs:
+  usage:
+    if: ${{ github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Read current Apify usage and limit without starting Actors
+        shell: bash
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${APIFY_TOKEN:-}" ]; then
+            echo "READING_FAILED: APIFY_TOKEN secret unavailable"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json, math, os, urllib.request
+          from datetime import datetime, timezone
+
+          api = "https://api.apify.com/v2/users/me/"
+          token = os.environ["APIFY_TOKEN"]
+          def read(endpoint):
+              req = urllib.request.Request(
+                  api + endpoint,
+                  headers={
+                      "Authorization": "Bearer " + token,
+                      "Accept": "application/json",
+                  },
+                  method="GET",
+              )
+              with urllib.request.urlopen(req, timeout=20) as res:
+                  return json.load(res)["data"]
+
+          def amount(value):
+              if isinstance(value, bool) or not isinstance(value, (int, float)):
+                  raise ValueError("Missing numeric Apify billing field")
+              value = float(value)
+              if not math.isfinite(value) or value < 0:
+                  raise ValueError("Invalid numeric Apify billing field")
+              return value
+
+          try:
+              limits = read("limits")
+              usage = read("usage/monthly")
+              cap = amount(limits["limits"]["maxMonthlyUsageUsd"])
+              current = amount(limits["current"]["monthlyUsageUsd"])
+              usage_after_discount = amount(
+                  usage["totalUsageCreditsUsdAfterVolumeDiscount"])
+              cycle = limits["monthlyUsageCycle"]
+              other_cycle = usage["usageCycle"]
+              if cycle["startAt"] != other_cycle["startAt"] or cycle["endAt"] != other_cycle["endAt"]:
+                  raise ValueError("Monthly cycle mismatch")
+              reserve = 8.0
+              usable = max(0.0, cap - current - reserve)
+              expected_ceiling = 19.0
+              result = {
+                  "checked_at_utc": datetime.now(timezone.utc).isoformat(),
+                  "cycle_start": cycle["startAt"],
+                  "cycle_end": cycle["endAt"],
+                  "apify_monthly_limit_usd": round(cap, 4),
+                  "apify_current_monthly_usage_usd": round(current, 4),
+                  "monthly_usage_credits_after_discount_usd": round(usage_after_discount, 4),
+                  "salesforce_protected_reserve_usd": reserve,
+                  "remaining_under_account_cap_usd": round(max(0, cap-current), 4),
+                  "headroom_after_salesforce_reserve_usd": round(usable, 4),
+                  "limit_matches_required_19_usd": abs(cap-expected_ceiling) < 0.0001,
+                  "pilot_0_20_fits_headroom": cap == expected_ceiling and usable >= 0.20,
+                  "additional_spend_authorised_usd": 0,
+                  "actors_started": 0,
+                  "publication_enabled": False,
+                  "note": "Read-only authenticated snapshot; final pilot requires a fresh pre-run check and explicit approval.",
+              }
+              print("APIFY_BILLING_SUMMARY_JSON=" + json.dumps(result, sort_keys=True))
+          except Exception as exc:
+              print("READING_FAILED: " + type(exc).__name__)
+              raise SystemExit(1)
+          PY
