@@ -12,7 +12,7 @@ class SnapshotReceiverTests(unittest.TestCase):
     def test_contract_requires_admin_and_checksum(self):
         source = PLUGIN.read_text(encoding="utf-8")
         for required in (
-            "current_user_can('manage_options')",
+            "current_user_can('sf_deliver_snapshot')",
             "is_user_logged_in()",
             "hash_equals(",
             "sf_snapshot_validate($data)",
@@ -22,6 +22,7 @@ class SnapshotReceiverTests(unittest.TestCase):
             "rename($temporary, $target)",
             "delete_transient('zarafytek_sf_dashboard_v2')",
             "sf_rollback_refused",
+            "flock($lock, LOCK_EX | LOCK_NB)",
             "36 * HOUR_IN_SECONDS",
         ):
             self.assertIn(required, source)
