@@ -12,7 +12,7 @@ class CompletedDatasetImportTests(unittest.TestCase):
             calls.append(route)
             if route.startswith("actor-runs/"):
                 return {"data":{"status":"SUCCEEDED","defaultDatasetId":"datasetABCDE","startedAt":"2026-10-10T08:00:00Z"}}
-            return [{"title":"Senior Business Analyst","url":"https://example.org/jobs/1","company":"Employer"}]
+            return [{"title":"Senior Business Analyst","url":"https://example.org/jobs/1","company":"Employer","postedDate":"Thursday, 8 October 2026"}]
         with tempfile.TemporaryDirectory() as temp:
             out = Path(temp)/"review"
             report = acquire({"runs":[{"source":"Indeed UK","run_id":"runABCDE"}]},out,"dummy",get)
@@ -23,6 +23,7 @@ class CompletedDatasetImportTests(unittest.TestCase):
             self.assertTrue(all(route.startswith(("actor-runs/","datasets/")) for route in calls))
             normalized=json.loads((out/"indeed-uk-runABCDE-candidate.json").read_text())
             self.assertEqual(normalized[0]["source"],"Indeed UK")
+            self.assertEqual(normalized[0]["posted_at"],"Thursday, 8 October 2026")
 
     def test_failed_run_never_downloads_or_writes(self):
         calls=[]
