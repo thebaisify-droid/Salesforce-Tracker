@@ -1,0 +1,78 @@
+{
+  "schema": "candidate-apify-five-source-offline-review/v1",
+  "reviewed_on": "2026-10-14",
+  "basis": "Authenticated Apify completed-run read-only retrieval; classification independently approximated against current taxonomy and must be replayed using repository Python tests.",
+  "actor_runs_started": 0,
+  "source_runs": [
+    {
+      "source": "JobServe",
+      "run_id": "jkPgvZAyg5zmbaP2v",
+      "dataset_id": "qZoodWrilum7AkP6H",
+      "raw": 85,
+      "job_rows": 85,
+      "expiry_events": 0,
+      "provisional_matches": 14,
+      "earliest_posting": "2026-10-03",
+      "latest_posting": "2026-10-10"
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "3zNVAXaNhVcAGzn0i",
+      "dataset_id": "bWMOJ6gf4Vn6bfGtt",
+      "raw": 21,
+      "job_rows": 21,
+      "expiry_events": 0,
+      "provisional_matches": 2,
+      "earliest_posting": "2026-05-13",
+      "latest_posting": "2026-10-09"
+    },
+    {
+      "source": "Reed",
+      "run_id": "lJOF9SFilveRKDszw",
+      "dataset_id": "BqA5ZgmfudLbWYXzY",
+      "raw": 50,
+      "job_rows": 50,
+      "expiry_events": 0,
+      "provisional_matches": 9,
+      "earliest_posting": "2026-09-10",
+      "latest_posting": "2026-10-09"
+    },
+    {
+      "source": "Totaljobs",
+      "run_id": "g6Z4jdRj36GqfmUDs",
+      "dataset_id": "sgE8ZNSj5pqHm5eOi",
+      "raw": 25,
+      "job_rows": 25,
+      "expiry_events": 0,
+      "provisional_matches": 5,
+      "earliest_posting": "2026-10-07",
+      "latest_posting": "2026-10-09"
+    },
+    {
+      "source": "CV-Library",
+      "run_id": "t1a4Vr9xsLYoSk61N",
+      "dataset_id": "RgsrDa5mweXESAdBA",
+      "raw": 32,
+      "job_rows": 13,
+      "expiry_events": 19,
+      "provisional_matches": 0,
+      "earliest_posting": "2026-09-21",
+      "latest_posting": "2026-10-10"
+    }
+  ],
+  "raw_records": 213,
+  "job_records": 194,
+  "expiry_events": 19,
+  "provisional_matches": 30,
+  "exact_url_duplicates_in_inspected_fields": 0,
+  "publication_approved": false,
+  "limitations": [
+    "Source-specific normaliser and full Python classifier were not executed with all live records in the GitHub workflow.",
+    "Source-run jobs are influenced by historic Salesforce search terms.",
+    "Exact URL matching does not prove no semantic or cross-board duplicates.",
+    "Posting-date freshness and still-open status require explicit gates.",
+    "Zero matched cybersecurity titles is not evidence of zero market demand.",
+    "No actual production import or WordPress publication performed."
+  ],
+  "decision": "HISTORICAL_REVIEW_ONLY"
+}
