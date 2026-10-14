@@ -1,0 +1,28 @@
+name: Salesforce pilot billing and QA audit (GET only)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline fail-closed audit tests
+        run: python -m unittest tests.test_audit_salesforce_pilot_postrun
+      - name: Read-only Apify billing and existing dataset audit
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.audit_salesforce_pilot_postrun
+      - name: Upload review-only evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: salesforce-pilot-billing-and-quality-review
+          path: review/salesforce-pilot-20261014/
+          retention-days: 14
+          if-no-files-found: error
