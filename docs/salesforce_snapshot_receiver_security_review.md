@@ -1,27 +1,37 @@
-# Salesforce WordPress receiver — test and release record
+# Salesforce snapshot receiver — security review and staging evidence
 
-The receiver implementation is in `wordpress/salesforce-snapshot-receiver/salesforce-snapshot-receiver.php`. It is a **standalone, inactive plugin** committed to the repository; it is **not installed or activated** in WordPress.
+Status: **tested in isolated staging harness, NOT installed/activated on WordPress**. Date: 14 October 2026.
 
-## Security controls
+## Scope
+PR #85 contains a WordPress receiver in `wordpress/salesforce-snapshot-receiver/salesforce-snapshot-receiver.php`, a one-time sender `scripts/send_salesforce_wordpress_snapshot_once.py`, and offline safety tests. No GitHub Actions workflow, schedule, Apify Actor, WordPress plugin activation or live data publication was executed.
 
-- REST route `POST /wp-json/salesforce-tracker/v1/snapshot` requires authenticated WordPress users with `manage_options`. WordPress application passwords may authenticate over HTTPS, but admin-level credentials are high privilege. **Do not create or store such credentials without separate approval and credential-scope review.**
-- Requires SHA-256 checksum and bounded raw JSON size (64–400,000 bytes), JSON schema, quality pass, successful refresh and valid active counts.
-- Rejects data older than 36 hours or future-dated more than 15 minutes; refuses rollback to an older recorded snapshot or replacement of invalid prior data.
-- Restricts local storage to the WordPress uploads `salesforce-tracker/live-data.json`, checks symlinks, stages temporary output and atomically renames.
-- Invalid payloads never cause the dashboard to present a false zero-vacancy market. Viewer fallback remains independent.
+## Security controls reviewed
+- **Authentication:** REST endpoint requires both an authenticated WordPress identity and the narrowly scoped `sf_deliver_snapshot` capability. This capability is **not automatically assigned**; a dedicated account/capability assignment is required before activation. Administrator permission alone is not sufficient.
+- **Transport:** Sender pins the HTTPS host and REST endpoint. Basic Application Password authentication is supplied only by environment variables after explicit `--send` and `SF_DELIVERY_APPROVED=yes`. Redirects are refused; no retry loop. Do not log or commit credentials.
+- **Integrity:** Receiver compares SHA-256 to the exact JSON bytes and caps decoded JSON at 400,000 bytes, request envelope at 560,000 bytes. Sender checks acknowledgement digest.
+- **Quality/freshness:** Requires `salesforce-hiring-dashboard/v1`, boolean QA pass, successful refresh, bounded count and a timestamp between 36 hours old and 15 minutes in the future.
+- **Atomic writes:** Blocks symlinked target/lock, serializes uploads with nonblocking `flock`, rejects rollback against the existing snapshot and writes via same-directory temporary file then rename; cleans up temp files and clears only the Salesforce dashboard transient on success.
+- **Fail closed:** Existing historical WordPress fallback stays untouched. No traffic is sent when dry-run sender is invoked.
 
-## Validation
+## Executed isolated integration checks
+GitHub CI test `tests/test_salesforce_wp_receiver_integration.py` executes a PHP WordPress-stub harness against a randomly named temporary directory, including:
+1. Unauthenticated request denied; scoped-capability identity accepted.
+2. Bad SHA-256 rejected.
+3. Valid snapshot accepted and exact file bytes verified.
+4. Equal-timestamp replay accepted idempotently.
+5. Older-timestamp rollback rejected.
+6. Lock contention rejected.
+7. Temporary staging files cleaned up and Salesforce-only cache cleared.
 
-Run `python -m unittest tests.test_salesforce_wp_receiver` on a machine with PHP installed for full coverage. The test suite checks the permission/checksum contract, runs `php -l`, and executes the PHP validator in a subprocess with minimal WordPress stubs against valid, QA-failed, stale and future-dated fixtures. All tests are offline and do not send network requests.
+Other tests cover PHP syntax, quality-gate failure, stale/future data rejection, sender target validation, one-request behaviour and mismatched acknowledgement. **These are isolated integration tests, not a real WordPress REST/Apache/hosting staging deployment.**
 
-## Open security and deployment gates
+## Remaining gates before installing or activating
+- Site administrator must create/approve a *real non-production WordPress staging site* with appropriate permissions and a fresh backup; current WPVibe connection is to production only.
+- Review Application Password handling and provision dedicated identity with only `sf_deliver_snapshot` and any minimum WordPress app-password permissions. Do not grant `manage_options`.
+- Confirm uploads are protected from arbitrary public listing / script execution, TLS + credential handling and local filesystem ownership; test HTTP status codes and proxy limits.
+- Test actual WordPress staging plugin activation/REST authentication, atomic replace, concurrent updates and rollback under the hosting runtime. No claims of production-ready staging verification until completed.
+- Test caching/last-good option precedence and make sure production viewer never hides an invalid or stale feed as current.
+- Use only a **new independently quality-passed current snapshot**, not the stale 10 October 91-record GitHub file.
+- Run sender only after separate user approval, account-budget check if acquisition is required, and end-to-end checksum verification. Keep $19 shared Apify ceiling and internal $8 Salesforce reserve.
 
-1. Independent review of WordPress authentication privileges (prefer dedicated narrow-scoped capability rather than broadly granting `manage_options` to a transfer identity).
-2. Confirm WordPress hosting write permissions; test local storage and atomic replace on staging.
-3. Test unauthorized request rejection and replay behaviour; assess potential concurrent uploads and stale cache/last-good option precedence.
-4. Resolve GitHub source refresh scheduling separately and establish genuine current source evidence.
-5. Wire a separately authorised one-shot sender only after secure credential provision, a full backup, and new freshness/assurance confirmation.
-6. Do **not** transfer the 10 October 91-record snapshot: stale as of 14 October.
-7. Verify publisher end-to-end against exact SHA-256 and counts before any automatic schedule is considered.
-
-No Apify calls, GitHub workflow triggers, live data writes or WordPress plugin changes are part of this PR.
+**Conclusion:** The component passes isolated security tests. Live activation and transmission are **not approved or performed**.
