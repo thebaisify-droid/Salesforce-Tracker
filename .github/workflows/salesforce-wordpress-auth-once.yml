@@ -1,0 +1,23 @@
+name: Salesforce WordPress auth-only check (manual)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Offline validation tests
+        run: python -m unittest tests.test_check_sf_wp_auth_once
+      - name: One-time receiver auth-only probe
+        env:
+          SF_WP_USERNAME: ${{ secrets.SF_WP_USERNAME }}
+          SF_WP_APPLICATION_PASSWORD: ${{ secrets.SF_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.check_sf_wp_auth_once
