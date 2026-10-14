@@ -22,7 +22,7 @@ class AuthProbeTests(unittest.TestCase):
         self.assertEqual(fake.calls, 1)
     def test_denied_permission_fails_closed(self):
         fake = FakeOpener(403, "rest_forbidden")
-        with self.assertRaises(RuntimeError):
+        with self.assertRaisesRegex(RuntimeError, "HTTP 403; code rest_forbidden"):
             check("sf_snapshot_delivery", "dummy", opener=fake)
         self.assertEqual(fake.calls, 1)
     def test_wrong_response_fails_closed(self):
@@ -31,3 +31,9 @@ class AuthProbeTests(unittest.TestCase):
     def test_missing_credentials_fails_before_network(self):
         with self.assertRaises(ValueError):
             check("sf_snapshot_delivery","")
+
+    def test_unknown_error_is_redacted(self):
+        fake = FakeOpener(401, "unexpected-secret-content")
+        with self.assertRaisesRegex(RuntimeError, "HTTP 401; code other") as caught:
+            check("sf_snapshot_delivery", "dummy", opener=fake)
+        self.assertNotIn("unexpected-secret-content", str(caught.exception))
