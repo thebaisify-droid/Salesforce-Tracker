@@ -1,0 +1,32 @@
+name: Salesforce pilot shortlist classification (offline, review only)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate offline classification safeguards
+        run: python -m unittest tests.test_classify_salesforce_pilot_review
+      - name: Retrieve existing quality-audit artifact (no Apify requests)
+        uses: actions/download-artifact@v4
+        with:
+          name: salesforce-pilot-billing-and-quality-review
+          run-id: 38606161174
+          github-token: ${{ github.token }}
+          path: review/salesforce-pilot-20261014
+      - name: Classify existing candidate evidence only
+        run: python -m scripts.classify_salesforce_pilot_review
+      - name: Preserve review output
+        uses: actions/upload-artifact@v4
+        with:
+          name: salesforce-classified-review-only
+          path: review/salesforce-pilot-20261014/
+          retention-days: 14
