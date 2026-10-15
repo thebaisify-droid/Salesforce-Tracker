@@ -1,0 +1,91 @@
+{
+  "schema": "ba-five-source-search-inputs/v1",
+  "status": "PREPARED_OFFLINE_INPUTS_NOT_EXECUTED",
+  "enabled": false,
+  "paid_runs_authorised": 0,
+  "source_scope": "United Kingdom",
+  "source_profile_purpose": "BA-owned independent Actor inputs, never overwrite Salesforce saved Apify Tasks",
+  "profile_query": "business analyst",
+  "families_covered_by_single_query": [
+    "Business Analysis"
+  ],
+  "all_22_families_covered": false,
+  "notes": "This is a single-family first acceptance preflight, NOT all-family refresh. Rotate further role-family searches only after budgeted and approved scheduling.",
+  "inputs": [
+    {
+      "source": "CV-Library",
+      "actor": "blackfalcondata/cv-library-scraper",
+      "input": {
+        "query": "business analyst",
+        "country": "GB",
+        "location": "",
+        "maxResults": 10,
+        "maxPages": 1,
+        "includeDetails": true,
+        "incrementalMode": false,
+        "emitExpired": false,
+        "emitUnchanged": false,
+        "skipReposts": true
+      }
+    },
+    {
+      "source": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "input": {
+        "mode": "search",
+        "keywords": "business analyst",
+        "locations": [],
+        "maxListings": 10,
+        "maxPages": 1,
+        "fetchDetails": true,
+        "incrementalMode": false,
+        "emitExpired": false
+      }
+    },
+    {
+      "source": "Reed UK",
+      "actor": "wildorigins/uk-jobs-reed",
+      "input": {
+        "keywords": "business analyst",
+        "location": "",
+        "maxResults": 10,
+        "fetchDetails": true
+      }
+    },
+    {
+      "source": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "input": {
+        "query": "business analyst",
+        "country": "uk",
+        "maxResults": 10
+      }
+    },
+    {
+      "source": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "input": {
+        "keywords": [
+          "business analyst"
+        ],
+        "location": "",
+        "country": "gb",
+        "maxResults": 10,
+        "includeDescription": true,
+        "onlyUniqueJobs": true
+      }
+    }
+  ],
+  "preflight": {
+    "input_property_schema_checked_on": "2026-10-15",
+    "input_properties_supported": true,
+    "source_specific_actor_pricing_verified": false,
+    "actual_monthly_apify_usage_read": false,
+    "account_limit_confirmed_live": false,
+    "salesforce_reserve_confirmed_live": false,
+    "per_run_max_total_charge_usd": null,
+    "aggregate_new_charge_cap_usd": null,
+    "paid_run_approved": false,
+    "all_five_live_source_results_tested": false
+  }
+}
