@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           python -m scripts.validate_salesforce_wordpress_delivery --input dashboard/live-data.json
-          python -m scripts.verify_controlled_handoff --input dashboard/live-data.json --run-id-file state/last_refresh.json
+          python -m scripts.verify_controlled_handoff --input dashboard/live-data.json --status state/latest_refresh.json
 
       - name: Deliver one validated snapshot to WordPress
         if: ${{ success() && vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' }}
