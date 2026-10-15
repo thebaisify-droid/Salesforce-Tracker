@@ -1,0 +1,85 @@
+{
+  "schema": "ba-40-record-stage2-assurance/v1",
+  "as_of": "2026-10-15",
+  "publication_allowed": false,
+  "original_source_rows": 40,
+  "classified_advertisements": 33,
+  "excluded_outside_taxonomy": 7,
+  "jobserve": {
+    "actor": "solidcode/jobserve-scraper",
+    "run_id": "q43qj80CzgOjKP3Qb",
+    "status": "FAILED",
+    "exit_code": 91,
+    "duration_seconds": 4.252,
+    "dataset_id": "eRZXW3PwoHVxArr6u",
+    "dataset_rows": 0,
+    "provider_message": "The run stopped unexpectedly. Please try again.",
+    "root_cause": "UNDETERMINED",
+    "no_retries_performed": true,
+    "diagnosis": "Run metadata cannot distinguish an Actor defect, resource issue or input-specific failure; do not attribute cause without logs."
+  },
+  "end_client_sector_evidence": [
+    {
+      "record_id": "pilot-reeduk-21",
+      "sector": "Public Sector",
+      "basis": "SOURCE_DESCRIPTION_EXPLICIT_CENTRAL_GOVERNMENT",
+      "scope": "END_CLIENT_PROGRAMME_SECTOR",
+      "evidence_excerpt": "major Central Government Service Transformation Programme",
+      "source_url": "https://www.reed.co.uk/jobs/business-analyst/57454184",
+      "limitation": "Client itself not identified; programme sector described"
+    },
+    {
+      "record_id": "pilot-reeduk-22",
+      "sector": "Financial Services",
+      "basis": "SOURCE_DESCRIPTION_EXPLICIT_CLIENT_SECTOR",
+      "scope": "END_CLIENT_SECTOR",
+      "evidence_excerpt": "client within the Financial Services sector",
+      "source_url": "https://www.reed.co.uk/jobs/business-analyst/57450310",
+      "limitation": "Named client not captured"
+    },
+    {
+      "record_id": "pilot-reeduk-26",
+      "sector": "Financial Services",
+      "basis": "SOURCE_DESCRIPTION_FINANCE_SECTOR",
+      "scope": "END_CLIENT_SECTOR",
+      "evidence_excerpt": "client within the Finance sector",
+      "source_url": "https://www.reed.co.uk/jobs/senior-business-analyst/57408191",
+      "limitation": "Finance could refer to a broad sector; provisional mapping to Financial Services, not company confirmed"
+    },
+    {
+      "record_id": "pilot-reeduk-27",
+      "sector": "Manufacturing & Engineering",
+      "basis": "SOURCE_DESCRIPTION_EXPLICIT_EMPLOYER_MANUFACTURING",
+      "scope": "ADVERTISER_ORGANISATION_SECTOR",
+      "evidence_excerpt": "travel to Müller manufacturing sites as required",
+      "source_url": "https://www.reed.co.uk/jobs/mes-business-analyst/57453973",
+      "limitation": "Do not imply separate end-client verified"
+    }
+  ],
+  "potential_duplicate": {
+    "records": [
+      "pilot-cvlibrary-8",
+      "pilot-totaljobs-16"
+    ],
+    "advertisers": [
+      "VIQU IT",
+      "VIQU IT Recruitment"
+    ],
+    "title": "SC Cleared Business Analyst",
+    "location": "London",
+    "posted_date": "2026-10-14",
+    "shared_advert_evidence": "Both descriptions reference hybrid working and projects/programmes/portfolios transformation.",
+    "decision": "POTENTIAL_SAME_REQUISITION_NOT_CONFIRMED",
+    "handling": "Keep both source advertisements; flag as potential duplicate until requisition-level identity is established.",
+    "urls": [
+      "https://www.cv-library.co.uk/job/225725519/",
+      "https://www.totaljobs.com/job/sc-cleared-business-analyst/viqu-it-recruitment-job108172193"
+    ]
+  },
+  "next_actions": [
+    "Enrich three explicit end-client/programme-sector descriptions and one employer-sector record without extrapolating to other advertisements",
+    "Obtain JobServe crash logs or platform diagnostic from existing run, no rerun",
+    "Keep staged 33 advertisements unpublished until five-source gate satisfied",
+    "Reconcile actual Apify billed usage before any further paid execution"
+  ]
+}
