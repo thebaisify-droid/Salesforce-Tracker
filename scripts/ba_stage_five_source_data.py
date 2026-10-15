@@ -45,8 +45,14 @@ def link(row, source):
     value = field(row, *keys)
     if not value:
         return None
+    # A Totaljobs Actor version returned a duplicated absolute prefix.
+    # Strip only that exact malformed prefix; retain the original HTTPS host.
+    if source == "Totaljobs" and value.startswith("https://www.totaljobs.com/https://www.totaljobs.com/"):
+        value = value[len("https://www.totaljobs.com/"):]
     parsed = urlsplit(value)
-    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
+    if (parsed.scheme != "https" or not parsed.hostname
+            or parsed.username or parsed.password
+            or parsed.port not in (None, 443)):
         return None
     return urlunsplit((parsed.scheme, parsed.netloc.lower(), parsed.path.rstrip("/"), parsed.query, ""))
 
