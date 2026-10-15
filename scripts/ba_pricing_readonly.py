@@ -37,7 +37,7 @@ def check(config,token,reader=get):
           "source":source["name"],
           "actor":source["actor"],
           "pricing_model":details.get("pricingModel") or details.get("model"),
-          "price_per_unit_usd":details.get("pricePerUnitUsd") or details.get("pricePerUnit"),
+          "price_per_unit_usd":details.get("pricePerUnitUsd", details.get("pricePerUnit")),
           "unit_name":details.get("unitName"),
           "pricing_info_fields":sorted(details.keys()),
           "declared_max_items":source["max_items"],
@@ -52,9 +52,37 @@ def check(config,token,reader=get):
             "wordpress_requests":0,
             "pricing_automatically_verified":False}
 
+def validate_cost_models(report, config):
+    """Fail closed unless 10 billable items or event caps bound each source."""
+    reviewed={row["source"]:row for row in report.get("actor_pricing",[])}
+    issues=[]
+    for src in config["sources"]:
+        name=src["name"]
+        row=reviewed.get(name,{})
+        model=row.get("pricing_model")
+        if model in ("FREE", "FREE_PLAN"):
+            continue
+        if model in ("PRICE_PER_DATASET_ITEM", "PAY_PER_RESULT"):
+            unit=row.get("price_per_unit_usd")
+            if type(unit) not in (int,float) or unit < 0:
+                issues.append(name+":UNKNOWN_UNIT_PRICE")
+            elif src["max_items"] * unit > src["max_charge_usd"] + 1e-9:
+                issues.append(name+":PPR_CAP_EXCEEDED")
+        elif model in ("PAY_PER_EVENT", "PPE"):
+            # Apify applies maxTotalChargeUsd specifically to PPE runs.
+            if not (0 < src["max_charge_usd"] <= 0.50):
+                issues.append(name+":INVALID_EVENT_CEILING")
+        else:
+            issues.append(name+":UNSUPPORTED_OR_UNKNOWN_PRICING_MODEL")
+    if report.get("account_limit_usd")!=19:
+        issues.append("ACCOUNT_LIMIT_MISMATCH")
+    return {"pricing_guard_passed":not issues,"issues":issues}
+
+
 def main():
     cfg=json.loads(CONFIG.read_text(encoding="utf8"))
     report=check(cfg,os.getenv("APIFY_TOKEN",""))
+    report["pricing_validation"]=validate_cost_models(report,cfg)
     print(json.dumps(report,sort_keys=True))
 if __name__=="__main__":
     main()
