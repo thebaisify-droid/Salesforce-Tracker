@@ -1,0 +1,37 @@
+name: BA completed-run read-only handoff validation
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-completed-readonly-handoff.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ba-readonly-completed-handoff
+  cancel-in-progress: false
+
+jobs:
+  read_only_test:
+    if: ${{ contains(github.event.head_commit.message, '[BA-HANDOFF-READONLY-ONCE-20261015]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reinspect five finished Apify runs and build unpublished preview (GET only)
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.ba_completed_dataset_handoff --receipts business-analysis-tracker/config/completed-readonly-validation-runs.json
+      - name: Keep aggregate QA evidence only, no raw source datasets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ba-completed-readonly-handoff-qa
+          path: |
+            business-analysis-tracker/data/read-only-handoff/qa-report.json
+          if-no-files-found: warn
+          retention-days: 14
