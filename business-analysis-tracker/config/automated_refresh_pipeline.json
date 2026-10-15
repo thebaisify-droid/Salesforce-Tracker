@@ -1,17 +1,17 @@
 {
   "schema": "ba-automatic-refresh/v1",
-  "enabled": false,
-  "paid_acquisition_enabled": false,
-  "publish_automatically": false,
+  "enabled": true,
+  "paid_acquisition_enabled": true,
+  "publish_automatically": true,
   "automatic_retries": 0,
   "monthly_limit_usd": 19,
   "salesforce_reserve_usd": 8,
   "max_total_charge_usd": 1.2,
-  "schedule": "TUE_FRI_0735_EUROPE_LONDON_PROPOSED",
-  "scheduling_enabled": false,
-  "wordpress_delivery_enabled": false,
+  "schedule": "TUE_FRI_0735_EUROPE_LONDON_ACTIVE",
+  "scheduling_enabled": true,
+  "wordpress_delivery_enabled": true,
   "search_profile": "business analyst",
-  "note": "Scheduled pipeline installed but paid execution and publication fail closed pending explicit recurring charge caps and verified Apify pricing enforcement. Historical one-time pilot approval does not grant standing spend. Two 07:35 UK slots per week, max nine monthly.",
+  "note": "User approved recurring Tue/Fri 07:35 UK acquisition, $1.20 maximum charged per refresh and $11 BA monthly ceiling; shared $19 account hard limit and protected $8 Salesforce reserve. No retries. All-five-source QA required. Price model and per-Actor minimum charge verified read-only at every scheduled start; fail closed when price exceeds cap. Scheduler does not immediately launch paid actors.",
   "sources": [
     {
       "name": "CV-Library",
@@ -87,7 +87,10 @@
   ],
   "monthly_ba_allowance_usd": 11,
   "max_scheduled_runs_per_month": 9,
-  "recurring_budget_approved": false,
-  "pricing_guard_verified": false,
-  "estimated_max_scheduled_charge_per_month_usd": 10.8
+  "recurring_budget_approved": true,
+  "pricing_guard_verified": true,
+  "estimated_max_scheduled_charge_per_month_usd": 10.8,
+  "approval_date": "2026-10-15",
+  "approved_per_refresh_usd": 1.2,
+  "approved_ba_monthly_usd": 11
 }
