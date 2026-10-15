@@ -42,7 +42,7 @@ def run_offline(batch:dict, evidence:dict):
                "publication_approved":False,"source_observed_only":True}
     inspection=preflight(candidate,receipts)
     if not inspection["valid_for_wordpress_delivery"]:
-        raise ValueError("Delivery gate blocked: "+repr(inspection["issues"]))
+        raise ValueError("Delivery gate blocked: "+repr(inspection["issues"])+ " actual="+repr(sorted({r["source"] for r in rows})))
     package=pack(candidate,receipts)
     assert package["delivery_approved"] is False
     return {"status":"DRY_RUN_PASS_NOT_PUBLISHED","sources":len(sources),
