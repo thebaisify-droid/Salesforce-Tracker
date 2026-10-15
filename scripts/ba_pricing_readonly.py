@@ -95,5 +95,7 @@ def main():
     report=check(cfg,os.getenv("APIFY_TOKEN",""))
     report["pricing_validation"]=validate_cost_models(report,cfg)
     print(json.dumps(report,sort_keys=True))
+    if not report["pricing_validation"]["pricing_guard_passed"]:
+        raise SystemExit(2)
 if __name__=="__main__":
     main()
