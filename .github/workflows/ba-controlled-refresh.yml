@@ -1,6 +1,10 @@
-name: Business Analysis controlled refresh (disabled)
+name: Controlled Business Analysis five-source refresh (spend approval gated)
 on:
   workflow_dispatch:
+  schedule:
+    # Tue/Fri 07:35 London local across DST; one UTC invocation is skipped.
+    - cron: "35 6 * * 2,5"
+    - cron: "35 7 * * 2,5"
 
 permissions:
   contents: read
@@ -10,19 +14,37 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  preflight:
+  refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Check five sources and disabled acquisition configuration
+      - name: Validate independent BA source budget, scheduler and delivery gates
         run: |
           python -m scripts.ba_controlled_refresh
+          python -m scripts.ba_recurring_cycle
           python -m scripts.validate_ba_five_source_contract
-      - name: Validate delivery gate with existing staging snapshot
-        run: python -m scripts.ba_wordpress_delivery_package
-      - name: Run BA pipeline tests
-        run: python -m unittest discover -s tests -p 'test_ba_refresh_pipeline.py' -v
+          python -m unittest discover -s tests -p test_ba_recurring_cycle.py -v
+      # The opt-in switch prevents paid requests even if a future commit
+      # mistakenly enables local config. Manual dispatch is always dry.
+      - name: Collect five BA boards once and deliver only on quality-passed success
+        if: ${{ github.event_name == 'schedule' && github.run_attempt == 1 && vars.BA_CONTROLLED_REFRESH_ENABLED == 'true' }}
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+          BA_PAID_REFRESH_APPROVAL: EXPLICIT_BA_REFRESH_APPROVED
+          BA_WP_DELIVERY_APPROVAL: EXPLICIT_APPROVAL
+        run: python -m scripts.ba_recurring_cycle --scheduled --execute --publish
+      - name: Save QA and source-run receipts without raw contacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ba-recurring-refresh-audit
+          path: |
+            business-analysis-tracker/data/acquisition-receipts.json
+          retention-days: 30
+          if-no-files-found: warn
