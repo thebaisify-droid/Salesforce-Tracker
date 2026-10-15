@@ -13,10 +13,15 @@ def main():
     try:
         with urlopen(req,timeout=20) as resp:
             val=json.load(resp)
-            print(json.dumps({"status":resp.status,"slug":val.get("slug"),"roles":val.get("roles"),
-                "delivery_capability":(val.get("capabilities") or {}).get("ba_deliver_snapshot"),
-                "receiver_sent":False}))
-            return 0
+            slug=val.get("slug")
+            roles=val.get("roles") or []
+            cap=(val.get("capabilities") or {}).get("ba_deliver_snapshot")
+            verified=(slug=="ba-delivery" and "ba_snapshot_delivery" in roles
+                and "administrator" not in roles and cap is True)
+            print(json.dumps({"status":resp.status,"identity_matches":slug=="ba-delivery",
+                "restricted_role_verified":verified,"receiver_sent":False,
+                "no_post_requests":True}))
+            return 0 if verified else 2
     except HTTPError as err:
         raw=err.read(600)
         try:
