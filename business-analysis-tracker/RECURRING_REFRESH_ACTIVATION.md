@@ -2,16 +2,16 @@
 
 ## Deployment state (15 October 2026)
 
-A dedicated GitHub workflow now has *twice-weekly* Tuesday/Friday schedules at **07:35 Europe/London**, expressed as two UTC cron candidates with a timezone/DST gate. It runs a **no-cost preflight by default** and shares the acquisition concurrency group with Salesforce.
+A dedicated GitHub workflow has *twice-weekly* Tuesday/Friday schedules at **07:35 Europe/London**, expressed as two UTC cron candidates with a timezone/DST gate. It performs a no-cost preflight before any paid run and shares the acquisition concurrency group with Salesforce.
 
-**Paid recurring acquisition is not active until all four independent controls are true:**
+**Standing authorisation received 15 October 2026:** up to $1.20 per refresh and $11 per month for Business Analysis, under the shared $19 cap and $8 protected Salesforce reserve. The following four controls are required on every scheduled run:
 
-1. `business-analysis-tracker/config/automated_refresh_pipeline.json`: `enabled=true`, `paid_acquisition_enabled=true`, `scheduling_enabled=true`, `recurring_budget_approved=true`, `pricing_guard_verified=true`, and `wordpress_delivery_enabled=true` only if approved for automatic publishing.
-2. The optional GitHub Actions repository variable `BA_CONTROLLED_REFRESH_ENABLED` must not be `false` (emergency pause). Otherwise committed approval flags control activation; disabled paid steps are automatically skipped.
+1. The committed active config now sets `enabled=true`, `paid_acquisition_enabled=true`, `scheduling_enabled=true`, `recurring_budget_approved=true`, `pricing_guard_verified=true`, and `wordpress_delivery_enabled=true`. The legacy `five_source_refresh.json` is historical, disabled pilot documentation only.
+2. The optional GitHub Actions repository variable `BA_CONTROLLED_REFRESH_ENABLED` must not be `false` (emergency pause). When not paused, committed approval flags control activation.
 3. Live Apify GET confirms the account limit is exactly $19 and that the $8 Salesforce reserve plus the remaining per-run BA cap are available.
 4. Current per-Actor pricing definitions validate the declared result-charge limits before the first Actor launch, or no paid request is sent.
 
-**Proposal, not standing authorisation:** up to $1.20 per successful full five-source refresh, 10 requested results per source, with per-source caps CV-Library $0.50, Totaljobs $0.20, Reed UK $0.15, Indeed UK $0.20, JobServe $0.15. Up to nine Tue/Fri slots per calendar month = $10.80 in requested ceiling amounts, under an $11 BA allocation, within the shared $19 Apify limit with an $8 protected Salesforce reserve. This is not a guarantee of actual billing for actors whose charging model is unknown. Actual account and actor charge details must satisfy the runtime guards before every paid launch.
+**Authorised standing ceiling:** up to $1.20 per full five-source refresh, 10 requested results per source, with per-source caps CV-Library $0.50, Totaljobs $0.20, Reed UK $0.15, Indeed UK $0.20, JobServe $0.15. Up to nine Tue/Fri slots per calendar month = $10.80 in requested ceiling amounts, under an $11 BA allocation, within the shared $19 Apify limit with an $8 protected Salesforce reserve. This is not a guarantee of actual billing for actors whose charging model is unknown. Actual account and actor charge details must satisfy the runtime guards before every paid launch.
 
 ## What happens after approval and activation
 
@@ -27,4 +27,4 @@ A dedicated GitHub workflow now has *twice-weekly* Tuesday/Friday schedules at *
 
 The initial refresh query is `business analyst` on each board. This does not yet provide balanced coverage of the remaining product, delivery, data and cyber families. A future approved acquisition plan must rotate family-specific searches, with distinct cost controls. The original 57 published advertisements remain available until a truly fresh five-source QA-passed snapshot replaces them.
 
-**Current status: scheduled no-cost preflight staged, but recurring spending and automatic publishing intentionally disabled pending explicit ongoing monetary authorisation and verification of each Actor's charge model.** Past pilot approvals were one-time only and cannot be repurposed into standing recurring spend.
+**Activation status:** user authorised standing BA caps on 15 October 2026; the committed configuration and scheduled WordPress publication gate are enabled. The first occurrence must pass fresh account usage, price-model minimum, platform-compute fee and dedicated WordPress access checks. If any guard fails, the run stops without publishing and keeps the prior 57-observation snapshot. One-time pilot approvals remain separate.

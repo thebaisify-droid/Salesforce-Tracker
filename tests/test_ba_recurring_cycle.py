@@ -15,14 +15,14 @@ class TestBARecurringCycle(unittest.TestCase):
     def setUpClass(cls):
         cls.cfg=json.loads(CONFIG.read_text(encoding="utf8"))
 
-    def test_default_state_never_runs_paid_actors(self):
+    def test_approved_config_never_launches_from_manual_or_untrusted_event(self):
         meta=validate_config(self.cfg)
         self.assertTrue(meta["valid"])
-        self.assertFalse(meta["enabled"])
-        self.assertFalse(self.cfg["recurring_budget_approved"])
-        self.assertFalse(self.cfg["pricing_guard_verified"])
-        self.assertFalse(self.cfg["wordpress_delivery_enabled"])
-        with patch.dict(os.environ,{"BA_PAID_REFRESH_APPROVAL":"EXPLICIT_BA_REFRESH_APPROVED"},clear=True), \
+        self.assertTrue(meta["enabled"])
+        self.assertTrue(self.cfg["recurring_budget_approved"])
+        self.assertTrue(self.cfg["pricing_guard_verified"])
+        self.assertTrue(self.cfg["wordpress_delivery_enabled"])
+        with patch.dict(os.environ,{"BA_PAID_REFRESH_APPROVAL":"EXPLICIT_BA_REFRESH_APPROVED","GITHUB_EVENT_NAME":"workflow_dispatch","GITHUB_RUN_ATTEMPT":"1"},clear=True), \
              patch("sys.argv",["ba_recurring_cycle","--execute","--scheduled"]):
             with self.assertRaises(SystemExit):
                 main()

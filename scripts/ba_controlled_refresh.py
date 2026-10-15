@@ -17,16 +17,47 @@ TERMINAL={"SUCCEEDED","FAILED","ABORTED","TIMED-OUT"}
 def validate(cfg):
     if cfg.get("schema")!="ba-automatic-refresh/v1":raise ValueError("Incorrect schema")
     if cfg.get("monthly_limit_usd")!=19 or cfg.get("salesforce_reserve_usd")!=8:raise ValueError("Budget configuration unsafe")
-    if cfg.get("automatic_retries")!=0 or cfg.get("publish_automatically") is not False:raise ValueError("Unsafe retries or publication")
+    if cfg.get("automatic_retries") != 0:
+        raise ValueError("Automatic retries are prohibited")
+    if cfg.get("publish_automatically") is not cfg.get("wordpress_delivery_enabled"):
+        raise ValueError("Publishing requires an identical WordPress delivery approval gate")
+    if cfg.get("monthly_ba_allowance_usd") != 11 or cfg.get("max_scheduled_runs_per_month") != 9:
+        raise ValueError("BA standing monthly allowance or cadence changed")
+    if cfg.get("max_total_charge_usd") != 1.20:
+        raise ValueError("Approved per-refresh cap exceeded")
+    flags = ("enabled", "paid_acquisition_enabled", "scheduling_enabled",
+             "recurring_budget_approved", "pricing_guard_verified")
+    if any(cfg.get(k) is not True for k in flags) and any(cfg.get(k) is True for k in flags):
+        raise ValueError("Partially enabled BA recurring acquisition is not permitted")
+    if cfg.get("publish_automatically") is True and not all(cfg.get(k) is True for k in flags):
+        raise ValueError("Cannot auto-deliver an unapproved BA acquisition")
+    if cfg.get("publish_automatically") is not True and any(cfg.get(k) is True for k in flags):
+        raise ValueError("Scheduled paid BA collection must use the quality-gated receiver")
     names=[x.get("name") for x in cfg.get("sources",[])]
     if names!=["CV-Library","Totaljobs","Reed UK","Indeed UK","JobServe"]:raise ValueError("Five sources are mandatory")
-    if any(x.get("actor") not in {"blackfalcondata/cv-library-scraper","abotapi/totaljobs-com-scraper",
-           "wildorigins/uk-jobs-reed","wildorigins/indeed-jobs","solidcode/jobserve-scraper"}
-           for x in cfg["sources"]):raise ValueError("Unknown Actor")
-    if any(x.get("max_items")!=10 or x.get("max_charge_usd") is None or
-           type(x["max_charge_usd"]) not in (int,float) or x["max_charge_usd"]<=0
-           for x in cfg["sources"]):raise ValueError("Per-source cap missing")
-    if round(sum(x["max_charge_usd"] for x in cfg["sources"]),2)!=cfg.get("max_total_charge_usd"):raise ValueError("Sum of caps mismatch")
+    approved_actors = {
+        "CV-Library": ("blackfalcondata/cv-library-scraper", "maxResults"),
+        "Totaljobs": ("abotapi/totaljobs-com-scraper", "maxListings"),
+        "Reed UK": ("wildorigins/uk-jobs-reed", "maxResults"),
+        "Indeed UK": ("wildorigins/indeed-jobs", "maxResults"),
+        "JobServe": ("solidcode/jobserve-scraper", "maxResults"),
+    }
+    for source in cfg["sources"]:
+        name = source["name"]
+        actor, result_field = approved_actors[name]
+        if source.get("actor") != actor:
+            raise ValueError("Unapproved source Actor identity: " + name)
+        size=source.get("max_items")
+        value=(source.get("input") or {}).get(result_field)
+        if type(size) is not int or size != 10 or type(value) is not int or value != 10:
+            raise ValueError("Source input or result limit changed: " + name)
+        cap=source.get("max_charge_usd")
+        if type(cap) not in (int, float) or not 0 < cap <= 0.50:
+            raise ValueError("Invalid Actor charge cap: " + name)
+        if source.get("input",{}).get("incrementalMode",False) is not False:
+            raise ValueError("Shared Actor incremental state disallowed")
+    if round(sum(x["max_charge_usd"] for x in cfg["sources"]),2) != 1.20:
+        raise ValueError("Sum of per-source charge caps differs from authorisation")
     return {"valid":True,"sources":names,"max_total_charge_usd":cfg["max_total_charge_usd"],
             "enabled":cfg.get("enabled") is True,"actor_runs_launched":0}
 def run(cfg, token, *, getter=api, sleep=time.sleep):
@@ -59,6 +90,9 @@ def run(cfg, token, *, getter=api, sleep=time.sleep):
                 receipt["dataset_id"]=state.get("defaultDatasetId")
                 break
             sleep(6)
+        # Record terminal status even for failure; never retry a failed Actor.
+        OUT.write_text(json.dumps({"schema":"ba-source-run-receipts/v1",
+            "receipts":receipts,"publication_approved":False},indent=2)+"\n",encoding="utf8")
         if receipt["status"]!="SUCCEEDED" or not receipt["dataset_id"]:
             raise RuntimeError("BA source failed or timed out: "+source["name"]+"; no retry")
         remaining=round(remaining-source["max_charge_usd"],2)

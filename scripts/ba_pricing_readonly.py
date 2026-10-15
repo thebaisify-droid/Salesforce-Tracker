@@ -40,6 +40,8 @@ def check(config,token,reader=get):
           "price_per_unit_usd":details.get("pricePerUnitUsd", details.get("pricePerUnit")),
           "unit_name":details.get("unitName"),
           "pricing_info_fields":sorted(details.keys()),
+          "minimal_max_total_charge_usd":details.get("minimalMaxTotalChargeUsd"),
+          "platform_usage_paid_by_user":details.get("isPPEPlatformUsagePaidByUser"),
           "declared_max_items":source["max_items"],
           "declared_max_charge_usd":source["max_charge_usd"],
         }
@@ -69,9 +71,18 @@ def validate_cost_models(report, config):
             elif src["max_items"] * unit > src["max_charge_usd"] + 1e-9:
                 issues.append(name+":PPR_CAP_EXCEEDED")
         elif model in ("PAY_PER_EVENT", "PPE"):
-            # Apify applies maxTotalChargeUsd specifically to PPE runs.
+            # PPE maxTotalChargeUsd is enforced by Apify. Reject minimum
+            # charges above the authorised cap or uncapped compute charges.
             if not (0 < src["max_charge_usd"] <= 0.50):
                 issues.append(name+":INVALID_EVENT_CEILING")
+            required=row.get("minimal_max_total_charge_usd")
+            if required is not None:
+                if type(required) not in (int,float) or required < 0:
+                    issues.append(name+":UNKNOWN_MINIMUM_CHARGE")
+                elif required > src["max_charge_usd"] + 1e-9:
+                    issues.append(name+":ACTOR_MINIMUM_EXCEEDS_CAP")
+            if row.get("platform_usage_paid_by_user") is True:
+                issues.append(name+":PPE_COMPUTE_CHARGE_NOT_IN_EVENT_CAP")
         else:
             issues.append(name+":UNSUPPORTED_OR_UNKNOWN_PRICING_MODEL")
     if report.get("account_limit_usd")!=19:
@@ -84,5 +95,7 @@ def main():
     report=check(cfg,os.getenv("APIFY_TOKEN",""))
     report["pricing_validation"]=validate_cost_models(report,cfg)
     print(json.dumps(report,sort_keys=True))
+    if not report["pricing_validation"]["pricing_guard_passed"]:
+        raise SystemExit(2)
 if __name__=="__main__":
     main()
