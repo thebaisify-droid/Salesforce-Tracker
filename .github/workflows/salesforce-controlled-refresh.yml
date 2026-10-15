@@ -48,6 +48,23 @@ jobs:
       - name: Validate and hash successful persistent state
         if: success() && hashFiles('data/salesforce_tracker.db') != ''
         run: python -m scripts.state_snapshot --root . --database "$TRACKER_DATABASE_PATH" --write-manifest state/state_manifest.json
+      # Independent opt-in for delivery. A skipped/not-due refresh MUST NOT resend
+      # yesterday's dashboard/live-data.json from restored state.
+      - name: Verify fresh, QA-passed WordPress delivery candidate
+        if: ${{ success() && vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' }}
+        run: |
+          set -euo pipefail
+          python -m scripts.validate_salesforce_wordpress_delivery --input dashboard/live-data.json
+          python -m scripts.verify_controlled_handoff --input dashboard/live-data.json --run-id-file state/last_refresh.json
+
+      - name: Deliver one validated snapshot to WordPress
+        if: ${{ success() && vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' }}
+        env:
+          SF_DELIVERY_APPROVED: "yes"
+          SF_WP_USERNAME: ${{ secrets.SF_WP_USERNAME }}
+          SF_WP_APPLICATION_PASSWORD: ${{ secrets.SF_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.send_salesforce_wordpress_snapshot_once --input dashboard/live-data.json --send
+
       - name: Save tracker state for next run (not public)
         if: success() && hashFiles('data/salesforce_tracker.db') != ''
         uses: actions/upload-artifact@v4
