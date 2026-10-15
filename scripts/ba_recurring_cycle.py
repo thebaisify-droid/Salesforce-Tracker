@@ -124,6 +124,8 @@ def main():
         raise SystemExit("Recurring BA budget or pricing controls not fully authorised")
     if os.getenv("BA_PAID_REFRESH_APPROVAL")!="EXPLICIT_BA_REFRESH_APPROVED":
         raise SystemExit("Scheduled acquisition approval missing")
+    if not args.scheduled or os.getenv("GITHUB_EVENT_NAME")!="schedule" or os.getenv("GITHUB_RUN_ATTEMPT")!="1":
+        raise SystemExit("Paid BA acquisition is only allowed from the first scheduled GitHub attempt")
     if args.scheduled:
         slot=scheduled_slot(now)
         if not slot["due"]:
