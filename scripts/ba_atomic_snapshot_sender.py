@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse,base64,hashlib,json,os
 from pathlib import Path
 from urllib.request import Request,build_opener,HTTPSHandler,HTTPRedirectHandler
-ENDPOINT="https://jobs.zarafytek.com/wp-json/business-analysis-tracker/v1/snapshot"
+from scripts.ba_wp_rest_routes import BA_SNAPSHOT_URL as ENDPOINT
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self,*args,**kwargs):
         raise ValueError("Redirect refused")
