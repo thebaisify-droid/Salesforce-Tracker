@@ -7,7 +7,7 @@ A dedicated GitHub workflow now has *twice-weekly* Tuesday/Friday schedules at *
 **Paid recurring acquisition is not active until all four independent controls are true:**
 
 1. `business-analysis-tracker/config/automated_refresh_pipeline.json`: `enabled=true`, `paid_acquisition_enabled=true`, `scheduling_enabled=true`, `recurring_budget_approved=true`, `pricing_guard_verified=true`, and `wordpress_delivery_enabled=true` only if approved for automatic publishing.
-2. GitHub Actions repository variable `BA_CONTROLLED_REFRESH_ENABLED=true`.
+2. The optional GitHub Actions repository variable `BA_CONTROLLED_REFRESH_ENABLED` must not be `false` (emergency pause). Otherwise committed approval flags control activation; disabled paid steps are automatically skipped.
 3. Live Apify GET confirms the account limit is exactly $19 and that the $8 Salesforce reserve plus the remaining per-run BA cap are available.
 4. Current per-Actor pricing definitions validate the declared result-charge limits before the first Actor launch, or no paid request is sent.
 
@@ -27,4 +27,4 @@ A dedicated GitHub workflow now has *twice-weekly* Tuesday/Friday schedules at *
 
 The initial refresh query is `business analyst` on each board. This does not yet provide balanced coverage of the remaining product, delivery, data and cyber families. A future approved acquisition plan must rotate family-specific searches, with distinct cost controls. The original 57 published advertisements remain available until a truly fresh five-source QA-passed snapshot replaces them.
 
-**Current status: recurring spending and automatic publishing intentionally disabled pending explicit ongoing monetary authorisation and verification of each Actor's charge model.** Past pilot approvals were one-time only and cannot be repurposed into standing recurring spend.
+**Current status: scheduled no-cost preflight staged, but recurring spending and automatic publishing intentionally disabled pending explicit ongoing monetary authorisation and verification of each Actor's charge model.** Past pilot approvals were one-time only and cannot be repurposed into standing recurring spend.
