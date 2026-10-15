@@ -1,0 +1,41 @@
+name: BA recurring activation read-only preflight
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-recurring-activation-readonly.yml'
+permissions:
+  contents: read
+jobs:
+  preflight:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[BA-ACTIVATION-READONLY-20261015]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm standing budget and source configuration (no Actor launches)
+        run: |
+          python -m scripts.ba_controlled_refresh
+          python -m scripts.ba_recurring_cycle
+          python -m unittest discover -s tests -p test_ba_recurring_cycle.py -v
+      - name: Confirm immediate-pause variable not set to false
+        env:
+          BA_REFRESH_PAUSE: ${{ vars.BA_CONTROLLED_REFRESH_ENABLED }}
+        run: |
+          if [ "$BA_REFRESH_PAUSE" = "false" ]; then
+            echo "Recurring BA refresh is paused by GitHub repository variable"
+            exit 2
+          fi
+          echo "Recurring BA pause variable does not block scheduled execution"
+      - name: Read-only $19 account reserve and all five Actor price checks
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.ba_pricing_readonly
+      - name: Read-only dedicated WordPress receiver access verification
+        env:
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.ba_delivery_credentials_readonly
