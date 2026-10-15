@@ -5,6 +5,7 @@ import unittest
 from copy import deepcopy
 from pathlib import Path
 from scripts.ba_e2e_offline import run_offline
+from scripts.ba_stage_five_source_data import link
 ROOT=Path(__file__).resolve().parents[1]
 MAP=ROOT/"business-analysis-tracker/config/sector-evidence.json"
 BOARDS=[
@@ -25,6 +26,7 @@ class TestBAE2EDryRun(unittest.TestCase):
     def setUpClass(cls):
         cls.evidence=json.loads(MAP.read_text(encoding="utf8"))
     def test_full_five_source_package_has_no_side_effects(self):
+        self.assertEqual(link(BOARDS[0][1], 'CV-Library'), 'https://www.cv-library.co.uk/job/test001')
         r=run_offline(example(),self.evidence)
         self.assertEqual(r["status"],"DRY_RUN_PASS_NOT_PUBLISHED")
         self.assertEqual(r["matched"],5)
