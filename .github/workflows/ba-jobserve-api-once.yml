@@ -1,0 +1,37 @@
+name: One-time BA JobServe API recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-jobserve-api-once.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+
+jobs:
+  recovery:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[BA-JOBSERVE-API-ONCE-20261015]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Perform exactly one guarded JobServe standard API run
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          BA_JOBSERVE_APPROVAL: AUTHORISE_BA_JOBSERVE_API_RECOVERY_050_20_ONCE
+        run: python -m scripts.ba_jobserve_api_once
+      - name: Retain audit evidence even if the Actor fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ba-jobserve-api-recovery-evidence
+          path: business-analysis-tracker/evidence/jobserve-api-recovery-result.json
+          if-no-files-found: warn
+          retention-days: 30
