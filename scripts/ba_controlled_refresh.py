@@ -73,7 +73,8 @@ def run(cfg, token, *, getter=api, sleep=time.sleep):
             raise RuntimeError("Insufficient headroom for outstanding caps")
         max_items=source["max_items"]
         uri=BASE+"acts/"+source["actor"].replace("/","~")+"/runs?"+urlencode({
-            "maxItems":max_items,"maxTotalChargeUsd":f'{source["max_charge_usd"]:.2f}',"timeout":150})
+            "maxItems":max_items,"maxTotalChargeUsd":f'{source["max_charge_usd"]:.2f}',
+            "timeout":150,"restartOnError":"false"})
         item=getter(uri,token,source["input"])
         rid=item.get("id")
         if not isinstance(rid,str) or not rid.isalnum():raise RuntimeError("Missing Actor ID; no more runs")
