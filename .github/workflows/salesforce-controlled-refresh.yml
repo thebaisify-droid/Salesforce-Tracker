@@ -1,0 +1,75 @@
+name: Controlled Salesforce refresh (guarded, twice weekly)
+on:
+  workflow_dispatch:
+  schedule:
+    # Tue/Thu, the two UTC hours that cover 07:15 Europe/London across DST.
+    - cron: "15 6 * * 2,4"
+    - cron: "15 7 * * 2,4"
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    # Fail closed: do not start billable collection unless independently enabled.
+    if: ${{ vars.SF_CONTROLLED_REFRESH_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      TRACKER_DATABASE_PATH: data/salesforce_tracker.db
+      APIFY_MONTHLY_BUDGET_USD: "19"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Restore verified prior tracker state
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.restore_github_state --root . --artifact-name tracker-state --branch main
+      - name: Install dependencies
+        run: |
+          if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Source and QA configuration preflight
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --check
+      - name: Fresh account limit and $8 reserve check
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.salesforce_controlled_refresh_budget
+      - name: Collect, classify, deduplicate and gate QA
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m pipeline.daily_refresh --config config/pipeline.json --scheduled
+      - name: Validate and hash successful persistent state
+        if: success() && hashFiles('data/salesforce_tracker.db') != ''
+        run: python -m scripts.state_snapshot --root . --database "$TRACKER_DATABASE_PATH" --write-manifest state/state_manifest.json
+      - name: Save tracker state for next run (not public)
+        if: success() && hashFiles('data/salesforce_tracker.db') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracker-state
+          path: |
+            data/salesforce_tracker.db
+            state/
+            dashboard/data.json
+            dashboard/live-data.json
+          retention-days: 30
+          if-no-files-found: error
+      - name: Upload QA evidence (no external publication)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: controlled-salesforce-refresh-evidence
+          path: |
+            state/*.json
+            runs/**/run_status.json
+            runs/**/metrics.json
+            runs/**/quality_report.json
+            runs/**/lifecycle_report.json
+          retention-days: 30
+          if-no-files-found: warn
