@@ -11,7 +11,7 @@ BOARDS=[
  ("CV-Library",{"title":"Business Analyst","canonicalUrl":"https://www.cv-library.co.uk/job/test001","company":"Bupa","postedAt":"2026-10-14","location":"London"}),
  ("Totaljobs",{"title":"Product Owner","jobUrl":"https://www.totaljobs.com/job/test002","employer":{"name":"Deloitte"},"datePosted":"2026-10-14","location":"Leeds","rowType":"job"}),
  ("Reed UK",{"title":"Business Analyst","url":"https://www.reed.co.uk/jobs/test003","employer":"Falkirk Council","datePosted":"2026-10-14","location":"Scotland"}),
- ("Indeed UK",{"title":"Information Security Analyst","url":"https://uk.indeed.com/viewjob?jk=synthetic04","company":"Capgemini","postedAt":"2026-10-14","location":"UK"}),
+ ("Indeed UK",{"title":"Business Analyst","url":"https://uk.indeed.com/viewjob?jk=synthetic04","company":"Capgemini","postedAt":"2026-10-14","location":"UK"}),
  ("JobServe",{"title":"Business Analyst","url":"https://www.jobserve.com/gb/en/test005","company":"Dunelm","postedDateTime":"2026-10-14","location":"Manchester"}),
 ]
 def example():
@@ -46,7 +46,6 @@ class TestBAE2EDryRun(unittest.TestCase):
     def test_bad_url_fails_data_quality(self):
         d=example()
         d["sources"][0]["records"][0]["canonicalUrl"]="http://unsafe.example/job"
-        r=run_offline(d,self.evidence)
-        self.assertEqual(r["matched"],4)
-        self.assertGreater(r["rejected"]["missing_title_or_https_advert"],0)
+        with self.assertRaisesRegex(ValueError,"NOT_ALL_FIVE_SOURCES_PRESENT"):
+            run_offline(d,self.evidence)
 if __name__=="__main__":unittest.main()
