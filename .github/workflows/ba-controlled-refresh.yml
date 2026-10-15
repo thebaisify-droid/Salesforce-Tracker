@@ -1,0 +1,28 @@
+name: Business Analysis controlled refresh (disabled)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check five sources and disabled acquisition configuration
+        run: |
+          python -m scripts.ba_controlled_refresh
+          python -m scripts.validate_ba_five_source_contract
+      - name: Validate delivery gate with existing staging snapshot
+        run: python -m scripts.ba_wordpress_delivery_package
+      - name: Run BA pipeline tests
+        run: python -m unittest discover -s tests -p 'test_ba_refresh_pipeline.py' -v
