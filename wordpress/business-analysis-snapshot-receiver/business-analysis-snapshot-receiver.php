@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.1.0
+ * Version: 0.2.0
  */
 if (!defined('ABSPATH')) { exit; }
 
@@ -112,3 +112,143 @@ add_action('rest_api_init',static function () {
         'callback'=>'zarafy_ba_receive'
     ));
 });
+
+
+/**
+ * Server-rendered, fail-closed front-end handoff for BA page 49 only.
+ * This reads the receiver's private local file, not a public uploads URL.
+ * If the file or any validation fails, return the original embedded table.
+ */
+function zarafy_ba_live_content_bridge($content) {
+    if (!is_string($content) || !is_page(49) || get_the_ID() !== 49
+        || strpos($content, '<tbody id="ba-v2-body">') === false
+        || strpos($content, '<script type="application/json" id="ba-v2-json">') === false) {
+        return $content;
+    }
+    $uploads = wp_get_upload_dir();
+    if (!empty($uploads['error']) || empty($uploads['basedir'])) return $content;
+    $directory = trailingslashit($uploads['basedir']) . 'business-analysis-tracker';
+    $path = $directory . '/live-data.json';
+    if (is_link($directory) || is_link($path) || !is_file($path)) return $content;
+    $size = @filesize($path);
+    if (!is_int($size) || $size < 64 || $size > 1100000) return $content;
+    $raw = @file_get_contents($path);
+    if (!is_string($raw) || strlen($raw) !== $size) return $content;
+    $data = json_decode($raw, true);
+    if (!is_array($data) || ($data['schema'] ?? '') !== 'ba-live-snapshot/v1'
+        || ($data['quality']['passed'] ?? null) !== true
+        || ($data['refresh']['status'] ?? '') !== 'success'
+        || !is_array($data['sources'] ?? null) || count($data['sources']) !== 5
+        || !is_array($data['records'] ?? null)
+        || count($data['records']) < 1 || count($data['records']) > 1000) {
+        return $content;
+    }
+    $expected = array_fill_keys(array('CV-Library','Totaljobs','Reed UK','Indeed UK','JobServe'), true);
+    $seen = array();
+    foreach ($data['sources'] as $receipt) {
+        $name = is_array($receipt) ? ($receipt['source'] ?? '') : '';
+        if (!isset($expected[$name]) || isset($seen[$name])
+            || ($receipt['status'] ?? '') !== 'SUCCEEDED'
+            || ($receipt['attempted'] ?? null) !== true
+            || !is_string($receipt['run_id'] ?? null) || $receipt['run_id'] === ''
+            || !is_string($receipt['dataset_id'] ?? null) || $receipt['dataset_id'] === '') {
+            return $content;
+        }
+        $seen[$name] = $receipt['run_id'];
+    }
+    $finished = $data['refresh']['finished_at'] ?? null;
+    $time = is_string($finished) ? strtotime($finished) : false;
+    if ($time === false || $time > time() + 900) return $content;
+    $rows = array();
+    $seen_ids = array();
+    foreach ($data['records'] as $r) {
+        if (!is_array($r) || !is_string($r['id'] ?? null) || $r['id'] === ''
+            || isset($seen_ids[$r['id']]) || empty($r['title']) || empty($r['role_family'])) return $content;
+        $source = $r['job_source'] ?? '';
+        $url = $r['original_advert_url'] ?? '';
+        $parsed = is_string($url) ? wp_parse_url($url) : false;
+        if (!isset($seen[$source]) || ($r['source_run_id'] ?? '') !== $seen[$source]
+            || !is_array($parsed) || ($parsed['scheme'] ?? '') !== 'https'
+            || empty($parsed['host']) || isset($parsed['user']) || isset($parsed['pass'])) {
+            return $content;
+        }
+        $seen_ids[$r['id']] = true;
+        $item = array(
+            'id' => $r['id'],
+            'title' => (string) $r['title'],
+            'advertiser' => (string) ($r['advertiser'] ?? 'Not specified'),
+            'location' => (string) ($r['location'] ?? 'Not specified'),
+            'source' => (string) $source,
+            'role_family' => (string) $r['role_family'],
+            'track' => (string) ($r['track'] ?? ''),
+            'url' => $url,
+            'posted_date' => (string) ($r['posted_date'] ?? ''),
+            'employment' => (string) ($r['employment'] ?? 'Not specified'),
+            'working_arrangement' => (string) ($r['working_arrangement'] ?? 'Not specified'),
+            'sector' => (string) ($r['sector_display'] ?? $r['sector'] ?? 'Not specified'),
+            'description_summary' => (string) ($r['description_summary'] ?? ''),
+            'skills' => array(),
+            'cross_post_cluster' => (string) ($r['cross_post_cluster'] ?? '')
+        );
+        $rows[] = $item;
+    }
+    $json = wp_json_encode($rows, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE);
+    if (!is_string($json) || $json === '') return $content;
+
+    // Plain server-rendered table remains available if JavaScript is disabled.
+    $trs = '';
+    foreach ($rows as $r) {
+        $date = 'Not specified';
+        if (preg_match('/^\\d{4}-\\d\\d-\\d\\d$/D', $r['posted_date'])) {
+            $dt = DateTimeImmutable::createFromFormat('!Y-m-d', $r['posted_date']);
+            if ($dt && $dt->format('Y-m-d') === $r['posted_date']) $date = $dt->format('d/m/Y');
+        }
+        $trs .= '<tr class="ba-v2-record"><td><strong>' . esc_html($r['title'])
+            . '</strong><small>Role family: ' . esc_html($r['role_family'])
+            . '</small><details><summary>Job description summary</summary><p>Source excerpt: '
+            . esc_html($r['description_summary'] ?: 'Not supplied by source')
+            . '</p></details></td><td>' . esc_html($r['advertiser'])
+            . '<small>Sector: ' . esc_html($r['sector']) . '</small></td><td>'
+            . esc_html($r['location']) . '<small>Work mode: '
+            . esc_html($r['working_arrangement']) . '</small></td><td>'
+            . esc_html($r['employment']) . '</td><td>' . esc_html($r['source'])
+            . '</td><td>' . esc_html($date) . '</td><td><a href="'
+            . esc_url($r['url'])
+            . '" target="_blank" rel="noopener noreferrer nofollow">View original advert &#8599;</a></td></tr>';
+    }
+    $tbody_start = '<tbody id="ba-v2-body">';
+    $json_start = '<script type="application/json" id="ba-v2-json">';
+    $tbody_end = '</tbody>';
+    $script_end = '</script>';
+    $body_at = strpos($content, $tbody_start);
+    $body_stop = strpos($content, $tbody_end, $body_at);
+    $script_at = strpos($content, $json_start);
+    $script_stop = strpos($content, $script_end, $script_at);
+    if ($body_at === false || $body_stop === false || $script_at === false || $script_stop === false
+        || $script_at < $body_stop) return $content;
+    $new_body = $tbody_start . $trs . $tbody_end;
+    $content = substr_replace($content, $new_body, $body_at,
+        $body_stop + strlen($tbody_end) - $body_at);
+    $script_at = strpos($content, $json_start);
+    $script_stop = strpos($content, $script_end, $script_at);
+    $content = substr_replace($content, $json_start . $json . $script_end,
+        $script_at, $script_stop + strlen($script_end) - $script_at);
+
+    $status = '<strong id="ba-v2-status" aria-live="polite">';
+    $at = strpos($content, $status);
+    $stop = $at === false ? false : strpos($content, '</strong>', $at);
+    if ($stop !== false) {
+        $count = count($rows);
+        $content = substr_replace($content, $status . $count . ' of ' . $count
+            . ' advertisements shown</strong>', $at, $stop + 9 - $at);
+    }
+    $label = '<p id="ba-snapshot-observed" class="ba-foot">Snapshot loaded from the authenticated WordPress receiver. Last source observation: '
+        . esc_html(wp_date('d/m/Y H:i', $time))
+        . '. Source-observed advertisements; availability is not employer-confirmed.</p>';
+    $marker = '<div class="ba-wrap">';
+    if (strpos($content, $marker) !== false && strpos($content, 'id="ba-snapshot-observed"') === false) {
+        $content = str_replace($marker, $label . $marker, $content);
+    }
+    return $content;
+}
+add_filter('the_content', 'zarafy_ba_live_content_bridge', 18);
