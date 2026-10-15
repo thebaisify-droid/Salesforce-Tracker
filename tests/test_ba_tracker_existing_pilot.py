@@ -24,6 +24,8 @@ class TestBusinessAnalysisExistingPilot(unittest.TestCase):
         self.assertFalse(result["live_refresh_enabled"])
         self.assertEqual(result["new_paid_apify_runs"], 0)
         self.assertEqual(result["excluded"]["outside_taxonomy_or_needs_context"], 5)
+        self.assertEqual(result["excluded"]["cyber_title_mismatch_before_import"], 24)
+        self.assertEqual(sum(result["excluded"].values()), 29)
         self.assertEqual(sum(result["by_family"].values()), 36)
         self.assertEqual(sum(result["by_source"].values()), 36)
         self.assertEqual(sum(row["track"] == "SECURITY" for row in result["records"]), 7)
