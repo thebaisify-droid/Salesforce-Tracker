@@ -122,6 +122,75 @@ def _specialisms(value: str | None) -> list[str]:
     return [str(item) for item in parsed] if isinstance(parsed, list) else [str(parsed)]
 
 
+
+def _short_excerpt(value: str, limit: int = 190) -> str:
+    """A bounded verbatim source excerpt; never fill gaps with generated claims."""
+    clean = re.sub(r"\s+", " ", html.unescape(value or "")).strip(" •:-\t")
+    if len(clean) <= limit:
+        return clean
+    short = clean[:limit + 1].rsplit(" ", 1)[0].rstrip(" ,;:-")
+    return (short or clean[:limit]).rstrip() + "…"
+
+
+def _description_summary(description: str | None, specialisms: list[str]) -> dict[str, Any]:
+    """Extract only explicitly labelled advert sections; retain an excerpt otherwise.
+
+    No external calls, rewriting model, assumptions about responsibilities, or
+    assertion that a skill is mandatory. Safe for an audited dashboard snapshot.
+    """
+    result: dict[str, Any] = {
+        "responsibilities": None,
+        "requirements": None,
+        "tools": [str(skill).strip()[:90] for skill in specialisms if str(skill).strip()][:12],
+        "advert_excerpt": None,
+    }
+    if not isinstance(description, str) or not description.strip():
+        return result
+    source = re.sub(r"(?is)<(script|style)\b[^>]*>.*?</\1\s*>", "", description[:16000])
+    source = re.sub(r"(?i)</?(?:p|li|ul|ol|div|h[1-6]|br)\b[^>]*>", "\n", source)
+    source = html.unescape(re.sub(r"<[^>]*>", " ", source))
+    source = re.sub(
+        r"(?i)\s*(?=(?:key responsibilities|responsibilities|your responsibilities|"
+        r"duties|what you'll do|the role|requirements|essential skills|"
+        r"skills and experience|experience required|what you'll need|"
+        r"what we're looking for|about you)\s*:)",
+        "\n", source,
+    )
+    lines = [re.sub(r"\s+", " ", line).strip(" •\t:-") for line in source.splitlines()]
+    lines = [line for line in lines if line]
+    labels = {
+        "responsibilities": re.compile(
+            r"^(?:key responsibilities|responsibilities|your responsibilities|"
+            r"duties|what you'll do|the role)\s*:?\s*(.*)$", re.I
+        ),
+        "requirements": re.compile(
+            r"^(?:requirements|essential skills|skills and experience|"
+            r"experience required|what you'll need|what we're looking for|"
+            r"about you)\s*:?\s*(.*)$", re.I
+        ),
+    }
+    for i, line in enumerate(lines):
+        for key, pattern in labels.items():
+            if result[key]:
+                continue
+            match = pattern.match(line)
+            if not match:
+                continue
+            items = [match.group(1)] if match.group(1) else []
+            for candidate in lines[i + 1:i + 4]:
+                if any(regex.match(candidate) for regex in labels.values()):
+                    break
+                items.append(candidate)
+                if len(" ".join(items)) > 190:
+                    break
+            excerpt = _short_excerpt(" ".join(items), 210)
+            if excerpt:
+                result[key] = excerpt
+    if not result["responsibilities"] or not result["requirements"]:
+        result["advert_excerpt"] = _short_excerpt(" ".join(lines), 210) if lines else None
+    return result
+
+
 class Store:
     def __init__(self, path: str | Path):
         self.path = Path(path)
@@ -455,7 +524,7 @@ class Store:
               end_client_name, end_client_sector, location,
               employment_type, contract_type,
               salary_min, salary_max, salary_currency, salary_period,
-              job_url, posted_at, first_seen_at, last_seen_at,
+              job_url, description, posted_at, first_seen_at, last_seen_at,
               lifecycle_status, lifecycle_reason, lifecycle_updated_at, last_verified_at,
               role_review_required, sector_review_required
             FROM vacancies
@@ -486,6 +555,9 @@ class Store:
                 "role_family": row["role_family"] or "Unresolved",
                 "seniority": row["role_seniority"] or "Standard",
                 "specialisms": _specialisms(row["role_specialism"]),
+                "job_summary": _description_summary(
+                    row["description"], _specialisms(row["role_specialism"])
+                ),
                 "end_client_name": row["end_client_name"],
                 "sector": row["end_client_sector"] or "Unresolved",
                 "location": row["location"],
