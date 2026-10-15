@@ -1,0 +1,175 @@
+{
+  "schema": "ba-cyber-historical-indeed-evidence/v1",
+  "status": "HISTORICAL_SOURCE_ONLY",
+  "acquired_before": "2026-10-15",
+  "actor_runs_started_by_import": 0,
+  "publication_status": "PREVIEW_HISTORICAL_NOT_CONFIRMED_ACTIVE",
+  "source": "Indeed UK",
+  "source_run_counts": [
+    {
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_rows": 15,
+      "title_matched": 7
+    },
+    {
+      "run_id": "lhAIJ1XaBm7vPB9sw",
+      "dataset_id": "KVRaBOkPnzLtkguOh",
+      "source_rows": 10,
+      "title_matched": 4
+    },
+    {
+      "run_id": "cfBxgqXh3BgqsSgoc",
+      "dataset_id": "dFKg83uGI0MfPVeho",
+      "source_rows": 10,
+      "title_matched": 0
+    }
+  ],
+  "input_record_count": 35,
+  "prelim_title_matches": 11,
+  "records": [
+    {
+      "source": "Indeed UK",
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_job_id": "d6b4dbe407481cc5",
+      "title": "Technical Cyber Security Manager",
+      "advertiser": "Inspired Villages",
+      "location": "Nottingham NG12",
+      "url": "https://uk.indeed.com/viewjob?jk=d6b4dbe407481cc5",
+      "posted_at": "2026-09-23T05:00:00.000Z",
+      "source_excerpt": "Maintain a prioritised cyber security improvement roadmap. Experience leading or supporting cyber security investigations and incident response.",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_job_id": "efbcdd8118a397fa",
+      "title": "Cyber Threat Detection & Response Apprentice",
+      "advertiser": "QA Ltd",
+      "location": "Oswestry SY10 8NR",
+      "url": "https://uk.indeed.com/viewjob?jk=efbcdd8118a397fa",
+      "posted_at": "2026-08-21T05:00:00.000Z",
+      "source_excerpt": "Mentorship from experienced cyber security professionals. Collaborating with the cyber security team to respond to incidents and implement mitigation strategies…",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_job_id": "49090511f1738eeb",
+      "title": "Senior Manager, Cyber Architect, Cyber Security, Financial Services",
+      "advertiser": "EY",
+      "location": "Edinburgh EH3",
+      "url": "https://uk.indeed.com/viewjob?jk=49090511f1738eeb",
+      "posted_at": "2026-10-02T05:00:00.000Z",
+      "source_excerpt": "This role will see you take a key position in developing EY’s cyber security capabilities. You will also be expected to take a supporting role in building out…",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_job_id": "379514fb6852375d",
+      "title": "Cyber Security Engineer",
+      "advertiser": "SThree",
+      "location": "Glasgow",
+      "url": "https://uk.indeed.com/viewjob?jk=379514fb6852375d",
+      "posted_at": "2026-05-20T05:00:00.000Z",
+      "source_excerpt": "5+ years in a senior security engineering or architect role. Engineer-first mentality: solves security problems through systems thinking and automation.",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_job_id": "20fdf094041231b1",
+      "title": "Cyber Security Engineer Apprentice",
+      "advertiser": "QA Ltd",
+      "location": "Oswestry SY10 8NR",
+      "url": "https://uk.indeed.com/viewjob?jk=20fdf094041231b1",
+      "posted_at": "2026-08-21T05:00:00.000Z",
+      "source_excerpt": "Mentorship from experienced cyber security professionals. You’ll work alongside experienced cyber security and IT professionals to protect systems, networks and…",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_job_id": "e5ca2cd23a1a9f23",
+      "title": "IT Security & Compliance Manager",
+      "advertiser": "Paranova Print and Packaging",
+      "location": "Spalding",
+      "url": "https://uk.indeed.com/viewjob?jk=e5ca2cd23a1a9f23",
+      "posted_at": "2026-09-28T05:00:00.000Z",
+      "source_excerpt": "Experience in information security , cyber risk, security operations or IT compliance. Driving vulnerability management, incident response and security…",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "7SvLoLd7RZpCjO0Hq",
+      "dataset_id": "2uG7TW13hpphfQ0P8",
+      "source_job_id": "f1353ec9d04ef8e0",
+      "title": "Senior Manager, Cyber Architect, Cyber Security, Financial Services",
+      "advertiser": "EY",
+      "location": "Bristol BS1 6BX",
+      "url": "https://uk.indeed.com/viewjob?jk=f1353ec9d04ef8e0",
+      "posted_at": "2026-10-02T05:00:00.000Z",
+      "source_excerpt": "This role will see you take a key position in developing EY’s cyber security capabilities. You will also be expected to take a supporting role in building out…",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "lhAIJ1XaBm7vPB9sw",
+      "dataset_id": "KVRaBOkPnzLtkguOh",
+      "source_job_id": "6505541de21cd83c",
+      "title": "Business Analyst, People Transformation, Human Capital, Defence & Security, Technology and Transformation",
+      "advertiser": "Deloitte",
+      "location": "Bristol",
+      "url": "https://uk.indeed.com/viewjob?jk=6505541de21cd83c",
+      "posted_at": "2026-05-08T05:00:00.000Z",
+      "source_excerpt": "Excellent facilitation, communication, and presentation skills, with the ability to convey complex information clearly to diverse audiences.",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "lhAIJ1XaBm7vPB9sw",
+      "dataset_id": "KVRaBOkPnzLtkguOh",
+      "source_job_id": "d12cbdc9de580c35",
+      "title": "Business Analyst (Data Science) - Tech Consultancy - Defence & Security",
+      "advertiser": "Deloitte",
+      "location": "Bristol",
+      "url": "https://uk.indeed.com/viewjob?jk=d12cbdc9de580c35",
+      "posted_at": "2026-07-31T05:00:00.000Z",
+      "source_excerpt": "All applicants must hold UK security clearance to Developed Vetting level,. Your primary responsibility is to make data valuable for our clients.",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "lhAIJ1XaBm7vPB9sw",
+      "dataset_id": "KVRaBOkPnzLtkguOh",
+      "source_job_id": "db37c7655f877487",
+      "title": "Consultant – Manager, Business Analyst (Agile Product Team), Defence & Security",
+      "advertiser": "Deloitte",
+      "location": "Bristol",
+      "url": "https://uk.indeed.com/viewjob?jk=db37c7655f877487",
+      "posted_at": "2026-06-18T05:00:00.000Z",
+      "source_excerpt": "All applicants must be UK security cleared to Developed Vetting level or, willing and able to go through the process.",
+      "source_observed_only": true
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "lhAIJ1XaBm7vPB9sw",
+      "dataset_id": "KVRaBOkPnzLtkguOh",
+      "source_job_id": "e68e1c08fd44c0fe",
+      "title": "Contract - Business Analyst / Project Manager (GMI Migration)",
+      "advertiser": "Deloitte",
+      "location": "London",
+      "url": "https://uk.indeed.com/viewjob?jk=e68e1c08fd44c0fe",
+      "posted_at": "2026-10-02T05:00:00.000Z",
+      "source_excerpt": "Understanding of security master setup, end-of-market runs (EOM), regional processing, and core report structures. Day rate: Competitive (Inside IR35).",
+      "source_observed_only": true
+    }
+  ]
+}
