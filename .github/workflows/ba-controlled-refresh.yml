@@ -28,10 +28,14 @@ jobs:
           python -m scripts.ba_recurring_cycle
           python -m scripts.validate_ba_five_source_contract
           python -m unittest discover -s tests -p test_ba_recurring_cycle.py -v
-      # The opt-in switch prevents paid requests even if a future commit
-      # mistakenly enables local config. Manual dispatch is always dry.
+      - name: Check standing monetary authorisation in committed BA config
+        id: approval
+        run: |
+          python -c 'import json; from pathlib import Path; c=json.loads(Path("business-analysis-tracker/config/automated_refresh_pipeline.json").read_text()); print("ready="+str(all(c.get(k) is True for k in ("enabled","paid_acquisition_enabled","scheduling_enabled","recurring_budget_approved","pricing_guard_verified","wordpress_delivery_enabled"))).lower())' >> "$GITHUB_OUTPUT"
+      # No recurring spend unless the committed approval gate is enabled.
+      # The optional repository variable 'false' provides an immediate pause.
       - name: Collect five BA boards once and deliver only on quality-passed success
-        if: ${{ github.event_name == 'schedule' && github.run_attempt == 1 && vars.BA_CONTROLLED_REFRESH_ENABLED == 'true' }}
+        if: ${{ github.event_name == 'schedule' && github.run_attempt == 1 && steps.approval.outputs.ready == 'true' && vars.BA_CONTROLLED_REFRESH_ENABLED != 'false' }}
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
