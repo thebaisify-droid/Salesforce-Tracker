@@ -61,7 +61,7 @@
       "input_schema_verified_for_ba": false,
       "pricing_verified": false,
       "pilot_authorised": false,
-      "status": "SUSPENDED_AFTER_TWO_EXIT_91_FAILURES",
+      "status": "MCP_ORIGIN_SUSPENDED_API_ORIGIN_RECOVERED",
       "suspended": true,
       "manual_recovery_allowed": false,
       "automatic_run_allowed": false,
@@ -69,7 +69,7 @@
         "q43qj80CzgOjKP3Qb",
         "JlPpGNUSYbNmgr0Li"
       ],
-      "resume_only_after": "Actor vendor diagnosis, billing confirmation, fresh per-run authorisation"
+      "resume_only_after": "Never use MCP for JobServe; controlled approved BA recurring API runs are separate from this historical pilot contract"
     }
   ],
   "required_normalized_fields": [
@@ -105,6 +105,6 @@
     "No modifying Salesforce saved Apify Tasks, GitHub Salesforce jobs or Salesforce WordPress receiver",
     "Run five-source preflight and QA, then separately enable an approved BA-only schedule"
   ],
-  "note": "Config is an enforceable specification/validator input only; not a live collector, not evidence five sources are currently succeeding.",
-  "jobserve_policy": "No automatic or manual JobServe launches while suspended. Keep JobServe a required fifth source for complete five-source publication; a four-source result must not masquerade as five-source success."
+  "note": "Historical disabled five-board pilot contract retained for original tests. It does NOT configure the approved active recurring BA acquisition. Runtime schedule, approved caps and source actors are controlled by business-analysis-tracker/config/automated_refresh_pipeline.json and scripts/ba_recurring_cycle.py.",
+  "jobserve_policy": "Legacy MCP-origin JobServe failed twice (exit 91). Recovered standard-Apify-API JobServe run succeeded, and the approved recurring five-source workflow uses standard API only, never MCP. This historical contract remains disabled; all five sources are mandatory for fresh publication."
 }
