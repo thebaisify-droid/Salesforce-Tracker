@@ -35,24 +35,18 @@ class TestBARecurringCycle(unittest.TestCase):
         self.assertFalse(scheduled_slot(datetime(2026,10,16,7,35,tzinfo=timezone.utc))["due"])
         self.assertFalse(scheduled_slot(datetime(2026,10,17,6,35,tzinfo=timezone.utc))["due"])
 
-    def test_monthly_ninth_slot_ceiling(self):
-        # Fifth Tuesday/Friday can be denied when a month has ten planned slots.
-        # Locate an actual month with more than nine Tue/Fri dates.
+    def test_monthly_slot_count_never_exceeds_nine(self):
+        # At most nine Tue/Fri pairs can occur in a calendar month.
         from calendar import monthrange
-        found=None
         for year in (2026,2027):
             for month in range(1,13):
                 slots=[day for day in range(1,monthrange(year,month)[1]+1)
                        if date(year,month,day).weekday() in (1,4)]
-                if len(slots)>9:
-                    found=(year,month,slots[-1]);break
-            if found:break
-        self.assertIsNotNone(found)
-        y,m,d=found
-        dt=datetime(y,m,d,7,35,tzinfo=ZoneInfo("Europe/London"))
-        report=scheduled_slot(dt)
-        self.assertFalse(report["due"])
-        self.assertEqual(report["reason"],"MONTHLY_SLOT_CAP")
+                self.assertLessEqual(len(slots),9)
+                y,m,d=year,month,slots[-1]
+                dt=datetime(y,m,d,7,35,tzinfo=ZoneInfo("Europe/London"))
+                self.assertTrue(scheduled_slot(dt)["due"])
+                self.assertLessEqual(scheduled_slot(dt)["month_slots"],9)
 
     def test_snapshot_adapts_current_run_provenance_not_historic(self):
         sources=["CV-Library","Totaljobs","Reed UK","Indeed UK","JobServe"]
