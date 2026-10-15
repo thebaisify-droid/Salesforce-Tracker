@@ -1,0 +1,90 @@
+{
+  "schema": "ba-five-source-actor-input-plan/v1",
+  "as_of": "2026-10-15",
+  "status": "SCHEMA_INSPECTED_READ_ONLY_NOT_PRICE_APPROVED",
+  "execution_enabled": false,
+  "mode": "ONE_QUERY_PER_SOURCE_PILOT",
+  "keyword": "business analyst",
+  "country": "United Kingdom",
+  "families_follow_up": "Rotate queries across all 22 role families on future budgeted refreshes; pilot only tests Business Analysis, not full taxonomy coverage.",
+  "source_scope": "Five fresh source-specific Actor runs required. No Salesforce saved Task, no Salesforce tracking query, no inherited Actor incremental state.",
+  "source_profiles": [
+    {
+      "name": "CV-Library",
+      "actor": "blackfalcondata/cv-library-scraper",
+      "input": {
+        "query": "business analyst",
+        "country": "GB",
+        "maxResults": 10,
+        "maxPages": 1,
+        "postedWithinDays": "14",
+        "sortBy": "recent",
+        "includeDetails": false,
+        "incrementalMode": false,
+        "emitExpired": false
+      }
+    },
+    {
+      "name": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "input": {
+        "mode": "search",
+        "keywords": "business analyst",
+        "maxListings": 10,
+        "maxPages": 1,
+        "postedWithin": "14",
+        "sortBy": "date",
+        "fetchDetails": false,
+        "incrementalMode": false
+      }
+    },
+    {
+      "name": "Reed UK",
+      "actor": "wildorigins/uk-jobs-reed",
+      "input": {
+        "keywords": "business analyst",
+        "maxResults": 10,
+        "datePosted": "lastmonth",
+        "fetchDetails": true
+      }
+    },
+    {
+      "name": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "input": {
+        "query": "business analyst",
+        "country": "uk",
+        "maxResults": 10
+      }
+    },
+    {
+      "name": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "input": {
+        "keywords": [
+          "business analyst"
+        ],
+        "country": "gb",
+        "maxResults": 10,
+        "includeDescription": true,
+        "onlyUniqueJobs": true
+      }
+    }
+  ],
+  "budget": {
+    "account_limit_usd": 19,
+    "salesforce_reserve_usd": 8,
+    "max_total_charge_usd": null,
+    "per_source_max_charge_usd": {},
+    "approved": false,
+    "pricing_confirmed": false,
+    "fresh_apify_usage_checked": false
+  },
+  "apify_actions": {
+    "actor_runs_to_launch": 0,
+    "manual_pilot_only": true,
+    "automatic_retry": false,
+    "publish_on_success": false
+  },
+  "note": "No Actor starts or charges. This is a read-only inspected schema plan; every paid execution needs per-run caps after pricing/usage and explicit approval."
+}
