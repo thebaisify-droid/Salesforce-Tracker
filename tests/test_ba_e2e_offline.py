@@ -19,7 +19,7 @@ def example():
     return {"schema":"ba-five-source-completed-batch/v1",
      "sources":[{"name":name,"status":"SUCCEEDED","attempted":True,
        "run_id":"offline-test-run-"+str(i),"dataset_id":"offline-test-dataset-"+str(i),
-       "observed_at":"2026-10-15T15:00:00Z","records":[row]}
+       "observed_at":"2026-10-15T15:00:00Z","records":[deepcopy(row)]}
        for i,(name,row) in enumerate(BOARDS)]}
 class TestBAE2EDryRun(unittest.TestCase):
     @classmethod
