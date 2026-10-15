@@ -1,0 +1,58 @@
+{
+  "schema": "ba-sector-employer-evidence/v1",
+  "scope": "ADVERTISER_ORGANISATION_ONLY",
+  "updated_at": "2026-10-15",
+  "usage": "Exact advertiser name -> independently supported advertiser-organisation sector, not end-client sector. Do not infer client or industry from occupation, security clearance or job board category.",
+  "employers": [
+    {
+      "advertiser": "Deloitte",
+      "sector": "Professional Services",
+      "evidence_url": "https://www.deloitte.com/uk/en/what-we-do.html",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "EY",
+      "sector": "Professional Services",
+      "evidence_url": "https://www.ey.com/en_uk/people/ey-uk",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Capgemini",
+      "sector": "Technology Services",
+      "evidence_url": "https://www.capgemini.com/gb-en/about-us/who-we-are/what-we-do/",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Bupa",
+      "sector": "Healthcare & Life Sciences",
+      "evidence_url": "https://www.bupa.com/company/about-us/what-we-do",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Dunelm",
+      "sector": "Retail & Consumer",
+      "evidence_url": "https://corporate.dunelm.com/investors/results-reports-and-presentations/annual-report-2026/",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Falkirk Council",
+      "sector": "Public Sector",
+      "evidence_url": "https://www.falkirk.gov.uk/",
+      "basis": "LOCAL_AUTHORITY_OFFICIAL_SITE"
+    },
+    {
+      "advertiser": "Clackmannanshire Council",
+      "sector": "Public Sector",
+      "evidence_url": "https://www.clacks.gov.uk/",
+      "basis": "LOCAL_AUTHORITY_OFFICIAL_SITE"
+    }
+  ],
+  "blocked_shortcuts": [
+    "Never set end-client sector from advertiser unless separately established as hiring end-client",
+    "QA Ltd in apprenticeship data may be training provider rather than hiring employer",
+    "SThree is a recruiter: do not assign target client industry from recruiter",
+    "Do not label an IT/cyber role as Technology Services merely from its role family",
+    "Sector from a job-board occupational category is not necessarily employer sector",
+    "Leave remaining sector as Not specified, flag lack of industry evidence"
+  ]
+}

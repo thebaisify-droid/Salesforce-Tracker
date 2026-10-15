@@ -1,0 +1,100 @@
+{
+  "schema": "ba-five-source-controlled-refresh-contract/v1",
+  "name": "UK Business Analysis / Product / Delivery / Cyber",
+  "date": "2026-10-15",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "scheduled_runs": [],
+  "actor_runs_to_launch": 0,
+  "publication_enabled": false,
+  "require_all_five_sources_attempted": true,
+  "publication_gate": "ALL_FIVE_SUCCEEDED_AND_QA_PASSED",
+  "failure_policy": "KEEP_LAST_SUCCESSFUL_SNAPSHOT_WITH_SOURCE_STATUS; DO_NOT_PUBLISH_PARTIAL_AS_FULL",
+  "shared_account_monthly_limit_usd": 19,
+  "protected_salesforce_reserve_usd": 8,
+  "ba_spend_approved_usd": 0,
+  "budget_checks": "Fresh Apify account limit, actual headroom, and minimum $8 Salesforce reserve immediately before any paid run; fail closed if unavailable",
+  "automatic_retries_enabled": false,
+  "source_refresh_policy": "Five BA-specific search profiles, one for each distinct job board, independent of Salesforce saved Tasks; rotate balanced family coverage within authorised budget; no platform suspensions from repeated orchestration",
+  "sources": [
+    {
+      "name": "CV-Library",
+      "actor": "blackfalcondata/cv-library-scraper",
+      "mode": "NEW_ISOLATED_BA_INPUT",
+      "family_query_example": "business analyst",
+      "input_schema_verified_for_ba": false,
+      "pricing_verified": false,
+      "pilot_authorised": false
+    },
+    {
+      "name": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "mode": "NEW_ISOLATED_BA_INPUT",
+      "family_query_example": "business analyst",
+      "input_schema_verified_for_ba": false,
+      "pricing_verified": false,
+      "pilot_authorised": false
+    },
+    {
+      "name": "Reed UK",
+      "actor": "wildorigins/uk-jobs-reed",
+      "mode": "NEW_ISOLATED_BA_INPUT",
+      "family_query_example": "business analyst",
+      "input_schema_verified_for_ba": false,
+      "pricing_verified": false,
+      "pilot_authorised": false
+    },
+    {
+      "name": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "mode": "NEW_ISOLATED_BA_INPUT",
+      "family_query_example": "business analyst",
+      "input_schema_verified_for_ba": false,
+      "pricing_verified": false,
+      "pilot_authorised": false
+    },
+    {
+      "name": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "mode": "NEW_ISOLATED_BA_INPUT",
+      "family_query_example": "business analyst",
+      "input_schema_verified_for_ba": false,
+      "pricing_verified": false,
+      "pilot_authorised": false
+    }
+  ],
+  "required_normalized_fields": [
+    "title",
+    "advertiser",
+    "location",
+    "posted_date",
+    "employment",
+    "working_arrangement",
+    "role_family",
+    "sector",
+    "sector_basis",
+    "sector_evidence_url",
+    "original_advert_url",
+    "job_source",
+    "source_run_id",
+    "observed_at"
+  ],
+  "source_status_metrics": [
+    "attempted",
+    "status",
+    "dataset_item_count",
+    "accepted",
+    "duplicates",
+    "last_observed_at",
+    "charge_usd",
+    "error_type"
+  ],
+  "execution_prerequisites": [
+    "Fresh independent input-schema review for each source and pricing confirmation",
+    "Validate the $19 hard account ceiling and preserve at least $8 Salesforce headroom",
+    "Approve a bounded one-time total charge explicitly before any paid collection",
+    "No modifying Salesforce saved Apify Tasks, GitHub Salesforce jobs or Salesforce WordPress receiver",
+    "Run five-source preflight and QA, then separately enable an approved BA-only schedule"
+  ],
+  "note": "Config is an enforceable specification/validator input only; not a live collector, not evidence five sources are currently succeeding."
+}
