@@ -1,0 +1,42 @@
+name: Salesforce five-source one-time authorised pilot
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+
+jobs:
+  one-time-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prevent repeated dispatches and workflow reruns
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.verify_salesforce_pilot_dispatch_once
+      - name: Fresh account billing and protected reserve preflight
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.salesforce_controlled_refresh_budget
+      - name: Exactly five capped attempts, no retry and no publication
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          PILOT_APPROVAL: AUTHORISE_SALESFORCE_FIVE_SOURCE_090_ONCE
+        run: python -m scripts.execute_salesforce_five_source_pilot_once
+      - name: Save one-time pilot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: approved-five-source-pilot-evidence
+          path: salesforce-five-source-pilot-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
