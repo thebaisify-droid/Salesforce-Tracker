@@ -46,7 +46,9 @@ class BAReadOnlyPriceTest(unittest.TestCase):
         self.assertIn("JobServe:ACTOR_MINIMUM_EXCEEDS_CAP",failure["issues"])
         report["actor_pricing"][-1]["minimal_max_total_charge_usd"]=0.05
         report["actor_pricing"][-1]["platform_usage_paid_by_user"]=True
-        self.assertFalse(validate_cost_models(report,self.config)["pricing_guard_passed"])
+        # The REST API total-run cap also covers pay-per-event user-paid
+        # platform usage, so this metadata flag must not block by itself.
+        self.assertTrue(validate_cost_models(report,self.config)["pricing_guard_passed"])
 
     def test_changed_account_limit_fails_closed(self):
         def get(path,token):
