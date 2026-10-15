@@ -9,14 +9,14 @@ A dedicated GitHub workflow has *twice-weekly* Tuesday/Friday schedules at **07:
 1. The committed active config now sets `enabled=true`, `paid_acquisition_enabled=true`, `scheduling_enabled=true`, `recurring_budget_approved=true`, `pricing_guard_verified=true`, and `wordpress_delivery_enabled=true`. The legacy `five_source_refresh.json` is historical, disabled pilot documentation only.
 2. The optional GitHub Actions repository variable `BA_CONTROLLED_REFRESH_ENABLED` must not be `false` (emergency pause). When not paused, committed approval flags control activation.
 3. Live Apify GET confirms the account limit is exactly $19 and that the $8 Salesforce reserve plus the remaining per-run BA cap are available.
-4. Current per-Actor pricing definitions validate the declared result-charge limits before the first Actor launch, or no paid request is sent.
+4. Current per-Actor pricing definitions and publisher-declared minimums validate the caps before the first launch. Apify's current [Run Actor API](https://docs.apify.com/api/v2/actors-runs-post) documents `maxTotalChargeUsd` as a maximum **total run charge for all pricing models**, including Actors which additionally bill platform usage; do not infer an uncapped run solely from `isPPEPlatformUsagePaidByUser=true`. Any unsupported model or minimum above the user-approved cap blocks the entire refresh before launch.
 
 **Authorised standing ceiling:** up to $1.20 per full five-source refresh, 10 requested results per source, with per-source caps CV-Library $0.50, Totaljobs $0.20, Reed UK $0.15, Indeed UK $0.20, JobServe $0.15. Up to nine Tue/Fri slots per calendar month = $10.80 in requested ceiling amounts, under an $11 BA allocation, within the shared $19 Apify limit with an $8 protected Salesforce reserve. This is not a guarantee of actual billing for actors whose charging model is unknown. Actual account and actor charge details must satisfy the runtime guards before every paid launch.
 
 ## What happens after approval and activation
 
 - Two UTC cron events accommodate UK daylight saving; only the one matching 07:35 UK executes a paid run. GitHub workflow reruns and manual dispatch **cannot** start paid acquisition.
-- Acquire each source **once** using the standard Apify API (never JobServe MCP), no retries and no shared Salesforce saved Task changes.
+- Acquire each source **once** using the standard Apify API (never JobServe MCP), with `maxTotalChargeUsd` on every Actor POST, `restartOnError=false`, no automatic retries, and no shared Salesforce saved Task changes.
 - Verify account balance and protected Salesforce reserve immediately before every individual Actor POST. The workflow uses the same GitHub Actions concurrency group as Salesforce.
 - GET completed source datasets, confirm Actor ID, run success and item-count integrity. Normalize/classify only the 22-family role taxonomy, preserve original HTTPS advert links, include source-based sectors, flag possible duplicates instead of deleting uncertain cases.
 - Require all five sources to yield matching qualifying records. A failed/empty/incomplete source, invalid URLs, unsupported price model or WordPress rejection **preserves the last published snapshot**.
