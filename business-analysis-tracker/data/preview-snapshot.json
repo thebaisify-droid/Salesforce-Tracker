@@ -9,7 +9,8 @@
   "source_record_count": 65,
   "retained_record_count": 36,
   "excluded": {
-    "outside_taxonomy_or_needs_context": 5
+    "outside_taxonomy_or_needs_context": 5,
+    "cyber_title_mismatch_before_import": 24
   },
   "preclassified_cyber_source_count": 11,
   "job_families": [
