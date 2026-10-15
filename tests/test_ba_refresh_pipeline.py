@@ -12,10 +12,12 @@ class BARefreshPipelineTests(unittest.TestCase):
     def setUpClass(cls):
         cls.cfg=json.loads(CONFIG.read_text(encoding="utf8"))
         cls.data=json.loads(CANDIDATE.read_text(encoding="utf8"))
-    def test_paid_workflow_is_disabled(self):
+    def test_user_approved_recurring_caps_are_active(self):
         p=validate(self.cfg)
         self.assertTrue(p["valid"])
-        self.assertFalse(p["enabled"])
+        self.assertTrue(p["enabled"])
+        self.assertTrue(self.cfg["recurring_budget_approved"])
+        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],11)\n        self.assertTrue(self.cfg["wordpress_delivery_enabled"])
         self.assertEqual(p["max_total_charge_usd"],1.2)
         self.assertEqual(p["actor_runs_launched"],0)
     def test_bad_budget_fails(self):
