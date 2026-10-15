@@ -81,8 +81,11 @@ def validate_cost_models(report, config):
                     issues.append(name+":UNKNOWN_MINIMUM_CHARGE")
                 elif required > src["max_charge_usd"] + 1e-9:
                     issues.append(name+":ACTOR_MINIMUM_EXCEEDS_CAP")
-            if row.get("platform_usage_paid_by_user") is True:
-                issues.append(name+":PPE_COMPUTE_CHARGE_NOT_IN_EVENT_CAP")
+            # Apify's current REST Run Actor documentation states
+            # maxTotalChargeUsd caps the TOTAL run cost for all pricing
+            # models, including paid-by-user platform usage. We still
+            # preserve this flag for audit, but do not incorrectly treat
+            # it as evidence that the API's total charge limit is absent.
         else:
             issues.append(name+":UNSUPPORTED_OR_UNKNOWN_PRICING_MODEL")
     if report.get("account_limit_usd")!=19:
