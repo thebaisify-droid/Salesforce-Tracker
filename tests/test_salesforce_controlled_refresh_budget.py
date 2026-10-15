@@ -38,4 +38,4 @@ class ControlledRefreshSafetyTests(unittest.TestCase):
         self.assertNotIn("git push",controlled)
         self.assertIn("vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true'", controlled)
         self.assertIn("verify_controlled_handoff", controlled)
-        self.assertNotIn("SF_WP_APPLICATION_PASSWORD",controlled)
+        self.assertIn("SF_WP_APPLICATION_PASSWORD: ${{ secrets.SF_WP_APPLICATION_PASSWORD }}",controlled)
