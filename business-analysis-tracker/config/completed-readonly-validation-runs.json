@@ -1,0 +1,37 @@
+{
+  "schema": "ba-source-run-receipts/v1",
+  "publication_approved": false,
+  "source": "historical completed runs for one-off read-only dryrun, not evidence of scheduled refresh",
+  "receipts": [
+    {
+      "source": "CV-Library",
+      "run_id": "qo9YEfFlbYaV31MkK",
+      "attempted": true,
+      "status": "SUCCEEDED"
+    },
+    {
+      "source": "Totaljobs",
+      "run_id": "2TlvO2bI41Bl50TeR",
+      "attempted": true,
+      "status": "SUCCEEDED"
+    },
+    {
+      "source": "Reed UK",
+      "run_id": "xLIKQOkwaZE5jFJn7",
+      "attempted": true,
+      "status": "SUCCEEDED"
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "i6unDcLG8Qh1XSftt",
+      "attempted": true,
+      "status": "SUCCEEDED"
+    },
+    {
+      "source": "JobServe",
+      "run_id": "c2PSagDDBiesSovtt",
+      "attempted": true,
+      "status": "SUCCEEDED"
+    }
+  ]
+}
