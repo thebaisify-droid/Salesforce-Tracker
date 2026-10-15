@@ -1,0 +1,26 @@
+name: BA query-route WordPress authentication (one-time, read-only)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-query-rest-auth-once.yml'
+permissions:
+  contents: read
+concurrency:
+  group: ba-query-route-auth-readonly
+  cancel-in-progress: false
+jobs:
+  check:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[BA-QUERY-REST-ONCE-20261015]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate restricted BA identity using only query-route GET
+        env:
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.ba_auth_only_probe
