@@ -1,0 +1,22 @@
+name: BA read-only recurring pricing assessment (one time)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-pricing-readonly-once.yml'
+permissions:
+  contents: read
+jobs:
+  review:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[BA-PRICING-READONLY-20261015]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect $19 account limit and Actor charge definitions (GET only)
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.ba_pricing_readonly
