@@ -12,6 +12,8 @@ concurrency:
 
 jobs:
   refresh:
+    # Legacy workflow disabled unless expressly enabled; prevents bypass of reserve-aware guard.
+    if: ${{ vars.SF_LEGACY_REFRESH_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:
