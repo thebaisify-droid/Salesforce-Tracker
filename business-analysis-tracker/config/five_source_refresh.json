@@ -60,7 +60,16 @@
       "family_query_example": "business analyst",
       "input_schema_verified_for_ba": false,
       "pricing_verified": false,
-      "pilot_authorised": false
+      "pilot_authorised": false,
+      "status": "SUSPENDED_AFTER_TWO_EXIT_91_FAILURES",
+      "suspended": true,
+      "manual_recovery_allowed": false,
+      "automatic_run_allowed": false,
+      "failure_run_ids": [
+        "q43qj80CzgOjKP3Qb",
+        "JlPpGNUSYbNmgr0Li"
+      ],
+      "resume_only_after": "Actor vendor diagnosis, billing confirmation, fresh per-run authorisation"
     }
   ],
   "required_normalized_fields": [
@@ -96,5 +105,6 @@
     "No modifying Salesforce saved Apify Tasks, GitHub Salesforce jobs or Salesforce WordPress receiver",
     "Run five-source preflight and QA, then separately enable an approved BA-only schedule"
   ],
-  "note": "Config is an enforceable specification/validator input only; not a live collector, not evidence five sources are currently succeeding."
+  "note": "Config is an enforceable specification/validator input only; not a live collector, not evidence five sources are currently succeeding.",
+  "jobserve_policy": "No automatic or manual JobServe launches while suspended. Keep JobServe a required fifth source for complete five-source publication; a four-source result must not masquerade as five-source success."
 }
