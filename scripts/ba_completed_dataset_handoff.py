@@ -76,7 +76,7 @@ def main():
     if qa["status"]!="DRY_RUN_PASS_NOT_PUBLISHED":
         raise ValueError("Quality gate blocked; live snapshot preserved")
     args.output_dir.mkdir(parents=True,exist_ok=True)
-    for name,doc in [("receipts-batch",batch),("qa-report",{k:v for k,v in qa.items() if k not in ("stage","candidate","package")}),
+    for name,doc in [("qa-report",{k:v for k,v in qa.items() if k not in ("stage","candidate","package")}),
                      ("delivery-preview",qa["package"])]:
         (args.output_dir/(name+".json")).write_text(json.dumps(doc,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     print(json.dumps({"status":"READ_ONLY_FIVE_SOURCE_HANDOFF_PASSED",
