@@ -1,0 +1,29 @@
+name: Business Analysis five-source read-only preflight
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ba-five-source-readonly-preflight
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate independent BA source inputs and publication guard
+        run: |
+          python -m scripts.validate_ba_five_source_contract
+          python -m scripts.ba_five_source_preflight
+          python -m unittest discover -s tests -p test_ba_five_source_preflight.py -v
+      - name: Get fresh Apify account limit and reserve (read-only)
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.ba_five_source_preflight --account
