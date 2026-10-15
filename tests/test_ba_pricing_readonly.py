@@ -1,7 +1,7 @@
 """No-charge pricing preflight requires live account limits and five Actor metadata responses."""
 import json,unittest
 from scripts.ba_controlled_refresh import CONFIG
-from scripts.ba_pricing_readonly import check
+from scripts.ba_pricing_readonly import check, validate_cost_models
 
 class BAReadOnlyPriceTest(unittest.TestCase):
     @classmethod
@@ -21,6 +21,19 @@ class BAReadOnlyPriceTest(unittest.TestCase):
         self.assertEqual(len(checked),6)
         self.assertEqual(result["actor_runs_started"],0)
         self.assertEqual(result["wordpress_requests"],0)
+    def test_price_safety_rejects_uncapped_and_unknown_sources(self):
+        template={"account_limit_usd":19,"actor_pricing":[
+          {"source":x["name"],"pricing_model":"PRICE_PER_DATASET_ITEM",
+           "price_per_unit_usd":0.01} for x in self.config["sources"]]}
+        result=validate_cost_models(template,self.config)
+        self.assertTrue(result["pricing_guard_passed"],result["issues"])
+        template["actor_pricing"][2]["price_per_unit_usd"]=0.5
+        self.assertFalse(validate_cost_models(template,self.config)["pricing_guard_passed"])
+        template["actor_pricing"][2]["pricing_model"]=None
+        self.assertFalse(validate_cost_models(template,self.config)["pricing_guard_passed"])
+        template["actor_pricing"][2]["pricing_model"]="PAY_PER_EVENT"
+        self.assertTrue(validate_cost_models(template,self.config)["pricing_guard_passed"])
+
     def test_changed_account_limit_fails_closed(self):
         def get(path,token):
             return {"limits":{"maxMonthlyUsageUsd":30},"current":{"monthlyUsageUsd":8}}
