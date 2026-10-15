@@ -30,7 +30,7 @@ jobs:
             exit 2
           fi
           echo "Recurring BA pause variable does not block scheduled execution"
-      - name: Read-only $19 account reserve and all five Actor price checks
+      # No-cost repeat: confirm Apify's documented all-model total-run cap\n      - name: Read-only $19 account reserve and all five Actor price checks
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: python -m scripts.ba_pricing_readonly
