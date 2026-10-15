@@ -1,0 +1,32 @@
+name: Review existing Salesforce five-source datasets (read-only)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: salesforce-existing-dataset-review
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Classify immutable existing datasets without Actor runs
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.review_salesforce_five_source_20261015
+      - name: Preserve classified candidates, provenance and QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: salesforce-five-source-quality-review
+          path: review/salesforce-pilot-20261015/
+          if-no-files-found: warn
+          retention-days: 30
