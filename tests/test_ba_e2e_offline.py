@@ -26,6 +26,9 @@ class TestBAE2EDryRun(unittest.TestCase):
     def setUpClass(cls):
         cls.evidence=json.loads(MAP.read_text(encoding="utf8"))
     def test_full_five_source_package_has_no_side_effects(self):
+        from scripts.ba_stage_five_source_data import field, urlsplit
+        self.assertEqual(field(BOARDS[0][1], 'url'), 'https://www.cv-library.co.uk/job/test001')
+        self.assertEqual(urlsplit('https://www.cv-library.co.uk/job/test001').scheme, 'https')
         self.assertEqual(link(BOARDS[0][1], 'CV-Library'), 'https://www.cv-library.co.uk/job/test001')
         r=run_offline(example(),self.evidence)
         self.assertEqual(r["status"],"DRY_RUN_PASS_NOT_PUBLISHED")
