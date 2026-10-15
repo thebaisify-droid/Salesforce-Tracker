@@ -1,0 +1,72 @@
+{
+  "schema": "ba-five-source-pilot-execution-evidence/v1",
+  "date": "2026-10-15",
+  "scope": "ONE_TIME_BA_ACQUISITION",
+  "user_approved_max_charge_usd": 1.2,
+  "individual_approved_max_usd": {
+    "CV-Library": 0.5,
+    "Totaljobs": 0.2,
+    "Reed UK": 0.15,
+    "Indeed UK": 0.2,
+    "JobServe": 0.15
+  },
+  "query": "business analyst",
+  "per_source_max_results": 10,
+  "actors_launched": 5,
+  "successful_actors": 4,
+  "failed_actors": 1,
+  "total_raw_observed_rows": 40,
+  "qa_passed": false,
+  "publication_allowed": false,
+  "wordpress_updated": false,
+  "automatic_retry_count": 0,
+  "account_cap_configured_usd": 19,
+  "salesforce_protected_reserve_usd": 8,
+  "actual_invoiced_charge_usd": null,
+  "actual_billing_evidence": "NOT_AVAILABLE_FROM_ACTOR_RUN_RESPONSE; do not assert cost compliance without account usage/charge ledger reading",
+  "source_runs": [
+    {
+      "source": "CV-Library",
+      "actor": "blackfalcondata/cv-library-scraper",
+      "run_id": "qo9YEfFlbYaV31MkK",
+      "dataset_id": "OD5lSdCGHaw4q1D4j",
+      "status": "SUCCEEDED",
+      "dataset_item_count": 10
+    },
+    {
+      "source": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "run_id": "2TlvO2bI41Bl50TeR",
+      "dataset_id": "Yt7qb5XvPgdWn3TSW",
+      "status": "SUCCEEDED",
+      "dataset_item_count": 10
+    },
+    {
+      "source": "Reed UK",
+      "actor": "wildorigins/uk-jobs-reed",
+      "run_id": "xLIKQOkwaZE5jFJn7",
+      "dataset_id": "lecElui54GPzA0Qux",
+      "status": "SUCCEEDED",
+      "dataset_item_count": 10
+    },
+    {
+      "source": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "run_id": "i6unDcLG8Qh1XSftt",
+      "dataset_id": "ssJHtekdlbvmP2UCZ",
+      "status": "SUCCEEDED",
+      "dataset_item_count": 10
+    },
+    {
+      "source": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "run_id": "q43qj80CzgOjKP3Qb",
+      "dataset_id": "eRZXW3PwoHVxArr6u",
+      "status": "FAILED",
+      "exit_code": 91,
+      "status_message": "The run stopped unexpectedly. Please try again.",
+      "dataset_item_count": 0
+    }
+  ],
+  "assurance": "All five attempted once; JobServe failed. Do not retry automatically, do not silently call a 4-board snapshot a successful 5-board refresh."
+}
