@@ -1,0 +1,40 @@
+{
+  "schema": "ba-jobserve-incident/v1",
+  "status": "SUSPENDED_PENDING_VENDOR_DIAGNOSIS",
+  "as_of": "2026-10-15",
+  "actor": "solidcode/jobserve-scraper",
+  "apify_problem_report_submitted": true,
+  "reports": [
+    {
+      "run_id": "q43qj80CzgOjKP3Qb",
+      "status": "FAILED",
+      "exit_code": 91,
+      "dataset_id": "eRZXW3PwoHVxArr6u",
+      "dataset_rows": 0,
+      "runtime_seconds": 4.252
+    },
+    {
+      "run_id": "JlPpGNUSYbNmgr0Li",
+      "status": "FAILED",
+      "exit_code": 91,
+      "dataset_id": "EPxhPahnA1FBU2HaO",
+      "dataset_rows": 0,
+      "runtime_seconds": 3.897
+    }
+  ],
+  "root_cause": "UNDETERMINED",
+  "additional_runs_authorised": 0,
+  "automatic_retries": false,
+  "publishing_blocked": true,
+  "preserved_four_source_staging": "business-analysis-tracker/evidence/ba-four-successful-boards-20261015-qa.json",
+  "successful_source_advertisements_provisional": 33,
+  "unconfirmed_invoice_charges": true,
+  "salesforce_unchanged": true,
+  "requirements_to_resume": [
+    "Provider/runtime fault diagnosis and remediation",
+    "Actual failed-run billing confirmation",
+    "Fresh account headroom and $8 Salesforce reserve",
+    "New explicit capped authorisation for any additional paid run"
+  ],
+  "notes": "Five-source requirement remains; do not label four-source snapshot five-source complete."
+}
