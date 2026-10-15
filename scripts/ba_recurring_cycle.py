@@ -134,6 +134,15 @@ def main():
     if args.publish and (not cfg.get("wordpress_delivery_enabled")
         or os.getenv("BA_WP_DELIVERY_APPROVAL")!="EXPLICIT_APPROVAL"):
         raise SystemExit("Independent WordPress delivery approval missing")
+    # Fresh per-Actor pricing inspection before any paid Actor API POST.
+    # PRICE_PER_DATASET_ITEM must fit maxItems; PPE uses maxTotalChargeUsd.
+    from scripts.ba_pricing_readonly import check as inspect_prices, validate_cost_models
+    report=inspect_prices(cfg,os.getenv("APIFY_TOKEN",""))
+    price_status=validate_cost_models(report,cfg)
+    if not price_status["pricing_guard_passed"]:
+        raise SystemExit("Actor pricing safeguards not proven: "+repr(price_status["issues"]))
+    if report["available_after_salesforce_reserve_usd"] + 1e-9 < PER_RUN_CEILING:
+        raise SystemExit("Insufficient account balance after the protected Salesforce reserve")
     # Acquisition itself is bounded by separate per-source limits, account
     # headroom checks and a shared concurrency group with the Salesforce workflow.
     receipts=acquire_once(cfg,os.getenv("APIFY_TOKEN",""))
