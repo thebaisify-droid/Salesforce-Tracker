@@ -36,5 +36,6 @@ class ControlledRefreshSafetyTests(unittest.TestCase):
         self.assertIn("salesforce_controlled_refresh_budget",controlled)
         self.assertIn("pipeline.daily_refresh --config config/pipeline.json --scheduled",controlled)
         self.assertNotIn("git push",controlled)
-        self.assertNotIn("send_salesforce_wordpress_snapshot_once",controlled)
+        self.assertIn("vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true'", controlled)
+        self.assertIn("verify_controlled_handoff", controlled)
         self.assertNotIn("SF_WP_APPLICATION_PASSWORD",controlled)
