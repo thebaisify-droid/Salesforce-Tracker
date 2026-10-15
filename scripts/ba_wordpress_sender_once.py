@@ -12,8 +12,7 @@ import os
 from pathlib import Path
 from urllib.request import Request, HTTPSHandler, HTTPRedirectHandler, build_opener
 from scripts.ba_wordpress_delivery_package import ROOT
-PAGE_URL="https://jobs.zarafytek.com/wp-json/wp/v2/pages/49?context=edit"
-PUT_URL="https://jobs.zarafytek.com/wp-json/wp/v2/pages/49"
+from scripts.ba_wp_rest_routes import BA_PAGE_EDIT_URL as PAGE_URL, BA_PAGE_UPDATE_URL as PUT_URL
 DEFAULT=ROOT/"business-analysis-tracker/data/wordpress-delivery-preview.json"
 APPROVAL="APPROVE_BA_PAGE_49_DELIVERY"
 class RefuseRedirect(HTTPRedirectHandler):

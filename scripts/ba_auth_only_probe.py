@@ -2,7 +2,7 @@
 import base64,json,os
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError,URLError
-URL="https://jobs.zarafytek.com/wp-json/wp/v2/users/me?context=edit"
+from scripts.ba_wp_rest_routes import AUTH_IDENTITY_URL as URL
 def main():
     username=os.environ.get("BA_WP_USERNAME","")
     password=os.environ.get("BA_WP_APPLICATION_PASSWORD","")
@@ -13,9 +13,15 @@ def main():
     try:
         with urlopen(req,timeout=20) as resp:
             val=json.load(resp)
-            print(json.dumps({"status":resp.status,"slug":val.get("slug"),"roles":val.get("roles"),
-                "delivery_capability":(val.get("capabilities") or {}).get("ba_deliver_snapshot"),
-                "receiver_sent":False}))
+            slug=val.get("slug")
+            roles=val.get("roles") or []
+            cap=(val.get("capabilities") or {}).get("ba_deliver_snapshot")
+            verified=(slug=="ba-delivery" and "ba_snapshot_delivery" in roles
+                and "administrator" not in roles and cap is True)
+            print(json.dumps({"status":resp.status,"identity_matches":slug=="ba-delivery",
+                "restricted_role_verified":verified,"receiver_sent":False,
+                "no_post_requests":True}))
+            return 0 if verified else 2
     except HTTPError as err:
         raw=err.read(600)
         try:
@@ -24,7 +30,12 @@ def main():
         except (ValueError,UnicodeDecodeError):
             code="NON_JSON"
         print(json.dumps({"status":err.code,"wordpress_error_code":code,
-            "server":err.headers.get("Server","")[:40],"no_post_requests":True}))
+            "server":err.headers.get("Server","")[:40],
+            "cf_ray":err.headers.get("CF-Ray","")[:90],
+            "content_type":err.headers.get("Content-Type","")[:70],
+            "no_post_requests":True}))
+        return 2
     except URLError:
         print(json.dumps({"status":"NETWORK_ERROR","no_post_requests":True}))
-if __name__=="__main__":main()
+        return 2
+if __name__=="__main__":raise SystemExit(main())
