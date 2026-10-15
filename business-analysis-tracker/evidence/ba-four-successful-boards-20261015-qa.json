@@ -37,14 +37,21 @@
   },
   "possible_cross_board_duplicates": [
     {
-      "first": "Business Analyst | CV-Library",
-      "second": "Senior Business Analyst | CV-Library",
-      "reason": "POTENTIAL_CROSS_BOARD_MATCH_NOT_AUTO_MERGED"
-    },
-    {
-      "first": "SC Cleared Business Analyst | CV-Library",
-      "second": "SC Cleared Business Analyst | Totaljobs",
-      "reason": "POTENTIAL_CROSS_BOARD_MATCH_NOT_AUTO_MERGED"
+      "first": {
+        "id": "pilot-cvlibrary-8",
+        "source": "CV-Library",
+        "title": "SC Cleared Business Analyst",
+        "advertiser": "VIQU IT",
+        "location": "London"
+      },
+      "second": {
+        "id": "pilot-totaljobs-16",
+        "source": "Totaljobs",
+        "title": "SC Cleared Business Analyst",
+        "advertiser": "VIQU IT Recruitment",
+        "location": "London"
+      },
+      "confidence": "POSSIBLE_NOT_CONFIRMED"
     }
   ],
   "excluded_rows": [
@@ -802,5 +809,14 @@
       "source_observed_only": true,
       "publication_approved": false
     }
-  ]
+  ],
+  "cross_board_deduplication": "EXACT_SOURCE_URLS_UNIQUE; CROSS_BOARD_DUPLICATES_FLAGGED_FOR_REVIEW_ONLY",
+  "duplicate_qa_note": "Do not collapse two jobs with similar titles automatically. Different requisitions may exist across or within sources.",
+  "quality_gate": {
+    "title_family_classified": true,
+    "source_urls_normalized": true,
+    "sector_coverage_verified": false,
+    "all_five_successful": false,
+    "public_refresh_approved": false
+  }
 }
