@@ -1,0 +1,88 @@
+{
+  "schema": "ba-automatic-refresh/v1",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "publish_automatically": false,
+  "automatic_retries": 0,
+  "monthly_limit_usd": 19,
+  "salesforce_reserve_usd": 8,
+  "max_total_charge_usd": 1.2,
+  "schedule": "PROPOSED_TUE_FRI_NOT_ENABLED",
+  "scheduling_enabled": false,
+  "wordpress_delivery_enabled": false,
+  "search_profile": "business analyst",
+  "note": "Proposed cap allocation only. Not ongoing authorisation; previous one-time pilot approvals are exhausted.",
+  "sources": [
+    {
+      "name": "CV-Library",
+      "actor": "blackfalcondata/cv-library-scraper",
+      "max_items": 10,
+      "max_charge_usd": 0.5,
+      "input": {
+        "query": "business analyst",
+        "country": "GB",
+        "maxResults": 10,
+        "maxPages": 1,
+        "postedWithinDays": "14",
+        "sortBy": "recent",
+        "includeDetails": false,
+        "incrementalMode": false,
+        "emitExpired": false
+      }
+    },
+    {
+      "name": "Totaljobs",
+      "actor": "abotapi/totaljobs-com-scraper",
+      "max_items": 10,
+      "max_charge_usd": 0.2,
+      "input": {
+        "mode": "search",
+        "keywords": "business analyst",
+        "maxListings": 10,
+        "maxPages": 1,
+        "postedWithin": "14",
+        "sortBy": "date",
+        "fetchDetails": false,
+        "incrementalMode": false
+      }
+    },
+    {
+      "name": "Reed UK",
+      "actor": "wildorigins/uk-jobs-reed",
+      "max_items": 10,
+      "max_charge_usd": 0.15,
+      "input": {
+        "keywords": "business analyst",
+        "maxResults": 10,
+        "datePosted": "lastmonth",
+        "fetchDetails": true
+      }
+    },
+    {
+      "name": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "max_items": 10,
+      "max_charge_usd": 0.2,
+      "input": {
+        "query": "business analyst",
+        "country": "uk",
+        "maxResults": 10
+      }
+    },
+    {
+      "name": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "max_items": 10,
+      "max_charge_usd": 0.15,
+      "input": {
+        "keywords": [
+          "business analyst"
+        ],
+        "country": "gb",
+        "maxResults": 10,
+        "includeDescription": true,
+        "onlyUniqueJobs": true
+      }
+    }
+  ]
+}
