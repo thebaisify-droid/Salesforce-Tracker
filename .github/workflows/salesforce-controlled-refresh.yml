@@ -16,8 +16,9 @@ concurrency:
 
 jobs:
   refresh:
-    # Fail closed: do not start billable collection unless independently enabled.
-    if: ${{ vars.SF_CONTROLLED_REFRESH_ENABLED == 'true' }}
+    # Scheduled feed enabled by this release. An explicit 'false' pauses it.
+    # Manual dispatch remains explicitly opt-in; no push-triggered collections.
+    if: ${{ (github.event_name == 'workflow_dispatch' && vars.SF_CONTROLLED_REFRESH_ENABLED == 'true') || (github.event_name == 'schedule' && vars.SF_CONTROLLED_REFRESH_ENABLED != 'false' && vars.SF_WORDPRESS_DELIVERY_ENABLED != 'false') }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
     env:
@@ -37,6 +38,12 @@ jobs:
           if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Source and QA configuration preflight
         run: python -m pipeline.daily_refresh --config config/pipeline.json --check
+      - name: Read-only WordPress delivery credential preflight
+        if: ${{ vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' || (github.event_name == 'schedule' && vars.SF_WORDPRESS_DELIVERY_ENABLED != 'false') }}
+        env:
+          SF_WP_USERNAME: ${{ secrets.SF_WP_USERNAME }}
+          SF_WP_APPLICATION_PASSWORD: ${{ secrets.SF_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.check_salesforce_wordpress_delivery_access
       - name: Fresh account limit and $8 reserve check
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
@@ -51,14 +58,14 @@ jobs:
       # Independent opt-in for delivery. A skipped/not-due refresh MUST NOT resend
       # yesterday's dashboard/live-data.json from restored state.
       - name: Verify fresh, QA-passed WordPress delivery candidate
-        if: ${{ success() && vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' }}
+        if: ${{ success() && (vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' || (github.event_name == 'schedule' && vars.SF_WORDPRESS_DELIVERY_ENABLED != 'false')) }}
         run: |
           set -euo pipefail
           python -m scripts.validate_salesforce_wordpress_delivery --input dashboard/live-data.json
           python -m scripts.verify_controlled_handoff --input dashboard/live-data.json --status state/latest_refresh.json
 
       - name: Deliver one validated snapshot to WordPress
-        if: ${{ success() && vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' }}
+        if: ${{ success() && (vars.SF_WORDPRESS_DELIVERY_ENABLED == 'true' || (github.event_name == 'schedule' && vars.SF_WORDPRESS_DELIVERY_ENABLED != 'false')) }}
         env:
           SF_DELIVERY_APPROVED: "yes"
           SF_WP_USERNAME: ${{ secrets.SF_WP_USERNAME }}
