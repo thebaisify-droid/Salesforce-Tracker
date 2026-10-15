@@ -1,0 +1,28 @@
+name: One-time BA receiver delivery of existing reviewed 57 records
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/ba-controlled-snapshot-once.yml']
+permissions:
+  contents: read
+concurrency:
+  group: ba-snapshot-delivery
+  cancel-in-progress: false
+jobs:
+  delivery:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[BA-SNAPSHOT-57-ONCE-20261015]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact historical 57-record source receipts (no network)
+        run: python -m unittest discover -s tests -p 'test_ba_existing_snapshot_delivery_once.py' -v
+      - name: Deliver one 57-advertisement reviewed snapshot (no paid Actors)
+        env:
+          BA_SNAPSHOT_ONE_TIME_APPROVAL: APPROVE_EXISTING_57_BA_RECEIVER_TEST_ONCE
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.ba_existing_snapshot_delivery_once --send
