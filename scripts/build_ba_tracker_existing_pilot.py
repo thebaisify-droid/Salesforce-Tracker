@@ -55,6 +55,11 @@ def build(pilot: dict, cyber: dict | None = None) -> dict:
     if not isinstance(baseline, list) or not isinstance(extras, list):
         raise ValueError("Missing records")
     result, seen, rejections = [], set(), Counter()
+    if cyber is not None:
+        nonmatch = cyber.get("input_record_count", 0) - len(extras)
+        if nonmatch < 0:
+            raise ValueError("Invalid Cyber source count")
+        rejections["cyber_title_mismatch_before_import"] = nonmatch
 
     def add(row: dict, *, pilot_row: bool):
         if not isinstance(row, dict):
