@@ -7,11 +7,11 @@
   "monthly_limit_usd": 19,
   "salesforce_reserve_usd": 8,
   "max_total_charge_usd": 1.2,
-  "schedule": "PROPOSED_TUE_FRI_NOT_ENABLED",
+  "schedule": "TUE_FRI_0735_EUROPE_LONDON_PROPOSED",
   "scheduling_enabled": false,
   "wordpress_delivery_enabled": false,
   "search_profile": "business analyst",
-  "note": "Proposed cap allocation only. Not ongoing authorisation; previous one-time pilot approvals are exhausted.",
+  "note": "Scheduled pipeline installed but paid execution and publication fail closed pending explicit recurring charge caps and verified Apify pricing enforcement. Historical one-time pilot approval does not grant standing spend. Two 07:35 UK slots per week, max nine monthly.",
   "sources": [
     {
       "name": "CV-Library",
@@ -84,5 +84,10 @@
         "onlyUniqueJobs": true
       }
     }
-  ]
+  ],
+  "monthly_ba_allowance_usd": 11,
+  "max_scheduled_runs_per_month": 9,
+  "recurring_budget_approved": false,
+  "pricing_guard_verified": false,
+  "estimated_max_scheduled_charge_per_month_usd": 10.8
 }
