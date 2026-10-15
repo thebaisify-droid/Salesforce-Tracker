@@ -16,6 +16,7 @@ def main():
             print(json.dumps({"status":resp.status,"slug":val.get("slug"),"roles":val.get("roles"),
                 "delivery_capability":(val.get("capabilities") or {}).get("ba_deliver_snapshot"),
                 "receiver_sent":False}))
+            return 0
     except HTTPError as err:
         raw=err.read(600)
         try:
@@ -28,6 +29,8 @@ def main():
             "cf_ray":err.headers.get("CF-Ray","")[:90],
             "content_type":err.headers.get("Content-Type","")[:70],
             "no_post_requests":True}))
+        return 2
     except URLError:
         print(json.dumps({"status":"NETWORK_ERROR","no_post_requests":True}))
-if __name__=="__main__":main()
+        return 2
+if __name__=="__main__":raise SystemExit(main())
