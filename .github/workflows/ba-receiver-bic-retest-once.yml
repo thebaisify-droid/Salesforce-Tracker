@@ -1,0 +1,26 @@
+name: BA receiver access read-only one-time retest
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-receiver-bic-retest-once.yml'
+permissions:
+  contents: read
+concurrency:
+  group: ba-receiver-access-readonly
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[BA-RECEIVER-BIC-ONCE-20261015]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm restricted identity and receiver via read-only GET and OPTIONS
+        env:
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.ba_delivery_credentials_readonly
