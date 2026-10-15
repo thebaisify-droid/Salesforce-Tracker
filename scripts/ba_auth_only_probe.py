@@ -2,7 +2,7 @@
 import base64,json,os
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError,URLError
-URL="https://jobs.zarafytek.com/wp-json/wp/v2/users/me?context=edit"
+from scripts.ba_wp_rest_routes import AUTH_IDENTITY_URL as URL
 def main():
     username=os.environ.get("BA_WP_USERNAME","")
     password=os.environ.get("BA_WP_APPLICATION_PASSWORD","")
@@ -24,7 +24,10 @@ def main():
         except (ValueError,UnicodeDecodeError):
             code="NON_JSON"
         print(json.dumps({"status":err.code,"wordpress_error_code":code,
-            "server":err.headers.get("Server","")[:40],"no_post_requests":True}))
+            "server":err.headers.get("Server","")[:40],
+            "cf_ray":err.headers.get("CF-Ray","")[:90],
+            "content_type":err.headers.get("Content-Type","")[:70],
+            "no_post_requests":True}))
     except URLError:
         print(json.dumps({"status":"NETWORK_ERROR","no_post_requests":True}))
 if __name__=="__main__":main()
