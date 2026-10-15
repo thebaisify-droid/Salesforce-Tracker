@@ -1,6 +1,10 @@
 name: Business Analysis five-source read-only preflight
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-five-source-readonly-preflight.yml'
 
 permissions:
   contents: read
@@ -11,6 +15,9 @@ concurrency:
 
 jobs:
   preflight:
+    # A one-time account read on release, then manual-only.
+    # The nonce is unique to the requested one-time preflight; later pushes skip.
+    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[BA-READONLY-20261015-ONCE]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
