@@ -18,6 +18,33 @@ function zarafy_ba_safe_observed_time($value, $end, $cutoff) {
     return $stamp !== false && $stamp >= $cutoff && $stamp <= $end + 900 ? $stamp : false;
 }
 
+/**
+ * One-time migration of the published 15 Oct 2026 historical pilot.
+ * Its old v1 rows omitted observed_at; attach the ACTUAL terminal timestamp
+ * of the corresponding original Actor run (verified against Apify records).
+ * Never use publication time, the current snapshot time, or a guessed date.
+ * Reject all other legacy records without per-record provenance.
+ */
+function zarafy_ba_legacy_run_finish($r, $previous) {
+    if (!is_array($previous)
+        || ($previous['schema'] ?? '') !== 'ba-live-snapshot/v1'
+        || ($previous['refresh']['type'] ?? '') !== 'HISTORICAL_COMPLETED_FIVE_SOURCE_PILOT'
+        || ($previous['refresh']['finished_at'] ?? '') !== '2026-10-15T15:51:48.728Z'
+        || !is_array($r)) return null;
+    $original=array(
+        'CV-Library'=>array('qo9YEfFlbYaV31MkK','OD5lSdCGHaw4q1D4j','2026-10-15T13:38:38.889Z'),
+        'Totaljobs'=>array('2TlvO2bI41Bl50TeR','Yt7qb5XvPgdWn3TSW','2026-10-15T13:39:04.363Z'),
+        'Reed UK'=>array('xLIKQOkwaZE5jFJn7','lecElui54GPzA0Qux','2026-10-15T13:39:24.929Z'),
+        'Indeed UK'=>array('i6unDcLG8Qh1XSftt','ssJHtekdlbvmP2UCZ','2026-10-15T13:39:51.979Z'),
+        'JobServe'=>array('c2PSagDDBiesSovtt','nkk1RZK5gznvfZogL','2026-10-15T15:51:48.728Z')
+    );
+    $source=$r['job_source'] ?? '';
+    $match=$original[$source] ?? null;
+    if (!$match || ($r['source_run_id'] ?? '') !== $match[0]
+        || ($r['dataset_id'] ?? '') !== $match[1]) return null;
+    return $match[2];
+}
+
 /** Pure merge. Previous data is used only if it was a correctly typed stored snapshot. */
 function zarafy_ba_merge_rolling_snapshot($current, $previous = null) {
     $end = strtotime($current['refresh']['finished_at']);
@@ -73,7 +100,16 @@ function zarafy_ba_merge_rolling_snapshot($current, $previous = null) {
     };
     // Previous first, current second; a fresh current observation replaces an older one.
     if ($previous_receipts) {
-        foreach ($previous['records'] as $r) $put($r, $previous_receipts);
+        foreach ($previous['records'] as $r) {
+            if (is_array($r) && empty($r['observed_at'])) {
+                $terminal=zarafy_ba_legacy_run_finish($r,$previous);
+                if ($terminal !== null) {
+                    $r['observed_at']=$terminal;
+                    $r['observation_timestamp_basis']='ORIGINAL_ACTOR_RUN_FINISHED_AT';
+                }
+            }
+            $put($r, $previous_receipts);
+        }
     }
     foreach ($current['records'] as $r) $put($r, $current_receipts);
 
