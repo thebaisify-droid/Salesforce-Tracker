@@ -2,6 +2,7 @@
 import json
 import unittest
 from copy import deepcopy
+from unittest.mock import patch
 from scripts.ba_controlled_refresh import CONFIG, validate, run
 from scripts.ba_acquisition_planner import role_queries, coverage_for_slots, select_slot
 from scripts.ba_pricing_readonly import validate_cost_models
@@ -54,8 +55,9 @@ class TestBusinessTechnologyTrial(unittest.TestCase):
         def getter(*args,**kwargs):
             attempts.append(args)
             raise AssertionError("Network should never be invoked")
-        with self.assertRaisesRegex(RuntimeError,"Rolling 22-family"):
-            run(self.cfg,"dummy",getter=getter)
+        with patch.dict("os.environ", {"BA_PAID_REFRESH_APPROVAL":"EXPLICIT_BA_REFRESH_APPROVED"}):
+            with self.assertRaisesRegex(RuntimeError,"Rolling 22-family"):
+                run(self.cfg,"dummy",getter=getter)
         self.assertEqual(attempts,[])
 
     def test_raise_limits_above_authorisation_is_rejected(self):
