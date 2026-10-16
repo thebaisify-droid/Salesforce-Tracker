@@ -115,7 +115,11 @@ def candidate():
                 "observed_at":source["observed_at"],
                 "posted_date":posted(raw),"employment":employment(raw),
                 "working_arrangement":working(raw),
-                "role_family":user["proposed_role_family"],"track":"REVIEWER_EXTENDED_SCOPE",
+                "role_family":user["proposed_role_family"],
+                "track":("SECURITY" if user["proposed_role_family"] in {
+                    "Security Architecture","Security Consulting & Advisory",
+                    "Security Risk & Third-Party Risk","Security Engineering"}
+                    else "REVIEWER_EXTENDED_SCOPE"),
                 "role_review_required":True,
                 "description_summary":cleaned_excerpt(raw),
                 "skills":[],"sector":sector_ev["sector"] if sector_ev else "Not specified",
