@@ -22,6 +22,43 @@ ROOT = Path(__file__).resolve().parents[1]
 MAPPING = ROOT / "business-analysis-tracker" / "config" / "sector-evidence.json"
 OUTPUT = ROOT / "business-analysis-tracker" / "data" / "next-refresh-staging.json"
 NAMES = ("CV-Library", "Totaljobs", "Reed UK", "Indeed UK", "JobServe")
+FINAL_SCOPE_DECISIONS = ROOT / "business-analysis-tracker/evidence/ba-20261016-final-161-scope-decisions.json"
+
+def user_excluded_adverts(path=FINAL_SCOPE_DECISIONS):
+    """Exact URL decisions, not general job-title or role-family prohibitions.
+
+    The user kept 124 and excluded 37 ads in the five completed 16 Oct runs.
+    Malformed/incomplete adjudication fails closed rather than reverting to
+    implicit automatic acceptance on future collections.
+    """
+    doc = json.loads(Path(path).read_text(encoding="utf8"))
+    decisions = doc.get("decisions")
+    if (doc.get("schema") != "ba-user-final-scope-decisions/v1"
+            or doc.get("total") != 161 or doc.get("keep_count") != 124
+            or doc.get("exclude_count") != 37 or not isinstance(decisions, list)
+            or len(decisions) != 161):
+        raise ValueError("Missing or incomplete 16 October user scope adjudication")
+    excluded, seen, counts = set(), set(), Counter()
+    for entry in decisions:
+        if not isinstance(entry, dict):
+            raise ValueError("Malformed user scope adjudication row")
+        source = entry.get("source")
+        url = entry.get("original_advert_url")
+        decision = entry.get("decision")
+        if (source not in NAMES or decision not in ("KEEP", "EXCLUDE")
+                or not isinstance(url, str) or not url.startswith("https://")):
+            raise ValueError("Unsafe user scope decision")
+        key = (source, url)
+        if key in seen:
+            raise ValueError("Duplicate user scope advert URL")
+        seen.add(key)
+        counts[decision] += 1
+        if decision == "EXCLUDE":
+            excluded.add(key)
+    if counts != {"KEEP": 124, "EXCLUDE": 37}:
+        raise ValueError("User scope decision totals do not reconcile")
+    return frozenset(excluded)
+
 # Reject clear paid training/placement promotions. Generic junior vacancies
 # with normal on-the-job training are NOT excluded without positive evidence.
 TRAINING_SCHEME_RE = re.compile(
@@ -171,6 +208,7 @@ def stage(input_doc, sector_mapping):
         raise ValueError("Missing run ID, dataset provenance, observation, or dataset rows")
 
     sectors = sector_catalog(sector_mapping)
+    rejected_adverts = user_excluded_adverts()
     seen_url, provisional = set(), []
     rejected = Counter()
     counts = Counter()
@@ -191,6 +229,9 @@ def stage(input_doc, sector_mapping):
             url = link(raw, src)
             if not title or not url:
                 rejected["missing_title_or_https_advert"] += 1
+                continue
+            if (src, url) in rejected_adverts:
+                rejected["user_explicitly_excluded_advert"] += 1
                 continue
             desc = cleaned_excerpt(raw)
             if promotional_training_lead(title, desc):
