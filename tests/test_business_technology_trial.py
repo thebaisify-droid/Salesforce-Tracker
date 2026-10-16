@@ -58,15 +58,26 @@ class TestBusinessTechnologyTrial(unittest.TestCase):
             select_slot(self.cfg,1,prices)
 
     def test_rolling_snapshot_gate_prevents_any_paid_run(self):
-        self.assertFalse(self.cfg["rolling_coverage_enabled"])
+        # Emergency fail-closed setting must still prohibit an Actor launch.
+        cfg=deepcopy(self.cfg)
+        cfg["rolling_coverage_enabled"]=False
         attempts=[]
         def getter(*args,**kwargs):
             attempts.append(args)
             raise AssertionError("Network should never be invoked")
         with patch.dict("os.environ", {"BA_PAID_REFRESH_APPROVAL":"EXPLICIT_BA_REFRESH_APPROVED"}):
             with self.assertRaisesRegex(RuntimeError,"Rolling 22-family"):
-                run(self.cfg,"dummy",getter=getter)
+                run(cfg,"dummy",getter=getter)
         self.assertEqual(attempts,[])
+
+    def test_trial_activation_keeps_limits_exact(self):
+        self.assertTrue(self.cfg["rolling_coverage_enabled"])
+        self.assertEqual(self.cfg["monthly_limit_usd"],25)
+        self.assertEqual(self.cfg["salesforce_reserve_usd"],8)
+        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],17)
+        self.assertAlmostEqual(self.cfg["max_total_charge_usd"],1.80)
+        self.assertEqual(self.cfg["automatic_retries"],0)
+        self.assertTrue(self.cfg["wordpress_delivery_enabled"])
 
     def test_raise_limits_above_authorisation_is_rejected(self):
         cfg=deepcopy(self.cfg)
