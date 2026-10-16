@@ -110,7 +110,7 @@ def working(row):
     excerpt = cleaned_excerpt(row) or ""
     hybrid = re.search(r"(?<!\w)hybrid(?!\w)", excerpt, re.IGNORECASE)
     if hybrid and not re.match(
-        r"\s+(?:cloud|architecture|infrastructure|network|security|environment|solution)",
+        r"[\s-]+(?:cloud|architecture|infrastructure|network|security|environment|solution)",
         excerpt[hybrid.end():], re.IGNORECASE,
     ):
         return "Hybrid"
