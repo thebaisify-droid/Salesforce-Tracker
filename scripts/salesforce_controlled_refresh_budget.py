@@ -7,7 +7,8 @@ import json
 import os
 from urllib.request import Request, urlopen
 
-LIMIT_USD = 19.0
+LIMIT_USD = 25.0
+LEGACY_LIMIT_USD = 19.0
 PROTECTED_RESERVE_USD = 8.0
 SOURCE_CAPS_USD = (0.15, 0.15, 0.15, 0.20, 0.25)
 MAX_RUN_USD = round(sum(SOURCE_CAPS_USD), 2)
@@ -22,7 +23,7 @@ def check_account(payload):
     usage = (data.get("current") or {}).get("monthlyUsageUsd")
     if type(maximum) not in (float, int) or type(usage) not in (float, int):
         raise ValueError("Apify account limit/usage absent")
-    if abs(maximum - LIMIT_USD) > 0.00001 or usage < 0 or usage > maximum:
+    if all(abs(maximum - cap) > 0.00001 for cap in (LEGACY_LIMIT_USD, LIMIT_USD)) or usage < 0 or usage > maximum:
         raise ValueError("Unexpected account limit or usage")
     remaining = round(maximum - usage, 4)
     if remaining + 0.000001 < PROTECTED_RESERVE_USD + MAX_RUN_USD:
