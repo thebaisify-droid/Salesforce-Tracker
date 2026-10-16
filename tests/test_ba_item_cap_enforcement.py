@@ -60,14 +60,14 @@ class TestPerSourceItemCap(unittest.TestCase):
         self.assertEqual(sum("/datasets/" in u for u in urls),1)
 
     def test_completed_handoff_rejects_dataset_above_original_source_request(self):
-        receipts=[{"source":name,"run_id":"run_"+str(i)} for i,name in enumerate(EXPECTED)]
+        receipts=[{"source":name,"run_id":"run_000"+str(i)} for i,name in enumerate(EXPECTED)]
         def get(url,token):
             if "/actor-runs/" in url:
                 i=int(url.rsplit("_",1)[-1]);source=list(EXPECTED)[i]
                 return {"status":"SUCCEEDED","actId":EXPECTED[source],
                         "defaultDatasetId":"dataset_"+str(i),"finishedAt":"2026-10-15T15:00:00Z"}
             if "/items?" in url:
-                return [{"title":"Example","url":"https://example.com/"+str(i)} for i in range(2)]
+                return [{"title":"Example","url":"https://example.com/"+str(j)} for j in range(2)]
             if "/datasets/" in url:
                 return {"itemCount":24 if "dataset_4" in url else 2}
             raise AssertionError(url)
