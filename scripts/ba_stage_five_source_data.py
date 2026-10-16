@@ -22,6 +22,22 @@ ROOT = Path(__file__).resolve().parents[1]
 MAPPING = ROOT / "business-analysis-tracker" / "config" / "sector-evidence.json"
 OUTPUT = ROOT / "business-analysis-tracker" / "data" / "next-refresh-staging.json"
 NAMES = ("CV-Library", "Totaljobs", "Reed UK", "Indeed UK", "JobServe")
+# Reject clear paid training/placement promotions. Generic junior vacancies
+# with normal on-the-job training are NOT excluded without positive evidence.
+TRAINING_SCHEME_RE = re.compile(
+    r"\b(?:self[ -]funded|training course|career change programme|"
+    r"placement programme|placement guarantee|"
+    r"guaranteed employment on completion|online learning course)\b",
+    re.IGNORECASE,
+)
+
+def promotional_training_lead(title: str, snippet: str | None) -> bool:
+    text = (title or "") + " " + (snippet or "")
+    if TRAINING_SCHEME_RE.search(text):
+        return True
+    return bool(re.search(r"\bno experience needed\b", title or "", re.I)
+                and re.search(r"\b(?:training provider|training programme|"
+                              r"training program|career programme)\b", snippet or "", re.I))
 
 def field(row, *keys):
     for key in keys:
@@ -158,6 +174,9 @@ def stage(input_doc, sector_mapping):
                 rejected["missing_title_or_https_advert"] += 1
                 continue
             desc = cleaned_excerpt(raw)
+            if promotional_training_lead(title, desc):
+                rejected["training_or_nonvacancy_promotion"] += 1
+                continue
             role = classify_market_role(title, desc)
             if not role.get("included"):
                 rejected["out_of_scope"] += 1
