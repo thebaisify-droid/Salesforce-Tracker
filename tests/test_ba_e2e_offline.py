@@ -48,9 +48,21 @@ class TestBAE2EDryRun(unittest.TestCase):
         d["sources"].pop()
         with self.assertRaises(ValueError):
             run_offline(d,self.evidence)
+    def test_successful_source_with_only_out_of_scope_jobs_can_still_refresh(self):
+        d=example()
+        d["sources"][-1]["records"][0]["title"]="Receptionist"
+        r=run_offline(d,self.evidence)
+        self.assertEqual(r["status"],"DRY_RUN_PASS_NOT_PUBLISHED")
+        self.assertEqual(r["matched"],4)
+        self.assertEqual(r["sources"],5)
+        self.assertEqual(r["package"]["rows"],4)
+        self.assertNotIn("JobServe",{x["source"] for x in r["candidate"]["records"]})
+        self.assertTrue(all(x["original_advert_url"].startswith("https://") for x in r["stage"]["records"]))
+        self.assertEqual(r["rejected"].get("out_of_scope"),1)
+
     def test_bad_url_fails_data_quality(self):
         d=example()
         d["sources"][0]["records"][0]["url"]="http://unsafe.example/job"
-        with self.assertRaisesRegex(ValueError,"NOT_ALL_FIVE_SOURCES_PRESENT"):
+        with self.assertRaisesRegex(ValueError,"UNSAFE_OR_MISSING_ADVERT"):
             run_offline(d,self.evidence)
 if __name__=="__main__":unittest.main()
