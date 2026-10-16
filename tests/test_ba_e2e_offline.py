@@ -60,6 +60,19 @@ class TestBAE2EDryRun(unittest.TestCase):
         self.assertTrue(all(x["original_advert_url"].startswith("https://") for x in r["stage"]["records"]))
         self.assertEqual(r["rejected"].get("out_of_scope"),1)
 
+    def test_successful_source_with_no_raw_rows_keeps_other_family_records(self):
+        d=example()
+        d["sources"][-1]["records"]=[]
+        report=run_offline(d,self.evidence)
+        self.assertEqual(report["status"],"DRY_RUN_PASS_NOT_PUBLISHED")
+        self.assertEqual(report["sources"],5)
+        self.assertEqual(report["raw_source_rows"],4)
+        self.assertEqual(report["matched"],4)
+        self.assertEqual(report["actors_started"],0)
+        self.assertEqual(report["wordpress_requests"],0)
+        self.assertEqual(report["package"]["rows"],4)
+        self.assertNotIn("JobServe",{r["source"] for r in report["candidate"]["records"]})
+
     def test_bad_url_fails_data_quality(self):
         d=example()
         d["sources"][0]["records"][0]["url"]="http://unsafe.example/job"
