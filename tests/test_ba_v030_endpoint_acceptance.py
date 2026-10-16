@@ -33,6 +33,7 @@ function add_filter($a,$b,$p) {}
 function is_page($id) {return $id===49;}
 function get_the_ID() {return 49;}
 function wp_json_encode($value, $flags=0) {return json_encode($value, $flags);}
+function wp_parse_url($url) {return parse_url($url);}
 function wp_date($format,$time) {return gmdate($format,$time);}
 function esc_html($text) {return htmlspecialchars((string)$text, ENT_QUOTES, 'UTF-8');}
 function esc_url($url) {return htmlspecialchars((string)$url,ENT_QUOTES,'UTF-8');}
