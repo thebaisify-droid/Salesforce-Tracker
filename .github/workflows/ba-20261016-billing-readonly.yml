@@ -25,7 +25,7 @@ jobs:
               ("Totaljobs","E89FZF0LvshuHJQa9",0.35),
               ("Reed UK","oLI4iND3OrwX1zu7p",0.20),
               ("Indeed UK","uR6l7FWPHSaOFlybv",0.35),
-              ("JobServe","4GKDrAhj3X0zg4YdS",0.25)]
+              ("JobServe","4GKDrAhj3X0zg4YdS",0.25)
           ]
           token=os.environ["APIFY_TOKEN"]
           if not token:
