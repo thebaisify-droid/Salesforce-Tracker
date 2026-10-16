@@ -42,10 +42,12 @@ def role_queries(path=ROTATION):
         raise ValueError("Each family requires a real search term")
     return entries
 
-def select_slot(config:dict, slot_number:int, report:dict, *, entries=None) -> dict:
+def select_slot(config:dict, slot_number:int, report:dict, *, entries=None, cycle_index=0) -> dict:
     """Return source inputs with per-item price-aware reductions, never increases."""
     if type(slot_number) is not int or not 1 <= slot_number <= 9:
         raise ValueError("Scheduled slot must be between 1 and 9")
+    if type(cycle_index) is not int or cycle_index < 0:
+        raise ValueError("Invalid rotation month index")
     entries = role_queries() if entries is None else entries
     if len(entries) != 22 or len({x["family"] for x in entries}) != 22:
         raise ValueError("22 unique role-family searches required")
@@ -54,7 +56,7 @@ def select_slot(config:dict, slot_number:int, report:dict, *, entries=None) -> d
     if len(planned["sources"]) != 5 or set(rates) != set(SEARCH_FIELD):
         raise ValueError("Five source pricing observations required")
     for i, source in enumerate(planned["sources"]):
-        family = entries[((slot_number - 1) * 5 + i) % 22]
+        family = entries[(cycle_index * 45 + (slot_number - 1) * 5 + i) % 22]
         name = source["name"]
         field = SEARCH_FIELD[name]
         cap = source["max_charge_usd"]
@@ -73,6 +75,7 @@ def select_slot(config:dict, slot_number:int, report:dict, *, entries=None) -> d
         source["input"][field] = [family["query"]] if name == "JobServe" else family["query"]
         source["query_family"] = family["family"]
     planned["rotation_slot"] = slot_number
+    planned["rotation_cycle"] = cycle_index
     return planned
 
 def coverage_for_slots(slots:int=5) -> set[str]:
