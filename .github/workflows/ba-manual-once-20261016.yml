@@ -1,0 +1,216 @@
+name: BA manual five-source collection 2026-10-16 (one time)
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/ba-manual-once-20261016.yml
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: shared-apify-acquisition
+  cancel-in-progress: false
+
+jobs:
+  once:
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.run_attempt == 1 && github.event.head_commit.message == '[BA-MANUAL-20261016-ONCE]' && vars.BA_CONTROLLED_REFRESH_ENABLED != 'false' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate one-time authorization and exact trial contract (no cost)
+        env:
+          BA_MANUAL_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from datetime import datetime,date
+          from zoneinfo import ZoneInfo
+          from scripts.ba_controlled_refresh import CONFIG,validate
+          from scripts.ba_recurring_cycle import PER_RUN_CEILING
+          today=datetime.now(ZoneInfo("Europe/London")).date()
+          cfg=json.loads(CONFIG.read_text())
+          if (today!=date(2026,10,16) or os.getenv("GITHUB_EVENT_NAME")!="push"
+             or os.getenv("GITHUB_REF")!="refs/heads/main"
+             or os.getenv("GITHUB_RUN_ATTEMPT")!="1"
+             or os.getenv("BA_MANUAL_COMMIT_MESSAGE")!="[BA-MANUAL-20261016-ONCE]"):
+              raise SystemExit("Manual collection one-time authorization is not valid today")
+          validate(cfg)
+          if (cfg.get("monthly_limit_usd")!=25 or cfg.get("salesforce_reserve_usd")!=8
+              or cfg.get("monthly_ba_allowance_usd")!=17 or cfg.get("max_total_charge_usd")!=1.8
+              or cfg.get("automatic_retries")!=0 or cfg.get("rolling_coverage_enabled") is not True
+              or cfg.get("wordpress_delivery_enabled") is not True):
+              raise SystemExit("Budget, receiver, or no-retry controls differ from authorization")
+          print(json.dumps({"status":"ONE_TIME_AUTHORIZED","local_date":str(today),
+             "account_cap_usd":25,"salesforce_reserve_usd":8,"max_paid_refresh_usd":1.8,
+             "actor_runs_started":0}))
+          PY
+      - name: Verify restricted WordPress receiver credentials (GET + OPTIONS only)
+        env:
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.ba_delivery_credentials_readonly
+      - name: Run five capped Actor searches, QA, and atomic WordPress delivery exactly once
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+          BA_PAID_REFRESH_APPROVAL: EXPLICIT_BA_REFRESH_APPROVED
+          BA_WP_DELIVERY_APPROVAL: EXPLICIT_APPROVAL
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import json,os
+          from collections import Counter
+          from datetime import datetime,date,timezone
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          from zoneinfo import ZoneInfo
+          from scripts.ba_controlled_refresh import CONFIG,OUT,validate as validate_acquisition,run as acquire_once
+          from scripts.ba_recurring_cycle import build_live_document
+          from scripts.ba_acquisition_planner import select_slot
+          from scripts.ba_pricing_readonly import check as price_check,validate_cost_models
+          from scripts.ba_completed_dataset_handoff import build_batch
+          from scripts.ba_e2e_offline import run_offline
+          from scripts.ba_stage_five_source_data import MAPPING
+          from scripts.ba_atomic_snapshot_sender import send_once
+          output=Path("business-analysis-tracker/data/manual-20261016-status.json")
+          output.parent.mkdir(parents=True,exist_ok=True)
+          summary={"status":"PREFLIGHT", "date":"2026-10-16", "automatic_retries":0,
+              "account_limit_usd":25,"salesforce_reserve_usd":8,"maximum_refresh_usd":1.8,
+              "wordpress_sent":False,"actor_runs_started":0}
+          def save():
+              output.write_text(json.dumps(summary,indent=2,sort_keys=True)+"\n",encoding="utf8")
+          save()
+          try:
+              cfg=json.loads(CONFIG.read_text(encoding="utf8"))
+              validate_acquisition(cfg)
+              local=datetime.now(ZoneInfo("Europe/London"))
+              if (local.date()!=date(2026,10,16) or os.environ.get("GITHUB_RUN_ATTEMPT")!="1"
+                  or os.environ.get("GITHUB_EVENT_NAME")!="push"
+                  or os.environ.get("GITHUB_REF")!="refs/heads/main"):
+                  raise ValueError("Manual one-time day or Github event is invalid")
+              # The missed Friday 07:35 collection is slot 5, not a sixth
+              # independent search. The 07:35 scheduled runs were skipped.
+              slot=sum(date(local.year,local.month,d).weekday() in (1,4)
+                       for d in range(1,local.day+1))
+              if slot!=5:
+                  raise ValueError("Unexpected calendar slot for missed 16 October refresh")
+              token=os.environ.get("APIFY_TOKEN","")
+              report=price_check(cfg,token)
+              plan=select_slot(cfg,slot,report,cycle_index=0)
+              pricing=validate_cost_models(report,plan)
+              if not pricing["pricing_guard_passed"]:
+                  raise ValueError("Pricing validation rejected: "+str(pricing["issues"]))
+              headroom=report["available_after_salesforce_reserve_usd"]
+              if headroom+1e-9 < 1.8:
+                  raise ValueError("Protected account headroom insufficient")
+              summary.update(status="PRICING_PASSED",
+                account_usage_before_usd=report["account_usage_usd"],
+                ba_headroom_after_reserve_before_usd=headroom,
+                rotation_slot=slot,
+                source_plan=[{"source":s["name"],"family":s["query_family"],
+                  "max_items":s["max_items"],"max_charge_usd":s["max_charge_usd"]}
+                  for s in plan["sources"]])
+              save()
+              receipts=acquire_once(plan,token)
+              summary.update(status="ACQUISITION_COMPLETE",
+                 actor_runs_started=len(receipts),
+                 receipts=[{"source":r["source"],"status":r["status"],"run_id":r["run_id"],
+                    "dataset_id":r["dataset_id"],"dataset_items":r.get("dataset_items"),
+                    "max_charge_usd":r["max_charge_usd"]} for r in receipts])
+              save()
+              def get(path,auth):
+                  req=Request(path,headers={"Authorization":"Bearer "+auth,
+                     "Accept":"application/json"},method="GET")
+                  with urlopen(req,timeout=35) as response:
+                      data=json.load(response)
+                  if "/items?" in path:
+                      if not isinstance(data,list):raise ValueError("Expected list of dataset items")
+                      return data
+                  if not isinstance(data,dict) or not isinstance(data.get("data"),dict):
+                      raise ValueError("Expected Apify API data envelope")
+                  return data["data"]
+              batch=build_batch(receipts,token,get=get,max_per_source=50,
+                  max_items_by_source={s["name"]:s["max_items"] for s in plan["sources"]})
+              qa=run_offline(batch,json.loads(MAPPING.read_text(encoding="utf8")))
+              live=build_live_document(batch,qa,datetime.now(timezone.utc))
+              summary.update(status="QA_PASSED",current_batch_adverts=len(live["records"]),
+                role_family_counts=dict(Counter(r["role_family"] for r in live["records"])),
+                rejected=qa.get("rejected",{}))
+              save()
+              if os.environ.get("BA_WP_DELIVERY_APPROVAL")!="EXPLICIT_APPROVAL":
+                  raise ValueError("WordPress publication approval not supplied")
+              acknowledgment=send_once(live,os.environ.get("BA_WP_USERNAME",""),
+                  os.environ.get("BA_WP_APPLICATION_PASSWORD",""),approved=True)
+              if acknowledgment.get("records")!=len(live["records"]):
+                  raise ValueError("WordPress receiver count mismatch")
+              summary.update(status="PUBLISHED_RECEIVER_CONFIRMED",
+                 wordpress_sent=True,receiver_ack_records=acknowledgment["records"],
+                 receiver_sha256=acknowledgment["sha256"])
+              save()
+              # Independent account usage snapshot; this is NOT a per-Actor invoice.
+              try:
+                  after=get("https://api.apify.com/v2/users/me/limits",token)
+                  current=(after.get("current") or {}).get("monthlyUsageUsd")
+                  if type(current) in (float,int):
+                      summary["account_usage_after_usd"]=round(current,4)
+                      summary["account_usage_delta_since_preflight_usd"]=round(
+                          current-report["account_usage_usd"],4)
+                      save()
+              except Exception:
+                  pass
+              print("ONE_TIME_RESULT "+json.dumps(summary,sort_keys=True),flush=True)
+          except Exception as exc:
+              summary["status"]="FAILED_NO_RETRY"
+              summary["error_type"]=type(exc).__name__
+              summary["error_message"]=str(exc)[:350]
+              if OUT.is_file():
+                  try:
+                      receipts=json.loads(OUT.read_text()).get("receipts",[])
+                      summary["actor_runs_started"]=len(receipts)
+                      summary["receipts"]=[{"source":r.get("source"),
+                        "run_id":r.get("run_id"),"status":r.get("status"),
+                        "dataset_items":r.get("dataset_items")} for r in receipts]
+                  except Exception:
+                      pass
+              save()
+              print("ONE_TIME_RESULT "+json.dumps(summary,sort_keys=True),flush=True)
+              raise
+          PY
+      - name: Save audit receipts and QA summary (no raw advert contacts)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ba-manual-20261016-audit
+          path: |
+            business-analysis-tracker/data/manual-20261016-status.json
+            business-analysis-tracker/data/acquisition-receipts.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Link this run on existing audit PR
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          f=Path("business-analysis-tracker/data/manual-20261016-status.json")
+          x=json.loads(f.read_text()) if f.exists() else {"status":"PREFLIGHT_BLOCKED"}
+          url="https://github.com/"+os.environ["GITHUB_REPOSITORY"]+"/actions/runs/"+os.environ["GITHUB_RUN_ID"]
+          msg="One-time manual BA acquisition 16 Oct 2026\nRun: "+url+"\nStatus: "+str(x.get("status"))+"\nActors started: "+str(x.get("actor_runs_started",0))+"\nReceiver published: "+str(x.get("wordpress_sent",False))+"\nSource results: "+json.dumps(x.get("receipts",[]),separators=(",",":"))+"\nRole families: "+json.dumps(x.get("role_family_counts",{}),separators=(",",":"))+"\nError, if any: "+str(x.get("error_message","None"))
+          api="https://api.github.com/repos/"+os.environ["GITHUB_REPOSITORY"]+"/issues/131/comments"
+          req=Request(api,data=json.dumps({"body":msg}).encode(),method="POST",
+             headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],
+                      "Accept":"application/vnd.github+json","Content-Type":"application/json"})
+          with urlopen(req,timeout=25) as response:
+              print("AUDIT_COMMENT_STATUS",response.status,"RUN_URL",url)
+          PY
