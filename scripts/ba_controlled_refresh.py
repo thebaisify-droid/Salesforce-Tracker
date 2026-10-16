@@ -62,6 +62,15 @@ def validate(cfg):
         raise ValueError("Sum of per-source charge caps differs from authorisation")
     return {"valid":True,"sources":names,"max_total_charge_usd":cfg["max_total_charge_usd"],
             "enabled":cfg.get("enabled") is True,"actor_runs_launched":0}
+def verified_dataset_count(metadata:dict, max_items:int, source:str)->int:
+    """Fail closed on source outputs exceeding the paid request before continuing."""
+    count=metadata.get("itemCount") if isinstance(metadata,dict) else None
+    if type(max_items) is not int or max_items<1 or type(count) is not int or count<1:
+        raise ValueError(source+": missing or invalid completed dataset item count")
+    if count>max_items:
+        raise ValueError(source+": dataset count "+str(count)+" exceeds requested cap "+str(max_items))
+    return count
+
 def run(cfg, token, *, getter=api, sleep=time.sleep):
     if not cfg.get("enabled") or os.getenv("BA_PAID_REFRESH_APPROVAL")!="EXPLICIT_BA_REFRESH_APPROVED":
         raise RuntimeError("BA acquisition disabled or not separately authorised")
@@ -110,6 +119,19 @@ def run(cfg, token, *, getter=api, sleep=time.sleep):
             "receipts":receipts,"publication_approved":False},indent=2)+"\n",encoding="utf8")
         if receipt["status"]!="SUCCEEDED" or not receipt["dataset_id"]:
             raise RuntimeError("BA source failed or timed out: "+source["name"]+"; no retry")
+        # Important: JobServe previously emitted 24 rows despite maxResults=20.
+        # Check actual post-run dataset metadata BEFORE launching the next paid Actor.
+        try:
+            meta=getter(BASE+"datasets/"+receipt["dataset_id"],token)
+            receipt["dataset_items"]=verified_dataset_count(meta,max_items,source["name"])
+        except (ValueError,TypeError,RuntimeError) as exc:
+            receipt["status"]="OUTPUT_COUNT_REJECTED"
+            receipt["count_validation_error"]=str(exc)[:220]
+            OUT.write_text(json.dumps({"schema":"ba-source-run-receipts/v1",
+                "receipts":receipts,"publication_approved":False},indent=2)+"\n",encoding="utf8")
+            raise RuntimeError("BA dataset count fails closed before next Actor; no retry: "+str(exc)) from exc
+        OUT.write_text(json.dumps({"schema":"ba-source-run-receipts/v1",
+            "receipts":receipts,"publication_approved":False},indent=2)+"\n",encoding="utf8")
         remaining=round(remaining-source["max_charge_usd"],2)
     OUT.write_text(json.dumps({"schema":"ba-source-run-receipts/v1","receipts":receipts,
          "publication_approved":False},indent=2)+"\n",encoding="utf8")
