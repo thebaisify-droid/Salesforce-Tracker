@@ -1,0 +1,1678 @@
+{
+  "schema": "ba-user-final-scope-decisions/v1",
+  "decision_date": "2026-10-16",
+  "authority": "User explicitly instructed to exclude all remaining 37 and keep the existing 124 of the 161 collected adverts",
+  "scope": "EXACT_ADVERT_URLS_FROM_COMPLETED_2026_10_16_FIVE_SOURCE_DATASETS",
+  "source_evidence": "business-analysis-tracker/evidence/ba-five-completed-20261016-audit-redacted.json",
+  "reviewer_approved_39_register": "business-analysis-tracker/evidence/ba-20261016-user-approved-39-scope.json",
+  "original_actor_runs": [
+    {
+      "source": "CV-Library",
+      "run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "source": "Totaljobs",
+      "run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "source": "Reed UK",
+      "run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "source": "JobServe",
+      "run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    }
+  ],
+  "total": 161,
+  "keep_count": 124,
+  "exclude_count": 37,
+  "existing_approved_39_count": 39,
+  "no_employer_opening_verification": true,
+  "no_new_actors": true,
+  "no_wordpress_mutation": true,
+  "never_block_by_title_alone": true,
+  "rejection_is_advert_url_specific": true,
+  "source_counts": {
+    "CV-Library": {
+      "KEEP": 17,
+      "EXCLUDE": 13
+    },
+    "Totaljobs": {
+      "KEEP": 15,
+      "EXCLUDE": 10
+    },
+    "Reed UK": {
+      "KEEP": 21,
+      "EXCLUDE": 9
+    },
+    "Indeed UK": {
+      "KEEP": 25,
+      "EXCLUDE": 5
+    },
+    "JobServe": {
+      "KEEP": 46,
+      "EXCLUDE": 0
+    }
+  },
+  "decisions": [
+    {
+      "record_number": 1,
+      "source": "CV-Library",
+      "title": "Senior IT Audit Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225733168",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 2,
+      "source": "CV-Library",
+      "title": "Pensions Technical Manager -Senior Executive Officer (SEO)",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225731733",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 3,
+      "source": "CV-Library",
+      "title": "Senior Sponsorship Sales Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225731339",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 4,
+      "source": "CV-Library",
+      "title": "Examinations Delivery Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225729882",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 5,
+      "source": "CV-Library",
+      "title": "Head of Technology - SIP / IT",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225729291",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 6,
+      "source": "CV-Library",
+      "title": "Senior IT Project Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225729143",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 7,
+      "source": "CV-Library",
+      "title": "Implementation Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225728868",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 8,
+      "source": "CV-Library",
+      "title": "Legal Counsel",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225728352",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 9,
+      "source": "CV-Library",
+      "title": "Senior Solutions Architect – Senior Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225726839",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 10,
+      "source": "CV-Library",
+      "title": "Cyber Security Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225726314",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 11,
+      "source": "CV-Library",
+      "title": "Salesforce Technical Delivery Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225725567",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 12,
+      "source": "CV-Library",
+      "title": "Registered Homes Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225725360",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 13,
+      "source": "CV-Library",
+      "title": "Service Desk Analyst",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225725178",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 14,
+      "source": "CV-Library",
+      "title": "Professional Services Technical Lead",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225724585",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 15,
+      "source": "CV-Library",
+      "title": "Senior Commercial Officer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225724513",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 16,
+      "source": "CV-Library",
+      "title": "Device Configuration Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225724386",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 17,
+      "source": "CV-Library",
+      "title": "Contracts Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225723620",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 18,
+      "source": "CV-Library",
+      "title": "Enterprise Architect",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225723161",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 19,
+      "source": "CV-Library",
+      "title": "Cybersecurity Specialist",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225722573",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 20,
+      "source": "CV-Library",
+      "title": "Service Delivery Manager - Active SC Clearance Holder Only",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225722174",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 21,
+      "source": "CV-Library",
+      "title": "Software/Digital Engineer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225721842",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 22,
+      "source": "CV-Library",
+      "title": "Solutions Architect",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225721578",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 23,
+      "source": "CV-Library",
+      "title": "Registered Service Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225721315",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 24,
+      "source": "CV-Library",
+      "title": "Project Co-ordinator",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225720408",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 25,
+      "source": "CV-Library",
+      "title": "Technical Officer - Housing, Assets, Construction, Development",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225720197",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 26,
+      "source": "CV-Library",
+      "title": "Information Security Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225719372",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 27,
+      "source": "CV-Library",
+      "title": "Information Security Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225719085",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 28,
+      "source": "CV-Library",
+      "title": "End User Computing Engineer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225718861",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 29,
+      "source": "CV-Library",
+      "title": "Design Engineer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225717521",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 30,
+      "source": "CV-Library",
+      "title": "Lead Engineer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225717320",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm"
+    },
+    {
+      "record_number": 31,
+      "source": "Totaljobs",
+      "title": "Trainee Ethical Hacker – No Experience Needed",
+      "original_advert_url": "https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/it-online-learning-job108092714",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 32,
+      "source": "Totaljobs",
+      "title": "Trainee Ethical Hacker – No Experience Needed",
+      "original_advert_url": "https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/it-online-learning-job108092711",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 33,
+      "source": "Totaljobs",
+      "title": "Trainee Cyber Security Analyst – No Experience Needed",
+      "original_advert_url": "https://www.totaljobs.com/job/trainee-cyber-security-analyst-no-experience-needed/newto-training-limited-job108080178",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 34,
+      "source": "Totaljobs",
+      "title": "Cyber Security Analyst",
+      "original_advert_url": "https://www.totaljobs.com/job/cyber-security-analyst/viqu-it-recruitment-job108179002",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 35,
+      "source": "Totaljobs",
+      "title": "Trainee Ethical Hacker – No Experience Needed",
+      "original_advert_url": "https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/newto-training-limited-job108080179",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 36,
+      "source": "Totaljobs",
+      "title": "Cyber Sec Analyst - Network Intrusion & Capability Development",
+      "original_advert_url": "https://www.totaljobs.com/job/cyber-sec-analyst-network-intrusion-capability-development/salt-job108180114",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 37,
+      "source": "Totaljobs",
+      "title": "Junior Ethical Hacker Placement Programme - no experience needed",
+      "original_advert_url": "https://www.totaljobs.com/job/junior-ethical-hacker-placement-programme-no-experience-needed/it-online-learning-job108092693",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 38,
+      "source": "Totaljobs",
+      "title": "Internal Penetration Tester",
+      "original_advert_url": "https://www.totaljobs.com/job/internal-penetration-tester/salt-job108122215",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 39,
+      "source": "Totaljobs",
+      "title": "Ethical Hacker / Penetration Tester – no experience needed",
+      "original_advert_url": "https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080276",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 40,
+      "source": "Totaljobs",
+      "title": "Ethical Hacker / Penetration Tester – no experience needed",
+      "original_advert_url": "https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080280",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 41,
+      "source": "Totaljobs",
+      "title": "Ethical Hacker / Penetration Tester – no experience needed",
+      "original_advert_url": "https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080281",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 42,
+      "source": "Totaljobs",
+      "title": "Malware Researcher",
+      "original_advert_url": "https://www.totaljobs.com/job/malware-researcher/darktrace-job108090216",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 43,
+      "source": "Totaljobs",
+      "title": "Business Information Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/job/business-information-security-consultant/hays-job108103230",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 44,
+      "source": "Totaljobs",
+      "title": "Security Consultant (CHECK Team)",
+      "original_advert_url": "https://www.totaljobs.com/job/security-consultant-check-team/matchtech-mobility-job108084569",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 45,
+      "source": "Totaljobs",
+      "title": "Senior Technical Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108161623",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 46,
+      "source": "Totaljobs",
+      "title": "Electronic Systems Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/job/electronic-systems-security-consultant/sanderson-government-and-defence-job108149056",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 47,
+      "source": "Totaljobs",
+      "title": "Security Engineer",
+      "original_advert_url": "https://www.totaljobs.com/job/security-engineer/viqu-it-recruitment-job108161112",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 48,
+      "source": "Totaljobs",
+      "title": "Cyber Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/job/cyber-security-consultant/fruition-group-job108113714",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 49,
+      "source": "Totaljobs",
+      "title": "Senior Technical Security Consultant – Security Architecture",
+      "original_advert_url": "https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108115651",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 50,
+      "source": "Totaljobs",
+      "title": "Support Engineer Snr MSoft, Networks, Security, EC2 50k",
+      "original_advert_url": "https://www.totaljobs.com/job/systems-infrastructure-eng-msoft-networks-security-nw1-70k/langley-james-limited-job108120556",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 51,
+      "source": "Totaljobs",
+      "title": "Security Engineer",
+      "original_advert_url": "https://www.totaljobs.com/job/security-engineer/fs-recruitment-services-ltd-job108075230",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 52,
+      "source": "Totaljobs",
+      "title": "Senior Security Engineer - Isovalent",
+      "original_advert_url": "https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108183829",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 53,
+      "source": "Totaljobs",
+      "title": "Senior Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/job/senior-security-consultant/mace-job108176432",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 54,
+      "source": "Totaljobs",
+      "title": "Senior Security Engineer - Isovalent",
+      "original_advert_url": "https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108124308",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 55,
+      "source": "Totaljobs",
+      "title": "Principal Security Architect",
+      "original_advert_url": "https://www.totaljobs.com/job/principal-security-architect/hays-job108112987",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L"
+    },
+    {
+      "record_number": 56,
+      "source": "Reed UK",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-analyst/57454184",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 57,
+      "source": "Reed UK",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-analyst/57450310",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 58,
+      "source": "Reed UK",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-analyst/57399292",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 59,
+      "source": "Reed UK",
+      "title": "Senior Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/senior-business-analyst/57383113",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 60,
+      "source": "Reed UK",
+      "title": "Business System Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-system-analyst/57405643",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 61,
+      "source": "Reed UK",
+      "title": "Business Readiness Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57392838",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 62,
+      "source": "Reed UK",
+      "title": "MES Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/mes-business-analyst/57453973",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 63,
+      "source": "Reed UK",
+      "title": "Technical Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/technical-business-analyst/57403479",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 64,
+      "source": "Reed UK",
+      "title": "Senior Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/senior-business-analyst/57408191",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 65,
+      "source": "Reed UK",
+      "title": "Business Readiness Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57372616",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 66,
+      "source": "Reed UK",
+      "title": "Senior Business Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/senior-business-analyst/57407262",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 67,
+      "source": "Reed UK",
+      "title": "Business Analyst - Supply Chain",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-analyst-supply-chain/57415525",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 68,
+      "source": "Reed UK",
+      "title": "Business Readiness Senior Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-readiness-senior-analyst/57372612",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 69,
+      "source": "Reed UK",
+      "title": "Technical Business Analyst (Azure FinOps)",
+      "original_advert_url": "https://www.reed.co.uk/jobs/technical-business-analyst-azure-finops/57456934",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 70,
+      "source": "Reed UK",
+      "title": "Senior Business Analyst (CRM)",
+      "original_advert_url": "https://www.reed.co.uk/jobs/senior-business-analyst-crm/57459401",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 71,
+      "source": "Reed UK",
+      "title": "Procurement Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/procurement-analyst/57380529",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 72,
+      "source": "Reed UK",
+      "title": "Analyst - Consulting",
+      "original_advert_url": "https://www.reed.co.uk/jobs/analyst-consulting/57401465",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 73,
+      "source": "Reed UK",
+      "title": "Commercial Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/commercial-analyst/57379179",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 74,
+      "source": "Reed UK",
+      "title": "Commercial Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/commercial-analyst/57379170",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 75,
+      "source": "Reed UK",
+      "title": "KYC Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/kyc-analyst/57449165",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 76,
+      "source": "Reed UK",
+      "title": "Project Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/project-analyst/57458778",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 77,
+      "source": "Reed UK",
+      "title": "Warehouse Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/warehouse-analyst/57456840",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 78,
+      "source": "Reed UK",
+      "title": "Project Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/project-analyst/57431085",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 79,
+      "source": "Reed UK",
+      "title": "Support Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/support-analyst/57405011",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 80,
+      "source": "Reed UK",
+      "title": "eBilling Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/ebilling-analyst/57427598",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 81,
+      "source": "Reed UK",
+      "title": "Financial Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/financial-analyst/57422778",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 82,
+      "source": "Reed UK",
+      "title": "Pricing Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/pricing-analyst/57424602",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 83,
+      "source": "Reed UK",
+      "title": "Spurgeons - Finance Business Partner",
+      "original_advert_url": "https://www.reed.co.uk/jobs/spurgeons-finance-business-partner/57438289",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 84,
+      "source": "Reed UK",
+      "title": "Business Functional Analyst (Margin and Valuations, FIC)",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-functional-analyst-margin-and-valuations-fic/57461995",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 85,
+      "source": "Reed UK",
+      "title": "Lead Data Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/lead-data-analyst/57432267",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3"
+    },
+    {
+      "record_number": 86,
+      "source": "Indeed UK",
+      "title": "Junior Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=0501ff18c4042280",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 87,
+      "source": "Indeed UK",
+      "title": "Asset Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=994169edb11b762c",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 88,
+      "source": "Indeed UK",
+      "title": "Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=d28093d4fcc12a39",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 89,
+      "source": "Indeed UK",
+      "title": "Graduate Analyst, Data & AI Innovation",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=983dcde54fb88574",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 90,
+      "source": "Indeed UK",
+      "title": "Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=61543256b67b4c69",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 91,
+      "source": "Indeed UK",
+      "title": "Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=484c9640b09e9760",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 92,
+      "source": "Indeed UK",
+      "title": "Senior Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=d044cf2f1e22d7bb",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 93,
+      "source": "Indeed UK",
+      "title": "Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=30f31ba56c8fd90a",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 94,
+      "source": "Indeed UK",
+      "title": "Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=c82e7b61d8bf26d9",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 95,
+      "source": "Indeed UK",
+      "title": "Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=cf61fb4188cabe1e",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 96,
+      "source": "Indeed UK",
+      "title": "Operations Support Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=5fdd79d0bddb4f90",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 97,
+      "source": "Indeed UK",
+      "title": "Senior GRC Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=32d85e13eb663cd2",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 98,
+      "source": "Indeed UK",
+      "title": "Cyber Incident Responder",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=3e65259e14e28d08",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 99,
+      "source": "Indeed UK",
+      "title": "People Reporting Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=7cd39b6923bb8486",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 100,
+      "source": "Indeed UK",
+      "title": "Analyst Developer",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=2cf779f091cdd674",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 101,
+      "source": "Indeed UK",
+      "title": "Graduate Operations Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=7f5cc031e52c78dd",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 102,
+      "source": "Indeed UK",
+      "title": "BUSINESS INSIGHTS ANALYST",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=b4f0153672be88d2",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 103,
+      "source": "Indeed UK",
+      "title": "IT Manager",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=90878bced720d927",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 104,
+      "source": "Indeed UK",
+      "title": "Digital Analyst - Tech, Risk & Governance",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=09bf04665e1c7730",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 105,
+      "source": "Indeed UK",
+      "title": "Digital Product Manager",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=abb775948d6a23e1",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 106,
+      "source": "Indeed UK",
+      "title": "EDI Functional Support Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=f89131d332aade12",
+      "decision": "EXCLUDE",
+      "decision_basis": "USER_EXPLICITLY_EXCLUDED_2026_10_16",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 107,
+      "source": "Indeed UK",
+      "title": "Junior Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=d3fb5641a890394f",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 108,
+      "source": "Indeed UK",
+      "title": "Senior Enterprise Technology Engineer",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=e260817bb49aa526",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 109,
+      "source": "Indeed UK",
+      "title": "Cyber Security Analyst Apprentice",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=14ac11b5872c2f2d",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 110,
+      "source": "Indeed UK",
+      "title": "Marketing Performance & Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=7a7f196f2d1b00e9",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 111,
+      "source": "Indeed UK",
+      "title": "Project Controls Reporting Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=57c3745eb174b9b3",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 112,
+      "source": "Indeed UK",
+      "title": "Technology GRC Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=f259db8858b3df1d",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 113,
+      "source": "Indeed UK",
+      "title": "Senior Forward Deployed Engineer",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=c8e6419a22b989ca",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 114,
+      "source": "Indeed UK",
+      "title": "Service Centre Support Lead",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=4326d57eed4c6354",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 115,
+      "source": "Indeed UK",
+      "title": "Senior Data Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=98a0fe6ad87c19b1",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx"
+    },
+    {
+      "record_number": 116,
+      "source": "JobServe",
+      "title": "Business Intelligence/Commercial Modelling Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFmtv",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 117,
+      "source": "JobServe",
+      "title": "BI & Data Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFQKm",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 118,
+      "source": "JobServe",
+      "title": "Data Analyst - Power BI & Excel",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGCRF",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 119,
+      "source": "JobServe",
+      "title": "Data Analyst/Developer - Power BI & Databricks -London",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDhGg",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 120,
+      "source": "JobServe",
+      "title": "Business Intelligence Developer - SQL, ETL, Power BI, DAX",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDiRY",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 121,
+      "source": "JobServe",
+      "title": "Technical Business Analyst - SC Cleared & NPPV3",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDlJf",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 122,
+      "source": "JobServe",
+      "title": "Finance Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEnT3",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 123,
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEuj9",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 124,
+      "source": "JobServe",
+      "title": "Business Analyst - Utilities & Digital Transformation",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEvyT",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 125,
+      "source": "JobServe",
+      "title": "Business Intelligence Manager",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFqsm",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 126,
+      "source": "JobServe",
+      "title": "Business Data Analyst- Banking/Finance",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGA9K",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 127,
+      "source": "JobServe",
+      "title": "Business Analysts (Intermediate to Senior - Multiple)",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGeRi",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 128,
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDhLc",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 129,
+      "source": "JobServe",
+      "title": "Business Analyst (Telecoms) - Inside IR35 - £350 per day",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEpwu",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 130,
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hErCs",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 131,
+      "source": "JobServe",
+      "title": "Business Analyst - Testing/ITSM (SC Cleared)",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEtoE",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 132,
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFI38",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 133,
+      "source": "JobServe",
+      "title": "Business Analyst - 2 days a week oniste - London - £500 per day INSIDE IR35 - SC Required",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFKLA",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 134,
+      "source": "JobServe",
+      "title": "Business Analyst with Insurance Domain",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFRLX",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 135,
+      "source": "JobServe",
+      "title": "Business Analyst - Policy Administration Systems Build - 12 Month FTC",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFmwI",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 136,
+      "source": "JobServe",
+      "title": "Business Analyst - Digital - CESA Futures",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFojg",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 137,
+      "source": "JobServe",
+      "title": "Business Analyst - PPM Implementation",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFpKA",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 138,
+      "source": "JobServe",
+      "title": "Business Analyst -Customer Journey Manager",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGENR",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 139,
+      "source": "JobServe",
+      "title": "Business Analyst - Crisis Management & Resilience",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGHqE",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 140,
+      "source": "JobServe",
+      "title": "Business Analyst - CRM",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFTZL",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 141,
+      "source": "JobServe",
+      "title": "Business Analyst - Financial Crime",
+      "original_advert_url": "https://www.jobserve.com/gb/en/g9Wi5",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 142,
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFqXM",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 143,
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEnWF",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 144,
+      "source": "JobServe",
+      "title": "Business Change Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDg1S",
+      "decision": "KEEP",
+      "decision_basis": "USER_EXPLICIT_PRIOR_KEEP",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 145,
+      "source": "JobServe",
+      "title": "Business Analyst Outside IR35",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDiM1",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 146,
+      "source": "JobServe",
+      "title": "Business Systems Analyst, £500 per day inside IR35",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEpsZ",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 147,
+      "source": "JobServe",
+      "title": "Data/MI Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hBrGM",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 148,
+      "source": "JobServe",
+      "title": "Business Analyst - Commodities, Platform, Process",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFHSw",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 149,
+      "source": "JobServe",
+      "title": "Business Process Analyst - Delegated Authority, London Market, Outside IR35",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFNpZ",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 150,
+      "source": "JobServe",
+      "title": "Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/g9Z9r",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 151,
+      "source": "JobServe",
+      "title": "Business Analyst - £500 Inside - 6 months - Remote",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDHmy",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 152,
+      "source": "JobServe",
+      "title": "Payments Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hEplT",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 153,
+      "source": "JobServe",
+      "title": "Senior Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hExae",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 154,
+      "source": "JobServe",
+      "title": "Technical Business Analyst - Hybrid Working",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFWBL",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 155,
+      "source": "JobServe",
+      "title": "Lead Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFk5i",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 156,
+      "source": "JobServe",
+      "title": "Business Intelligence Developer (Tableau/T-SQL)",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFmtr",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 157,
+      "source": "JobServe",
+      "title": "Technical Business Analyst - 6 months | Leeds, UK (Hybrid - 3 days/week in office)",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hFuji",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 158,
+      "source": "JobServe",
+      "title": "IT Business Analyst - Insurance, Business Change, Process Modelling, Data Analysis",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGGAG",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 159,
+      "source": "JobServe",
+      "title": "Junior Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGGBr",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 160,
+      "source": "JobServe",
+      "title": "FX Business Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGeFe",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    },
+    {
+      "record_number": 161,
+      "source": "JobServe",
+      "title": "Process Business Analyst - London Market Insurance",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGfqg",
+      "decision": "KEEP",
+      "decision_basis": "ACCEPTED_IN_124_REVIEWED_BASELINE",
+      "source_run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5"
+    }
+  ]
+}
