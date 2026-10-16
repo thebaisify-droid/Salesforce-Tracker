@@ -49,7 +49,7 @@ class TestPerSourceItemCap(unittest.TestCase):
                 return {"itemCount":24}
             raise AssertionError("Unexpected URL: "+url)
         with tempfile.TemporaryDirectory() as t:
-            with patch("scripts.ba_controlled_refresh.OUT",Path(t)/"audit.json"), \\
+            with patch("scripts.ba_controlled_refresh.OUT",Path(t)/"audit.json"), \
                  patch.dict(os.environ,{"BA_PAID_REFRESH_APPROVAL":"EXPLICIT_BA_REFRESH_APPROVED"}):
                 with self.assertRaisesRegex(RuntimeError,"dataset count fails closed"):
                     run(cfg,"fake-token",getter=getter,sleep=lambda _:None)
