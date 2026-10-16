@@ -28,7 +28,8 @@
         "includeDetails": false,
         "incrementalMode": false,
         "emitExpired": false
-      }
+      },
+      "max_observed_items": 30
     },
     {
       "name": "Totaljobs",
@@ -44,7 +45,8 @@
         "sortBy": "date",
         "fetchDetails": false,
         "incrementalMode": false
-      }
+      },
+      "max_observed_items": 30
     },
     {
       "name": "Reed UK",
@@ -56,7 +58,8 @@
         "maxResults": 30,
         "datePosted": "lastmonth",
         "fetchDetails": true
-      }
+      },
+      "max_observed_items": 30
     },
     {
       "name": "Indeed UK",
@@ -67,7 +70,8 @@
         "query": "business analyst",
         "country": "uk",
         "maxResults": 30
-      }
+      },
+      "max_observed_items": 30
     },
     {
       "name": "JobServe",
@@ -82,7 +86,8 @@
         "maxResults": 30,
         "includeDescription": true,
         "onlyUniqueJobs": true
-      }
+      },
+      "max_observed_items": 60
     }
   ],
   "monthly_ba_allowance_usd": 17,
@@ -100,5 +105,6 @@
   "rolling_coverage_block_reason": null,
   "release_status": "CONTROLLED_22_FAMILY_25_USD_TRIAL",
   "receiver_min_version": "0.3.1",
-  "release_notes": "Read-only preflight 16 October 2026 passed: v0.3.1 active, authenticated restricted delivery route reachable, $25 account ceiling and $8 protected reserve verified, five Actor pricing guards passed. Runtime must recheck billing before each Actor; no retries, no publication on partial/failed/oversize datasets. Existing 57 historical observations migrate with their original Apify timestamps only."
+  "release_notes": "Read-only preflight 16 October 2026 passed: v0.3.1 active, authenticated restricted delivery route reachable, $25 account ceiling and $8 protected reserve verified, five Actor pricing guards passed. Runtime must recheck billing before each Actor; no retries, no publication on partial/failed/oversize datasets. Existing 57 historical observations migrate with their original Apify timestamps only.",
+  "overshoot_policy": "JobServe's documented page-sized overfetch is bounded to 60 observed rows when 30 are requested; each Actor still has maxTotalChargeUsd at $0.25 JobServe / $1.80 total, every dataset must stabilize before QA. Proposed only: PAID SCHEDULE REMAINS ON HOLD."
 }
