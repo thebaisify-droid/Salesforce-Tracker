@@ -71,6 +71,13 @@ def select_slot(config:dict, slot_number:int, report:dict, *, entries=None, cycl
         if maximum < 1:
             raise ValueError(name + ": no result fits the approved Actor charge cap")
         source["max_items"] = maximum
+        # Per-result billed Actors cannot overfetch beyond the priced count.
+        # JobServe remains an explicitly capped PPE exception: the Actor
+        # documents that one extra result page can be emitted.
+        source["max_observed_items"] = (
+            60 if name == "JobServe" and price.get("pricing_model") in ("PAY_PER_EVENT", "PPE")
+            else maximum
+        )
         source["input"][RESULT_FIELD[name]] = maximum
         source["input"][field] = [family["query"]] if name == "JobServe" else family["query"]
         source["query_family"] = family["family"]
