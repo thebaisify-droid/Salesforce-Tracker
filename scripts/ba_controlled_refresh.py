@@ -65,7 +65,7 @@ def validate(cfg):
 def verified_dataset_count(metadata:dict, max_items:int, source:str)->int:
     """Fail closed on source outputs exceeding the paid request before continuing."""
     count=metadata.get("itemCount") if isinstance(metadata,dict) else None
-    if type(max_items) is not int or max_items<1 or type(count) is not int or count<1:
+    if type(max_items) is not int or max_items<1 or type(count) is not int or count<0:
         raise ValueError(source+": missing or invalid completed dataset item count")
     if count>max_items:
         raise ValueError(source+": dataset count "+str(count)+" exceeds requested cap "+str(max_items))

@@ -41,7 +41,7 @@ def build_batch(receipts,token,*,get=api,max_per_source=100,max_items_by_source=
         declared=(max_items_by_source or {}).get(source,max_per_source)
         if type(declared) is not int or declared<1 or declared>max_per_source:
             raise ValueError("Invalid agreed source count limit: "+source)
-        if type(count) is not int or count<1 or count>declared:
+        if type(count) is not int or count<0 or count>declared:
             raise ValueError("Unexpected dataset count or item limit: "+source)
         # Existing API utility expects a data envelope, whereas dataset items
         # endpoint returns a list. Injected getter can support both shapes.
