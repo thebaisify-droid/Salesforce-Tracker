@@ -1,6 +1,6 @@
 # UK Business & Technology Jobs Tracker — $25 acquisition trial
 
-**Status:** staged on a feature branch, not live; never merge or enable paid acquisition until every gate below passes.
+**Status:** implementation staged and CI-tested on a draft feature branch; not merged or deployed live. Paid acquisition remains blocked until all release gates pass.
 
 ## Scope
 This product covers **all 22 registered families** in `config/business_product_delivery_security_taxonomy_v1.0.json`. The old Business Analysis label is not the acquisition scope. Neither volume of BA ads nor raw total job count substitutes for family coverage.
@@ -18,14 +18,18 @@ This product covers **all 22 registered families** in `config/business_product_d
 - `maxItems`, source input result caps, `maxTotalChargeUsd`, a live pre-POST account-usage read, and the $8 reserve are applied for every Actor. Completed dataset item counts must not exceed the requested maximum. Cap-exhaustion and failed Actors are **not** automatically retried.
 - **Limitations:** This is acquisition *coverage across time*, not yet 22-family *display coverage*. The current WordPress receiver and current QA path require every displayed record to match only the five current run IDs. Publishing just the latest rotated slot would remove other families from the public dashboard.
 
-## Release blocker: rolling 22-family vacancy retention
-`rolling_coverage_enabled=false` is an intentional fail-closed release gate.
-Before any paid trial acquisition using the new plan:
-1. Design and test multi-refresh accumulation of accepted, source-observed records. Store canonical source IDs, advert URLs, original run IDs/datasets, first/last observation and ageing policy; never fabricate a later observation or open status.
-2. Modify the WordPress receiver and QA contracts to accept a current, five-source refresh **plus bounded historical provenance**. Verify checksum, stale-record expiry labels, deduplication, source-specific run identities, authenticated ingestion and rollback. Avoid publishing stale rows as freshly observed or active.
-3. Prove all 22 families can remain visible when family-specific searches rotate, even if the latest five source queries are for other families. Coverage dashboards should show 1/7/30-day counts, gap reasons and observed dates by family.
-4. Reconcile JobServe's previous requested-versus-delivered item discrepancy and confirm Actor pricing/minimum charge; verify Apify hard account limit **$25**, not $19 and not $50.
-5. Confirm Salesforce is not impacted; review GitHub Actions execution and passing tests; enable paid refresh only once the rolling snapshot is safe. Never infer that connecting a paywall itself licenses resale of source adverts.
+## Remaining deployment gates
+
+The WordPress receiver **v0.3 implementation is now committed and tested on the branch**, including `rolling-retention.php`. It retains the most recent 30 days of source-observed advertisements, bounds display to 450 records, preserves the original run and dataset ID, exposes original last-observed dates and expires old records without inventing current-open status.
+
+**It has not been installed on the live WordPress site.** `rolling_coverage_enabled=false` intentionally prevents paid collection before a safe deployment.
+
+Before enabling the trial:
+1. Take a WordPress files/database backup, install both updated v0.3 PHP files, and verify server syntax and a controlled **staging-only** two-snapshot end-to-end retention/rollback test. Do not inject synthetic data into the live page.
+2. Verify Apify console account's independent hard spending limit is **exactly $25**; repository code cannot update the Apify setting. Confirm current usage and enough headroom for the $8 Salesforce reserve and $1.80 requested refresh cap.
+3. Reconcile the earlier JobServe cap-versus-actual count discrepancy, confirm live per-Actor pricing and monthly headroom, and validate all five source inputs.
+4. Only then enable the rolling-coverage flag under the tested schedule. Preserve zero retries and independent WordPress authentication; do not merge before full site acceptance.
+5. After multiple real refreshes, report accepted unique ads, direct advert URLs, last-observed age, source failures, per-family coverage and cost per relevant deduplicated advert. No assurance of 22 non-empty families is inferred from the search plan.
 
 ## Commercialisation decision gates
 Track paid Actor cost per **accepted, relevant, deduplicated** advertisement, distribution across the 22 families, source and job-link quality, posting-date availability, source freshness, missing sectors, and external advert link validity. Review at least several UK scheduled cycles before budget expansion.
