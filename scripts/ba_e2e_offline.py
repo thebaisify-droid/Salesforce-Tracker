@@ -24,6 +24,10 @@ def run_offline(batch:dict, evidence:dict):
     staged=stage(batch,evidence)
     if staged.get("status")!="FIVE_SOURCES_RECEIVED_STAGED_ONLY" or not staged.get("records"):
         raise ValueError("No classified advertisements staged")
+    # A source with no *relevant* postings is acceptable for the rotated
+    # taxonomy; a source with malformed advert identity is not.
+    if staged.get("rejected",{}).get("missing_title_or_https_advert",0):
+        raise ValueError("UNSAFE_OR_MISSING_ADVERT: reject malformed source input")
     # Explicitly adapt the stager's job_source to the WordPress view's source,
     # preserving the exact source run and original advert link on each row.
     rows=[]
