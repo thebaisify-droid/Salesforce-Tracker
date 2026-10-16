@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.3.1
+ * Version: 0.3.2
  */
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/rolling-retention.php';
