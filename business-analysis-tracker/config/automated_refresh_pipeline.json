@@ -95,5 +95,7 @@
   "approved_ba_monthly_usd": 17,
   "trial_name": "UK Business & Technology Jobs Tracker",
   "trial_budget_monthly_usd": 25,
-  "future_budget_option_usd": 50
+  "future_budget_option_usd": 50,
+  "rolling_coverage_enabled": false,
+  "rolling_coverage_block_reason": "Do not launch new broad family searches until the WordPress snapshot retains independently sourced records from previous slots with verified provenance and freshness; the existing receiver requires current-run IDs."
 }
