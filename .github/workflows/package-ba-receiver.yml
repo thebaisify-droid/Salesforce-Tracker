@@ -1,10 +1,5 @@
 name: Package BA rolling receiver (no deployment)
 on:
-  pull_request:
-    paths:
-      - 'wordpress/business-analysis-snapshot-receiver/**'
-      - 'scripts/package_ba_receiver.py'
-      - '.github/workflows/package-ba-receiver.yml'
   workflow_dispatch:
 
 permissions:
@@ -28,7 +23,7 @@ jobs:
       - name: Upload installation package (NOT automatic install)
         uses: actions/upload-artifact@v4
         with:
-          name: business-analysis-receiver-v0.3.0
-          path: dist/business-analysis-snapshot-receiver-v0.3.0.zip
+          name: business-analysis-receiver-v0.3.1
+          path: dist/business-analysis-snapshot-receiver-v0.3.1.zip
           retention-days: 14
           if-no-files-found: error
