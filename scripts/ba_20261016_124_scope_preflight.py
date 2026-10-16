@@ -59,7 +59,17 @@ def candidate():
     if len(user_rows)!=39 or any(r.get("user_role_scope_decision")!="IN_SCOPE_KEEP"
                                 for r in user_rows):
         raise ValueError("Manual review is incomplete")
-    registered={(r["source"],r["original_advert_url"].rstrip("/")):r for r in user_rows}
+    # Totaljobs exports occasionally duplicate its absolute site URL prefix.
+    # Compare both the review register and raw records via the existing
+    # source-specific URL normalizer; preserve the original advert identity.
+    def normalize_review_url(entry):
+        value=entry["original_advert_url"]
+        normalized=link({"canonicalUrl":value,"jobUrl":value,"url":value,
+                         "sourceUrl":value,"applyUrl":value},entry["source"])
+        if not normalized:
+            raise ValueError("Unsafe original user-approved advert URL")
+        return normalized.rstrip("/")
+    registered={(r["source"],normalize_review_url(r)):r for r in user_rows}
     if len(registered)!=39:
         raise ValueError("Scope register has duplicate source URLs")
 
