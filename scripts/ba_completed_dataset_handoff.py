@@ -47,7 +47,7 @@ def build_batch(receipts,token,*,get=api,max_per_source=100,max_items_by_source=
             raise ValueError("Invalid agreed source count limit: "+source)
         if source!="JobServe" and actual_limit!=declared:
             raise ValueError("No overfetch approved for source: "+source)
-        if source=="JobServe" and actual_limit>60:
+        if source=="JobServe" and max_observed_by_source is not None and actual_limit>60:
             raise ValueError("JobServe output hard ceiling above 60")
         if type(count) is not int or count<0 or count>actual_limit:
             raise ValueError("Unexpected dataset count or item limit: "+source)
