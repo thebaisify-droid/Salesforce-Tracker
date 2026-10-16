@@ -97,10 +97,29 @@ def employment(row):
     return "Not specified"
 
 def working(row):
+    """Only explicit source working-mode evidence; never guess from location.
+
+    Actor-provided structured flags take priority. A source description may
+    explicitly label a role Hybrid or Remote. Cloud-technology references
+    and uncertain office-day schedules do not establish the work mode.
+    """
     if field(row, "jobLocationType") == "TELECOMMUTE" or row.get("remote") is True:
         return "Remote"
     if row.get("isRemote") is True:
         return "Remote"
+    excerpt = cleaned_excerpt(row) or ""
+    hybrid = re.search(r"(?<!\w)hybrid(?!\w)", excerpt, re.IGNORECASE)
+    if hybrid and not re.match(
+        r"\s+(?:cloud|architecture|infrastructure|network|security|environment|solution)",
+        excerpt[hybrid.end():], re.IGNORECASE,
+    ):
+        return "Hybrid"
+    if re.search(r"\b(?:fully\s+remote|100\s*%\s*remote|remote\s+working|home[ -]based|work(?:ing)?\s+from\s+home)\b",
+                 excerpt,re.IGNORECASE):
+        return "Remote"
+    if re.search(r"\b(?:fully\s+on[ -]?site|100\s*%\s*on[ -]?site|five\s+days\s+on[ -]?site|office[ -]based)\b",
+                 excerpt,re.IGNORECASE):
+        return "On-site"
     return "Not specified"
 
 def cleaned_excerpt(row):
