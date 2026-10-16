@@ -70,8 +70,8 @@
     "source_3"
   ],
   "apify_budget": {
-    "monthly_usd": 19,
+    "monthly_usd": 25,
     "account_limit_required": true,
-    "accounting": "worst_case_reserved_charges; not actual invoiced usage"
+    "accounting": "up_to_25_usd_shared; Salesforce requested source charges and BA reserve protected by independent live preflight. Do not imply this changes Apify console account cap."
   }
 }

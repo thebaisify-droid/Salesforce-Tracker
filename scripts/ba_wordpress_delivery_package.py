@@ -20,7 +20,11 @@ def preflight(data, receipts=None):
     records=data.get("records")
     if not isinstance(records,list) or not records:errors.append("EMPTY_OR_MISSING_RECORDS");records=[]
     sources={r.get("source") for r in records if isinstance(r,dict)}
-    if sources!=EXPECTED:errors.append("NOT_ALL_FIVE_SOURCES_PRESENT")
+    # A targeted source may succeed yet yield zero roles in this refresh.
+    # Receipt-level assurance (below), not appearance of every source in
+    # the qualifying rows, establishes that all five source runs succeeded.
+    if not sources or not sources.issubset(EXPECTED):
+        errors.append("INVALID_OR_EMPTY_RECORD_SOURCE_SET")
     ids=[r.get("id") for r in records if isinstance(r,dict)]
     if len(ids)!=len(set(ids)):errors.append("RECORD_ID_COLLISION")
     for r in records:

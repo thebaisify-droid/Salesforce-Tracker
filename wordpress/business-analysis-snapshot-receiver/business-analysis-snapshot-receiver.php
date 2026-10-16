@@ -2,9 +2,10 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.2.0
+ * Version: 0.3.1
  */
 if (!defined('ABSPATH')) { exit; }
+require_once __DIR__ . '/rolling-retention.php';
 
 /* Dedicated capability: assign ba_deliver_snapshot only to an approved account. */
 function zarafy_ba_validate_snapshot($d, $now = null) {
@@ -26,7 +27,7 @@ function zarafy_ba_validate_snapshot($d, $now = null) {
             || isset($seen[$s['source']])) {
             return new WP_Error('ba_incomplete_sources', 'Five successful source receipts required', array('status'=>422));
         }
-        $seen[$s['source']] = true;
+        $seen[$s['source']] = $s;
     }
     $stamp = $d['refresh']['finished_at'] ?? '';
     $time = is_string($stamp) && preg_match('/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/D', $stamp) ? strtotime($stamp) : false;
@@ -41,6 +42,9 @@ function zarafy_ba_validate_snapshot($d, $now = null) {
             || !wp_http_validate_url($r['original_advert_url'])
             || strpos($r['original_advert_url'],'https://') !== 0
             || !isset($seen[$r['job_source'] ?? ''])
+            || ($seen[$r['job_source']]['run_id'] ?? '') !== ($r['source_run_id'] ?? '')
+            || ($seen[$r['job_source']]['dataset_id'] ?? '') !== ($r['dataset_id'] ?? '')
+            || zarafy_ba_safe_observed_time($r['observed_at'] ?? null, $time, $time-36*HOUR_IN_SECONDS) === false
             || empty($r['role_family']) || empty($r['source_run_id']) || isset($ids[$r['id']])) {
             return new WP_Error('ba_bad_row','Unsafe or incomplete advertisement',array('status'=>422));
         }
@@ -85,11 +89,19 @@ function zarafy_ba_receive(WP_REST_Request $request) {
             if ($old===false || $stamp<=$old)
                 return new WP_Error('ba_rollback','Equal or older snapshot rejected',array('status'=>409));
         }
+        try {
+            $merged=zarafy_ba_merge_rolling_snapshot($parsed, $prior ?? null);
+            $to_store=json_encode($merged, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
+            if (!is_string($to_store) || strlen($to_store)>1100000)
+                throw new RuntimeException('Invalid rolling snapshot size');
+        } catch (Throwable $e) {
+            return new WP_Error('ba_retention','Rolling retention quality check failed',array('status'=>422));
+        }
         $tmp=tempnam($dir,'ba-stage-');
         if ($tmp===false) return new WP_Error('ba_storage','Cannot stage',array('status'=>503));
         try {
-            if (file_put_contents($tmp,$raw,LOCK_EX)!==strlen($raw)
-                || !hash_equals($data['sha256'],(string)hash_file('sha256',$tmp))
+            if (file_put_contents($tmp,$to_store,LOCK_EX)!==strlen($to_store)
+                || !hash_equals(hash('sha256',$to_store),(string)hash_file('sha256',$tmp))
                 || !rename($tmp,$target)) {
                 return new WP_Error('ba_storage','Atomic save failed',array('status'=>503));
             }
@@ -98,6 +110,7 @@ function zarafy_ba_receive(WP_REST_Request $request) {
         }
         return array('accepted'=>true,'sha256'=>$data['sha256'],
                      'record_count'=>count($parsed['records']),
+                     'retained_display_count'=>count($merged['records']),
                      'refresh_finished_at'=>$parsed['refresh']['finished_at']);
     } finally {
         flock($lock,LOCK_UN); fclose($lock);
@@ -135,7 +148,7 @@ function zarafy_ba_live_content_bridge($content) {
     $raw = @file_get_contents($path);
     if (!is_string($raw) || strlen($raw) !== $size) return $content;
     $data = json_decode($raw, true);
-    if (!is_array($data) || ($data['schema'] ?? '') !== 'ba-live-snapshot/v1'
+    if (!is_array($data) || !in_array(($data['schema'] ?? ''), array('ba-live-snapshot/v1','ba-live-snapshot/v2'), true)
         || ($data['quality']['passed'] ?? null) !== true
         || ($data['refresh']['status'] ?? '') !== 'success'
         || !is_array($data['sources'] ?? null) || count($data['sources']) !== 5
@@ -154,7 +167,26 @@ function zarafy_ba_live_content_bridge($content) {
             || !is_string($receipt['dataset_id'] ?? null) || $receipt['dataset_id'] === '') {
             return $content;
         }
-        $seen[$name] = $receipt['run_id'];
+        $seen[$name] = $receipt;
+    }
+    // Provenance for retained advertisements must remain attached to their
+    // original successful Actor run, not impersonate this refresh's five runs.
+    $historic = array();
+    if (($data['schema'] ?? '') === 'ba-live-snapshot/v2') {
+        if (!is_array($data['historical_sources'] ?? null)
+            || count($data['historical_sources']) > 180) return $content;
+        foreach ($data['historical_sources'] as $receipt) {
+            $source=$receipt['source'] ?? '';
+            $run=$receipt['run_id'] ?? '';
+            $dataset=$receipt['dataset_id'] ?? '';
+            if (!isset($expected[$source]) || !is_string($run) || $run === ''
+                || !is_string($dataset) || $dataset === ''
+                || ($receipt['status'] ?? '') !== 'SUCCEEDED'
+                || ($receipt['attempted'] ?? null) !== true) return $content;
+            $key=zarafy_ba_source_key($source,$run,$dataset);
+            if (isset($historic[$key])) return $content;
+            $historic[$key] = true;
+        }
     }
     $finished = $data['refresh']['finished_at'] ?? null;
     $time = is_string($finished) ? strtotime($finished) : false;
@@ -167,7 +199,14 @@ function zarafy_ba_live_content_bridge($content) {
         $source = $r['job_source'] ?? '';
         $url = $r['original_advert_url'] ?? '';
         $parsed = is_string($url) ? wp_parse_url($url) : false;
-        if (!isset($seen[$source]) || ($r['source_run_id'] ?? '') !== $seen[$source]
+        $is_current = isset($seen[$source])
+            && ($r['source_run_id'] ?? '') === ($seen[$source]['run_id'] ?? '')
+            && ($r['dataset_id'] ?? '') === ($seen[$source]['dataset_id'] ?? '');
+        // $seen is source => original current run receipt.
+        $provenance=zarafy_ba_source_key($source, $r['source_run_id'] ?? '', $r['dataset_id'] ?? '');
+        if ((!$is_current && !isset($historic[$provenance]))
+            || (($data['schema'] ?? '') === 'ba-live-snapshot/v2' &&
+                zarafy_ba_safe_observed_time($r['last_observed_at'] ?? null, $time, $time-30*86400) === false)
             || !is_array($parsed) || ($parsed['scheme'] ?? '') !== 'https'
             || empty($parsed['host']) || isset($parsed['user']) || isset($parsed['pass'])) {
             return $content;
@@ -188,7 +227,10 @@ function zarafy_ba_live_content_bridge($content) {
             'sector' => (string) ($r['sector_display'] ?? $r['sector'] ?? 'Not specified'),
             'description_summary' => (string) ($r['description_summary'] ?? ''),
             'skills' => array(),
-            'cross_post_cluster' => (string) ($r['cross_post_cluster'] ?? '')
+            'cross_post_cluster' => (string) ($r['cross_post_cluster'] ?? ''),
+            'last_observed_at' => (string) ($r['last_observed_at'] ?? $r['observed_at'] ?? ''),
+            'observed_age_days' => (int) ($r['observed_age_days'] ?? 0),
+            'availability_status' => 'SOURCE_OBSERVED_NOT_EMPLOYER_CONFIRMED'
         );
         $rows[] = $item;
     }
@@ -205,7 +247,10 @@ function zarafy_ba_live_content_bridge($content) {
         }
         $trs .= '<tr class="ba-v2-record"><td><strong>' . esc_html($r['title'])
             . '</strong><small>Role family: ' . esc_html($r['role_family'])
-            . '</small><details><summary>Job description summary</summary><p>Source excerpt: '
+            . '</small><small>Last source observation: ' .
+              esc_html(($r['last_observed_at'] && strtotime($r['last_observed_at'])) ?
+                  wp_date('d/m/Y', strtotime($r['last_observed_at'])) : 'Not specified')
+            . ' · Not employer-confirmed open</small><details><summary>Job description summary</summary><p>Source excerpt: '
             . esc_html($r['description_summary'] ?: 'Not supplied by source')
             . '</p></details></td><td>' . esc_html($r['advertiser'])
             . '<small>Sector: ' . esc_html($r['sector']) . '</small></td><td>'
@@ -244,7 +289,7 @@ function zarafy_ba_live_content_bridge($content) {
     }
     $label = '<p id="ba-snapshot-observed" class="ba-foot">Snapshot loaded from the authenticated WordPress receiver. Last source observation: '
         . esc_html(wp_date('d/m/Y H:i', $time))
-        . '. Source-observed advertisements; availability is not employer-confirmed.</p>';
+        . '. Includes retained advertisements observed within 30 days. Individual observation dates are shown; availability is not employer-confirmed.</p>';
     $marker = '<div class="ba-wrap">';
     if (strpos($content, $marker) !== false && strpos($content, 'id="ba-snapshot-observed"') === false) {
         $content = str_replace($marker, $label . $marker, $content);

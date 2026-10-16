@@ -21,7 +21,7 @@ def check(config,token,reader=get):
     limits=reader("users/me/limits",token)
     raw_limit=(limits.get("limits") or {}).get("maxMonthlyUsageUsd")
     used=(limits.get("current") or {}).get("monthlyUsageUsd")
-    if type(raw_limit) not in (int,float) or abs(raw_limit-19)>0.00001:
+    if type(raw_limit) not in (int,float) or abs(raw_limit-config["monthly_limit_usd"])>0.00001:
         raise RuntimeError("Unexpected monthly Apify account spending limit")
     if type(used) not in (int,float) or used<0 or used>raw_limit:
         raise RuntimeError("Current account usage unavailable")
@@ -46,16 +46,16 @@ def check(config,token,reader=get):
           "declared_max_charge_usd":source["max_charge_usd"],
         }
         actors.append(data)
-    return {"account_limit_usd":19,
+    return {"account_limit_usd":config["monthly_limit_usd"],
             "account_usage_usd":round(used,4),
-            "available_after_salesforce_reserve_usd":round(max(0,raw_limit-used-8),4),
+            "available_after_salesforce_reserve_usd":round(max(0,raw_limit-used-config["salesforce_reserve_usd"]),4),
             "actor_pricing":actors,
             "actor_runs_started":0,
             "wordpress_requests":0,
             "pricing_automatically_verified":False}
 
 def validate_cost_models(report, config):
-    """Fail closed unless 10 billable items or event caps bound each source."""
+    """Fail closed unless every chosen result count fits its Actor cap."""
     reviewed={row["source"]:row for row in report.get("actor_pricing",[])}
     issues=[]
     for src in config["sources"]:
@@ -73,7 +73,7 @@ def validate_cost_models(report, config):
         elif model in ("PAY_PER_EVENT", "PPE"):
             # PPE maxTotalChargeUsd is enforced by Apify. Reject minimum
             # charges above the authorised cap or uncapped compute charges.
-            if not (0 < src["max_charge_usd"] <= 0.50):
+            if not (0 < src["max_charge_usd"] <= 0.70):
                 issues.append(name+":INVALID_EVENT_CEILING")
             required=row.get("minimal_max_total_charge_usd")
             if required is not None:
@@ -88,7 +88,7 @@ def validate_cost_models(report, config):
             # it as evidence that the API's total charge limit is absent.
         else:
             issues.append(name+":UNSUPPORTED_OR_UNKNOWN_PRICING_MODEL")
-    if report.get("account_limit_usd")!=19:
+    if report.get("account_limit_usd")!=config.get("monthly_limit_usd"):
         issues.append("ACCOUNT_LIMIT_MISMATCH")
     return {"pricing_guard_passed":not issues,"issues":issues}
 

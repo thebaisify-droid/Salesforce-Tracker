@@ -21,7 +21,7 @@ EXPECTED={
 }
 ROOT=Path(__file__).resolve().parents[1]
 RESULT_DIR=ROOT/"business-analysis-tracker/data/read-only-handoff"
-def build_batch(receipts,token,*,get=api,max_per_source=100):
+def build_batch(receipts,token,*,get=api,max_per_source=100,max_items_by_source=None):
     if not token:raise ValueError("APIFY_TOKEN needed for read-only retrieval")
     if not isinstance(receipts,list) or len(receipts)!=5 or {x.get("source") for x in receipts}!=set(EXPECTED):
         raise ValueError("Exactly five distinct source receipts required")
@@ -38,7 +38,10 @@ def build_batch(receipts,token,*,get=api,max_per_source=100):
         if not isinstance(dataset,str) or not re.fullmatch(r"[A-Za-z0-9_-]{6,100}",dataset):
             raise ValueError("Missing dataset ID")
         count=get("https://api.apify.com/v2/datasets/"+dataset,token).get("itemCount")
-        if type(count) is not int or count<1 or count>max_per_source:
+        declared=(max_items_by_source or {}).get(source,max_per_source)
+        if type(declared) is not int or declared<1 or declared>max_per_source:
+            raise ValueError("Invalid agreed source count limit: "+source)
+        if type(count) is not int or count<1 or count>declared:
             raise ValueError("Unexpected dataset count or item limit: "+source)
         # Existing API utility expects a data envelope, whereas dataset items
         # endpoint returns a list. Injected getter can support both shapes.

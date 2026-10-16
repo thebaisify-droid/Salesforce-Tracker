@@ -12,6 +12,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from scripts.ba_controlled_refresh import run as acquire_once, validate as validate_acquisition, CONFIG as ACQ_CONFIG, OUT as RECEIPTS_FILE
+from scripts.ba_acquisition_planner import select_slot
 from scripts.ba_completed_dataset_handoff import build_batch
 from scripts.ba_e2e_offline import run_offline
 from scripts.ba_stage_five_source_data import MAPPING
@@ -22,9 +23,9 @@ from scripts.validate_ba_five_source_contract import validate_run_receipts
 ROOT = Path(__file__).resolve().parents[1]
 LONDON = ZoneInfo("Europe/London")
 EXPECTED = {"CV-Library", "Totaljobs", "Reed UK", "Indeed UK", "JobServe"}
-MONTHLY_CEILING = 11.00
+MONTHLY_CEILING = 17.00
 MAX_SLOTS_MONTHLY = 9
-PER_RUN_CEILING = 1.20
+PER_RUN_CEILING = 1.80
 
 def scheduled_slot(now: datetime, *, requested=True) -> dict:
     """Two UTC crons cover daylight saving; only one local 07:35 slot is due."""
@@ -122,6 +123,8 @@ def main():
         or cfg.get("monthly_ba_allowance_usd")!=MONTHLY_CEILING
         or cfg.get("max_scheduled_runs_per_month")!=MAX_SLOTS_MONTHLY):
         raise SystemExit("Recurring BA budget or pricing controls not fully authorised")
+    if cfg.get("rolling_coverage_enabled") is not True:
+        raise SystemExit("22-family rolling snapshot retention is not ready; no paid acquisition")
     if os.getenv("BA_PAID_REFRESH_APPROVAL")!="EXPLICIT_BA_REFRESH_APPROVED":
         raise SystemExit("Scheduled acquisition approval missing")
     if not args.scheduled or os.getenv("GITHUB_EVENT_NAME")!="schedule" or os.getenv("GITHUB_RUN_ATTEMPT")!="1":
@@ -138,14 +141,17 @@ def main():
     # PRICE_PER_DATASET_ITEM must fit maxItems; PPE uses maxTotalChargeUsd.
     from scripts.ba_pricing_readonly import check as inspect_prices, validate_cost_models
     report=inspect_prices(cfg,os.getenv("APIFY_TOKEN",""))
-    price_status=validate_cost_models(report,cfg)
+    local_now=now.astimezone(LONDON)
+    cycle_index=(local_now.year-2026)*12 + local_now.month-10
+    active_plan=select_slot(cfg,slot["month_slots"],report,cycle_index=cycle_index)
+    price_status=validate_cost_models(report,active_plan)
     if not price_status["pricing_guard_passed"]:
         raise SystemExit("Actor pricing safeguards not proven: "+repr(price_status["issues"]))
     if report["available_after_salesforce_reserve_usd"] + 1e-9 < PER_RUN_CEILING:
         raise SystemExit("Insufficient account balance after the protected Salesforce reserve")
     # Acquisition itself is bounded by separate per-source limits, account
     # headroom checks and a shared concurrency group with the Salesforce workflow.
-    receipts=acquire_once(cfg,os.getenv("APIFY_TOKEN",""))
+    receipts=acquire_once(active_plan,os.getenv("APIFY_TOKEN",""))
     # No Actor retries and no historical run substitutions.
     from urllib.request import Request,urlopen
     def getter(path,token):
@@ -160,7 +166,11 @@ def main():
         if not isinstance(data,dict) or not isinstance(data.get("data"),dict):
             raise ValueError("Invalid Apify metadata envelope")
         return data["data"]
-    batch=build_batch(receipts,os.getenv("APIFY_TOKEN",""),get=getter,max_per_source=100)
+    batch=build_batch(receipts,os.getenv("APIFY_TOKEN",""),get=getter,max_per_source=50,
+        max_items_by_source={source["name"]:source["max_items"] for source in active_plan["sources"]})
+    by_name={source["name"]:source for source in active_plan["sources"]}
+    if any(len(source["records"])>by_name[source["name"]]["max_items"] for source in batch["sources"]):
+        raise ValueError("Actor returned more than its authorised requested items; do not publish")
     result=run_offline(batch,json.loads(MAPPING.read_text(encoding="utf8")))
     live=build_live_document(batch,result,datetime.now(timezone.utc))
     print(json.dumps({"status":"FIVE_SOURCES_QA_PASSED","source_advertisements":len(live["records"]),
