@@ -25,7 +25,7 @@ DATA = ROOT / "business-analysis-tracker/evidence/ba-five-completed-20261016-aud
 REVIEW = ROOT / "business-analysis-tracker/evidence/ba-20261016-user-approved-39-scope.json"
 OBSERVED_COUNTS={"CV-Library":30,"Totaljobs":25,"Reed UK":30,"Indeed UK":30,"JobServe":46}
 
-def candidate():
+def candidate(*, return_snapshot: bool = False):
     doc=json.loads(DATA.read_text(encoding="utf8"))
     review=json.loads(REVIEW.read_text(encoding="utf8"))
     if (doc.get("schema")!="ba-offline-actor-observations/v1" or
@@ -168,7 +168,7 @@ def candidate():
     sectors_evidenced=sum(r["sector"]!="Not specified" for r in records)
     working_known=sum(r["working_arrangement"]!="Not specified" for r in records)
     posting_known=sum(bool(r["posted_date"]) for r in records)
-    return {
+    report = {
         "schema":"ba-20261016-reviewed-scope-preflight/v1",
         "status":"STAGED_NOT_PUBLISHED",
         "total_raw_sources":161,"automatic_22_family_matches":87,
@@ -189,6 +189,7 @@ def candidate():
         "specific_new_advert_urls":len(new_rows),
         "needs_manual_family_review":len(new_rows),
     }
+    return (report, preview) if return_snapshot else report
 
 def main():
     import sys
