@@ -59,7 +59,14 @@ function zarafy_ba_merge_rolling_snapshot($current, $previous = null) {
         'Data & Analytics Management', 'Information Security Analysis',
         'Security Operations / SOC', 'Security Architecture',
         'Security Consulting & Advisory', 'Security Risk & Third-Party Risk',
-        'Security Management', 'IT Security'
+        'Security Management', 'IT Security',
+        // Exactly the six additional families accepted in the user role-scope review.
+        'Technology Leadership & Management',
+        'Enterprise & Solution Architecture',
+        'IT Infrastructure & Support Engineering',
+        'Engineering & Technical Delivery',
+        'Security Engineering',
+        'Technology Governance, Risk & Compliance'
     );
     $allowed = array_fill_keys($family_allowlist, true);
     $current_receipts = array();
