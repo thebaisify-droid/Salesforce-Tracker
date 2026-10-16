@@ -4,24 +4,24 @@
   "paid_acquisition_enabled": true,
   "publish_automatically": true,
   "automatic_retries": 0,
-  "monthly_limit_usd": 19,
+  "monthly_limit_usd": 25,
   "salesforce_reserve_usd": 8,
-  "max_total_charge_usd": 1.2,
+  "max_total_charge_usd": 1.8,
   "schedule": "TUE_FRI_0735_EUROPE_LONDON_ACTIVE",
   "scheduling_enabled": true,
   "wordpress_delivery_enabled": true,
-  "search_profile": "business analyst",
-  "note": "User approved recurring Tue/Fri 07:35 UK acquisition, $1.20 maximum charged per refresh and $11 BA monthly ceiling; shared $19 account hard limit and protected $8 Salesforce reserve. No retries. All-five-source QA required. Price model and per-Actor minimum charge verified read-only at every scheduled start; fail closed when price exceeds cap. Scheduler does not immediately launch paid actors.",
+  "search_profile": "ROTATING_22_FAMILY_TAXONOMY",
+  "note": "PROPOSED $25 shared account trial; requires verified exact $25 Apify account hard limit before any paid Actor POST. Protect $8 Salesforce reserve, BA up to $17 and <=$1.80 per Tue/Fri refresh, zero retries. 22 family query rotation requires rolling snapshot coverage before go-live. Do not treat a source search as employer-verified live vacancy.",
   "sources": [
     {
       "name": "CV-Library",
       "actor": "blackfalcondata/cv-library-scraper",
-      "max_items": 10,
-      "max_charge_usd": 0.5,
+      "max_items": 30,
+      "max_charge_usd": 0.65,
       "input": {
         "query": "business analyst",
         "country": "GB",
-        "maxResults": 10,
+        "maxResults": 30,
         "maxPages": 1,
         "postedWithinDays": "14",
         "sortBy": "recent",
@@ -33,13 +33,13 @@
     {
       "name": "Totaljobs",
       "actor": "abotapi/totaljobs-com-scraper",
-      "max_items": 10,
-      "max_charge_usd": 0.2,
+      "max_items": 30,
+      "max_charge_usd": 0.35,
       "input": {
         "mode": "search",
         "keywords": "business analyst",
-        "maxListings": 10,
-        "maxPages": 1,
+        "maxListings": 30,
+        "maxPages": 2,
         "postedWithin": "14",
         "sortBy": "date",
         "fetchDetails": false,
@@ -49,11 +49,11 @@
     {
       "name": "Reed UK",
       "actor": "wildorigins/uk-jobs-reed",
-      "max_items": 10,
-      "max_charge_usd": 0.15,
+      "max_items": 30,
+      "max_charge_usd": 0.2,
       "input": {
         "keywords": "business analyst",
-        "maxResults": 10,
+        "maxResults": 30,
         "datePosted": "lastmonth",
         "fetchDetails": true
       }
@@ -61,36 +61,39 @@
     {
       "name": "Indeed UK",
       "actor": "wildorigins/indeed-jobs",
-      "max_items": 10,
-      "max_charge_usd": 0.2,
+      "max_items": 30,
+      "max_charge_usd": 0.35,
       "input": {
         "query": "business analyst",
         "country": "uk",
-        "maxResults": 10
+        "maxResults": 30
       }
     },
     {
       "name": "JobServe",
       "actor": "solidcode/jobserve-scraper",
-      "max_items": 10,
-      "max_charge_usd": 0.15,
+      "max_items": 30,
+      "max_charge_usd": 0.25,
       "input": {
         "keywords": [
           "business analyst"
         ],
         "country": "gb",
-        "maxResults": 10,
+        "maxResults": 30,
         "includeDescription": true,
         "onlyUniqueJobs": true
       }
     }
   ],
-  "monthly_ba_allowance_usd": 11,
+  "monthly_ba_allowance_usd": 17,
   "max_scheduled_runs_per_month": 9,
   "recurring_budget_approved": true,
   "pricing_guard_verified": true,
-  "estimated_max_scheduled_charge_per_month_usd": 10.8,
+  "estimated_max_scheduled_charge_per_month_usd": 16.2,
   "approval_date": "2026-10-15",
-  "approved_per_refresh_usd": 1.2,
-  "approved_ba_monthly_usd": 11
+  "approved_per_refresh_usd": 1.8,
+  "approved_ba_monthly_usd": 17,
+  "trial_name": "UK Business & Technology Jobs Tracker",
+  "trial_budget_monthly_usd": 25,
+  "future_budget_option_usd": 50
 }
