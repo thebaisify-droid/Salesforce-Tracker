@@ -167,7 +167,7 @@ function zarafy_ba_live_content_bridge($content) {
             || !is_string($receipt['dataset_id'] ?? null) || $receipt['dataset_id'] === '') {
             return $content;
         }
-        $seen[$name] = $receipt['run_id'];
+        $seen[$name] = $receipt;
     }
     // Provenance for retained advertisements must remain attached to their
     // original successful Actor run, not impersonate this refresh's five runs.
@@ -199,9 +199,10 @@ function zarafy_ba_live_content_bridge($content) {
         $source = $r['job_source'] ?? '';
         $url = $r['original_advert_url'] ?? '';
         $parsed = is_string($url) ? wp_parse_url($url) : false;
-        $is_current = isset($seen[$source]) && ($r['source_run_id'] ?? '') === $seen[$source]
-            && !empty($r['dataset_id']);
-        // $seen is source => run ID for the five *current* receipts only.
+        $is_current = isset($seen[$source])
+            && ($r['source_run_id'] ?? '') === ($seen[$source]['run_id'] ?? '')
+            && ($r['dataset_id'] ?? '') === ($seen[$source]['dataset_id'] ?? '');
+        // $seen is source => original current run receipt.
         $provenance=zarafy_ba_source_key($source, $r['source_run_id'] ?? '', $r['dataset_id'] ?? '');
         if ((!$is_current && !isset($historic[$provenance]))
             || (($data['schema'] ?? '') === 'ba-live-snapshot/v2' &&
@@ -252,7 +253,7 @@ function zarafy_ba_live_content_bridge($content) {
             . ' · Not employer-confirmed open</small><details><summary>Job description summary</summary><p>Source excerpt: '
             . esc_html($r['description_summary'] ?: 'Not supplied by source')
             . '</p></details></td><td>' . esc_html($r['advertiser'])
-            . '<small>Sector: ' . esc_html($r['sector']) . '</small></td><td>
+            . '<small>Sector: ' . esc_html($r['sector']) . '</small></td><td>'
             . esc_html($r['location']) . '<small>Work mode: '
             . esc_html($r['working_arrangement']) . '</small></td><td>'
             . esc_html($r['employment']) . '</td><td>' . esc_html($r['source'])
