@@ -1,0 +1,34 @@
+name: Package BA rolling receiver (no deployment)
+on:
+  pull_request:
+    paths:
+      - 'wordpress/business-analysis-snapshot-receiver/**'
+      - 'scripts/package_ba_receiver.py'
+      - '.github/workflows/package-ba-receiver.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify safe WordPress receiver syntax
+        run: |
+          php -l wordpress/business-analysis-snapshot-receiver/business-analysis-snapshot-receiver.php
+          php -l wordpress/business-analysis-snapshot-receiver/rolling-retention.php
+          python -m unittest discover -s tests -p test_ba_rolling_retention.py -v
+      - name: Package versioned WordPress plugin
+        run: python -m scripts.package_ba_receiver
+      - name: Upload installation package (NOT automatic install)
+        uses: actions/upload-artifact@v4
+        with:
+          name: business-analysis-receiver-v0.3.0
+          path: dist/business-analysis-snapshot-receiver-v0.3.0.zip
+          retention-days: 14
+          if-no-files-found: error
