@@ -36,6 +36,14 @@ class TestBusinessTechnologyTrial(unittest.TestCase):
             self.assertTrue(validate_cost_models(prices,plan)["pricing_guard_passed"])
         self.assertEqual(len(seen),22)
 
+    def test_calendar_month_progression_rotates_source_assignments(self):
+        prices={"actor_pricing":[{"source":row["name"],
+            "pricing_model":"PAY_PER_EVENT"} for row in self.cfg["sources"]]}
+        first=select_slot(self.cfg,1,prices,cycle_index=0)
+        later=select_slot(self.cfg,1,prices,cycle_index=1)
+        self.assertNotEqual([row["query_family"] for row in first["sources"]],
+                            [row["query_family"] for row in later["sources"]])
+
     def test_per_item_price_reduces_records_instead_of_exceeding_cap(self):
         prices={"actor_pricing":[{"source":row["name"],
             "pricing_model":"PRICE_PER_DATASET_ITEM","price_per_unit_usd":0.02}
