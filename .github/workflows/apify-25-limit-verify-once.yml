@@ -1,15 +1,14 @@
 name: One-time $25 Apify limit verification (read only)
 on:
-  push:
-    branches:
-      - feature/uk-business-tech-22-family-budget25
+  pull_request:
+    types: [synchronize]
     paths:
       - '.github/workflows/apify-25-limit-verify-once.yml'
 permissions:
   contents: read
 jobs:
   verify:
-    if: ${{ github.run_attempt == 1 && contains(github.event.head_commit.message, '[APIFY25-READONLY-20261016]') }}
+    if: ${{ github.run_attempt == 1 && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feature/uk-business-tech-22-family-budget25' }}
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
