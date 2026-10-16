@@ -141,7 +141,9 @@ def main():
     # PRICE_PER_DATASET_ITEM must fit maxItems; PPE uses maxTotalChargeUsd.
     from scripts.ba_pricing_readonly import check as inspect_prices, validate_cost_models
     report=inspect_prices(cfg,os.getenv("APIFY_TOKEN",""))
-    active_plan=select_slot(cfg,slot["month_slots"],report)
+    local_now=now.astimezone(LONDON)
+    cycle_index=(local_now.year-2026)*12 + local_now.month-10
+    active_plan=select_slot(cfg,slot["month_slots"],report,cycle_index=cycle_index)
     price_status=validate_cost_models(report,active_plan)
     if not price_status["pricing_guard_passed"]:
         raise SystemExit("Actor pricing safeguards not proven: "+repr(price_status["issues"]))
