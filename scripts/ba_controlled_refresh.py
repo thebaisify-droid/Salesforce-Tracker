@@ -65,6 +65,13 @@ def validate(cfg):
 def run(cfg, token, *, getter=api, sleep=time.sleep):
     if not cfg.get("enabled") or os.getenv("BA_PAID_REFRESH_APPROVAL")!="EXPLICIT_BA_REFRESH_APPROVED":
         raise RuntimeError("BA acquisition disabled or not separately authorised")
+    if cfg.get("rolling_coverage_enabled") is not True:
+        raise RuntimeError("Rolling 22-family retention not ready; do not buy partial replacement snapshots")
+    from scripts.ba_acquisition_planner import role_queries
+    approved={item["family"] for item in role_queries()}
+    families=[source.get("query_family") for source in cfg["sources"]]
+    if cfg.get("rotation_slot") not in range(1,10) or len(set(families))!=5 or not set(families)<=approved:
+        raise RuntimeError("Unplanned or repeated family acquisition rejected")
     if not token:raise RuntimeError("APIFY_TOKEN missing")
     remaining=cfg["max_total_charge_usd"]
     receipts=[]
