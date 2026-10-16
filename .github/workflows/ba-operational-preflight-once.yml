@@ -1,0 +1,34 @@
+name: BA one-time operational preflight (read only)
+on:
+  pull_request:
+    types: [synchronize]
+    paths:
+      - '.github/workflows/ba-operational-preflight-once.yml'
+permissions:
+  contents: read
+jobs:
+  preflight:
+    if: ${{ github.run_attempt == 1 && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feature/uk-business-tech-22-family-budget25' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm 22-family rotation and spend lockout (no network)
+        run: |
+          python -m scripts.ba_controlled_refresh
+          python -m scripts.ba_recurring_cycle
+          python -m unittest discover -s tests -p 'test_ba_historical_migration.py' -v
+          python -m unittest discover -s tests -p 'test_ba_item_cap_enforcement.py' -v
+      - name: Verify $25 account cap, $8 Salesforce reserve and five actor prices (GET only)
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          python -m scripts.ba_pricing_readonly
+      - name: Verify restricted WordPress delivery user and receiver route (GET and OPTIONS only)
+        env:
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+        run: python -m scripts.ba_delivery_credentials_readonly
