@@ -294,6 +294,35 @@ function zarafy_ba_live_content_bridge($content) {
     if (strpos($content, $marker) !== false && strpos($content, 'id="ba-snapshot-observed"') === false) {
         $content = str_replace($marker, $label . $marker, $content);
     }
+    // Include the six scope-approved technology and engineering families in
+    // the visible role filter without changing the saved WordPress page.
+    $family_select = '<select id="ba-v2-family">';
+    $family_start = strpos($content, $family_select);
+    if ($family_start !== false) {
+        $family_end = strpos($content, '</select>', $family_start);
+        if ($family_end !== false) {
+            $select_fragment = substr($content, $family_start, $family_end - $family_start);
+            $extra_families = array(
+                'Technology Leadership & Management',
+                'Enterprise & Solution Architecture',
+                'IT Infrastructure & Support Engineering',
+                'Engineering & Technical Delivery',
+                'Security Engineering',
+                'Technology Governance, Risk & Compliance'
+            );
+            $family_counts = array_count_values(array_column($rows, 'role_family'));
+            $extra = '';
+            foreach ($extra_families as $family) {
+                if (strpos($select_fragment, 'value="' . esc_attr($family) . '"') !== false) continue;
+                $extra .= '<option value="' . esc_attr($family) . '">' . esc_html($family)
+                    . ' (' . (int)($family_counts[$family] ?? 0) . ')</option>';
+            }
+            if ($extra !== '') {
+                $extra = '<optgroup label="Technology / Architecture / Engineering">' . $extra . '</optgroup>';
+                $content = substr_replace($content, $extra, $family_end, 0);
+            }
+        }
+    }
     return $content;
 }
 add_filter('the_content', 'zarafy_ba_live_content_bridge', 18);
