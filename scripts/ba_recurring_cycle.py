@@ -27,19 +27,52 @@ MONTHLY_CEILING = 17.00
 MAX_SLOTS_MONTHLY = 9
 PER_RUN_CEILING = 1.80
 
-def scheduled_slot(now: datetime, *, requested=True) -> dict:
-    """Two UTC crons cover daylight saving; only one local 07:35 slot is due."""
+SUMMER_CRON = "35 6 * * 2,5"
+WINTER_CRON = "35 7 * * 2,5"
+MAX_GITHUB_START_DELAY_MINUTES = 150
+
+def scheduled_slot(now: datetime, *, requested=True, cron: str | None = None) -> dict:
+    """Recognise GitHub's intended 07:35 UK cron despite delayed runners.
+
+    GitHub schedules use UTC; in summer only 06:35 UTC is valid, in winter
+    only 07:35 UTC is valid. The other cron *must* skip, even if delayed.
+    A missing/unrecognised trigger is rejected in scheduled execution.
+    """
     if not isinstance(now, datetime) or now.tzinfo is None:
         raise ValueError("Timezone-aware current time required")
     local = now.astimezone(LONDON)
-    if local.weekday() not in (1, 4) or local.hour != 7 or not 30 <= local.minute <= 59:
-        return {"due": False, "reason": "NOT_TUE_FRIDAY_0730_UK", "month_slots": 0}
+    if local.weekday() not in (1, 4):
+        return {"due": False, "reason": "NOT_TUE_FRIDAY_UK", "month_slots": 0}
+    if cron is None:
+        # Retain strict clock-based behaviour for read-only diagnostics.
+        if local.hour != 7 or not 30 <= local.minute <= 59:
+            return {"due": False, "reason": "NOT_TUE_FRIDAY_0730_UK", "month_slots": 0}
+        reason = "UK_TUE_FRIDAY_SLOT"
+        scheduled = None
+        delay_minutes = None
+    else:
+        scheduled = datetime(local.year, local.month, local.day, 7, 35, tzinfo=LONDON)
+        intended_utc = scheduled.astimezone(timezone.utc)
+        expected = SUMMER_CRON if intended_utc.hour == 6 else WINTER_CRON
+        if cron != expected:
+            return {"due": False, "reason": "WRONG_DST_CRON_OR_MISSING_TRIGGER",
+                    "expected_cron": expected, "month_slots": 0}
+        delay_seconds = (now.astimezone(timezone.utc) - intended_utc).total_seconds()
+        if not 0 <= delay_seconds <= MAX_GITHUB_START_DELAY_MINUTES * 60:
+            return {"due": False, "reason": "GITHUB_RUNNER_OUTSIDE_DELAY_CEILING",
+                    "month_slots": 0}
+        reason = "APPROVED_LOCAL_0735_CRON"
+        delay_minutes = round(delay_seconds / 60, 2)
     days = [date(local.year, local.month, i)
             for i in range(1, local.day + 1)]
     slots = sum(d.weekday() in (1, 4) for d in days)
     if slots > MAX_SLOTS_MONTHLY:
         return {"due": False, "reason": "MONTHLY_SLOT_CAP", "month_slots": slots}
-    return {"due": True, "reason": "UK_TUE_FRIDAY_SLOT", "month_slots": slots}
+    result = {"due": True, "reason": reason, "month_slots": slots}
+    if scheduled is not None:
+        result["scheduled_uk"] = scheduled.isoformat()
+        result["runner_delay_minutes"] = delay_minutes
+    return result
 
 def build_live_document(batch: dict, result: dict, now: datetime) -> dict:
     sources = batch.get("sources", [])
@@ -130,7 +163,9 @@ def main():
     if not args.scheduled or os.getenv("GITHUB_EVENT_NAME")!="schedule" or os.getenv("GITHUB_RUN_ATTEMPT")!="1":
         raise SystemExit("Paid BA acquisition is only allowed from the first scheduled GitHub attempt")
     if args.scheduled:
-        slot=scheduled_slot(now)
+        # Read the cron from GitHub's trusted schedule event, not runner clock.
+        # Fail closed if the workflow forgot to forward github.event.schedule.
+        slot=scheduled_slot(now, cron=os.getenv("BA_SCHEDULE_CRON", ""))
         if not slot["due"]:
             print(json.dumps({"status":"NOT_DUE_NO_COST",**slot}))
             return
