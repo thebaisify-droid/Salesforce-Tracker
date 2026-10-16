@@ -1,0 +1,50 @@
+{
+  "schema": "ba-source-query-experiments/v1",
+  "status": "REVIEW_ONLY_NOT_ACTIVE",
+  "sample_date": "2026-10-16",
+  "sampling_rule": "Do not claim improved query precision before a fresh independently cost-capped acquisition",
+  "account_limit_usd": 25,
+  "salesforce_reserve_usd": 8,
+  "extra_paid_runs_authorised": 0,
+  "source_experiments": [
+    {
+      "source": "CV-Library",
+      "role_family": "Security Management",
+      "observed_search": "information security manager",
+      "observed_source_rows": 30,
+      "taxonomy_matches": 8,
+      "exact_family_matches": 3,
+      "proposal": "cyber security manager",
+      "reason": "Broad observed search matched pensions, sales, legal, general IT and physical-service management titles. A narrower cyber-manager title may reduce unrelated roles.",
+      "confidence": "UNTESTED_NO_EXPERIMENTAL_ACQUISITION"
+    },
+    {
+      "source": "Totaljobs",
+      "role_family": "IT Security",
+      "observed_search": "IT security analyst",
+      "observed_source_rows": 25,
+      "taxonomy_matches": 4,
+      "exact_family_matches": 0,
+      "proposal": "cyber security engineer",
+      "reason": "Observed search included several self-funded trainee/placement promotions and unrelated security consultant/ethical hacker titles. The proposed specialist engineer title is in the existing IT Security family, but its precision has not been measured.",
+      "confidence": "UNTESTED_NO_EXPERIMENTAL_ACQUISITION"
+    },
+    {
+      "source": "JobServe",
+      "role_family": "Business Intelligence",
+      "observed_search": "business intelligence analyst",
+      "observed_source_rows": 46,
+      "taxonomy_matches": 41,
+      "exact_family_matches_before_aliases": 0,
+      "proposal": "KEEP_CURRENT_QUERY_FOR_NEXT_REVIEW",
+      "reason": "Actual dataset has specialist BI developer, BI manager and hybrid BI analyst titles, previously missing from the taxonomy. Fix classification first before paying to change the query; do not call all cross-family Business Analyst and Data Analyst records BI.",
+      "confidence": "OBSERVED_TITLES_NOT_NEW_SEARCH"
+    }
+  ],
+  "rules": [
+    "Offline test on completed saved results before changing any production query",
+    "Do not launch paid validation for alternative terms while the BA schedule is paused",
+    "Do not infer vacancy status from keyword/title alone",
+    "Keep existing 22-family rotation and $1.80 per-refresh aggregate charge guard"
+  ]
+}
