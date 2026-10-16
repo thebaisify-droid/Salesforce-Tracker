@@ -6,7 +6,7 @@
 This product covers **all 22 registered families** in `config/business_product_delivery_security_taxonomy_v1.0.json`. The old Business Analysis label is not the acquisition scope. Neither volume of BA ads nor raw total job count substitutes for family coverage.
 
 ## Approved shared trial budget
-- Account-level Apify hard cap must be **exactly $25/month**, independently configured in the Apify console. Repository changes **cannot** change that limit.
+- Stay on the existing **Apify Starter $19/month subscription** (includes $19 monthly prepaid platform usage). Configure the separate **Custom usage limit to $25/month** in Apify Console > Billing > Limits > Edit limit. This permits at most $6 additional pay-as-you-go usage after prepaid usage, before applicable taxes, assuming no separate extras. No Scale upgrade is needed. Repository changes **cannot** change the account limit. Source: https://docs.apify.com/account/subscriptions#pay-as-you-go
 - Preserve **$8** for Salesforce. BA allocation must remain <= **$17/month**.
 - BA currently schedules nine Tuesday/Friday 07:35 UK slots at most; each may request up to **$1.80**, therefore scheduled upper bound **$16.20/month**. Per-source caps: CV-Library $0.65; Totaljobs $0.35; Reed $0.20; Indeed $0.35; JobServe $0.25.
 - **$50 is a future option, not an approved or active limit.** It needs separate billing review and authorisation. Charge floors, platform usage, other Apify activities and source-level actual receipts must be audited.
