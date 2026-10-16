@@ -42,7 +42,7 @@ def main():
         or report["actor_runs_started"]!=0 or report["wordpress_requests"]!=0
         or report["live_payload_schema_preflight_passed"] is not True
         or len(doc["records"])!=124 or len(doc["sources"])!=5
-        or doc["refresh"]["finished_at"]!=FINISHED_AT
+        or datetime.fromisoformat(doc["refresh"]["finished_at"].replace("Z","+00:00")) != datetime.fromisoformat(FINISHED_AT.replace("Z","+00:00"))
         or doc["quality"]["passed"] is not True):
         raise RuntimeError("Payload provenance, coverage or QA gates failed")
     digest=envelope(doc)["sha256"]
