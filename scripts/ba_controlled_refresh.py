@@ -51,8 +51,14 @@ def validate(cfg):
             raise ValueError("Unapproved source Actor identity: " + name)
         size=source.get("max_items")
         value=(source.get("input") or {}).get(result_field)
+        observed_cap=source.get("max_observed_items",size)
         if type(size) is not int or not 1 <= size <= 50 or type(value) is not int or value != size:
             raise ValueError("Source input or result limit changed: " + name)
+        # Only JobServe has documented whole-page overfetch. All other
+        # boards must honor the requested item count exactly.
+        expected_observed=60 if name=="JobServe" else size
+        if type(observed_cap) is not int or observed_cap!=expected_observed:
+            raise ValueError("Unapproved observed dataset ceiling: " + name)
         cap=source.get("max_charge_usd")
         if type(cap) not in (int, float) or not 0 < cap <= 0.70:
             raise ValueError("Invalid Actor charge cap: " + name)
@@ -62,13 +68,24 @@ def validate(cfg):
         raise ValueError("Sum of per-source charge caps differs from authorisation")
     return {"valid":True,"sources":names,"max_total_charge_usd":cfg["max_total_charge_usd"],
             "enabled":cfg.get("enabled") is True,"actor_runs_launched":0}
-def verified_dataset_count(metadata:dict, max_items:int, source:str)->int:
-    """Fail closed on source outputs exceeding the paid request before continuing."""
+def verified_dataset_count(metadata:dict, max_items:int, source:str, *, max_observed_items:int|None=None)->int:
+    """Bound real emitted rows separately from requested rows for paged Actors.
+
+    JobServe documents that maxResults can emit one extra page. Only its
+    approved, bounded overshoot is accepted; paid maxTotalChargeUsd remains
+    enforced for the entire Actor execution and must not be relaxed.
+    """
     count=metadata.get("itemCount") if isinstance(metadata,dict) else None
-    if type(max_items) is not int or max_items<1 or type(count) is not int or count<0:
+    cap=max_items if max_observed_items is None else max_observed_items
+    if (type(max_items) is not int or max_items<1 or type(count) is not int
+            or count<0 or type(cap) is not int or cap<max_items):
         raise ValueError(source+": missing or invalid completed dataset item count")
-    if count>max_items:
-        raise ValueError(source+": dataset count "+str(count)+" exceeds requested cap "+str(max_items))
+    if source=="JobServe":
+        if cap>60: raise ValueError("JobServe: requested page-overfetch bound exceeds 60")
+    elif cap!=max_items:
+        raise ValueError(source+": no source-specific extra rows approved")
+    if count>cap:
+        raise ValueError(source+": dataset count "+str(count)+" exceeds observed cap "+str(cap))
     return count
 
 def run(cfg, token, *, getter=api, sleep=time.sleep):
@@ -123,7 +140,9 @@ def run(cfg, token, *, getter=api, sleep=time.sleep):
         # Check actual post-run dataset metadata BEFORE launching the next paid Actor.
         try:
             meta=getter(BASE+"datasets/"+receipt["dataset_id"],token)
-            receipt["dataset_items"]=verified_dataset_count(meta,max_items,source["name"])
+            receipt["dataset_items"]=verified_dataset_count(meta,max_items,source["name"],
+                max_observed_items=source.get("max_observed_items",max_items))
+            receipt["items_above_requested"]=max(0,receipt["dataset_items"]-max_items)
         except (ValueError,TypeError,RuntimeError) as exc:
             receipt["status"]="OUTPUT_COUNT_REJECTED"
             receipt["count_validation_error"]=str(exc)[:220]
