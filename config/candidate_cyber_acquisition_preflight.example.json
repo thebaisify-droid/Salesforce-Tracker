@@ -1,0 +1,82 @@
+{
+  "schema": "candidate-cyber-acquisition-preflight/v1",
+  "reviewed_on": "2026-10-14",
+  "status": "PROPOSAL_NOT_AUTHORISED",
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "publication_enabled": false,
+  "actor_runs_allowed": 0,
+  "actor_retries_allowed": 0,
+  "scheduled_runs": [],
+  "approved_spend_usd": 0,
+  "shared_account_limit_usd": 19,
+  "protected_salesforce_reserve_usd": 8,
+  "current_apify_usage_verified": false,
+  "account_limit_independently_confirmed": false,
+  "unreserved_remaining_balance_usd": null,
+  "fresh_actor_pricing_verified": true,
+  "pricing_tier_observed": "BRONZE (Actor Store pricing snapshot; may vary by account)",
+  "pilot_max_total_charge_usd": 0.2,
+  "source_searches": [
+    {
+      "source": "Indeed UK",
+      "actor": "wildorigins/indeed-jobs",
+      "actor_id": "BkcKc9frZp43LeRM7",
+      "actor_schema_verified": true,
+      "non_salesforce_execution_verified": false,
+      "input": {
+        "query": "information security analyst",
+        "location": "",
+        "country": "uk",
+        "maxResults": 10
+      },
+      "run_options": {
+        "maxTotalChargeUsd": 0.1
+      },
+      "advertised_pricing": {
+        "per_job_usd": 0.0036,
+        "start_usd": 0
+      },
+      "separate_saved_task_required": true
+    },
+    {
+      "source": "JobServe",
+      "actor": "solidcode/jobserve-scraper",
+      "actor_id": "iEeTOwSjZDvAshw7Y",
+      "actor_schema_verified": true,
+      "non_salesforce_execution_verified": false,
+      "input": {
+        "keywords": [
+          "third party risk analyst"
+        ],
+        "location": "",
+        "country": "gb",
+        "distance": "50",
+        "postedSince": "7",
+        "includeDescription": false,
+        "onlyUniqueJobs": true,
+        "maxResults": 10
+      },
+      "run_options": {
+        "maxTotalChargeUsd": 0.1
+      },
+      "advertised_pricing": {
+        "per_job_usd": 0.00285,
+        "start_usd": 0.005
+      },
+      "separate_saved_task_required": true
+    }
+  ],
+  "production_salesforce_tasks_immutable": true,
+  "no_automatic_retries": true,
+  "existing_candidate_dataset_publication_approved": false,
+  "review_requirements": [
+    "Fresh authenticated Apify account usage and unreserved headroom",
+    "Independent confirmation of $19 account spending cap and $8 Salesforce reserve",
+    "One-time explicit user approval for up to $0.20 total paid run charges",
+    "Check actual actor run charge cap behavior for selected account/build",
+    "Post-run 22-family classification, source authenticity, human review, freshness and dedup QA",
+    "Separate approval before WordPress publication or recurring schedules"
+  ],
+  "notes": "Inert proposal. maxTotalChargeUsd is a run-level cost setting, not an Actor input field. Actor MAX_RESULT counts may overshoot; no usage or paid run permission is granted."
+}
