@@ -20,7 +20,8 @@ class TestPerSourceItemCap(unittest.TestCase):
             verified_dataset_count({"itemCount":24},20,"JobServe")
         self.assertEqual(verified_dataset_count({"itemCount":20},20,"JobServe"),20)
         self.assertEqual(verified_dataset_count({"itemCount":1},30,"JobServe"),1)
-        for x in (None, True, 0, -1, "24", 30.5):
+        self.assertEqual(verified_dataset_count({"itemCount":0},30,"Reed UK"),0)
+        for x in (None, True, -1, "24", 30.5):
             with self.assertRaises(ValueError):
                 verified_dataset_count({"itemCount":x},30,"Reed UK")
 
