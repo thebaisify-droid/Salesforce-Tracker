@@ -42,6 +42,9 @@ jobs:
           BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
           BA_PAID_REFRESH_APPROVAL: EXPLICIT_BA_REFRESH_APPROVED
           BA_WP_DELIVERY_APPROVAL: EXPLICIT_APPROVAL
+          # The scheduled cron is authoritative; GitHub runners can start late.
+          # The second DST cron is rejected by the Python season-specific gate.
+          BA_SCHEDULE_CRON: ${{ github.event.schedule }}
         run: python -m scripts.ba_recurring_cycle --scheduled --execute --publish
       - name: Save QA and source-run receipts without raw contacts
         if: always()
