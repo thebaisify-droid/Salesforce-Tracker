@@ -1,0 +1,101 @@
+{
+  "schema": "business-tech-role-rotation/v1",
+  "status": "STAGED_NOT_LIVE",
+  "market": "UK",
+  "source_of_families": "config/business_product_delivery_security_taxonomy_v1.0.json",
+  "strategy": "Five distinct family searches per refresh, deterministic 22-family round-robin across Tue/Fri slots; rolling retention is mandatory before publication",
+  "role_queries": [
+    {
+      "family": "Business Analysis",
+      "query": "business analyst"
+    },
+    {
+      "family": "Data Analysis",
+      "query": "data analyst"
+    },
+    {
+      "family": "Business Intelligence",
+      "query": "business intelligence analyst"
+    },
+    {
+      "family": "Delivery Management",
+      "query": "delivery manager"
+    },
+    {
+      "family": "Product Ownership",
+      "query": "product owner"
+    },
+    {
+      "family": "Product Management",
+      "query": "product manager"
+    },
+    {
+      "family": "Agile / Scrum",
+      "query": "scrum master"
+    },
+    {
+      "family": "Project Management",
+      "query": "IT project manager"
+    },
+    {
+      "family": "Business Change & Transformation",
+      "query": "business change manager"
+    },
+    {
+      "family": "Programme & Portfolio Management",
+      "query": "programme manager"
+    },
+    {
+      "family": "Business Process & Operational Analysis",
+      "query": "business process analyst"
+    },
+    {
+      "family": "Agile Leadership",
+      "query": "agile coach"
+    },
+    {
+      "family": "Product Strategy & Operations",
+      "query": "product operations manager"
+    },
+    {
+      "family": "Service Management & Design",
+      "query": "service designer"
+    },
+    {
+      "family": "Data & Analytics Management",
+      "query": "analytics manager"
+    },
+    {
+      "family": "Information Security Analysis",
+      "query": "information security analyst"
+    },
+    {
+      "family": "Security Operations / SOC",
+      "query": "SOC analyst"
+    },
+    {
+      "family": "Security Architecture",
+      "query": "cyber security architect"
+    },
+    {
+      "family": "Security Consulting & Advisory",
+      "query": "cyber security consultant"
+    },
+    {
+      "family": "Security Risk & Third-Party Risk",
+      "query": "third party risk analyst cyber"
+    },
+    {
+      "family": "Security Management",
+      "query": "information security manager"
+    },
+    {
+      "family": "IT Security",
+      "query": "IT security analyst"
+    }
+  ],
+  "monthly_account_ceiling_usd": 25,
+  "salesforce_reserve_usd": 8,
+  "ba_monthly_ceiling_usd": 17,
+  "ba_run_max_usd": 1.8
+}
