@@ -1,0 +1,77 @@
+{
+  "schema": "ba-20261016-authenticated-run-costs/v1",
+  "audit_date": "2026-10-16",
+  "evidence": "Authenticated GET /v2/actor-runs/:id, GET /v2/users/me/limits, GET /v2/users/me/usage/monthly?date=2026-10-16, via no-POST GitHub Actions run 38902702663.",
+  "evidence_url": "https://github.com/thebaisify-droid/Salesforce-Tracker/actions/runs/38902702663",
+  "current_usage_snapshot_usd": 9.593858,
+  "cycle_start_utc": "2026-10-08T00:00:00.000Z",
+  "cycle_end_utc": "2026-11-07T23:59:59.999Z",
+  "oct_16_all_account_daily_usage_usd": 0.4475227211892733,
+  "hard_monthly_ceiling_usd": 25,
+  "protected_salesforce_reserve_usd": 8,
+  "headroom_after_reserve_usd": 7.406142,
+  "max_total_authorized_refresh_usd": 1.8,
+  "actual_five_run_total_usd": 0.433339,
+  "all_within_individual_caps": true,
+  "runs": [
+    {
+      "source": "CV-Library",
+      "run_id": "OZpvK3rZ1PcXQhpWQ",
+      "actual_usd": 0.050439,
+      "authorised_cap_usd": 0.65,
+      "charged_events": {
+        "apify-actor-start": 1,
+        "apify-default-dataset-item": 30
+      }
+    },
+    {
+      "source": "Totaljobs",
+      "run_id": "E89FZF0LvshuHJQa9",
+      "actual_usd": 0.11325,
+      "authorised_cap_usd": 0.35,
+      "charged_events": {
+        "apify-actor-start": 1,
+        "apify-default-dataset-item": 25,
+        "detail-enrichment": 0
+      }
+    },
+    {
+      "source": "Reed UK",
+      "run_id": "oLI4iND3OrwX1zu7p",
+      "actual_usd": 0.02555,
+      "authorised_cap_usd": 0.2,
+      "charged_events": {
+        "apify-actor-start": 1,
+        "apify-default-dataset-item": 30
+      }
+    },
+    {
+      "source": "Indeed UK",
+      "run_id": "uR6l7FWPHSaOFlybv",
+      "actual_usd": 0.108,
+      "authorised_cap_usd": 0.35,
+      "charged_events": {
+        "job-scraped": 30
+      }
+    },
+    {
+      "source": "JobServe",
+      "run_id": "4GKDrAhj3X0zg4YdS",
+      "actual_usd": 0.1361,
+      "authorised_cap_usd": 0.25,
+      "charged_events": {
+        "apify-actor-start": 1,
+        "apify-default-dataset-item": 46
+      }
+    }
+  ],
+  "paid_actors_started_during_billing_audit": 0,
+  "wordpress_requests_during_billing_audit": 0,
+  "qualifications": [
+    "usageTotalUsd fields are authenticated run-level charges, not estimates.",
+    "The account daily usage figure covers all account activity that day and is not attributable only to these five runs.",
+    "The preflight usage 9.1599 was rounded, so small usage differences cannot be attributed precisely.",
+    "No assertion that five-run event charges represent tax-inclusive invoices or the current amount payable.",
+    "No extra runs, no retries, and no spending reactivation authorised."
+  ]
+}

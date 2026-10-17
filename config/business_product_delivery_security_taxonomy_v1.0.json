@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "market": "UK Business Analysis, Product, Delivery & Cyber Security",
   "role_families": [
     {
@@ -32,7 +32,14 @@
         "business intelligence analyst",
         "bi analyst",
         "power bi analyst",
-        "senior bi analyst"
+        "senior bi analyst",
+        "business intelligence developer",
+        "business intelligence manager",
+        "business intelligence/commercial modelling analyst",
+        "bi & data analyst",
+        "bi and data analyst",
+        "bi developer",
+        "power bi developer"
       ],
       "track": "BUSINESS_PRODUCT_DELIVERY"
     },
@@ -178,7 +185,8 @@
         "cybersecurity analyst",
         "cyber security specialist",
         "cybersecurity specialist",
-        "analyst, information security"
+        "analyst, information security",
+        "cyber sec analyst"
       ],
       "track": "SECURITY"
     },
@@ -218,7 +226,9 @@
         "security advisor",
         "security adviser",
         "cyber security advisor",
-        "security assurance consultant"
+        "security assurance consultant",
+        "security consultant",
+        "technical security consultant"
       ],
       "track": "SECURITY"
     },
@@ -334,5 +344,5 @@
     "health and safety",
     "financial security advisor"
   ],
-  "notes": "Strict title matching with bounded terms; security-adjacent ambiguous titles require cyber/information/IT security context. Role-family overlap resolved with longest matching title phrase, then listed family order. This config is for validation only."
+  "notes": "Expanded evidence-based UK job-title aliases for BI developer/manager/hybrid BI analyst and cyber security consultant abbreviations. Exact title evidence remains mandatory; ambiguous generic security consultant titles require independent cyber/IT context. Changes are staged for review only."
 }

@@ -47,6 +47,7 @@ def classify_market_role(title: str | None, description: str | None = None) -> d
     ambiguous_security = is_security and phrase in {
         "security architect", "security advisor", "security adviser",
         "security risk manager", "security assurance consultant",
+        "security consultant", "technical security consultant",
         "technology risk manager", "third party risk analyst",
         "third-party risk analyst", "third party risk manager",
         "third-party risk manager", "risk analyst (third party risk)",

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.3.1
+ * Version: 0.3.3
  */
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/rolling-retention.php';
@@ -234,6 +234,24 @@ function zarafy_ba_live_content_bridge($content) {
         );
         $rows[] = $item;
     }
+    // Keep the initial server-rendered table and embedded JSON in posted-date
+    // descending order, independently of JavaScript, filters and pagination.
+    // Unknown/invalid dates always follow valid dates.
+    usort($rows, static function ($a, $b) {
+        $da = (string) ($a['posted_date'] ?? '');
+        $db = (string) ($b['posted_date'] ?? '');
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/D', $da)) $da = '';
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/D', $db)) $db = '';
+        if ($da === '' && $db !== '') return 1;
+        if ($da !== '' && $db === '') return -1;
+        $date_difference = strcmp($db, $da);
+        if ($date_difference !== 0) return $date_difference;
+        $title_difference = strcmp(strtolower((string) ($a['title'] ?? '')),
+                                   strtolower((string) ($b['title'] ?? '')));
+        if ($title_difference !== 0) return $title_difference;
+        return strcmp((string) ($a['id'] ?? ''), (string) ($b['id'] ?? ''));
+    });
+
     $json = wp_json_encode($rows, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE);
     if (!is_string($json) || $json === '') return $content;
 
@@ -293,6 +311,35 @@ function zarafy_ba_live_content_bridge($content) {
     $marker = '<div class="ba-wrap">';
     if (strpos($content, $marker) !== false && strpos($content, 'id="ba-snapshot-observed"') === false) {
         $content = str_replace($marker, $label . $marker, $content);
+    }
+    // Include the six scope-approved technology and engineering families in
+    // the visible role filter without changing the saved WordPress page.
+    $family_select = '<select id="ba-v2-family">';
+    $family_start = strpos($content, $family_select);
+    if ($family_start !== false) {
+        $family_end = strpos($content, '</select>', $family_start);
+        if ($family_end !== false) {
+            $select_fragment = substr($content, $family_start, $family_end - $family_start);
+            $extra_families = array(
+                'Technology Leadership & Management',
+                'Enterprise & Solution Architecture',
+                'IT Infrastructure & Support Engineering',
+                'Engineering & Technical Delivery',
+                'Security Engineering',
+                'Technology Governance, Risk & Compliance'
+            );
+            $family_counts = array_count_values(array_column($rows, 'role_family'));
+            $extra = '';
+            foreach ($extra_families as $family) {
+                if (strpos($select_fragment, 'value="' . esc_attr($family) . '"') !== false) continue;
+                $extra .= '<option value="' . esc_attr($family) . '">' . esc_html($family)
+                    . ' (' . (int)($family_counts[$family] ?? 0) . ')</option>';
+            }
+            if ($extra !== '') {
+                $extra = '<optgroup label="Technology / Architecture / Engineering">' . $extra . '</optgroup>';
+                $content = substr_replace($content, $extra, $family_end, 0);
+            }
+        }
     }
     return $content;
 }

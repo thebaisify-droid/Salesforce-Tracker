@@ -1,0 +1,407 @@
+{
+  "schema": "ba-manual-title-scope-review/v1",
+  "decision_date": "2026-10-16",
+  "source": "User's explicit 39-advert in-scope list in this conversation",
+  "source_dataset": "business-analysis-tracker/evidence/ba-five-completed-20261016-audit-redacted.json",
+  "records_in_source": 161,
+  "exact_matched_advertisements": 39,
+  "distinct_title_count": 35,
+  "scope_only": true,
+  "not_an_employer_open_verification": true,
+  "not_a_publication_approval": true,
+  "role_family_assignments_provisional": true,
+  "does_not_change_live_taxonomy_or_paid_schedule": true,
+  "rationale": "The user has explicitly confirmed these 39 advertised positions are valid in scope. Some titles require additional technology leadership, enterprise architecture, IT infrastructure, engineering, security engineering, and technology GRC families beyond the original 22. Preserve repeated titles as separate advert URLs. Do not treat such approval as evidence that an advertisement is still open.",
+  "records": [
+    {
+      "review_csv_record_number": 5,
+      "source": "CV-Library",
+      "original_job_title": "Head of Technology - SIP / IT",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225729291/",
+      "proposed_role_family": "Technology Leadership & Management",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 7,
+      "source": "CV-Library",
+      "original_job_title": "Implementation Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225728868/",
+      "proposed_role_family": "Delivery Management",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 9,
+      "source": "CV-Library",
+      "original_job_title": "Senior Solutions Architect – Senior Manager",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225726839/",
+      "proposed_role_family": "Enterprise & Solution Architecture",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 18,
+      "source": "CV-Library",
+      "original_job_title": "Enterprise Architect",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225723161/",
+      "proposed_role_family": "Enterprise & Solution Architecture",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 22,
+      "source": "CV-Library",
+      "original_job_title": "Solutions Architect",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225721578/",
+      "proposed_role_family": "Enterprise & Solution Architecture",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 24,
+      "source": "CV-Library",
+      "original_job_title": "Project Co-ordinator",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225720408/",
+      "proposed_role_family": "Project Management",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 28,
+      "source": "CV-Library",
+      "original_job_title": "End User Computing Engineer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225718861/",
+      "proposed_role_family": "IT Infrastructure & Support Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 29,
+      "source": "CV-Library",
+      "original_job_title": "Design Engineer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225717521/",
+      "proposed_role_family": "Engineering & Technical Delivery",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 30,
+      "source": "CV-Library",
+      "original_job_title": "Lead Engineer",
+      "original_advert_url": "https://www.cv-library.co.uk/job/225717320/",
+      "proposed_role_family": "Engineering & Technical Delivery",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 45,
+      "source": "Totaljobs",
+      "original_job_title": "Senior Technical Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108161623",
+      "proposed_role_family": "Security Consulting & Advisory",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 46,
+      "source": "Totaljobs",
+      "original_job_title": "Electronic Systems Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/electronic-systems-security-consultant/sanderson-government-and-defence-job108149056",
+      "proposed_role_family": "Security Consulting & Advisory",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 47,
+      "source": "Totaljobs",
+      "original_job_title": "Security Engineer",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-engineer/viqu-it-recruitment-job108161112",
+      "proposed_role_family": "Security Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 49,
+      "source": "Totaljobs",
+      "original_job_title": "Senior Technical Security Consultant – Security Architecture",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108115651",
+      "proposed_role_family": "Security Architecture",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 50,
+      "source": "Totaljobs",
+      "original_job_title": "Support Engineer Snr MSoft, Networks, Security, EC2 50k",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/systems-infrastructure-eng-msoft-networks-security-nw1-70k/langley-james-limited-job108120556",
+      "proposed_role_family": "IT Infrastructure & Support Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 51,
+      "source": "Totaljobs",
+      "original_job_title": "Security Engineer",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-engineer/fs-recruitment-services-ltd-job108075230",
+      "proposed_role_family": "Security Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 52,
+      "source": "Totaljobs",
+      "original_job_title": "Senior Security Engineer - Isovalent",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108183829",
+      "proposed_role_family": "Security Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 53,
+      "source": "Totaljobs",
+      "original_job_title": "Senior Security Consultant",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/mace-job108176432",
+      "proposed_role_family": "Security Consulting & Advisory",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 54,
+      "source": "Totaljobs",
+      "original_job_title": "Senior Security Engineer - Isovalent",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108124308",
+      "proposed_role_family": "Security Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 55,
+      "source": "Totaljobs",
+      "original_job_title": "Principal Security Architect",
+      "original_advert_url": "https://www.totaljobs.com/https://www.totaljobs.com/job/principal-security-architect/hays-job108112987",
+      "proposed_role_family": "Security Architecture",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 60,
+      "source": "Reed UK",
+      "original_job_title": "Business System Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-system-analyst/57405643",
+      "proposed_role_family": "Business Analysis",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 61,
+      "source": "Reed UK",
+      "original_job_title": "Business Readiness Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57392838",
+      "proposed_role_family": "Business Change & Transformation",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 65,
+      "source": "Reed UK",
+      "original_job_title": "Business Readiness Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57372616",
+      "proposed_role_family": "Business Change & Transformation",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 68,
+      "source": "Reed UK",
+      "original_job_title": "Business Readiness Senior Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-readiness-senior-analyst/57372612",
+      "proposed_role_family": "Business Change & Transformation",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 76,
+      "source": "Reed UK",
+      "original_job_title": "Project Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/project-analyst/57458778",
+      "proposed_role_family": "Project Management",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 78,
+      "source": "Reed UK",
+      "original_job_title": "Project Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/project-analyst/57431085",
+      "proposed_role_family": "Project Management",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 79,
+      "source": "Reed UK",
+      "original_job_title": "Support Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/support-analyst/57405011",
+      "proposed_role_family": "IT Infrastructure & Support Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 80,
+      "source": "Reed UK",
+      "original_job_title": "eBilling Analyst",
+      "original_advert_url": "https://www.reed.co.uk/jobs/ebilling-analyst/57427598",
+      "proposed_role_family": "Business Process & Operational Analysis",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 84,
+      "source": "Reed UK",
+      "original_job_title": "Business Functional Analyst (Margin and Valuations, FIC)",
+      "original_advert_url": "https://www.reed.co.uk/jobs/business-functional-analyst-margin-and-valuations-fic/57461995",
+      "proposed_role_family": "Business Analysis",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 96,
+      "source": "Indeed UK",
+      "original_job_title": "Operations Support Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=5fdd79d0bddb4f90",
+      "proposed_role_family": "Business Process & Operational Analysis",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 97,
+      "source": "Indeed UK",
+      "original_job_title": "Senior GRC Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=32d85e13eb663cd2",
+      "proposed_role_family": "Security Risk & Third-Party Risk",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 103,
+      "source": "Indeed UK",
+      "original_job_title": "IT Manager",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=90878bced720d927",
+      "proposed_role_family": "Technology Leadership & Management",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 104,
+      "source": "Indeed UK",
+      "original_job_title": "Digital Analyst - Tech, Risk & Governance",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=09bf04665e1c7730",
+      "proposed_role_family": "Technology Governance, Risk & Compliance",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 108,
+      "source": "Indeed UK",
+      "original_job_title": "Senior Enterprise Technology Engineer",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=e260817bb49aa526",
+      "proposed_role_family": "IT Infrastructure & Support Engineering",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 111,
+      "source": "Indeed UK",
+      "original_job_title": "Project Controls Reporting Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=57c3745eb174b9b3",
+      "proposed_role_family": "Project Management",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 112,
+      "source": "Indeed UK",
+      "original_job_title": "Technology GRC Analyst",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=f259db8858b3df1d",
+      "proposed_role_family": "Technology Governance, Risk & Compliance",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 113,
+      "source": "Indeed UK",
+      "original_job_title": "Senior Forward Deployed Engineer",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=c8e6419a22b989ca",
+      "proposed_role_family": "Engineering & Technical Delivery",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 114,
+      "source": "Indeed UK",
+      "original_job_title": "Service Centre Support Lead",
+      "original_advert_url": "https://uk.indeed.com/viewjob?jk=4326d57eed4c6354",
+      "proposed_role_family": "Service Management & Design",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 127,
+      "source": "JobServe",
+      "original_job_title": "Business Analysts (Intermediate to Senior - Multiple)",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hGeRi",
+      "proposed_role_family": "Business Analysis",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    },
+    {
+      "review_csv_record_number": 144,
+      "source": "JobServe",
+      "original_job_title": "Business Change Analyst",
+      "original_advert_url": "https://www.jobserve.com/gb/en/hDg1S",
+      "proposed_role_family": "Business Change & Transformation",
+      "user_role_scope_decision": "IN_SCOPE_KEEP",
+      "opening_status": "NOT_EMPLOYER_VERIFIED",
+      "publication_approved": false
+    }
+  ]
+}

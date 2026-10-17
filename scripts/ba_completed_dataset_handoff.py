@@ -21,7 +21,8 @@ EXPECTED={
 }
 ROOT=Path(__file__).resolve().parents[1]
 RESULT_DIR=ROOT/"business-analysis-tracker/data/read-only-handoff"
-def build_batch(receipts,token,*,get=api,max_per_source=100,max_items_by_source=None):
+def build_batch(receipts,token,*,get=api,max_per_source=100,max_items_by_source=None,
+                max_observed_by_source=None):
     if not token:raise ValueError("APIFY_TOKEN needed for read-only retrieval")
     if not isinstance(receipts,list) or len(receipts)!=5 or {x.get("source") for x in receipts}!=set(EXPECTED):
         raise ValueError("Exactly five distinct source receipts required")
@@ -39,15 +40,28 @@ def build_batch(receipts,token,*,get=api,max_per_source=100,max_items_by_source=
             raise ValueError("Missing dataset ID")
         count=get("https://api.apify.com/v2/datasets/"+dataset,token).get("itemCount")
         declared=(max_items_by_source or {}).get(source,max_per_source)
-        if type(declared) is not int or declared<1 or declared>max_per_source:
+        actual_limit=(max_observed_by_source or {}).get(source,declared)
+        if (type(declared) is not int or declared<1 or declared>max_per_source
+                or type(actual_limit) is not int or actual_limit<declared
+                or actual_limit>max_per_source):
             raise ValueError("Invalid agreed source count limit: "+source)
-        if type(count) is not int or count<0 or count>declared:
+        if source!="JobServe" and actual_limit!=declared:
+            raise ValueError("No overfetch approved for source: "+source)
+        if source=="JobServe" and max_observed_by_source is not None and actual_limit>60:
+            raise ValueError("JobServe output hard ceiling above 60")
+        if type(count) is not int or count<0 or count>actual_limit:
             raise ValueError("Unexpected dataset count or item limit: "+source)
         # Existing API utility expects a data envelope, whereas dataset items
         # endpoint returns a list. Injected getter can support both shapes.
         result=get("https://api.apify.com/v2/datasets/"+dataset+"/items?clean=false&limit="+str(max_per_source),token)
         if not isinstance(result,list) or len(result)!=count:
-            raise ValueError("Partial or malformed dataset: "+source)
+            raise ValueError("Partial or evolving dataset: "+source)
+        # A completed Actor's dataset can still grow after its first read.
+        # Recheck metadata before accepting the snapshot; never merge records
+        # from inconsistent counts or claim an over-limit batch is stable.
+        final_count=get("https://api.apify.com/v2/datasets/"+dataset,token).get("itemCount")
+        if type(final_count) is not int or final_count!=count:
+            raise ValueError("Dataset count drift during handoff: "+source)
         sources.append({"name":source,"status":"SUCCEEDED","attempted":True,
                         "run_id":run_id,"dataset_id":dataset,
                         "observed_at":run.get("finishedAt") or run.get("startedAt"),
