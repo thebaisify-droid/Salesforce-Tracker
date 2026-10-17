@@ -172,6 +172,13 @@ def main():
     if args.publish and (not cfg.get("wordpress_delivery_enabled")
         or os.getenv("BA_WP_DELIVERY_APPROVAL")!="EXPLICIT_APPROVAL"):
         raise SystemExit("Independent WordPress delivery approval missing")
+    # Durable single-winner claim occurs before ANY paid Actor request.
+    # Once claimed, even a failed/partial run cannot be automatically repeated.
+    from scripts.ba_slot_claim import claim_from_environment
+    claim = claim_from_environment(slot)
+    if not claim["claimed"]:
+        raise SystemExit("BA scheduled slot previously claimed or GitHub lock unavailable: " + claim["status"])
+    print(json.dumps(claim), flush=True)
     # Fresh per-Actor pricing inspection before any paid Actor API POST.
     # PRICE_PER_DATASET_ITEM must fit maxItems; PPE uses maxTotalChargeUsd.
     from scripts.ba_pricing_readonly import check as inspect_prices, validate_cost_models
