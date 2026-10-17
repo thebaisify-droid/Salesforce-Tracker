@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.3.2
+ * Version: 0.3.3
  */
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/rolling-retention.php';
@@ -234,6 +234,24 @@ function zarafy_ba_live_content_bridge($content) {
         );
         $rows[] = $item;
     }
+    // Keep the initial server-rendered table and embedded JSON in posted-date
+    // descending order, independently of JavaScript, filters and pagination.
+    // Unknown/invalid dates always follow valid dates.
+    usort($rows, static function ($a, $b) {
+        $da = (string) ($a['posted_date'] ?? '');
+        $db = (string) ($b['posted_date'] ?? '');
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/D', $da)) $da = '';
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/D', $db)) $db = '';
+        if ($da === '' && $db !== '') return 1;
+        if ($da !== '' && $db === '') return -1;
+        $date_difference = strcmp($db, $da);
+        if ($date_difference !== 0) return $date_difference;
+        $title_difference = strcmp(strtolower((string) ($a['title'] ?? '')),
+                                   strtolower((string) ($b['title'] ?? '')));
+        if ($title_difference !== 0) return $title_difference;
+        return strcmp((string) ($a['id'] ?? ''), (string) ($b['id'] ?? ''));
+    });
+
     $json = wp_json_encode($rows, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE);
     if (!is_string($json) || $json === '') return $content;
 
