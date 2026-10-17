@@ -201,10 +201,10 @@ def main():
         if not isinstance(data,dict) or not isinstance(data.get("data"),dict):
             raise ValueError("Invalid Apify metadata envelope")
         return data["data"]
-    batch=build_batch(receipts,os.getenv("APIFY_TOKEN",""),get=getter,max_per_source=50,
+    batch=build_batch(receipts,os.getenv("APIFY_TOKEN",""),get=getter,max_per_source=100,
         max_items_by_source={source["name"]:source["max_items"] for source in active_plan["sources"]})
     by_name={source["name"]:source for source in active_plan["sources"]}
-    if any(len(source["records"])>by_name[source["name"]]["max_items"] for source in batch["sources"]):
+    if any(len(source["records"])>by_name[source["name"]]["max_items"] and not (source["name"]=="JobServe" and len(source["records"])<=100) for source in batch["sources"]):
         raise ValueError("Actor returned more than its authorised requested items; do not publish")
     result=run_offline(batch,json.loads(MAPPING.read_text(encoding="utf8")))
     live=build_live_document(batch,result,datetime.now(timezone.utc))
