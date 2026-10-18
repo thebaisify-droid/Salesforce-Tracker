@@ -1,23 +1,23 @@
 {
   "schema": "ba-automatic-refresh/v1",
-  "enabled": true,
-  "paid_acquisition_enabled": true,
-  "publish_automatically": true,
+  "enabled": false,
+  "paid_acquisition_enabled": false,
+  "publish_automatically": false,
   "automatic_retries": 0,
-  "monthly_limit_usd": 25,
+  "monthly_limit_usd": 19,
   "salesforce_reserve_usd": 8,
-  "max_total_charge_usd": 1.8,
-  "schedule": "TUE_FRI_0735_EUROPE_LONDON_ACTIVE",
-  "scheduling_enabled": true,
-  "wordpress_delivery_enabled": true,
+  "max_total_charge_usd": 1.2,
+  "schedule": "TUE_FRI_0735_EUROPE_LONDON_PAUSED",
+  "scheduling_enabled": false,
+  "wordpress_delivery_enabled": false,
   "search_profile": "ROTATING_22_FAMILY_TAXONOMY",
-  "note": "PROPOSED $25 shared account trial; requires verified exact $25 Apify account hard limit before any paid Actor POST. Protect $8 Salesforce reserve, BA up to $17 and <=$1.80 per Tue/Fri refresh, zero retries. 22 family query rotation requires rolling snapshot coverage before go-live. Do not treat a source search as employer-verified live vacancy.",
+  "note": "User-approved shared $19 monthly limit, $8 Salesforce reserve, $11 maximum BA monthly spending, $1.20 per BA refresh, Tuesday/Friday 07:35 UK, at most 9 slots/month, no retries. Acquisition PAUSED by GitHub workflow; independently verify Apify's actual $19 account hard limit and current usage immediately before any paid activation. Source observations are not employer-verified openings.",
   "sources": [
     {
       "name": "CV-Library",
       "actor": "blackfalcondata/cv-library-scraper",
       "max_items": 30,
-      "max_charge_usd": 0.65,
+      "max_charge_usd": 0.4,
       "input": {
         "query": "business analyst",
         "country": "GB",
@@ -34,7 +34,7 @@
       "name": "Totaljobs",
       "actor": "abotapi/totaljobs-com-scraper",
       "max_items": 30,
-      "max_charge_usd": 0.35,
+      "max_charge_usd": 0.2,
       "input": {
         "mode": "search",
         "keywords": "business analyst",
@@ -50,7 +50,7 @@
       "name": "Reed UK",
       "actor": "wildorigins/uk-jobs-reed",
       "max_items": 30,
-      "max_charge_usd": 0.2,
+      "max_charge_usd": 0.15,
       "input": {
         "keywords": "business analyst",
         "maxResults": 30,
@@ -62,7 +62,7 @@
       "name": "Indeed UK",
       "actor": "wildorigins/indeed-jobs",
       "max_items": 30,
-      "max_charge_usd": 0.35,
+      "max_charge_usd": 0.25,
       "input": {
         "query": "business analyst",
         "country": "uk",
@@ -73,7 +73,7 @@
       "name": "JobServe",
       "actor": "solidcode/jobserve-scraper",
       "max_items": 30,
-      "max_charge_usd": 0.25,
+      "max_charge_usd": 0.2,
       "input": {
         "keywords": [
           "business analyst"
@@ -85,20 +85,21 @@
       }
     }
   ],
-  "monthly_ba_allowance_usd": 17,
+  "monthly_ba_allowance_usd": 11,
   "max_scheduled_runs_per_month": 9,
-  "recurring_budget_approved": true,
-  "pricing_guard_verified": true,
-  "estimated_max_scheduled_charge_per_month_usd": 16.2,
+  "recurring_budget_approved": false,
+  "pricing_guard_verified": false,
+  "estimated_max_scheduled_charge_per_month_usd": 10.8,
   "approval_date": "2026-10-15",
-  "approved_per_refresh_usd": 1.8,
-  "approved_ba_monthly_usd": 17,
+  "approved_per_refresh_usd": 1.2,
+  "approved_ba_monthly_usd": 11,
   "trial_name": "UK Business & Technology Jobs Tracker",
-  "trial_budget_monthly_usd": 25,
+  "trial_budget_monthly_usd": 19,
   "future_budget_option_usd": 50,
   "rolling_coverage_enabled": true,
   "rolling_coverage_block_reason": null,
-  "release_status": "CONTROLLED_22_FAMILY_25_USD_TRIAL",
+  "release_status": "BUDGET_RECONCILED_19_USD_HOLD_NO_PAID_EXECUTION",
   "receiver_min_version": "0.3.1",
-  "release_notes": "Read-only preflight 16 October 2026 passed: v0.3.1 active, authenticated restricted delivery route reachable, $25 account ceiling and $8 protected reserve verified, five Actor pricing guards passed. Runtime must recheck billing before each Actor; no retries, no publication on partial/failed/oversize datasets. Existing 57 historical observations migrate with their original Apify timestamps only."
+  "release_notes": "2026-10-18 budget revision only; five paid Actors remain disabled by GitHub Actions safety hold. Requires fresh authenticated account usage and exact $19 Apify hard cap before a separately approved paid release.",
+  "overshoot_policy": "JobServe may emit up to 60 observed results for 30 requested; $0.20 hard per Actor, $1.20 total; no retries; hold paid schedule pending pricing revalidation."
 }
