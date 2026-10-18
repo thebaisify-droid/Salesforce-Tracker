@@ -31,6 +31,7 @@ class RealPublicListingsAcceptance(unittest.TestCase):
         print("BA_PUBLIC_OBSERVATION_QA",json.dumps({"sample_count":len(results),
                 "matched":len(results)-len(failures),"exceptions":failures,
                 "rows":results},sort_keys=True))
+        self.assertEqual(len(failures),0,results)
         self.assertGreaterEqual(len(results),8)
     def test_no_paid_or_delivery_modules(self):
         self.assertEqual(len(OBSERVATIONS),8)
