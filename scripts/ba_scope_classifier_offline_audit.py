@@ -13,6 +13,9 @@ PATTERNS=[
  ("Technology Governance, Risk & Compliance",("technology grc analyst","digital analyst - tech")),
 ]
 def assess(title,description=""):
+    lower=(title or "").casefold()
+    if "no experience needed" in lower and "trainee" in lower:
+        return {"status":"REVIEW","family":None,"basis":"PROMOTIONAL_TRAINEE_REVIEW"}
     result=classify_market_role(title,description)
     if result["included"]:
         return {"status":"AUTO_INCLUDE","family":result["role_family"],"basis":"EXISTING"}
