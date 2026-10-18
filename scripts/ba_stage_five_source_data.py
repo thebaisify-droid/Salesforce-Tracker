@@ -226,7 +226,10 @@ def stage(input_doc, sector_mapping):
             # REVIEW-only, never silently auto-included.
             proposal = proposed_scope_assessment(title, desc)
             if proposal["status"] != "AUTO_INCLUDE":
-                rejected["scope_review_required_not_auto_published"] += 1
+                if proposal.get("basis") in ("APPRENTICESHIP_REQUIRES_REVIEW", "PROMOTIONAL_TRAINEE_REVIEW", "PROPOSED_REVIEW_ONLY"):
+                    rejected["scope_review_required_not_auto_published"] += 1
+                else:
+                    rejected["out_of_scope"] += 1
                 continue
             role = classify_market_role(title, desc)
             if not role.get("included"):
