@@ -2,6 +2,8 @@
 from __future__ import annotations
 import argparse,base64,hashlib,json,os
 from pathlib import Path
+from datetime import datetime, timezone
+from scripts.ba_publication_assurance import validate_publication
 from urllib.request import Request,build_opener,HTTPSHandler,HTTPRedirectHandler
 from scripts.ba_wp_rest_routes import BA_SNAPSHOT_URL as ENDPOINT
 class NoRedirect(HTTPRedirectHandler):
@@ -16,6 +18,9 @@ def envelope(snapshot):
     return {"snapshot":raw.decode("utf8"),"sha256":hashlib.sha256(raw).hexdigest()}
 def send_once(doc,username,password,*,approved=False,opener=None):
     if not approved or not username or not password:raise ValueError("Dedicated BA delivery approval/credentials absent")
+    # Universal transport boundary: refuse any WordPress POST until the complete
+    # five-source, provenance, deduplication and observation-window checks pass.
+    validate_publication(doc, datetime.now(timezone.utc))
     body=envelope(doc)
     credential=base64.b64encode((username+":"+password).encode("utf8")).decode()
     req=Request(ENDPOINT,data=json.dumps(body).encode("utf8"),method="POST",
