@@ -318,10 +318,10 @@ function zarafy_ba_live_content_bridge($content) {
         $script_at, $script_stop + strlen($script_end) - $script_at);
 
     // Synchronise the headline counters with filtered/deduplicated stored rows.
-    $content = preg_replace('/(<b id="ba-v2-total">)[^<]*(<\\/b>)/', '\u0024{1}' . count($rows) . '\u0024{2}', $content, 1);
+    $content = preg_replace('/(<b id="ba-v2-total">)[^<]*(<\\/b>)/', '${1}' . count($rows) . '${2}', $content, 1);
     $family_count = count(array_unique(array_column($rows, 'role_family')));
     $content = preg_replace('/(<b id="ba-v2-family-total">)[^<]*(<\\/b>)/',
-        '\u0024{1}' . $family_count . ' / 28\u0024{2}', $content, 1);
+        '${1}' . $family_count . ' / 28${2}', $content, 1);
     $status = '<strong id="ba-v2-status" aria-live="polite">';
     $at = strpos($content, $status);
     $stop = $at === false ? false : strpos($content, '</strong>', $at);
