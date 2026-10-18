@@ -35,3 +35,4 @@ jobs:
           path: business-analysis-tracker/evidence/jobserve-api-recovery-result.json
           if-no-files-found: warn
           retention-days: 30
+# One-time direct REST activation, 2026-10-18; no automatic repeat.
