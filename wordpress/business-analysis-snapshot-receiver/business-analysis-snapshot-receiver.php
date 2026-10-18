@@ -200,7 +200,7 @@ function zarafy_ba_live_content_bridge($content) {
     $time = is_string($finished) ? strtotime($finished) : false;
     $now = time();
     if ($time === false || $time > $now + 900) return zarafy_ba_unavailable_notice();
-    $cutoff_now = $now - 30 * DAY_IN_SECONDS;
+    $cutoff_now = $now - 30 * 86400;
     $rows = array();
     $seen_ids = array();
     foreach ($data['records'] as $r) {
@@ -220,7 +220,7 @@ function zarafy_ba_live_content_bridge($content) {
             return zarafy_ba_unavailable_notice();
         }
         $observed = $r['last_observed_at'] ?? $r['observed_at'] ?? null;
-        $observed_time = zarafy_ba_safe_observed_time($observed, $time, $time - 30 * DAY_IN_SECONDS);
+        $observed_time = zarafy_ba_safe_observed_time($observed, $time, $time - 30 * 86400);
         if ($observed_time === false || $observed_time > $now + 900) return zarafy_ba_unavailable_notice();
         $seen_ids[$r['id']] = true;
         // A stored rolling snapshot can age without another successful refresh.
