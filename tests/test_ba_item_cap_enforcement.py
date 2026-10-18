@@ -28,6 +28,7 @@ class TestPerSourceItemCap(unittest.TestCase):
     def test_stop_before_second_paid_actor_after_first_dataset_overrun(self):
         cfg=deepcopy(self.config)
         cfg["rolling_coverage_enabled"]=True
+        cfg["enabled"]=True
         cfg["rotation_slot"]=1
         family_names=[
             "Business Analysis","Data Analysis","Business Intelligence",
@@ -41,7 +42,7 @@ class TestPerSourceItemCap(unittest.TestCase):
         def getter(url,token,body=None):
             urls.append(url)
             if url.endswith("/users/me/limits"):
-                return {"limits":{"maxMonthlyUsageUsd":25}, "current":{"monthlyUsageUsd":0}}
+                return {"limits":{"maxMonthlyUsageUsd":19}, "current":{"monthlyUsageUsd":0}}
             if "/runs?" in url:
                 return {"id":"SOURCE001"}
             if "/actor-runs/" in url:
