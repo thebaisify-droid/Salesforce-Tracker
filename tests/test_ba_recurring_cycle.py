@@ -18,10 +18,10 @@ class TestBARecurringCycle(unittest.TestCase):
     def test_approved_config_never_launches_from_manual_or_untrusted_event(self):
         meta=validate_config(self.cfg)
         self.assertTrue(meta["valid"])
-        self.assertTrue(meta["enabled"])
-        self.assertTrue(self.cfg["recurring_budget_approved"])
-        self.assertTrue(self.cfg["pricing_guard_verified"])
-        self.assertTrue(self.cfg["wordpress_delivery_enabled"])
+        self.assertFalse(meta["enabled"])
+        self.assertFalse(self.cfg["recurring_budget_approved"])
+        self.assertFalse(self.cfg["pricing_guard_verified"])
+        self.assertFalse(self.cfg["wordpress_delivery_enabled"])
         with patch.dict(os.environ,{"BA_PAID_REFRESH_APPROVAL":"EXPLICIT_BA_REFRESH_APPROVED","GITHUB_EVENT_NAME":"workflow_dispatch","GITHUB_RUN_ATTEMPT":"1"},clear=True), \
              patch("sys.argv",["ba_recurring_cycle","--execute","--scheduled"]):
             with self.assertRaises(SystemExit):
@@ -81,7 +81,7 @@ class TestBARecurringCycle(unittest.TestCase):
             with patch("scripts.ba_pricing_readonly.check", side_effect=AssertionError("No GET expected")):
                 # Depending on current clock, missing cron always skips instead
                 # of reaching Apify's pricing/Actor endpoints.
-                main()
+                with self.assertRaises(SystemExit): main()
 
     def test_monthly_slot_count_never_exceeds_nine(self):
         # At most nine Tue/Fri pairs can occur in a calendar month.

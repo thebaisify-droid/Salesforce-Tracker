@@ -11,18 +11,18 @@ class BAReadOnlyPriceTest(unittest.TestCase):
         def get(path,token):
             checked.append(path)
             if path=="users/me/limits":
-                return {"limits":{"maxMonthlyUsageUsd":25},"current":{"monthlyUsageUsd":8.9}}
+                return {"limits":{"maxMonthlyUsageUsd":19},"current":{"monthlyUsageUsd":8.9}}
             return {"pricingInfos":[{"pricingModel":"PRICE_PER_DATASET_ITEM",
                        "pricePerUnitUsd":0.003,"unitName":"item"}]}
         result=check(self.config,"token",reader=get)
-        self.assertEqual(result["account_limit_usd"],25)
-        self.assertEqual(result["available_after_salesforce_reserve_usd"],8.1)
+        self.assertEqual(result["account_limit_usd"],19)
+        self.assertEqual(result["available_after_salesforce_reserve_usd"],2.1)
         self.assertEqual(len(result["actor_pricing"]),5)
         self.assertEqual(len(checked),6)
         self.assertEqual(result["actor_runs_started"],0)
         self.assertEqual(result["wordpress_requests"],0)
     def test_price_safety_rejects_uncapped_and_unknown_sources(self):
-        template={"account_limit_usd":25,"actor_pricing":[
+        template={"account_limit_usd":19,"actor_pricing":[
           {"source":x["name"],"pricing_model":"PRICE_PER_DATASET_ITEM",
            "price_per_unit_usd":0.002} for x in self.config["sources"]]}
         result=validate_cost_models(template,self.config)
@@ -35,7 +35,7 @@ class BAReadOnlyPriceTest(unittest.TestCase):
         self.assertTrue(validate_cost_models(template,self.config)["pricing_guard_passed"])
 
     def test_actor_minimum_and_compute_charges_are_bounded(self):
-        report={"account_limit_usd":25,"actor_pricing":[
+        report={"account_limit_usd":19,"actor_pricing":[
             {"source":x["name"],"pricing_model":"PAY_PER_EVENT",
              "minimal_max_total_charge_usd":0.05,
              "platform_usage_paid_by_user":False} for x in self.config["sources"]]}

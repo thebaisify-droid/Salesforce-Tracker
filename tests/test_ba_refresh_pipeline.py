@@ -15,11 +15,11 @@ class BARefreshPipelineTests(unittest.TestCase):
     def test_user_approved_recurring_caps_are_active(self):
         p=validate(self.cfg)
         self.assertTrue(p["valid"])
-        self.assertTrue(p["enabled"])
-        self.assertTrue(self.cfg["recurring_budget_approved"])
-        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],17)
-        self.assertTrue(self.cfg["wordpress_delivery_enabled"])
-        self.assertEqual(p["max_total_charge_usd"],1.8)
+        self.assertFalse(p["enabled"])
+        self.assertFalse(self.cfg["recurring_budget_approved"])
+        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],11)
+        self.assertFalse(self.cfg["wordpress_delivery_enabled"])
+        self.assertEqual(p["max_total_charge_usd"],1.2)
         self.assertEqual(p["actor_runs_launched"],0)
     def test_bad_budget_fails(self):
         v=deepcopy(self.cfg)

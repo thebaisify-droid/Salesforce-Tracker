@@ -23,9 +23,9 @@ from scripts.validate_ba_five_source_contract import validate_run_receipts
 ROOT = Path(__file__).resolve().parents[1]
 LONDON = ZoneInfo("Europe/London")
 EXPECTED = {"CV-Library", "Totaljobs", "Reed UK", "Indeed UK", "JobServe"}
-MONTHLY_CEILING = 17.00
+MONTHLY_CEILING = 11.00
 MAX_SLOTS_MONTHLY = 9
-PER_RUN_CEILING = 1.80
+PER_RUN_CEILING = 1.20
 
 SUMMER_CRON = "35 6 * * 2,5"
 WINTER_CRON = "35 7 * * 2,5"
