@@ -25,6 +25,7 @@ function add_filter(){ }
 function is_page($id){return $id===49;}
 function get_the_ID(){return 49;}
 function wp_get_upload_dir(){return ['basedir'=>$GLOBALS['dir'], 'error'=>''];}
+function trailingslashit($path){return rtrim($path,'/').'/';}
 function wp_parse_url($s){return parse_url($s);}
 function wp_json_encode($v,$flags=0){return json_encode($v,$flags);}
 function wp_date($f,$t){return gmdate($f,$t);}
