@@ -16,16 +16,16 @@ BASE="https://api.apify.com/v2/"
 TERMINAL={"SUCCEEDED","FAILED","ABORTED","TIMED-OUT"}
 def validate(cfg):
     if cfg.get("schema")!="ba-automatic-refresh/v1":raise ValueError("Incorrect schema")
-    if cfg.get("monthly_limit_usd")!=25 or cfg.get("salesforce_reserve_usd")!=8:raise ValueError("Budget configuration unsafe")
+    if cfg.get("monthly_limit_usd")!=19 or cfg.get("salesforce_reserve_usd")!=8:raise ValueError("Budget configuration unsafe")
     if cfg.get("search_profile") != "ROTATING_22_FAMILY_TAXONOMY":
         raise ValueError("All 22 job families must be covered by the scheduled search rotation")
     if cfg.get("automatic_retries") != 0:
         raise ValueError("Automatic retries are prohibited")
     if cfg.get("publish_automatically") is not cfg.get("wordpress_delivery_enabled"):
         raise ValueError("Publishing requires an identical WordPress delivery approval gate")
-    if cfg.get("monthly_ba_allowance_usd") != 17 or cfg.get("max_scheduled_runs_per_month") != 9:
+    if cfg.get("monthly_ba_allowance_usd") != 11 or cfg.get("max_scheduled_runs_per_month") != 9:
         raise ValueError("BA standing monthly allowance or cadence changed")
-    if cfg.get("max_total_charge_usd") != 1.80:
+    if cfg.get("max_total_charge_usd") != 1.20:
         raise ValueError("Approved per-refresh cap exceeded")
     flags = ("enabled", "paid_acquisition_enabled", "scheduling_enabled",
              "recurring_budget_approved", "pricing_guard_verified")
@@ -58,7 +58,7 @@ def validate(cfg):
             raise ValueError("Invalid Actor charge cap: " + name)
         if source.get("input",{}).get("incrementalMode",False) is not False:
             raise ValueError("Shared Actor incremental state disallowed")
-    if round(sum(x["max_charge_usd"] for x in cfg["sources"]),2) != 1.80:
+    if round(sum(x["max_charge_usd"] for x in cfg["sources"]),2) != 1.20:
         raise ValueError("Sum of per-source charge caps differs from authorisation")
     return {"valid":True,"sources":names,"max_total_charge_usd":cfg["max_total_charge_usd"],
             "enabled":cfg.get("enabled") is True,"actor_runs_launched":0}
@@ -89,8 +89,8 @@ def run(cfg, token, *, getter=api, sleep=time.sleep):
         account=getter(BASE+"users/me/limits",token)
         limit=(account.get("limits") or {}).get("maxMonthlyUsageUsd")
         used=(account.get("current") or {}).get("monthlyUsageUsd")
-        if type(limit) not in (int,float) or abs(limit-25)>1e-5 or type(used) not in (int,float) or not 0<=used<=limit:
-            raise RuntimeError("Apify $25 account hard limit not independently verified")
+        if type(limit) not in (int,float) or abs(limit-19)>1e-5 or type(used) not in (int,float) or not 0<=used<=limit:
+            raise RuntimeError("Apify $19 account hard limit not independently verified")
         if limit-used+1e-9 < cfg["salesforce_reserve_usd"]+remaining:
             raise RuntimeError("Insufficient headroom for outstanding caps")
         max_items=source["max_items"]
