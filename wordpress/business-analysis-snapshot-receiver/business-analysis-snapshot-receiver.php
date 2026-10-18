@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.3.4
+ * Version: 0.3.5
  */
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/rolling-retention.php';
@@ -283,6 +283,17 @@ function zarafy_ba_live_content_bridge($content) {
             $dt = DateTimeImmutable::createFromFormat('!Y-m-d', $r['posted_date']);
             if ($dt && $dt->format('Y-m-d') === $r['posted_date']) $date = $dt->format('d/m/Y');
         }
+        // Ten-column no-JavaScript fallback aligned with the live page schema.
+        // Never invent a rate or IR35 from contract status or currency alone.
+        $short_description = (string) ($r['description_summary'] ?? '');
+        $inside = (bool) preg_match('/\\binside(?:\\s+(?:of|scope\\s+of))?\\s+ir35\\b/i', $short_description);
+        $outside = (bool) preg_match('/\\boutside(?:\\s+of)?\\s+ir35\\b/i', $short_description);
+        $ir35_label = $inside && !$outside ? 'Inside IR35' : ($outside && !$inside ? 'Outside IR35'
+            : (($r['employment'] ?? '') === 'Permanent' ? 'Not applicable' : 'Not stated'));
+        $work_label = ($r['working_arrangement'] ?? '') !== 'Not specified'
+            ? (string) $r['working_arrangement'] : 'Not stated';
+        $office_label = 'Not stated';
+        $pay_label = 'Not stated';
         $trs .= '<tr class="ba-v2-record"><td><strong>' . esc_html($r['title'])
             . '</strong><small>Role family: ' . esc_html($r['role_family'])
             . '</small><small>Last source observation: ' .
@@ -292,9 +303,12 @@ function zarafy_ba_live_content_bridge($content) {
             . esc_html($r['description_summary'] ?: 'Not supplied by source')
             . '</p></details></td><td>' . esc_html($r['advertiser'])
             . '<small>Sector: ' . esc_html($r['sector']) . '</small></td><td>'
-            . esc_html($r['location']) . '<small>Work mode: '
-            . esc_html($r['working_arrangement']) . '</small></td><td>'
-            . esc_html($r['employment']) . '</td><td>' . esc_html($r['source'])
+            . esc_html($r['location']) . '</td><td>'
+            . esc_html($r['employment']) . '</td><td>'
+            . esc_html($pay_label) . '</td><td>'
+            . esc_html($ir35_label) . '</td><td>'
+            . esc_html($work_label) . '<small>Office: ' . esc_html($office_label)
+            . '</small></td><td>' . esc_html($r['source'])
             . '</td><td>' . esc_html($date) . '</td><td><a href="'
             . esc_url($r['url'])
             . '" target="_blank" rel="noopener noreferrer nofollow">View original advert &#8599;</a></td></tr>';
