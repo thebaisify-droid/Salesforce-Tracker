@@ -12,6 +12,12 @@ function zarafy_ba_source_key($name, $run, $dataset) {
     return (string)$name . "|" . (string)$run . "|" . (string)$dataset;
 }
 
+/** Exact source + original HTTPS advert URL is the display identity across Actor runs. */
+function zarafy_ba_advert_identity($r) {
+    if (!is_array($r) || empty($r['job_source']) || empty($r['original_advert_url'])) return '';
+    return hash('sha256', (string)$r['job_source'] . "\\0" . (string)$r['original_advert_url']);
+}
+
 function zarafy_ba_safe_observed_time($value, $end, $cutoff) {
     if (!is_string($value) || !preg_match('/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?(?:Z|[+-]\d\d:\d\d)$/D', $value)) return false;
     $stamp = strtotime($value);
@@ -59,7 +65,15 @@ function zarafy_ba_merge_rolling_snapshot($current, $previous = null) {
         'Data & Analytics Management', 'Information Security Analysis',
         'Security Operations / SOC', 'Security Architecture',
         'Security Consulting & Advisory', 'Security Risk & Third-Party Risk',
-        'Security Management', 'IT Security'
+        'Security Management', 'IT Security',
+        // Additional families explicitly approved in the 16 October review.
+        // Preserve exact family labels and source-run identity; no generic catch-all.
+        'Technology Leadership & Management',
+        'Enterprise & Solution Architecture',
+        'IT Infrastructure & Support Engineering',
+        'Engineering & Technical Delivery',
+        'Security Engineering',
+        'Technology Governance, Risk & Compliance'
     );
     $allowed = array_fill_keys($family_allowlist, true);
     $current_receipts = array();
@@ -94,9 +108,13 @@ function zarafy_ba_merge_rolling_snapshot($current, $previous = null) {
         $r['last_observed_at'] = $r['observed_at'];
         $r['observed_age_days'] = max(0, (int)floor(($end - $stamp) / 86400));
         $r['availability_status'] = 'SOURCE_OBSERVED_NOT_EMPLOYER_CONFIRMED';
-        // Stable job ID and exact HTTPS advert URL: retain latest matching observation.
-        $id = $r['id'];
-        if (!isset($records[$id]) || $stamp > strtotime($records[$id]['last_observed_at'])) $records[$id] = $r;
+        // The same source URL can arrive with a new internal ID on a later run.
+        // Keep the latest observation AND its original source-run provenance.
+        $identity = zarafy_ba_advert_identity($r);
+        if ($identity === '') return;
+        if (!isset($records[$identity]) || $stamp >= strtotime($records[$identity]['last_observed_at'])) {
+            $records[$identity] = $r;
+        }
     };
     // Previous first, current second; a fresh current observation replaces an older one.
     if ($previous_receipts) {
@@ -127,13 +145,13 @@ function zarafy_ba_merge_rolling_snapshot($current, $previous = null) {
     $selected = array(); $remainder = array();
     foreach ($family_allowlist as $family) {
         $group = $by_family[$family] ?? array();
-        foreach (array_slice($group, 0, 20) as $row) $selected[$row['id']] = $row;
+        foreach (array_slice($group, 0, 20) as $row) $selected[zarafy_ba_advert_identity($row)] = $row;
         foreach (array_slice($group, 20) as $row) $remainder[] = $row;
     }
     usort($remainder, $compare);
     foreach ($remainder as $r) {
         if (count($selected) >= 450) break;
-        $selected[$r['id']] = $r;
+        $selected[zarafy_ba_advert_identity($r)] = $r;
     }
     $final = array_values($selected);
     usort($final, $compare);
@@ -173,3 +191,4 @@ function zarafy_ba_merge_rolling_snapshot($current, $previous = null) {
     $output['retention']['display_count'] = count($output['records']);
     return $output;
 }
+

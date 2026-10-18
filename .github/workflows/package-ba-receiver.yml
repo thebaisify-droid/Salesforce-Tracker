@@ -17,13 +17,13 @@ jobs:
         run: |
           php -l wordpress/business-analysis-snapshot-receiver/business-analysis-snapshot-receiver.php
           php -l wordpress/business-analysis-snapshot-receiver/rolling-retention.php
-          python -m unittest discover -s tests -p test_ba_rolling_retention.py -v
+          python -m unittest discover -s tests -p 'test_ba_*.py' -v
       - name: Package versioned WordPress plugin
         run: python -m scripts.package_ba_receiver
       - name: Upload installation package (NOT automatic install)
         uses: actions/upload-artifact@v4
         with:
-          name: business-analysis-receiver-v0.3.1
-          path: dist/business-analysis-snapshot-receiver-v0.3.1.zip
+          name: business-analysis-receiver-v0.3.4
+          path: dist/business-analysis-snapshot-receiver-v0.3.4.zip
           retention-days: 14
           if-no-files-found: error

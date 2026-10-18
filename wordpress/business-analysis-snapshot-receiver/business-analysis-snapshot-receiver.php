@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.3.1
+ * Version: 0.3.4
  */
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/rolling-retention.php';
@@ -132,21 +132,29 @@ add_action('rest_api_init',static function () {
  * This reads the receiver's private local file, not a public uploads URL.
  * If the file or any validation fails, return the original embedded table.
  */
+/** Never expose the original embedded archive as an implicit fallback. */
+function zarafy_ba_unavailable_notice() {
+    return '<section class="ba-notice" role="status"><strong>No retained source-observed adverts available.</strong> '
+        . 'The authenticated snapshot is missing, invalid or outside the 30-day observation window. '
+        . 'No older embedded advertisements have been displayed; try again after the next successful refresh.</section>';
+}
+
 function zarafy_ba_live_content_bridge($content) {
-    if (!is_string($content) || !is_page(49) || get_the_ID() !== 49
-        || strpos($content, '<tbody id="ba-v2-body">') === false
+    if (!is_page(49) || get_the_ID() !== 49) return $content;
+    // Never fall back to an old embedded table when the receiver is unavailable.
+    if (!is_string($content) || strpos($content, '<tbody id="ba-v2-body">') === false
         || strpos($content, '<script type="application/json" id="ba-v2-json">') === false) {
-        return $content;
+        return zarafy_ba_unavailable_notice();
     }
     $uploads = wp_get_upload_dir();
-    if (!empty($uploads['error']) || empty($uploads['basedir'])) return $content;
+    if (!empty($uploads['error']) || empty($uploads['basedir'])) return zarafy_ba_unavailable_notice();
     $directory = trailingslashit($uploads['basedir']) . 'business-analysis-tracker';
     $path = $directory . '/live-data.json';
-    if (is_link($directory) || is_link($path) || !is_file($path)) return $content;
+    if (is_link($directory) || is_link($path) || !is_file($path)) return zarafy_ba_unavailable_notice();
     $size = @filesize($path);
-    if (!is_int($size) || $size < 64 || $size > 1100000) return $content;
+    if (!is_int($size) || $size < 64 || $size > 1100000) return zarafy_ba_unavailable_notice();
     $raw = @file_get_contents($path);
-    if (!is_string($raw) || strlen($raw) !== $size) return $content;
+    if (!is_string($raw) || strlen($raw) !== $size) return zarafy_ba_unavailable_notice();
     $data = json_decode($raw, true);
     if (!is_array($data) || !in_array(($data['schema'] ?? ''), array('ba-live-snapshot/v1','ba-live-snapshot/v2'), true)
         || ($data['quality']['passed'] ?? null) !== true
@@ -154,7 +162,7 @@ function zarafy_ba_live_content_bridge($content) {
         || !is_array($data['sources'] ?? null) || count($data['sources']) !== 5
         || !is_array($data['records'] ?? null)
         || count($data['records']) < 1 || count($data['records']) > 1000) {
-        return $content;
+        return zarafy_ba_unavailable_notice();
     }
     $expected = array_fill_keys(array('CV-Library','Totaljobs','Reed UK','Indeed UK','JobServe'), true);
     $seen = array();
@@ -165,7 +173,7 @@ function zarafy_ba_live_content_bridge($content) {
             || ($receipt['attempted'] ?? null) !== true
             || !is_string($receipt['run_id'] ?? null) || $receipt['run_id'] === ''
             || !is_string($receipt['dataset_id'] ?? null) || $receipt['dataset_id'] === '') {
-            return $content;
+            return zarafy_ba_unavailable_notice();
         }
         $seen[$name] = $receipt;
     }
@@ -174,7 +182,7 @@ function zarafy_ba_live_content_bridge($content) {
     $historic = array();
     if (($data['schema'] ?? '') === 'ba-live-snapshot/v2') {
         if (!is_array($data['historical_sources'] ?? null)
-            || count($data['historical_sources']) > 180) return $content;
+            || count($data['historical_sources']) > 180) return zarafy_ba_unavailable_notice();
         foreach ($data['historical_sources'] as $receipt) {
             $source=$receipt['source'] ?? '';
             $run=$receipt['run_id'] ?? '';
@@ -182,20 +190,22 @@ function zarafy_ba_live_content_bridge($content) {
             if (!isset($expected[$source]) || !is_string($run) || $run === ''
                 || !is_string($dataset) || $dataset === ''
                 || ($receipt['status'] ?? '') !== 'SUCCEEDED'
-                || ($receipt['attempted'] ?? null) !== true) return $content;
+                || ($receipt['attempted'] ?? null) !== true) return zarafy_ba_unavailable_notice();
             $key=zarafy_ba_source_key($source,$run,$dataset);
-            if (isset($historic[$key])) return $content;
+            if (isset($historic[$key])) return zarafy_ba_unavailable_notice();
             $historic[$key] = true;
         }
     }
     $finished = $data['refresh']['finished_at'] ?? null;
     $time = is_string($finished) ? strtotime($finished) : false;
-    if ($time === false || $time > time() + 900) return $content;
+    $now = time();
+    if ($time === false || $time > $now + 900) return zarafy_ba_unavailable_notice();
+    $cutoff_now = $now - 30 * 86400;
     $rows = array();
     $seen_ids = array();
     foreach ($data['records'] as $r) {
         if (!is_array($r) || !is_string($r['id'] ?? null) || $r['id'] === ''
-            || isset($seen_ids[$r['id']]) || empty($r['title']) || empty($r['role_family'])) return $content;
+            || isset($seen_ids[$r['id']]) || empty($r['title']) || empty($r['role_family'])) return zarafy_ba_unavailable_notice();
         $source = $r['job_source'] ?? '';
         $url = $r['original_advert_url'] ?? '';
         $parsed = is_string($url) ? wp_parse_url($url) : false;
@@ -205,13 +215,16 @@ function zarafy_ba_live_content_bridge($content) {
         // $seen is source => original current run receipt.
         $provenance=zarafy_ba_source_key($source, $r['source_run_id'] ?? '', $r['dataset_id'] ?? '');
         if ((!$is_current && !isset($historic[$provenance]))
-            || (($data['schema'] ?? '') === 'ba-live-snapshot/v2' &&
-                zarafy_ba_safe_observed_time($r['last_observed_at'] ?? null, $time, $time-30*86400) === false)
             || !is_array($parsed) || ($parsed['scheme'] ?? '') !== 'https'
             || empty($parsed['host']) || isset($parsed['user']) || isset($parsed['pass'])) {
-            return $content;
+            return zarafy_ba_unavailable_notice();
         }
+        $observed = $r['last_observed_at'] ?? $r['observed_at'] ?? null;
+        $observed_time = zarafy_ba_safe_observed_time($observed, $time, $time - 30 * 86400);
+        if ($observed_time === false || $observed_time > $now + 900) return zarafy_ba_unavailable_notice();
         $seen_ids[$r['id']] = true;
+        // A stored rolling snapshot can age without another successful refresh.
+        if ($observed_time < $cutoff_now) continue;
         $item = array(
             'id' => $r['id'],
             'title' => (string) $r['title'],
@@ -232,10 +245,35 @@ function zarafy_ba_live_content_bridge($content) {
             'observed_age_days' => (int) ($r['observed_age_days'] ?? 0),
             'availability_status' => 'SOURCE_OBSERVED_NOT_EMPLOYER_CONFIRMED'
         );
-        $rows[] = $item;
+        $identity = zarafy_ba_advert_identity($r);
+        if ($identity === '') return zarafy_ba_unavailable_notice();
+        if (!isset($rows[$identity])
+            || $observed_time >= strtotime($rows[$identity]['last_observed_at'])) {
+            $rows[$identity] = $item;
+        }
     }
+    if (!$rows) return zarafy_ba_unavailable_notice();
+    $rows = array_values($rows);
+    // Sort by the actual vacancy POSTED date, not source observation time.
+    // This is the no-JavaScript fallback order and also the initial JSON order.
+    // Match the browser's default newest-first order; unknown dates come last.
+    usort($rows, static function ($a, $b) {
+        $da = (string) ($a['posted_date'] ?? '');
+        $db = (string) ($b['posted_date'] ?? '');
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/D', $da)) $da = '';
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/D', $db)) $db = '';
+        if ($da === '' && $db !== '') return 1;
+        if ($da !== '' && $db === '') return -1;
+        $date_difference = strcmp($db, $da);
+        if ($date_difference !== 0) return $date_difference;
+        $title_difference = strcmp(strtolower((string) ($a['title'] ?? '')),
+                                   strtolower((string) ($b['title'] ?? '')));
+        if ($title_difference !== 0) return $title_difference;
+        return strcmp((string) ($a['id'] ?? ''), (string) ($b['id'] ?? ''));
+    });
+
     $json = wp_json_encode($rows, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE);
-    if (!is_string($json) || $json === '') return $content;
+    if (!is_string($json) || $json === '') return zarafy_ba_unavailable_notice();
 
     // Plain server-rendered table remains available if JavaScript is disabled.
     $trs = '';
@@ -270,7 +308,7 @@ function zarafy_ba_live_content_bridge($content) {
     $script_at = strpos($content, $json_start);
     $script_stop = strpos($content, $script_end, $script_at);
     if ($body_at === false || $body_stop === false || $script_at === false || $script_stop === false
-        || $script_at < $body_stop) return $content;
+        || $script_at < $body_stop) return zarafy_ba_unavailable_notice();
     $new_body = $tbody_start . $trs . $tbody_end;
     $content = substr_replace($content, $new_body, $body_at,
         $body_stop + strlen($tbody_end) - $body_at);
@@ -279,6 +317,11 @@ function zarafy_ba_live_content_bridge($content) {
     $content = substr_replace($content, $json_start . $json . $script_end,
         $script_at, $script_stop + strlen($script_end) - $script_at);
 
+    // Synchronise the headline counters with filtered/deduplicated stored rows.
+    $content = preg_replace('/(<b id="ba-v2-total">)[^<]*(<\\/b>)/', '${1}' . count($rows) . '${2}', $content, 1);
+    $family_count = count(array_unique(array_column($rows, 'role_family')));
+    $content = preg_replace('/(<b id="ba-v2-family-total">)[^<]*(<\\/b>)/',
+        '${1}' . $family_count . ' / 28${2}', $content, 1);
     $status = '<strong id="ba-v2-status" aria-live="polite">';
     $at = strpos($content, $status);
     $stop = $at === false ? false : strpos($content, '</strong>', $at);
@@ -294,6 +337,36 @@ function zarafy_ba_live_content_bridge($content) {
     if (strpos($content, $marker) !== false && strpos($content, 'id="ba-snapshot-observed"') === false) {
         $content = str_replace($marker, $label . $marker, $content);
     }
+    // Show reviewer-approved technology/engineering families in the live role
+    // filter without modifying WordPress post content or weakening retention QA.
+    $family_select = '<select id="ba-v2-family">';
+    $family_start = strpos($content, $family_select);
+    if ($family_start !== false) {
+        $family_end = strpos($content, '</select>', $family_start);
+        if ($family_end !== false) {
+            $select_fragment = substr($content, $family_start, $family_end - $family_start);
+            $extra_families = array(
+                'Technology Leadership & Management',
+                'Enterprise & Solution Architecture',
+                'IT Infrastructure & Support Engineering',
+                'Engineering & Technical Delivery',
+                'Security Engineering',
+                'Technology Governance, Risk & Compliance'
+            );
+            $family_counts = array_count_values(array_column($rows, 'role_family'));
+            $extra = '';
+            foreach ($extra_families as $family) {
+                if (strpos($select_fragment, 'value="' . esc_attr($family) . '"') !== false) continue;
+                $extra .= '<option value="' . esc_attr($family) . '">' . esc_html($family)
+                    . ' (' . (int)($family_counts[$family] ?? 0) . ')</option>';
+            }
+            if ($extra !== '') {
+                $extra = '<optgroup label="Technology / Architecture / Engineering">' . $extra . '</optgroup>';
+                $content = substr_replace($content, $extra, $family_end, 0);
+            }
+        }
+    }
     return $content;
 }
 add_filter('the_content', 'zarafy_ba_live_content_bridge', 18);
+
