@@ -1,0 +1,878 @@
+{
+  "schema": "ba-reviewed-20261016-live-role-families/v1",
+  "origin": "Public receiver JSON inspected 2026-10-18; exact approved source+URL+title only",
+  "scope_only": true,
+  "source_date": "2026-10-16",
+  "openings_employer_verified": false,
+  "record_count": 124,
+  "records": [
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729882",
+      "title": "Examinations Delivery Manager",
+      "role_family": "Delivery Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729291",
+      "title": "Head of Technology - SIP / IT",
+      "role_family": "Technology Leadership & Management",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729143",
+      "title": "Senior IT Project Manager",
+      "role_family": "Project Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225728868",
+      "title": "Implementation Manager",
+      "role_family": "Delivery Management",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726839",
+      "title": "Senior Solutions Architect – Senior Manager",
+      "role_family": "Enterprise & Solution Architecture",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726314",
+      "title": "Cyber Security Manager",
+      "role_family": "Security Management",
+      "track": "SECURITY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725567",
+      "title": "Salesforce Technical Delivery Manager",
+      "role_family": "Delivery Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225723161",
+      "title": "Enterprise Architect",
+      "role_family": "Enterprise & Solution Architecture",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225722573",
+      "title": "Cybersecurity Specialist",
+      "role_family": "Information Security Analysis",
+      "track": "SECURITY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225722174",
+      "title": "Service Delivery Manager - Active SC Clearance Holder Only",
+      "role_family": "Service Management & Design",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225721578",
+      "title": "Solutions Architect",
+      "role_family": "Enterprise & Solution Architecture",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225720408",
+      "title": "Project Co-ordinator",
+      "role_family": "Project Management",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225719372",
+      "title": "Information Security Manager",
+      "role_family": "Security Management",
+      "track": "SECURITY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225719085",
+      "title": "Information Security Manager",
+      "role_family": "Security Management",
+      "track": "SECURITY"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225718861",
+      "title": "End User Computing Engineer",
+      "role_family": "IT Infrastructure & Support Engineering",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225717521",
+      "title": "Design Engineer",
+      "role_family": "Engineering & Technical Delivery",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225717320",
+      "title": "Lead Engineer",
+      "role_family": "Engineering & Technical Delivery",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/cyber-security-analyst/viqu-it-recruitment-job108179002",
+      "title": "Cyber Security Analyst",
+      "role_family": "Information Security Analysis",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/cyber-sec-analyst-network-intrusion-capability-development/salt-job108180114",
+      "title": "Cyber Sec Analyst - Network Intrusion & Capability Development",
+      "role_family": "Information Security Analysis",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-information-security-consultant/hays-job108103230",
+      "title": "Business Information Security Consultant",
+      "role_family": "Security Consulting & Advisory",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/security-consultant-check-team/matchtech-mobility-job108084569",
+      "title": "Security Consultant (CHECK Team)",
+      "role_family": "Security Consulting & Advisory",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108161623",
+      "title": "Senior Technical Security Consultant",
+      "role_family": "Security Consulting & Advisory",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/electronic-systems-security-consultant/sanderson-government-and-defence-job108149056",
+      "title": "Electronic Systems Security Consultant",
+      "role_family": "Security Consulting & Advisory",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/security-engineer/viqu-it-recruitment-job108161112",
+      "title": "Security Engineer",
+      "role_family": "Security Engineering",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/cyber-security-consultant/fruition-group-job108113714",
+      "title": "Cyber Security Consultant",
+      "role_family": "Security Consulting & Advisory",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108115651",
+      "title": "Senior Technical Security Consultant – Security Architecture",
+      "role_family": "Security Architecture",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/systems-infrastructure-eng-msoft-networks-security-nw1-70k/langley-james-limited-job108120556",
+      "title": "Support Engineer Snr MSoft, Networks, Security, EC2 50k",
+      "role_family": "IT Infrastructure & Support Engineering",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/security-engineer/fs-recruitment-services-ltd-job108075230",
+      "title": "Security Engineer",
+      "role_family": "Security Engineering",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108183829",
+      "title": "Senior Security Engineer - Isovalent",
+      "role_family": "Security Engineering",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-consultant/mace-job108176432",
+      "title": "Senior Security Consultant",
+      "role_family": "Security Consulting & Advisory",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108124308",
+      "title": "Senior Security Engineer - Isovalent",
+      "role_family": "Security Engineering",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/principal-security-architect/hays-job108112987",
+      "title": "Principal Security Architect",
+      "role_family": "Security Architecture",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst/57454184",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst/57450310",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst/57399292",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57383113",
+      "title": "Senior Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-system-analyst/57405643",
+      "title": "Business System Analyst",
+      "role_family": "Business Analysis",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57392838",
+      "title": "Business Readiness Analyst",
+      "role_family": "Business Change & Transformation",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/mes-business-analyst/57453973",
+      "title": "MES Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/technical-business-analyst/57403479",
+      "title": "Technical Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57408191",
+      "title": "Senior Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57372616",
+      "title": "Business Readiness Analyst",
+      "role_family": "Business Change & Transformation",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57407262",
+      "title": "Senior Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst-supply-chain/57415525",
+      "title": "Business Analyst - Supply Chain",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-readiness-senior-analyst/57372612",
+      "title": "Business Readiness Senior Analyst",
+      "role_family": "Business Change & Transformation",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/technical-business-analyst-azure-finops/57456934",
+      "title": "Technical Business Analyst (Azure FinOps)",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst-crm/57459401",
+      "title": "Senior Business Analyst (CRM)",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/project-analyst/57458778",
+      "title": "Project Analyst",
+      "role_family": "Project Management",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/project-analyst/57431085",
+      "title": "Project Analyst",
+      "role_family": "Project Management",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/support-analyst/57405011",
+      "title": "Support Analyst",
+      "role_family": "IT Infrastructure & Support Engineering",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/ebilling-analyst/57427598",
+      "title": "eBilling Analyst",
+      "role_family": "Business Process & Operational Analysis",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-functional-analyst-margin-and-valuations-fic/57461995",
+      "title": "Business Functional Analyst (Margin and Valuations, FIC)",
+      "role_family": "Business Analysis",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/lead-data-analyst/57432267",
+      "title": "Lead Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=0501ff18c4042280",
+      "title": "Junior Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=994169edb11b762c",
+      "title": "Asset Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=d28093d4fcc12a39",
+      "title": "Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=61543256b67b4c69",
+      "title": "Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=484c9640b09e9760",
+      "title": "Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=d044cf2f1e22d7bb",
+      "title": "Senior Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=30f31ba56c8fd90a",
+      "title": "Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=c82e7b61d8bf26d9",
+      "title": "Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=cf61fb4188cabe1e",
+      "title": "Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=5fdd79d0bddb4f90",
+      "title": "Operations Support Analyst",
+      "role_family": "Business Process & Operational Analysis",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=32d85e13eb663cd2",
+      "title": "Senior GRC Analyst",
+      "role_family": "Security Risk & Third-Party Risk",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=7cd39b6923bb8486",
+      "title": "People Reporting Analyst",
+      "role_family": "Data & Analytics Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=b4f0153672be88d2",
+      "title": "BUSINESS INSIGHTS ANALYST",
+      "role_family": "Data & Analytics Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=90878bced720d927",
+      "title": "IT Manager",
+      "role_family": "Technology Leadership & Management",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=09bf04665e1c7730",
+      "title": "Digital Analyst - Tech, Risk & Governance",
+      "role_family": "Technology Governance, Risk & Compliance",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=abb775948d6a23e1",
+      "title": "Digital Product Manager",
+      "role_family": "Product Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=d3fb5641a890394f",
+      "title": "Junior Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=e260817bb49aa526",
+      "title": "Senior Enterprise Technology Engineer",
+      "role_family": "IT Infrastructure & Support Engineering",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=14ac11b5872c2f2d",
+      "title": "Cyber Security Analyst Apprentice",
+      "role_family": "Information Security Analysis",
+      "track": "SECURITY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=7a7f196f2d1b00e9",
+      "title": "Marketing Performance & Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=57c3745eb174b9b3",
+      "title": "Project Controls Reporting Analyst",
+      "role_family": "Data & Analytics Management",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=f259db8858b3df1d",
+      "title": "Technology GRC Analyst",
+      "role_family": "Technology Governance, Risk & Compliance",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=c8e6419a22b989ca",
+      "title": "Senior Forward Deployed Engineer",
+      "role_family": "Engineering & Technical Delivery",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=4326d57eed4c6354",
+      "title": "Service Centre Support Lead",
+      "role_family": "Service Management & Design",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=98a0fe6ad87c19b1",
+      "title": "Senior Data Analyst",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFmtv",
+      "title": "Business Intelligence/Commercial Modelling Analyst",
+      "role_family": "Business Intelligence",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFQKm",
+      "title": "BI & Data Analyst",
+      "role_family": "Business Intelligence",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGCRF",
+      "title": "Data Analyst - Power BI & Excel",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDhGg",
+      "title": "Data Analyst/Developer - Power BI & Databricks -London",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDiRY",
+      "title": "Business Intelligence Developer - SQL, ETL, Power BI, DAX",
+      "role_family": "Business Intelligence",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDlJf",
+      "title": "Technical Business Analyst - SC Cleared & NPPV3",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEnT3",
+      "title": "Finance Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEuj9",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEvyT",
+      "title": "Business Analyst - Utilities & Digital Transformation",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFqsm",
+      "title": "Business Intelligence Manager",
+      "role_family": "Business Intelligence",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGA9K",
+      "title": "Business Data Analyst- Banking/Finance",
+      "role_family": "Data Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGeRi",
+      "title": "Business Analysts (Intermediate to Senior - Multiple)",
+      "role_family": "Business Analysis",
+      "track": "REVIEWER_EXTENDED_SCOPE"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDhLc",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEpwu",
+      "title": "Business Analyst (Telecoms) - Inside IR35 - £350 per day",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hErCs",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEtoE",
+      "title": "Business Analyst - Testing/ITSM (SC Cleared)",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFI38",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFKLA",
+      "title": "Business Analyst - 2 days a week oniste - London - £500 per day INSIDE IR35 - SC Required",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFRLX",
+      "title": "Business Analyst with Insurance Domain",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFmwI",
+      "title": "Business Analyst - Policy Administration Systems Build - 12 Month FTC",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFojg",
+      "title": "Business Analyst - Digital - CESA Futures",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFpKA",
+      "title": "Business Analyst - PPM Implementation",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGENR",
+      "title": "Business Analyst -Customer Journey Manager",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGHqE",
+      "title": "Business Analyst - Crisis Management & Resilience",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFTZL",
+      "title": "Business Analyst - CRM",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/g9Wi5",
+      "title": "Business Analyst - Financial Crime",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFqXM",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEnWF",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDg1S",
+      "title": "Business Change Analyst",
+      "role_family": "Business Change & Transformation",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDiM1",
+      "title": "Business Analyst Outside IR35",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEpsZ",
+      "title": "Business Systems Analyst, £500 per day inside IR35",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hBrGM",
+      "title": "Data/MI Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFHSw",
+      "title": "Business Analyst - Commodities, Platform, Process",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFNpZ",
+      "title": "Business Process Analyst - Delegated Authority, London Market, Outside IR35",
+      "role_family": "Business Process & Operational Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/g9Z9r",
+      "title": "Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDHmy",
+      "title": "Business Analyst - £500 Inside - 6 months - Remote",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEplT",
+      "title": "Payments Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hExae",
+      "title": "Senior Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFWBL",
+      "title": "Technical Business Analyst - Hybrid Working",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFk5i",
+      "title": "Lead Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFmtr",
+      "title": "Business Intelligence Developer (Tableau/T-SQL)",
+      "role_family": "Business Intelligence",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFuji",
+      "title": "Technical Business Analyst - 6 months | Leeds, UK (Hybrid - 3 days/week in office)",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGGAG",
+      "title": "IT Business Analyst - Insurance, Business Change, Process Modelling, Data Analysis",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGGBr",
+      "title": "Junior Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGeFe",
+      "title": "FX Business Analyst",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    },
+    {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGfqg",
+      "title": "Process Business Analyst - London Market Insurance",
+      "role_family": "Business Analysis",
+      "track": "BUSINESS_PRODUCT_DELIVERY"
+    }
+  ]
+}
