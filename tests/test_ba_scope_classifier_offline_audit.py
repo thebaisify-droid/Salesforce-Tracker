@@ -4,6 +4,8 @@ from scripts.ba_scope_classifier_offline_audit import assess,audit
 class TestReviewOnlyCandidate(unittest.TestCase):
     def test_all_adjudications_are_considered(self):
         r=audit()
+        import json
+        print('BA_CLASSIFIER_AUDIT',json.dumps(r,sort_keys=True))
         self.assertEqual(r["total"],161)
         self.assertEqual(sum(r["metrics"].values()),161)
         self.assertEqual(r["paid_actors"],0)
