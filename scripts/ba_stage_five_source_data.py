@@ -156,6 +156,43 @@ def cleaned_excerpt(row):
                  "[contact omitted]", raw)
     return re.sub(r"\s+", " ", raw).strip()[:260] or None
 
+def explicit_ir35_status(row):
+    """Derive IR35 only from complete acquired source text, before excerpt trim.
+
+    The JobServe Actor exposes full description/descriptionHtml even where its
+    rate and salary fields are absent. A short 260-character card excerpt may
+    omit IR35 at the end of the advert. Never infer IR35 from jobType, day rate,
+    umbrella payment, or the term 'IR35' without Inside/Outside wording.
+    """
+    descriptions = field(row, "description", "descriptionText", "descriptionHtml",
+                         "fullDescription", "descriptionSnippet", "snippet") or ""
+    structured = field(row, "ir35Status", "ir35_status", "ir35") or ""
+    evidence = re.sub(r"<[^>]*>", " ", structured + " " + descriptions)
+    inside = bool(re.search(r"\binside(?:\s+(?:of|scope\s+of))?\s+ir35\b",
+                            evidence, flags=re.IGNORECASE))
+    outside = bool(re.search(r"\boutside(?:\s+of)?\s+ir35\b",
+                             evidence, flags=re.IGNORECASE))
+    if inside == outside:
+        return "Not stated"
+    return "Inside IR35" if inside else "Outside IR35"
+
+
+def excerpt_with_ir35(raw_row, excerpt):
+    """Expose explicit full-text IR35 evidence in the existing receiver UI.
+
+    The v0.3.4 WordPress bridge displays description_summary and currently
+    omits extra structured keys from its front-end JSON. Keep the detailed
+    field for later upgraded receivers, and prefix only when the short excerpt
+    does not already state the status.
+    """
+    ir35 = explicit_ir35_status(raw_row)
+    summary = excerpt or ""
+    if ir35 != "Not stated" and not re.search(
+            r"\b(?:inside|outside)(?:\s+of)?\s+ir35\b", summary, re.IGNORECASE):
+        summary = ("IR35: " + ir35 + ". " + summary)[:260]
+    return ir35, summary or None
+
+
 def company(row):
     value = field(row, "company", "employer", "companyName", "recruiter")
     return value or nested(row, "company", "name") or nested(row, "employer", "name") or "Not specified"
@@ -220,6 +257,7 @@ def stage(input_doc, sector_mapping):
                 rejected["user_explicitly_excluded_advert"] += 1
                 continue
             desc = cleaned_excerpt(raw)
+            ir35_status, card_excerpt = excerpt_with_ir35(raw, desc)
             # Conservative pilot: existing title taxonomy remains authoritative.
             # Candidate review gates prevent automatic publication of trainee
             # promotions and apprenticeships. Unmatched proposed families are
@@ -253,7 +291,7 @@ def stage(input_doc, sector_mapping):
                 "working_arrangement": working(raw),
                 "role_family": role["role_family"], "track": role["track"],
                 "role_review_required": bool(role.get("review_required")),
-                "description_summary": desc, "skills": [],
+                "description_summary": card_excerpt, "ir35_status": ir35_status, "skills": [],
                 "sector": ev["sector"] if ev else "Not specified",
                 "sector_basis": ev["basis"] if ev else "UNKNOWN_NO_EVIDENCE",
                 "sector_evidence_url": ev["evidence_url"] if ev else None,
