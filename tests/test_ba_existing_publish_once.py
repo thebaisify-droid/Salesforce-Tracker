@@ -39,8 +39,8 @@ class ExistingDatasetPublishSafetyTests(unittest.TestCase):
 
     def test_old_or_future_day_rejected(self):
         for dt in [
-            datetime(2026,10,17,23,0,tzinfo=timezone.utc),
-            datetime(2026,10,19,0,0,tzinfo=timezone.utc),
+            datetime(2026,10,17,22,0,tzinfo=timezone.utc),
+            datetime(2026,10,18,23,0,tzinfo=timezone.utc),
         ]:
             with self.assertRaises(ValueError):
                 check_approval(environment(),dt)
