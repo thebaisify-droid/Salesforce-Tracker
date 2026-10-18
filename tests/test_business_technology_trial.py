@@ -1,4 +1,4 @@
-"""No-network checks for the 22-family and $25 acquisition trial."""
+"""No-network checks for the 22-family and $25 acquisition budget."""
 import json
 import unittest
 from copy import deepcopy
@@ -15,16 +15,16 @@ class TestBusinessTechnologyTrial(unittest.TestCase):
     def test_no_blanket_ten_limit(self):
         self.assertTrue(validate(self.cfg)["valid"])
         self.assertTrue(all(10 < row["max_items"] <= 50 for row in self.cfg["sources"]))
-        self.assertAlmostEqual(sum(row["max_charge_usd"] for row in self.cfg["sources"]), 1.8)
-        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],17)
-        self.assertEqual(self.cfg["monthly_limit_usd"],25)
+        self.assertAlmostEqual(sum(row["max_charge_usd"] for row in self.cfg["sources"]), 1.2)
+        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],11)
+        self.assertEqual(self.cfg["monthly_limit_usd"],19)
         self.assertEqual(self.cfg["salesforce_reserve_usd"],8)
-        self.assertLessEqual(self.cfg["max_scheduled_runs_per_month"]*self.cfg["max_total_charge_usd"],17)
+        self.assertLessEqual(self.cfg["max_scheduled_runs_per_month"]*self.cfg["max_total_charge_usd"],11)
 
     def test_all_taxonomy_families_covered_across_five_slots(self):
         self.assertEqual(len(role_queries()),22)
         self.assertEqual(len(coverage_for_slots(5)),22)
-        prices={"account_limit_usd":25,"actor_pricing":[
+        prices={"account_limit_usd":19,"actor_pricing":[
             {"source":row["name"],"pricing_model":"PRICE_PER_DATASET_ITEM",
              "price_per_unit_usd":0.005} for row in self.cfg["sources"]]}
         seen=set()
@@ -66,18 +66,18 @@ class TestBusinessTechnologyTrial(unittest.TestCase):
             attempts.append(args)
             raise AssertionError("Network should never be invoked")
         with patch.dict("os.environ", {"BA_PAID_REFRESH_APPROVAL":"EXPLICIT_BA_REFRESH_APPROVED"}):
-            with self.assertRaisesRegex(RuntimeError,"Rolling 22-family"):
+            with self.assertRaisesRegex(RuntimeError,"BA acquisition disabled"):
                 run(cfg,"dummy",getter=getter)
         self.assertEqual(attempts,[])
 
     def test_trial_activation_keeps_limits_exact(self):
         self.assertTrue(self.cfg["rolling_coverage_enabled"])
-        self.assertEqual(self.cfg["monthly_limit_usd"],25)
+        self.assertEqual(self.cfg["monthly_limit_usd"],19)
         self.assertEqual(self.cfg["salesforce_reserve_usd"],8)
-        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],17)
-        self.assertAlmostEqual(self.cfg["max_total_charge_usd"],1.80)
+        self.assertEqual(self.cfg["monthly_ba_allowance_usd"],11)
+        self.assertAlmostEqual(self.cfg["max_total_charge_usd"],1.20)
         self.assertEqual(self.cfg["automatic_retries"],0)
-        self.assertTrue(self.cfg["wordpress_delivery_enabled"])
+        self.assertFalse(self.cfg["wordpress_delivery_enabled"])
 
     def test_raise_limits_above_authorisation_is_rejected(self):
         cfg=deepcopy(self.cfg)
