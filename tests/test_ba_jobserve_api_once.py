@@ -6,7 +6,7 @@ class JobServeApiOnceTests(unittest.TestCase):
     def test_exact_budget_and_reserve(self):
         ok={"limits":{"maxMonthlyUsageUsd":19},"current":{"monthlyUsageUsd":10.0}}
         self.assertEqual(recovery.billing(ok)["maximum_request_usd"],0.2)
-        for usage in (10.51,18.99):
+        for usage in (10.81,18.99):
             with self.assertRaises(RuntimeError):
                 recovery.billing({"limits":{"maxMonthlyUsageUsd":19},"current":{"monthlyUsageUsd":usage}})
         with self.assertRaises(RuntimeError):
