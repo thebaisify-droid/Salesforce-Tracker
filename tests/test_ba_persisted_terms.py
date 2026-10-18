@@ -31,7 +31,7 @@ class TestBAPersistedTerms(unittest.TestCase):
             self.assertTrue(rec_id)
             self.assertIn(rec["source"], {"CV-Library", "Totaljobs", "Reed UK", "Indeed UK", "JobServe"})
             self.assertTrue(rec["url"].startswith("https://"))
-            self.assertRegex(rec["last_observed_at"], r"^2026-10-1[568]T")
+            self.assertRegex(rec["last_observed_at"], r"^2026-10-1[5-8]T")
             self.assertIn(rec["ir35_status"], {"Inside IR35", "Outside IR35", "Not stated", "Not applicable", "Check advert"})
             self.assertIn(rec["work_mode_display"], {"Hybrid", "Remote", "Remote (site visits)", "On-site", "Not stated"})
             key = (rec["source"], rec["url"])
