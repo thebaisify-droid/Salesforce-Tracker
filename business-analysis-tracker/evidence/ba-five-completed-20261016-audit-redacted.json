@@ -1,0 +1,2071 @@
+{
+  "schema": "ba-offline-actor-observations/v1",
+  "date": "2026-10-16",
+  "source_run_counts_recorded_in_workflow": {
+    "CV-Library": 30,
+    "Totaljobs": 25,
+    "Reed UK": 0,
+    "Indeed UK": 29,
+    "JobServe": 24
+  },
+  "publication_approved": false,
+  "wordpress_requests": 0,
+  "paid_actor_runs_started_by_audit": 0,
+  "sources": [
+    {
+      "name": "CV-Library",
+      "run_id": "OZpvK3rZ1PcXQhpWQ",
+      "dataset_id": "c8IIxK7ltwAzD84qm",
+      "observed_at": "2026-10-16T10:33:52.042Z",
+      "attempted": true,
+      "status": "SUCCEEDED",
+      "records": [
+        {
+          "title": "Senior IT Audit Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225733168/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225733168/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225733168/",
+          "postedAt": "2026-10-16T09:16:15Z",
+          "contractType": "Permanent",
+          "isRemote": true,
+          "descriptionText": "You'll take end-to-end ownership of audits across cyber security , IT operations, operational resilience and data governance, while coaching IA Managers and junior colleagues and acting as a senior advisor to leadership.",
+          "description": "You'll take end-to-end ownership of audits across cyber security , IT operations, operational resilience and data governance, while coaching IA Managers and junior colleagues and acting as a senior advisor to leadership.",
+          "company": "Lorien",
+          "location": "Edinburgh"
+        },
+        {
+          "title": "Pensions Technical Manager -Senior Executive Officer (SEO)",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225731733/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225731733/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225731733/",
+          "postedAt": "2026-10-15T15:59:19Z",
+          "contractType": "Permanent",
+          "isRemote": true,
+          "descriptionText": "Security Successful candidates must undergo a basic (or equivalent) criminal record check. Successful candidates must meet the security requirements before they can be appointed. The level of security needed is security clearance.",
+          "description": "Security Successful candidates must undergo a basic (or equivalent) criminal record check. Successful candidates must meet the security requirements before they can be appointed. The level of security needed is security clearance.",
+          "company": "Public Sector Resourcing",
+          "location": "City of London, London"
+        },
+        {
+          "title": "Senior Sponsorship Sales Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225731339/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225731339/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225731339/",
+          "postedAt": "2026-10-15T15:18:49Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Your experience As a B2B Senior Sponsorship Sales Manager , you will bring commercial acumen and: Min of 3 to 5+ years of proven B2B sponsorship or event sales experience.",
+          "description": "Your experience As a B2B Senior Sponsorship Sales Manager , you will bring commercial acumen and: Min of 3 to 5+ years of proven B2B sponsorship or event sales experience.",
+          "company": "Obscurant Recruitment Solutions Ltd",
+          "location": "London"
+        },
+        {
+          "title": "Examinations Delivery Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225729882/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225729882/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225729882/",
+          "postedAt": "2026-10-15T12:30:27Z",
+          "contractType": "Contract, Temporary",
+          "isRemote": false,
+          "descriptionText": "Quality assurance and examination integrity Maintain the confidentiality and security of examination materials, candidate information and results, with accurate records and clear audit trails.",
+          "description": "Quality assurance and examination integrity Maintain the confidentiality and security of examination materials, candidate information and results, with accurate records and clear audit trails.",
+          "company": "Gordon Yates Recruitment Consultancy",
+          "location": "Euston"
+        },
+        {
+          "title": "Head of Technology - SIP / IT",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225729291/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225729291/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225729291/",
+          "postedAt": "2026-10-15T10:55:44Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "... security Lead and develop a team of senior managers across information security , IT operations, customer technology and IT procurement and vendor management Support and coach the Senior Programme Manager and their team of...",
+          "description": "... security Lead and develop a team of senior managers across information security , IT operations, customer technology and IT procurement and vendor management Support and coach the Senior Programme Manager and their team of...",
+          "company": "Interface Recruitment",
+          "location": "Nottingham, Nottinghamshire"
+        },
+        {
+          "title": "Senior IT Project Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225729143/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225729143/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225729143/",
+          "postedAt": "2026-10-15T10:38:08Z",
+          "contractType": "Contract",
+          "isRemote": false,
+          "descriptionText": "Senior IT Project Manager / Up to £650 per day (Umbrella rate) / London / Hybrid / Contract position Overview: A Market Leader in the insurance sector are currently seeking a Senior IT Project Manager to making sure cybersecurity and information ...",
+          "description": "Senior IT Project Manager / Up to £650 per day (Umbrella rate) / London / Hybrid / Contract position Overview: A Market Leader in the insurance sector are currently seeking a Senior IT Project Manager to making sure cybersecurity and information ...",
+          "company": "Insight Select",
+          "location": "London"
+        },
+        {
+          "title": "Implementation Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225728868/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225728868/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225728868/",
+          "postedAt": "2026-10-15T10:08:58Z",
+          "contractType": "Contract",
+          "isRemote": false,
+          "descriptionText": "Implementation Manager 6 Months Hybrid in either London or Manchester Inside IR35 £300-£400 per day Change-IT are looking for an Implementation Manager to join a Central Government",
+          "description": "Implementation Manager 6 Months Hybrid in either London or Manchester Inside IR35 £300-£400 per day Change-IT are looking for an Implementation Manager to join a Central Government",
+          "company": "Change-IT Public Sector",
+          "location": "London"
+        },
+        {
+          "title": "Legal Counsel",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225728352/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225728352/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225728352/",
+          "postedAt": "2026-10-15T09:13:39Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "If you are a Manager of staff, you must ensure: ➢ your team are aware of their security responsibilities & know how to access the company Security Policies hosted on the Intranet; ➢ the principles listed with the company Security Policy...",
+          "description": "If you are a Manager of staff, you must ensure: ➢ your team are aware of their security responsibilities & know how to access the company Security Policies hosted on the Intranet; ➢ the principles listed with the company Security Policy...",
+          "company": "Daisy Group",
+          "location": "Cheadle, Staffordshire"
+        },
+        {
+          "title": "Senior Solutions Architect – Senior Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225726839/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225726839/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225726839/",
+          "postedAt": "2026-10-14T19:01:07Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "White Collar Factory (95009), United Kingdom, London, London Senior Solutions Architect – Senior Manager Job Title: Senior Solutions Architect – Senior Manager Location: London - Hybrid Working Pattern: 3",
+          "description": "White Collar Factory (95009), United Kingdom, London, London Senior Solutions Architect – Senior Manager Job Title: Senior Solutions Architect – Senior Manager Location: London - Hybrid Working Pattern: 3",
+          "company": "Capital One UK",
+          "location": "EC1Y 8AF"
+        },
+        {
+          "title": "Cyber Security Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225726314/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225726314/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225726314/",
+          "postedAt": "2026-10-14T15:48:15Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Location: Aberdeen or Sheffield (Hybrid) Our client, a growing engineering and technology group, is looking for an experienced Cyber Security Manager to lead cyber security , information assurance and governance across the business.",
+          "description": "Location: Aberdeen or Sheffield (Hybrid) Our client, a growing engineering and technology group, is looking for an experienced Cyber Security Manager to lead cyber security , information assurance and governance across the business.",
+          "company": "Archer Resourcing Ltd",
+          "location": "Aberdeen, Aberdeen City"
+        },
+        {
+          "title": "Salesforce Technical Delivery Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225725567/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225725567/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225725567/",
+          "postedAt": "2026-10-14T14:30:26Z",
+          "contractType": "Temporary",
+          "isRemote": false,
+          "descriptionText": "Key Responsibilities: Assist in the implementation and operation of information security controls to mitigate threats within solutions and services. Design, implement, and operate management strategies that ensure robust information security .",
+          "description": "Key Responsibilities: Assist in the implementation and operation of information security controls to mitigate threats within solutions and services. Design, implement, and operate management strategies that ensure robust information security .",
+          "company": "Adecco",
+          "location": "Liverpool, Merseyside"
+        },
+        {
+          "title": "Registered Homes Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225725360/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225725360/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225725360/",
+          "postedAt": "2026-10-14T14:05:11Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Ensure confidential information is not disclosed to third parties and that the security of the work location is maintained at all times.",
+          "description": "Ensure confidential information is not disclosed to third parties and that the security of the work location is maintained at all times.",
+          "company": "My Story Residential Care",
+          "location": "Leeds, West Yorkshire"
+        },
+        {
+          "title": "Service Desk Analyst",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225725178/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225725178/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225725178/",
+          "postedAt": "2026-10-14T13:42:14Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Communicate and escalate known/reoccurring issues to the Service Desk Manager . Provide training to end users and other members of IT staff as required. Adhere to the IT Security Policy at all times.",
+          "description": "Communicate and escalate known/reoccurring issues to the Service Desk Manager . Provide training to end users and other members of IT staff as required. Adhere to the IT Security Policy at all times.",
+          "company": "Vistry Group PLC",
+          "location": "Bishops Cleeve, Cheltenham"
+        },
+        {
+          "title": "Professional Services Technical Lead",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225724585/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225724585/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225724585/",
+          "postedAt": "2026-10-14T12:26:09Z",
+          "contractType": "Permanent",
+          "isRemote": true,
+          "descriptionText": "Security and Continuous Improvement Ensure technical delivery complies with information security policies, data protection obligations, vendor guidance and relevant industry standards.",
+          "description": "Security and Continuous Improvement Ensure technical delivery complies with information security policies, data protection obligations, vendor guidance and relevant industry standards.",
+          "company": "Planet Recruitment",
+          "location": "Newbury, Berkshire"
+        },
+        {
+          "title": "Senior Commercial Officer",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225724513/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225724513/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225724513/",
+          "postedAt": "2026-10-14T12:12:55Z",
+          "contractType": "Permanent",
+          "isRemote": true,
+          "descriptionText": "Deputise for Commercial Manager , as may occasionally be required.",
+          "description": "Deputise for Commercial Manager , as may occasionally be required.",
+          "company": "Rheinmetall BAE Systems Land (RBSL)",
+          "location": "Telford, Shropshire"
+        },
+        {
+          "title": "Device Configuration Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225724386/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225724386/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225724386/",
+          "postedAt": "2026-10-14T11:49:53Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Quality Assurance and Compliance: Ensure all activities comply with operational procedures, information security policies, and relevant regulatory requirements.",
+          "description": "Quality Assurance and Compliance: Ensure all activities comply with operational procedures, information security policies, and relevant regulatory requirements.",
+          "company": "Evoke Staffing Ltd",
+          "location": "Swindon"
+        },
+        {
+          "title": "Contracts Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225723620/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225723620/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225723620/",
+          "postedAt": "2026-10-14T10:11:53Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Produce request for information schedules and ensure information is obtained in adequate time to enable the project to progress as programmed. Assist the quantity surveyor by producing labour and plant forecasts for the cost value reports.",
+          "description": "Produce request for information schedules and ensure information is obtained in adequate time to enable the project to progress as programmed. Assist the quantity surveyor by producing labour and plant forecasts for the cost value reports.",
+          "company": "Lindum Group Ltd",
+          "location": "Elvington, City of York"
+        },
+        {
+          "title": "Enterprise Architect",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225723161/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225723161/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225723161/",
+          "postedAt": "2026-10-14T09:21:02Z",
+          "contractType": "Contract",
+          "isRemote": true,
+          "descriptionText": "Security clearance (SC) is mandatory because of the need to access restricted data and documents. DV clearance is preferred.",
+          "description": "Security clearance (SC) is mandatory because of the need to access restricted data and documents. DV clearance is preferred.",
+          "company": "Damia Group Ltd",
+          "location": "Reading, Berkshire"
+        },
+        {
+          "title": "Cybersecurity Specialist",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225722573/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225722573/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225722573/",
+          "postedAt": "2026-10-14T08:12:56Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Reporting to the Cybersecurity Assurance Manager , you'll support cybersecurity assurance activities across information security , project delivery, supplier assurance and customer-facing cybersecurity requirements.",
+          "description": "Reporting to the Cybersecurity Assurance Manager , you'll support cybersecurity assurance activities across information security , project delivery, supplier assurance and customer-facing cybersecurity requirements.",
+          "company": "Siemens",
+          "location": "Hebburn"
+        },
+        {
+          "title": "Service Delivery Manager - Active SC Clearance Holder Only",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225722174/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225722174/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225722174/",
+          "postedAt": "2026-10-14T06:51:44Z",
+          "contractType": "Contract",
+          "isRemote": true,
+          "descriptionText": "Ensure service governance, reporting and operational practices comply with applicable security , sovereignty, information -sharing and national handling requirements.",
+          "description": "Ensure service governance, reporting and operational practices comply with applicable security , sovereignty, information -sharing and national handling requirements.",
+          "company": "ARM",
+          "location": "Reading, Berkshire"
+        },
+        {
+          "title": "Software/Digital Engineer",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225721842/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225721842/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225721842/",
+          "postedAt": "2026-10-13T17:10:57Z",
+          "contractType": "Contract",
+          "isRemote": false,
+          "descriptionText": "Due to the secure nature of the position and working environment, you must have, or be eligible to obtain Security Clearance List of national security vetting clearance levels with guidance on who requires clearance and what checks are completed.",
+          "description": "Due to the secure nature of the position and working environment, you must have, or be eligible to obtain Security Clearance List of national security vetting clearance levels with guidance on who requires clearance and what checks are completed.",
+          "company": "Damia Group Ltd",
+          "location": "South East"
+        },
+        {
+          "title": "Solutions Architect",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225721578/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225721578/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225721578/",
+          "postedAt": "2026-10-13T16:12:20Z",
+          "contractType": "Contract",
+          "isRemote": true,
+          "descriptionText": "Security clearance (SC) is mandatory because of the need to access restricted data and documents. DV clearance is preferred.",
+          "description": "Security clearance (SC) is mandatory because of the need to access restricted data and documents. DV clearance is preferred.",
+          "company": "Damia Group Ltd",
+          "location": "Reading, Berkshire"
+        },
+        {
+          "title": "Registered Service Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225721315/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225721315/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225721315/",
+          "postedAt": "2026-10-13T15:43:03Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "You retain the right to have your information deleted in line with current GDPR legislation.",
+          "description": "You retain the right to have your information deleted in line with current GDPR legislation.",
+          "company": "PSR Solutions",
+          "location": "Carlisle, Cumbria"
+        },
+        {
+          "title": "Project Co-ordinator",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225720408/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225720408/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225720408/",
+          "postedAt": "2026-10-13T14:24:30Z",
+          "contractType": "Contract",
+          "isRemote": false,
+          "descriptionText": "Ensure company and project information management protocols and security procedures are followed (including but not limited to the information handling plans), including ensuring that every document has the appropriate marking.",
+          "description": "Ensure company and project information management protocols and security procedures are followed (including but not limited to the information handling plans), including ensuring that every document has the appropriate marking.",
+          "company": "SmartSourcing Ltd",
+          "location": "London"
+        },
+        {
+          "title": "Technical Officer - Housing, Assets, Construction, Development",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225720197/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225720197/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225720197/",
+          "postedAt": "2026-10-13T14:03:36Z",
+          "contractType": "Permanent",
+          "isRemote": true,
+          "descriptionText": "For more information about this, your rights, and our approach to Data Protection and Privacy, please visit our website.",
+          "description": "For more information about this, your rights, and our approach to Data Protection and Privacy, please visit our website.",
+          "company": "Informed Recruitment",
+          "location": "Birmingham, West Midlands"
+        },
+        {
+          "title": "Information Security Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225719372/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225719372/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225719372/",
+          "postedAt": "2026-10-13T12:31:06Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "🏢 Construction Sector About the Role An exciting opportunity has arisen for an experienced Information Security Manager to join a growing and forward-thinking organisation.",
+          "description": "🏢 Construction Sector About the Role An exciting opportunity has arisen for an experienced Information Security Manager to join a growing and forward-thinking organisation.",
+          "company": "CSC Recruitment Ltd",
+          "location": "Canary Wharf, Greater London"
+        },
+        {
+          "title": "Information Security Manager",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225719085/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225719085/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225719085/",
+          "postedAt": "2026-10-13T11:40:59Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Working closely with the Senior Information Security Manager , Cyber Security Manager and wider business, you will take ownership of information security policies, risk management, data protection and...",
+          "description": "Working closely with the Senior Information Security Manager , Cyber Security Manager and wider business, you will take ownership of information security policies, risk management, data protection and...",
+          "company": "Fawkes & Reece London",
+          "location": "City of London, London"
+        },
+        {
+          "title": "End User Computing Engineer",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225718861/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225718861/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225718861/",
+          "postedAt": "2026-10-13T11:05:01Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Key Responsibilities include, but are not limited to: Providing first-time resolution by troubleshooting and diagnosing or escalating faults (or both) to service desk managers , incident managers and problem managers to investigate and resolve.",
+          "description": "Key Responsibilities include, but are not limited to: Providing first-time resolution by troubleshooting and diagnosing or escalating faults (or both) to service desk managers , incident managers and problem managers to investigate and resolve.",
+          "company": "Department for Transport",
+          "location": "Swansea, City and County of Swansea"
+        },
+        {
+          "title": "Design Engineer",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225717521/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225717521/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225717521/",
+          "postedAt": "2026-10-13T08:41:51Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "Personal information provided during the application process will be treated in accordance with our privacy policy and applicable data protection laws.",
+          "description": "Personal information provided during the application process will be treated in accordance with our privacy policy and applicable data protection laws.",
+          "company": "N P Aerospace Ltd",
+          "location": "CV6, Longford, Coventry"
+        },
+        {
+          "title": "Lead Engineer",
+          "canonicalUrl": "https://www.cv-library.co.uk/job/225717320/",
+          "sourceUrl": "https://www.cv-library.co.uk/job/225717320/",
+          "applyUrl": "https://www.cv-library.co.uk/job/225717320/",
+          "postedAt": "2026-10-13T08:21:43Z",
+          "contractType": "Permanent",
+          "isRemote": false,
+          "descriptionText": "​Working alongside FEA specialists, manufacturing teams and project managers , you’ll ensure designs are practical to manufacture and assemble.",
+          "description": "​Working alongside FEA specialists, manufacturing teams and project managers , you’ll ensure designs are practical to manufacture and assemble.",
+          "company": "N P Aerospace Ltd",
+          "location": "CV6, Longford, Coventry"
+        }
+      ]
+    },
+    {
+      "name": "Totaljobs",
+      "run_id": "E89FZF0LvshuHJQa9",
+      "dataset_id": "jHjMkxeWcJnH2D95L",
+      "observed_at": "2026-10-16T10:34:37.911Z",
+      "attempted": true,
+      "status": "SUCCEEDED",
+      "records": [
+        {
+          "title": "Trainee Ethical Hacker – No Experience Needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/it-online-learning-job108092714",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/it-online-learning-job108092714",
+          "datePosted": "2026-10-07T11:32:25.733Z",
+          "textSnippet": "ITOL Recruit is a cyber security training and recruitment specialist with over 15 years' experience placing candidates into entry-level roles. They're offering a trainee ethical hacker programme to help you enter cyber security with no prior experience needed. CompTIA Security+, CySA+, and PenTest+ certifications, completion of hands-on labs, and active enga",
+          "employer": {
+            "name": "IT Online Learning"
+          },
+          "location": {
+            "text": "Stratford, East London (E15)"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Trainee Ethical Hacker – No Experience Needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/it-online-learning-job108092711",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/it-online-learning-job108092711",
+          "datePosted": "2026-10-07T11:32:18.59Z",
+          "textSnippet": "ITOL Recruit is a cyber security training and recruitment specialist with over 15 years' experience placing candidates into roles. They're looking for a trainee ethical hacker to complete online training and secure an entry-level cyber security role. CompTIA Security+, CySA+, and PenTest+ certifications are required.",
+          "employer": {
+            "name": "IT Online Learning"
+          },
+          "location": {
+            "text": "North London (N1)"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Trainee Cyber Security Analyst – No Experience Needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-cyber-security-analyst-no-experience-needed/newto-training-limited-job108080178",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-cyber-security-analyst-no-experience-needed/newto-training-limited-job108080178",
+          "datePosted": "2026-10-05T10:01:54.163Z",
+          "textSnippet": "New to Training delivers a cyber security career programme with guaranteed employment on completion. They're hiring a trainee cyber security analyst with no experience needed to begin a structured training pathway. A willingness to learn, strong communication skills and genuine interest in cyber security are required.",
+          "employer": {
+            "name": "NEWTO TRAINING LIMITED"
+          },
+          "location": {
+            "text": "UK"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Cyber Security Analyst",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/cyber-security-analyst/viqu-it-recruitment-job108179002",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/cyber-security-analyst/viqu-it-recruitment-job108179002",
+          "datePosted": "2026-10-15T10:17:30.117Z",
+          "textSnippet": "A recruitment agency is filling a 2-month contract cyber security role supporting remote and London-based operations. They're hiring a cyber security analyst to monitor and triage alerts across CrowdStrike, Mimecast and SIEM platforms. CrowdStrike and Mimecast experience, Rapid7 and SIEM platform knowledge, and proven alert triage and vulnerability managemen",
+          "employer": {
+            "name": "VIQU IT Recruitment"
+          },
+          "location": {
+            "text": "The City, City of London (EC3), EC3N 1AH"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Trainee Ethical Hacker – No Experience Needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/newto-training-limited-job108080179",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/trainee-ethical-hacker-no-experience-needed/newto-training-limited-job108080179",
+          "datePosted": "2026-10-05T10:01:58.5Z",
+          "textSnippet": "Newto Training delivers a self-funded ethical hacker career programme with job placement guarantee. They're looking for a trainee ethical hacker to complete 100+ hours of live training and gain four industry certifications. No previous experience, a willingness to learn, good communication skills and genuine interest in cyber security are required.",
+          "employer": {
+            "name": "NEWTO TRAINING LIMITED"
+          },
+          "location": {
+            "text": "UK"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Cyber Sec Analyst - Network Intrusion & Capability Development",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/cyber-sec-analyst-network-intrusion-capability-development/salt-job108180114",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/cyber-sec-analyst-network-intrusion-capability-development/salt-job108180114",
+          "datePosted": "2026-10-15T13:00:28.137Z",
+          "textSnippet": "A specialist cyber team operating within highly secure national security environments. They're hiring a cyber operations analyst to conduct network intrusion analysis and develop bespoke tooling for investigations. Active UKIC DV clearance, extensive cyber operations experience, large-scale network data analysis skills and Python or similar scripting ability",
+          "employer": {
+            "name": "Salt"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Junior Ethical Hacker Placement Programme - no experience needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/junior-ethical-hacker-placement-programme-no-experience-needed/it-online-learning-job108092693",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/junior-ethical-hacker-placement-programme-no-experience-needed/it-online-learning-job108092693",
+          "datePosted": "2026-10-07T11:31:22.493Z",
+          "textSnippet": "This is a self-funded training programme leading to entry-level cyber security roles across the UK. They're offering a trainee ethical hacker placement to help you enter cyber security with no prior experience. CompTIA Security+, CySA+, and PenTest+ certifications, completion of hands-on training modules, and active engagement with recruitment support are re",
+          "employer": {
+            "name": "IT Online Learning"
+          },
+          "location": {
+            "text": "Tooting, South West London (SW17)"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Internal Penetration Tester",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/internal-penetration-tester/salt-job108122215",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/internal-penetration-tester/salt-job108122215",
+          "datePosted": "2026-10-09T14:40:51.087Z",
+          "textSnippet": "A globally recognised professional services organisation is investing heavily in cyber resilience and enterprise security programmes. They're hiring an internal penetration tester to perform manual security assessments of web applications, APIs and enterprise platforms. Three-plus years hands-on penetration testing experience, strong web application security",
+          "employer": {
+            "name": "Salt"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Ethical Hacker / Penetration Tester – no experience needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080276",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080276",
+          "datePosted": "2026-10-05T10:10:55.7Z",
+          "textSnippet": "Newto Training delivers a self-funded cyber security career programme with job placement guaranteed. They're hiring ethical hackers and penetration testers to complete their intensive training and enter the industry. No prior experience needed, but willingness to learn, strong communication skills and genuine interest in cyber security are required.",
+          "employer": {
+            "name": "NEWTO TRAINING LIMITED"
+          },
+          "location": {
+            "text": "North London (N1)"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Ethical Hacker / Penetration Tester – no experience needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080280",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080280",
+          "datePosted": "2026-10-05T10:11:00.39Z",
+          "textSnippet": "Newto Training delivers a self-funded cyber security career programme with job placement guaranteed. They're hiring ethical hackers and penetration testers to complete their intensive training and enter the industry. No prior experience needed; willingness to learn, good communication skills and genuine interest in cyber security are required.",
+          "employer": {
+            "name": "NEWTO TRAINING LIMITED"
+          },
+          "location": {
+            "text": "Islington, North London (N7)"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Ethical Hacker / Penetration Tester – no experience needed",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080281",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/ethical-hacker-penetration-tester-no-experience-needed/newto-training-limited-job108080281",
+          "datePosted": "2026-10-05T10:11:02.28Z",
+          "textSnippet": "Newto Training delivers a self-funded cyber security career programme with job placement guaranteed. They're hiring ethical hackers and penetration testers to complete their intensive training and enter the industry. No prior experience needed; willingness to learn, good communication skills and genuine interest in cyber security are required.",
+          "employer": {
+            "name": "NEWTO TRAINING LIMITED"
+          },
+          "location": {
+            "text": "Finsbury Park, North London (N4)"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Malware Researcher",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/malware-researcher/darktrace-job108090216",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/malware-researcher/darktrace-job108090216",
+          "datePosted": "2026-10-06T20:07:04.223Z",
+          "textSnippet": "Darktrace is a global leader in AI-driven cybersecurity helping organizations detect evolving threats. They're looking for a malware researcher to investigate emerging threats and produce actionable threat intelligence. A background in cyber security, computer science or data science, malware analysis experience, and proficiency in Python, PowerShell or C/C+",
+          "employer": {
+            "name": "Darktrace"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Business Information Security Consultant",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/business-information-security-consultant/hays-job108103230",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/business-information-security-consultant/hays-job108103230",
+          "datePosted": "2026-10-07T16:08:16.753Z",
+          "textSnippet": "A leading Financial Services organisation is seeking cyber security expertise in a regulated environment. They're hiring a business information security consultant to assess and oversee cyber security risks, supporting regulatory deliverables and control effectiveness. Strong information security or cyber consulting experience, broad knowledge across PAM, IA",
+          "employer": {
+            "name": "Hays"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Security Consultant (CHECK Team)",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-consultant-check-team/matchtech-mobility-job108084569",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-consultant-check-team/matchtech-mobility-job108084569",
+          "datePosted": "2026-10-06T08:09:01.697Z",
+          "textSnippet": "They're looking for a security consultant to conduct penetration testing and vulnerability assessments across enterprise systems. Demonstrable penetration testing experience, strong infrastructure and network security knowledge, and ability to communicate findings clearly are required.",
+          "employer": {
+            "name": "Matchtech Mobility"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Senior Technical Security Consultant",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108161623",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108161623",
+          "datePosted": "2026-10-13T18:01:23.197Z",
+          "textSnippet": "A specialist security consultancy supporting UK public sector, healthcare, defence and central government clients. They're hiring a senior technical security consultant to lead security architecture reviews and assess complex technical solutions across cloud, infrastructure, networks and applications. Significant experience in security architecture, cloud se",
+          "employer": {
+            "name": "Anson Mccade"
+          },
+          "location": {
+            "text": "City of London (EC2), EC2V 6AA"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Electronic Systems Security Consultant",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/electronic-systems-security-consultant/sanderson-government-and-defence-job108149056",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/electronic-systems-security-consultant/sanderson-government-and-defence-job108149056",
+          "datePosted": "2026-10-12T14:53:54.953Z",
+          "textSnippet": "A leading multidisciplinary consultancy delivering security solutions across aviation, defence, energy, transportation, water, education and major infrastructure. They're hiring an electronic systems security consultant to design and deliver integrated security solutions for critical infrastructure projects. Five+ years in electronic security systems design,",
+          "employer": {
+            "name": "Sanderson Government and Defence"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Security Engineer",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-engineer/viqu-it-recruitment-job108161112",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-engineer/viqu-it-recruitment-job108161112",
+          "datePosted": "2026-10-13T15:47:01.85Z",
+          "textSnippet": "IBM QRadar SIEM expertise, log aggregation and hands-on rule tuning are required. They're hiring a security engineer to own and optimise SIEM rules, alert tuning and log aggregation within QRadar. Strong QRadar experience, SIEM rule development and understanding of security logging and event normalisation are all required.",
+          "employer": {
+            "name": "VIQU IT Recruitment"
+          },
+          "location": {
+            "text": "City of London, London, EC3M 4AJ"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Cyber Security Consultant",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/cyber-security-consultant/fruition-group-job108113714",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/cyber-security-consultant/fruition-group-job108113714",
+          "datePosted": "2026-10-08T12:21:15.627Z",
+          "textSnippet": "A growing cyber consultancy delivering assurance, audit and compliance services across UK Government. They're looking for a cyber security assurance consultant to support client engagements across NCSC CAF, ISO 27001, cyber audit, risk and security assurance. Two-plus years in cyber security, information assurance, GRC or audit, and knowledge of ISO 27001 or",
+          "employer": {
+            "name": "Fruition Group"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Senior Technical Security Consultant – Security Architecture",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108115651",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108115651",
+          "datePosted": "2026-10-08T18:01:36.673Z",
+          "textSnippet": "Senior Technical Security Consultant - Security Architecture£70,000 to 90,000 GBPBonusHybrid WORKINGLocation: Central London, Greater London - United Kingdom Type: PermanentSenior Technical Security Consultant - Security ArchitectureLocation: UK-wide - hybrid, with travel to client sites as required",
+          "employer": {
+            "name": "Anson Mccade"
+          },
+          "location": {
+            "text": "City of London (EC2), EC2V 6AA"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Support Engineer Snr MSoft, Networks, Security, EC2 50k",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/systems-infrastructure-eng-msoft-networks-security-nw1-70k/langley-james-limited-job108120556",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/systems-infrastructure-eng-msoft-networks-security-nw1-70k/langley-james-limited-job108120556",
+          "datePosted": "2026-10-09T10:48:21.547Z",
+          "textSnippet": "A group of four companies with a dozen offices across England seeks infrastructure ownership. They're hiring a senior IT support engineer to manage second and third line escalations, network builds and Windows endpoint management across the estate. Strong Windows Server and Microsoft 365 administration, endpoint management experience with Intune or SCCM, sol",
+          "employer": {
+            "name": "Langley James Limited"
+          },
+          "location": {
+            "text": "Shoreditch, East London (E1), EC2A 4NE"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Security Engineer",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-engineer/fs-recruitment-services-ltd-job108075230",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/security-engineer/fs-recruitment-services-ltd-job108075230",
+          "datePosted": "2026-10-02T14:40:38.773Z",
+          "textSnippet": "A well-established security systems specialist covering sites across London and the M25. They're hiring a security engineer to service and fault-find intruder alarm and CCTV systems on client sites. Proven security engineering experience, strong fault-finding ability on alarms and CCTV, and a full UK driving licence are required.",
+          "employer": {
+            "name": "FS Recruitment Services Ltd"
+          },
+          "location": {
+            "text": "South West London (SW8)"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Senior Security Engineer - Isovalent",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108183829",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108183829",
+          "datePosted": "2026-10-15T20:25:03.993Z",
+          "textSnippet": "Isovalent, a Cisco company, builds cloud-native security solutions for infrastructure and applications. They're hiring a senior security engineer to build and deploy vulnerability detection tools, tune security scanners, and triage findings across their software development lifecycle. Technical background in information security, significant experience autom",
+          "employer": {
+            "name": "Cisco"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Senior Security Consultant",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/mace-job108176432",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-consultant/mace-job108176432",
+          "datePosted": "2026-10-14T19:31:05.4Z",
+          "textSnippet": "Mace combines construction expertise with consultancy across critical infrastructure, government and defence sectors. They're looking for a senior security consultant to lead complex security advisory assignments and manage high-profile projects in London. Proven experience delivering security advisory services on complex projects, strong knowledge of securi",
+          "employer": {
+            "name": "Mace"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Senior Security Engineer - Isovalent",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108124308",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108124308",
+          "datePosted": "2026-10-09T20:25:04.183Z",
+          "textSnippet": "Isovalent, now part of Cisco, builds cloud-native security solutions for infrastructure protection. They're hiring a senior security engineer to build and deploy vulnerability detection tools, tune security scanners, and triage findings across their software development lifecycle. Technical background in Linux security, significant experience automating secu",
+          "employer": {
+            "name": "Cisco"
+          },
+          "location": {
+            "text": "London"
+          },
+          "rowType": "job"
+        },
+        {
+          "title": "Principal Security Architect",
+          "applyUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/principal-security-architect/hays-job108112987",
+          "jobUrl": "https://www.totaljobs.com/https://www.totaljobs.com/job/principal-security-architect/hays-job108112987",
+          "datePosted": "2026-10-08T10:29:16.83Z",
+          "textSnippet": "A global financial services organisation is seeking a Principal Security Architect to define and govern secure architecture for applications undergoing transformation. They're looking for a principal security architect to conduct security architecture reviews, assurance and governance activities. Proven experience in cloud security (particularly Azure), secu",
+          "employer": {
+            "name": "Hays"
+          },
+          "location": {
+            "text": "City of London (EC1), EC1"
+          },
+          "rowType": "job"
+        }
+      ]
+    },
+    {
+      "name": "Reed UK",
+      "run_id": "oLI4iND3OrwX1zu7p",
+      "dataset_id": "EtO4JTOHdO0SXRxh3",
+      "observed_at": "2026-10-16T10:34:48.512Z",
+      "attempted": true,
+      "status": "SUCCEEDED",
+      "records": [
+        {
+          "title": "Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/business-analyst/57454184",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-analyst/57454184",
+          "datePosted": "2026-10-13T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "About The Role FDM is a global business and technology consultancy seeking Business Analysts to work with our global systems integrator client on a major Central Government Service Transformation Programme. This initiative forms part of a core-funded Service Transformation Portfolio, focused on imp…",
+          "description": "About The Role FDM is a global business and technology consultancy seeking Business Analysts to work with our global systems integrator client on a major Central Government Service Transformation Programme. This initiative forms part of a core-funded Service Transformation Portfolio, focused on improving operational efficiency, increasing productivity, reduc",
+          "employer": "FDM Group",
+          "location": "London"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/business-analyst/57450310",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-analyst/57450310",
+          "datePosted": "2026-10-12T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "About The Role FDM is a global business and technology consultancy seeking a Business Analyst to work for our client within the Financial Services sector. This is initially a 6 month contract with the potential to extend and will be a hybrid role that will be based in Edinburgh. As a Business Analy…",
+          "description": "About The Role FDM is a global business and technology consultancy seeking a Business Analyst to work for our client within the Financial Services sector. This is initially a 6 month contract with the potential to extend and will be a hybrid role that will be based in Edinburgh. As a Business Analyst, you'll work in a small, AI-enabled team, partnering close",
+          "employer": "FDM Group",
+          "location": "Edinburgh"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/business-analyst/57399292",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-analyst/57399292",
+          "datePosted": "2026-09-28T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Work on Technology That Protects What Matters At SiXworks , we build secure digital solutions that support Defence and National Security missions . Our teams work on complex problems where reliability, security, and speed of innovation matter. We’re looking for a Business Analyst who enjoys solving…",
+          "description": "Work on Technology That Protects What Matters At SiXworks , we build secure digital solutions that support Defence and National Security missions . Our teams work on complex problems where reliability, security, and speed of innovation matter. We’re looking for a Business Analyst who enjoys solving difficult technical challenges and wants their work to have ",
+          "employer": "IBM SIXworks Limited",
+          "location": "Farnborough"
+        },
+        {
+          "title": "Senior Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57383113",
+          "externalUrl": "https://www.reed.co.uk/jobs/senior-business-analyst/57383113",
+          "datePosted": "2026-09-23T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "Senior Business Analyst | 6-Month Contract | Inside IR35 We're looking for an experienced Senior Business Analyst to join a major business transformation and continuous improvement programme within a global engineering and technology-led organisation. This is not a traditional requirements-gatherin…",
+          "description": "Senior Business Analyst | 6-Month Contract | Inside IR35 We're looking for an experienced Senior Business Analyst to join a major business transformation and continuous improvement programme within a global engineering and technology-led organisation. This is not a traditional requirements-gathering BA role. We're looking for someone who can challenge existi",
+          "employer": "Matchtech",
+          "location": "Oxfordshire"
+        },
+        {
+          "title": "Business System Analyst",
+          "url": "https://www.reed.co.uk/jobs/business-system-analyst/57405643",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-system-analyst/57405643",
+          "datePosted": "2026-09-30T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Business Systems Analyst Job Overview Open House Estate Agents Bolton is a well-established residential and commercial estate agency, providing property sales, lettings and property management services across Bolton and the surrounding area. Our team handles the full customer journey, from first en…",
+          "description": "Business Systems Analyst Job Overview Open House Estate Agents Bolton is a well-established residential and commercial estate agency, providing property sales, lettings and property management services across Bolton and the surrounding area. Our team handles the full customer journey, from first enquiry through to completion, and we rely on consistent system",
+          "employer": "Open House Estate Agents Bolton",
+          "location": "BL36LS"
+        },
+        {
+          "title": "Business Readiness Analyst",
+          "url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57392838",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-readiness-analyst/57392838",
+          "datePosted": "2026-09-25T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Business Readiness Analyst - Pensions The Business Readiness function is a newly formed team within Client Onboarding & Change division / Pension Administration service line. The Business Readiness Analyst focuses on ensuring the business is prepared for change, whether that's a new system, process…",
+          "description": "Business Readiness Analyst - Pensions The Business Readiness function is a newly formed team within Client Onboarding & Change division / Pension Administration service line. The Business Readiness Analyst focuses on ensuring the business is prepared for change, whether that's a new system, process, operating model, or transformation initiative. All of which",
+          "employer": "Isio",
+          "location": "CR02LX"
+        },
+        {
+          "title": "MES Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/mes-business-analyst/57453973",
+          "externalUrl": "https://www.reed.co.uk/jobs/mes-business-analyst/57453973",
+          "datePosted": "2026-10-13T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Location: Midlands / South West / Flexible Working pattern: Hybrid, with travel to Müller manufacturing sites as required Reports to: Functional Head of Automation & Controls MMI About the role Want to use your software development skills to make a real difference in a manufacturing environment? We…",
+          "description": "Location: Midlands / South West / Flexible Working pattern: Hybrid, with travel to Müller manufacturing sites as required Reports to: Functional Head of Automation & Controls MMI About the role Want to use your software development skills to make a real difference in a manufacturing environment? We’re looking for an MES Business Analyst to help develop, supp",
+          "employer": "Muller UK & Ireland",
+          "location": "Droitwich"
+        },
+        {
+          "title": "Technical Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/technical-business-analyst/57403479",
+          "externalUrl": "https://www.reed.co.uk/jobs/technical-business-analyst/57403479",
+          "datePosted": "2026-09-29T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "Our client is seeking experienced Business Analysts to join their next-generation ecommerce programme. You will be embedded in cross-functional journey teams, turning customer outcomes into a verified, end-to-end understanding of the business. You will document how journeys work today, including th…",
+          "description": "Our client is seeking experienced Business Analysts to join their next-generation ecommerce programme. You will be embedded in cross-functional journey teams, turning customer outcomes into a verified, end-to-end understanding of the business. You will document how journeys work today, including the business rules, dependencies, integrations and data behind ",
+          "employer": "FDM Group",
+          "location": "London"
+        },
+        {
+          "title": "Senior Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57408191",
+          "externalUrl": "https://www.reed.co.uk/jobs/senior-business-analyst/57408191",
+          "datePosted": "2026-09-30T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "About The Role FDM is a global business and technology consultancy seeking a Senior Business Analyst to work for our client within the Finance sector. This is initially a 6 month contract with very good prospects to extend and will be a hybrid role that will be based in Cheshire. FDM is looking for…",
+          "description": "About The Role FDM is a global business and technology consultancy seeking a Senior Business Analyst to work for our client within the Finance sector. This is initially a 6 month contract with very good prospects to extend and will be a hybrid role that will be based in Cheshire. FDM is looking for an experienced Senior Business Analyst to support large and/",
+          "employer": "FDM Group",
+          "location": "Cheshire"
+        },
+        {
+          "title": "Business Readiness Analyst",
+          "url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57372616",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-readiness-analyst/57372616",
+          "datePosted": "2026-09-21T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Business Readiness Analyst - Pensions The Business Readiness function is a newly formed team within Client Onboarding & Change division / Pension Administration service line. The Business Readiness Analyst focuses on ensuring the business is prepared for change, whether that's a new system, process…",
+          "description": "Business Readiness Analyst - Pensions The Business Readiness function is a newly formed team within Client Onboarding & Change division / Pension Administration service line. The Business Readiness Analyst focuses on ensuring the business is prepared for change, whether that's a new system, process, operating model, or transformation initiative. All of which",
+          "employer": "Isio",
+          "location": "LS15DA"
+        },
+        {
+          "title": "Senior Business Analyst",
+          "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57407262",
+          "externalUrl": "https://www.reed.co.uk/jobs/senior-business-analyst/57407262",
+          "datePosted": "2026-09-30T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "Our client is seeking an experienced Business Analyst to support the delivery of pension administration workflows and reporting requirements. You will work closely with business subject matter experts, an external technology vendor and internal testing colleagues to translate requirements into clea…",
+          "description": "Our client is seeking an experienced Business Analyst to support the delivery of pension administration workflows and reporting requirements. You will work closely with business subject matter experts, an external technology vendor and internal testing colleagues to translate requirements into clear user stories, processes and operational procedures that sup",
+          "employer": "FDM Group",
+          "location": "Glasgow"
+        },
+        {
+          "title": "Business Analyst - Supply Chain",
+          "url": "https://www.reed.co.uk/jobs/business-analyst-supply-chain/57415525",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-analyst-supply-chain/57415525",
+          "datePosted": "2026-10-02T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "Senior Business Analyst - Supply Chain Transformation Shape the future of a critical operational supply chain We're looking for experienced Business Analysts to join a large-scale operational transformation programme that is fundamentally redesigning how a complex engineering and supply chain funct…",
+          "description": "Senior Business Analyst - Supply Chain Transformation Shape the future of a critical operational supply chain We're looking for experienced Business Analysts to join a large-scale operational transformation programme that is fundamentally redesigning how a complex engineering and supply chain function operates. This is an opportunity to play a key role in th",
+          "employer": "Matchtech",
+          "location": "LU29PF"
+        },
+        {
+          "title": "Business Readiness Senior Analyst",
+          "url": "https://www.reed.co.uk/jobs/business-readiness-senior-analyst/57372612",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-readiness-senior-analyst/57372612",
+          "datePosted": "2026-09-21T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Business Readiness Senior Analyst - Pensions The Business Readiness function is a newly formed team within Client Onboarding & Change division / Pension Administration service line. The Business Readiness Senior Analyst is responsible for ensuring that people, processes, and operational teams are p…",
+          "description": "Business Readiness Senior Analyst - Pensions The Business Readiness function is a newly formed team within Client Onboarding & Change division / Pension Administration service line. The Business Readiness Senior Analyst is responsible for ensuring that people, processes, and operational teams are prepared for business change, transformation programmes, syste",
+          "employer": "Isio",
+          "location": "BS14ND"
+        },
+        {
+          "title": "Technical Business Analyst (Azure FinOps)",
+          "url": "https://www.reed.co.uk/jobs/technical-business-analyst-azure-finops/57456934",
+          "externalUrl": "https://www.reed.co.uk/jobs/technical-business-analyst-azure-finops/57456934",
+          "datePosted": "2026-10-14T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "About The Role FDM is a global business and technology consultancy seeking a Technical Business Analyst (Azure FinOps) to work for our client within the public sector sector. This is initially a 6 month contract with very good prospects to extend and will be a hybrid role that will be based UK-wide…",
+          "description": "About The Role FDM is a global business and technology consultancy seeking a Technical Business Analyst (Azure FinOps) to work for our client within the public sector sector. This is initially a 6 month contract with very good prospects to extend and will be a hybrid role that will be based UK-wide, with two days per week in a local office. Our client is see",
+          "employer": "FDM Group",
+          "location": "London"
+        },
+        {
+          "title": "Senior Business Analyst (CRM)",
+          "url": "https://www.reed.co.uk/jobs/senior-business-analyst-crm/57459401",
+          "externalUrl": "https://www.reed.co.uk/jobs/senior-business-analyst-crm/57459401",
+          "datePosted": "2026-10-14T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "About The Role FDM is a global business and technology consultancy seeking a Business Analyst to work for our client within the financial services sector. This is initially a six-month contract with very good prospects to extend and will be a hybrid role based in London. Our client is seeking an ex…",
+          "description": "About The Role FDM is a global business and technology consultancy seeking a Business Analyst to work for our client within the financial services sector. This is initially a six-month contract with very good prospects to extend and will be a hybrid role based in London. Our client is seeking an experienced Business Analyst to work within business-facing scr",
+          "employer": "FDM Group",
+          "location": "London"
+        },
+        {
+          "title": "Procurement Analyst",
+          "url": "https://www.reed.co.uk/jobs/procurement-analyst/57380529",
+          "externalUrl": "https://www.reed.co.uk/jobs/procurement-analyst/57380529",
+          "datePosted": "2026-09-22T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "A leading Aerospace and Defence organisation are looking to bring onboard a data driven Procurement Analyst to join a high-profile function in Yeovil. Role: Procurement Analyst Duration: 12-month contract Pay: Up to 30 p/hr (Inside IR35 via Umbrella) Location: Yeovil (Hybrid) You'll work closely wi…",
+          "description": "A leading Aerospace and Defence organisation are looking to bring onboard a data driven Procurement Analyst to join a high-profile function in Yeovil. Role: Procurement Analyst Duration: 12-month contract Pay: Up to &#163;30 p/hr (Inside IR35 via Umbrella) Location: Yeovil (Hybrid) You'll work closely with programme teams and stakeholders, transforming compl",
+          "employer": "Matchtech",
+          "location": "Yeovil"
+        },
+        {
+          "title": "Analyst - Consulting",
+          "url": "https://www.reed.co.uk/jobs/analyst-consulting/57401465",
+          "externalUrl": "https://www.reed.co.uk/jobs/analyst-consulting/57401465",
+          "datePosted": "2026-09-29T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Location: Home based, with occasional travel to offices and client sites across the UK and globally Hours: Full time Salary: 40,000 plus car / car allowance, 33 days holiday, pension, bonus, life assurance, employee assistance programme, wellbeing support, and flexible benefits including cycle to w…",
+          "description": "Location: Home based, with occasional travel to offices and client sites across the UK and globally Hours: Full time Salary: &#163;40,000 plus car / car allowance, 33 days holiday, pension, bonus, life assurance, employee assistance programme, wellbeing support, and flexible benefits including cycle to work scheme About the Role As an Analyst in our Consulta",
+          "employer": "Unipart",
+          "location": "Nuneaton"
+        },
+        {
+          "title": "Commercial Analyst",
+          "url": "https://www.reed.co.uk/jobs/commercial-analyst/57379179",
+          "externalUrl": "https://www.reed.co.uk/jobs/commercial-analyst/57379179",
+          "datePosted": "2026-09-22T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "A market-leading FMCG business is seeking a Commercial Analyst to join its growing team. This is an excellent opportunity for a data-driven analyst with strong Excel skills and experience using tools such as Power BI, VBA, Macros or other reporting platforms to turn complex data into meaningful com…",
+          "description": "A market-leading FMCG business is seeking a Commercial Analyst to join its growing team. This is an excellent opportunity for a data-driven analyst with strong Excel skills and experience using tools such as Power BI, VBA, Macros or other reporting platforms to turn complex data into meaningful commercial insight. Working closely with Sales, Marketing, Procu",
+          "employer": "Matchtech",
+          "location": "Basingstoke"
+        },
+        {
+          "title": "Commercial Analyst",
+          "url": "https://www.reed.co.uk/jobs/commercial-analyst/57379170",
+          "externalUrl": "https://www.reed.co.uk/jobs/commercial-analyst/57379170",
+          "datePosted": "2026-09-22T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "A market-leading FMCG business is seeking a Commercial Analyst to join its growing team. This is an excellent opportunity for a data-driven analyst with strong Excel skills and experience using tools such as Power BI, VBA, Macros or other reporting platforms to turn complex data into meaningful com…",
+          "description": "A market-leading FMCG business is seeking a Commercial Analyst to join its growing team. This is an excellent opportunity for a data-driven analyst with strong Excel skills and experience using tools such as Power BI, VBA, Macros or other reporting platforms to turn complex data into meaningful commercial insight. Working closely with Sales, Marketing, Procu",
+          "employer": "Matchtech",
+          "location": "Winchester"
+        },
+        {
+          "title": "KYC Analyst",
+          "url": "https://www.reed.co.uk/jobs/kyc-analyst/57449165",
+          "externalUrl": "https://www.reed.co.uk/jobs/kyc-analyst/57449165",
+          "datePosted": "2026-10-12T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "AMS is a global workforce solutions partner committed to creating inclusive, dynamic, and future-ready workplaces. We help organisations adapt, grow, and thrive in an ever-evolving world by building, shaping, and optimising diverse talent strategies. We partner with PwC to support their contingent…",
+          "description": "AMS is a global workforce solutions partner committed to creating inclusive, dynamic, and future-ready workplaces. We help organisations adapt, grow, and thrive in an ever-evolving world by building, shaping, and optimising diverse talent strategies. We partner with PwC to support their contingent recruitment processes. Acting as an extension of their recrui",
+          "employer": "AMS Contingent",
+          "location": "London"
+        },
+        {
+          "title": "Project Analyst",
+          "url": "https://www.reed.co.uk/jobs/project-analyst/57458778",
+          "externalUrl": "https://www.reed.co.uk/jobs/project-analyst/57458778",
+          "datePosted": "2026-10-14T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "NatWest is a major UK retail bank, providing every day banking services to over 19 million customers. The banks expertise and services span retail, commercial and private banking. AMS is a global workforce solutions partner committed to creating inclusive, dynamic, and future-ready workplaces. We h…",
+          "description": "NatWest is a major UK retail bank, providing every day banking services to over 19 million customers. The banks expertise and services span retail, commercial and private banking. AMS is a global workforce solutions partner committed to creating inclusive, dynamic, and future-ready workplaces. We help organisations adapt, grow, and thrive in an ever-evolving",
+          "employer": "NatWest CWS",
+          "location": "London"
+        },
+        {
+          "title": "Warehouse Analyst",
+          "url": "https://www.reed.co.uk/jobs/warehouse-analyst/57456840",
+          "externalUrl": "https://www.reed.co.uk/jobs/warehouse-analyst/57456840",
+          "datePosted": "2026-10-14T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "About the job Loom Talent Limited have exclusively partnered with a well-known Logistics based business in the Bicester area. Our client offers innovative solutions to a ranging client base including: Retail, Packaging, FMCG and General Merchandise. The Role: The Warehouse Analyst will play a criti…",
+          "description": "About the job Loom Talent Limited have exclusively partnered with a well-known Logistics based business in the Bicester area. Our client offers innovative solutions to a ranging client base including: Retail, Packaging, FMCG and General Merchandise. The Role: The Warehouse Analyst will play a critical role in leading all activity across the operation within ",
+          "employer": "Loom Talent Limited",
+          "location": "Bicester"
+        },
+        {
+          "title": "Project Analyst",
+          "url": "https://www.reed.co.uk/jobs/project-analyst/57431085",
+          "externalUrl": "https://www.reed.co.uk/jobs/project-analyst/57431085",
+          "datePosted": "2026-10-07T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "NatWest is a major UK retail bank, providing every day banking services to over 19 million customers. The banks expertise and services span retail, commercial and private banking. AMS is a global workforce solutions partner committed to creating inclusive, dynamic, and future-ready workplaces. We h…",
+          "description": "NatWest is a major UK retail bank, providing every day banking services to over 19 million customers. The banks expertise and services span retail, commercial and private banking. AMS is a global workforce solutions partner committed to creating inclusive, dynamic, and future-ready workplaces. We help organisations adapt, grow, and thrive in an ever-evolving",
+          "employer": "NatWest CWS",
+          "location": "Edinburgh"
+        },
+        {
+          "title": "Support Analyst",
+          "url": "https://www.reed.co.uk/jobs/support-analyst/57405011",
+          "externalUrl": "https://www.reed.co.uk/jobs/support-analyst/57405011",
+          "datePosted": "2026-09-30T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Employer: Energy Potential Tech Solutions Limited Job Title: Support Analyst Type of position: Full-time, permanent Location: St. Asaph, North Wales Date: 29/09/26 About EP TECH EP TECH is a fast-growing SaaS company, helping power & utility companies become the digital power houses of tomorrow. Th…",
+          "description": "Employer: Energy Potential Tech Solutions Limited Job Title: Support Analyst Type of position: Full-time, permanent Location: St. Asaph, North Wales Date: 29/09/26 About EP TECH EP TECH is a fast-growing SaaS company, helping power & utility companies become the digital power houses of tomorrow. The core engineering team at EP TECH are building a completely ",
+          "employer": "EPTECH",
+          "location": "LL170JE"
+        },
+        {
+          "title": "eBilling Analyst",
+          "url": "https://www.reed.co.uk/jobs/ebilling-analyst/57427598",
+          "externalUrl": "https://www.reed.co.uk/jobs/ebilling-analyst/57427598",
+          "datePosted": "2026-10-06T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "What to Expect For business professionals, our environment is highly collaborative with value being placed on diversity of ideas, skills and mindsets. Not least yours. It’s energetic, fast-moving and there’s always something new to get involved in. You will get exposure across geographies and the f…",
+          "description": "What to Expect For business professionals, our environment is highly collaborative with value being placed on diversity of ideas, skills and mindsets. Not least yours. It’s energetic, fast-moving and there’s always something new to get involved in. You will get exposure across geographies and the firm as a whole. The future is a place of opportunity. Focusin",
+          "employer": "Eversheds Sutherland",
+          "location": "Leeds"
+        },
+        {
+          "title": "Financial Analyst",
+          "url": "https://www.reed.co.uk/jobs/financial-analyst/57422778",
+          "externalUrl": "https://www.reed.co.uk/jobs/financial-analyst/57422778",
+          "datePosted": "2026-10-05T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Salary: Up to 60,000 Location: North Herts Working Pattern: 4 days in office An established business is looking for a Financial Analyst to join its finance function, providing analysis and insight to support financial planning and business performance. This is a commercially focused role covering b…",
+          "description": "Salary: Up to &#163;60,000 Location: North Herts Working Pattern: 4 days in office An established business is looking for a Financial Analyst to join its finance function, providing analysis and insight to support financial planning and business performance. This is a commercially focused role covering budgeting, forecasting, management reporting and financi",
+          "employer": "Absolute Recruit",
+          "location": "SG61NW"
+        },
+        {
+          "title": "Pricing Analyst",
+          "url": "https://www.reed.co.uk/jobs/pricing-analyst/57424602",
+          "externalUrl": "https://www.reed.co.uk/jobs/pricing-analyst/57424602",
+          "datePosted": "2026-10-05T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Pricing Analyst Location: Peterborough, Manchester, Stoke, Southport (flexible hybrid working) Role purpose Responsible for supporting the delivery of pricing solutions that align with the company’s strategic goals and plans. This includes conducting in-depth analysis, developing predictive models,…",
+          "description": "Pricing Analyst Location: Peterborough, Manchester, Stoke, Southport (flexible hybrid working) Role purpose Responsible for supporting the delivery of pricing solutions that align with the company’s strategic goals and plans. This includes conducting in-depth analysis, developing predictive models, and influencing strategic decisions. Key Responsibilities Su",
+          "employer": "Vermelo RPO",
+          "location": "PE38BG"
+        },
+        {
+          "title": "Spurgeons - Finance Business Partner",
+          "url": "https://www.reed.co.uk/jobs/spurgeons-finance-business-partner/57438289",
+          "externalUrl": "https://www.reed.co.uk/jobs/spurgeons-finance-business-partner/57438289",
+          "datePosted": "2026-10-08T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "Finance Business Partner Salary: 44,367 Location: Home based with monthly travel to London Working pattern: 37 hours per week, 6 month fixed-term contract, ASAP start Make every pound count for children and families. At Spurgeons, we believe every child and young person deserves the chance to thriv…",
+          "description": "Finance Business Partner Salary: &#163;44,367 Location: Home based with monthly travel to London Working pattern: 37 hours per week, 6 month fixed-term contract, ASAP start Make every pound count for children and families. At Spurgeons, we believe every child and young person deserves the chance to thrive. Our services support children, young people and fami",
+          "employer": "Spurgeons",
+          "location": "N19RL"
+        },
+        {
+          "title": "Business Functional Analyst (Margin and Valuations, FIC)",
+          "url": "https://www.reed.co.uk/jobs/business-functional-analyst-margin-and-valuations-fic/57461995",
+          "externalUrl": "https://www.reed.co.uk/jobs/business-functional-analyst-margin-and-valuations-fic/57461995",
+          "datePosted": "2026-10-15T00:00:00.000Z",
+          "jobType": "Contract",
+          "descriptionSnippet": "Deutsche Bank is a global banking business with strong roots in Germany and operations in over 70 countries. Their large but focused footprint gives an established position in Europe plus a significant presence in the Americas and Asia Pacific. There are four business divisions: the Corporate Bank,…",
+          "description": "Deutsche Bank is a global banking business with strong roots in Germany and operations in over 70 countries. Their large but focused footprint gives an established position in Europe plus a significant presence in the Americas and Asia Pacific. There are four business divisions: the Corporate Bank, the Investment Bank, the Private Bank and the Asset Manager ",
+          "employer": "Deutsche Bank",
+          "location": "London"
+        },
+        {
+          "title": "Lead Data Analyst",
+          "url": "https://www.reed.co.uk/jobs/lead-data-analyst/57432267",
+          "externalUrl": "https://www.reed.co.uk/jobs/lead-data-analyst/57432267",
+          "datePosted": "2026-10-07T00:00:00.000Z",
+          "jobType": "Permanent",
+          "descriptionSnippet": "Lead Data Analyst - AVP Marshall Wolfe are hiring on behalf of our client within banking, for a highly analytical Lead Data Analyst to help solve complex business challenges through data-driven insights and strategic recommendations. This is an excellent opportunity for someone with a background in…",
+          "description": "Lead Data Analyst - AVP Marshall Wolfe are hiring on behalf of our client within banking, for a highly analytical Lead Data Analyst to help solve complex business challenges through data-driven insights and strategic recommendations. This is an excellent opportunity for someone with a background in analytics, decision science, strategy, consulting or researc",
+          "employer": "Marshall Wolfe",
+          "location": "London"
+        }
+      ]
+    },
+    {
+      "name": "Indeed UK",
+      "run_id": "uR6l7FWPHSaOFlybv",
+      "dataset_id": "KbAWbboMSA2z4AZmx",
+      "observed_at": "2026-10-16T10:35:11.438Z",
+      "attempted": true,
+      "status": "SUCCEEDED",
+      "records": [
+        {
+          "title": "Junior Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=0501ff18c4042280",
+          "postedAt": "2023-05-23T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Experience of sourcing and quality checking different data sources is an advantage. Graduate with core Data Analysis who will develop deep customer analytics…",
+          "company": "Qualient Solutions",
+          "location": "London",
+          "jobTypes": []
+        },
+        {
+          "title": "Asset Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=994169edb11b762c",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": true,
+          "snippet": "Experience of report writing and making recommendations based on data analysis. You’ll support the collection, maintenance and analysis of housing stock data,…",
+          "company": "Warwick District Council",
+          "location": "Remote",
+          "jobTypes": [
+            "Full-time",
+            "Part-time",
+            "Contract",
+            "Apprenticeship"
+          ]
+        },
+        {
+          "title": "Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=d28093d4fcc12a39",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Analysing complex information, identifying trends, investigating anomalies and resolving data quality issues. In this varied Band 5 role, you will produce high-…",
+          "company": "Oxford Health NHS Foundation Trust",
+          "location": "Oxford OX4 4RJ",
+          "jobTypes": [
+            "Part-time"
+          ]
+        },
+        {
+          "title": "Graduate Analyst, Data & AI Innovation",
+          "url": "https://uk.indeed.com/viewjob?jk=983dcde54fb88574",
+          "postedAt": "2026-07-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Has completed university projects involving data analysis, machine learning, AI or mathematical modelling. Location: London, United Kingdom (Hybrid, 3 to 4 days…",
+          "company": "EXL Service",
+          "location": "London",
+          "jobTypes": [
+            "Full-time",
+            "Permanent"
+          ]
+        },
+        {
+          "title": "Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=61543256b67b4c69",
+          "postedAt": "2026-07-31T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Build and maintain reporting, dashboards and analytical solutions. Analyse large datasets to identify trends, opportunities and risks.",
+          "company": "Evri",
+          "location": "Leeds",
+          "jobTypes": [
+            "Full-time",
+            "Contract"
+          ]
+        },
+        {
+          "title": "Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=484c9640b09e9760",
+          "postedAt": "2026-03-16T05:00:00.000Z",
+          "remote": false,
+          "snippet": "You may also have experience with DBT or modern data transformation workflows. Strong data visualisation skills, ideally using Python or tools such as Tableau,…",
+          "company": "Trainline",
+          "location": "London",
+          "jobTypes": []
+        },
+        {
+          "title": "Senior Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=d044cf2f1e22d7bb",
+          "postedAt": "2026-09-28T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Demonstrated ability to influence decision-making through data-backed recommendations. Coach and mentor junior data analysts, sharing best practices and…",
+          "company": "Elsevier",
+          "location": "London",
+          "jobTypes": []
+        },
+        {
+          "title": "Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=30f31ba56c8fd90a",
+          "postedAt": "2026-06-25T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Experience with data visualisation tools. Strong data manipulation and analysis skills. Experience building data pipelines or ETL processes.",
+          "company": "Brookhouse Aerospace",
+          "location": "Darwen",
+          "jobTypes": [
+            "Temporary",
+            "Contract"
+          ]
+        },
+        {
+          "title": "Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=c82e7b61d8bf26d9",
+          "postedAt": "2026-10-08T05:00:00.000Z",
+          "remote": false,
+          "snippet": "You will continually innovate and improve data practices with respect to data governance, new data sources, analysis techniques and report delivery.",
+          "company": "Bristol City Council",
+          "location": "Bristol",
+          "jobTypes": []
+        },
+        {
+          "title": "Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=cf61fb4188cabe1e",
+          "postedAt": "2026-09-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Confirm the quality and integrity of existing data sources. Develop ad-hoc reporting based on the review of existing data sources.",
+          "company": "CBRE",
+          "location": "London",
+          "jobTypes": []
+        },
+        {
+          "title": "Operations Support Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=5fdd79d0bddb4f90",
+          "postedAt": "2026-10-14T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Supporting ERP data workflows and helping operational teams strengthen data quality and system readiness. Strong analytical, data-management and problem-solving…",
+          "company": "Chemring Energetics UK Ltd",
+          "location": "Stevenston KA20 3LN",
+          "jobTypes": [
+            "Permanent"
+          ]
+        },
+        {
+          "title": "Senior GRC Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=32d85e13eb663cd2",
+          "postedAt": "2026-10-14T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Contract: Full-Time Hours / Fixed Term – 6 months. Reporting to the Head of Information Security, you will provide specialist support across a range of…",
+          "company": "EG Group",
+          "location": "Horwich BL6 6JW",
+          "jobTypes": [
+            "Full-time",
+            "Contract"
+          ]
+        },
+        {
+          "title": "Cyber Incident Responder",
+          "url": "https://uk.indeed.com/viewjob?jk=3e65259e14e28d08",
+          "postedAt": "2026-08-04T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Write investigation reports, timelines, executive summaries and indicators of compromise in CYFOR's report templates, clearly separating what the evidence shows…",
+          "company": "CYFOR",
+          "location": "Manchester M24 1SW",
+          "jobTypes": []
+        },
+        {
+          "title": "People Reporting Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=7cd39b6923bb8486",
+          "postedAt": "2026-10-06T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Along with expert data analysis and visualisation and systems administration support. Extracting data from all people systems in line with people reporting…",
+          "company": "SouthernHousing",
+          "location": "London EC1M",
+          "jobTypes": [
+            "Contract"
+          ]
+        },
+        {
+          "title": "Analyst Developer",
+          "url": "https://uk.indeed.com/viewjob?jk=2cf779f091cdd674",
+          "postedAt": "2026-09-03T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Develop backend services and data processing pipelines supporting OSINT data acquisition and analysis. Good technical literacy and focussed understanding of the…",
+          "company": "Praetorian Connections Ltd",
+          "location": "London",
+          "jobTypes": [
+            "Full-time",
+            "Permanent"
+          ]
+        },
+        {
+          "title": "Graduate Operations Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=7f5cc031e52c78dd",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Experience: Strong analytical skills and proficiency in Excel and data visualisation tools (Power BI, Tableau). Hours: 37.5 hours per week, no weekends.",
+          "company": "Aspire Defence Services Limited",
+          "location": "Tidworth",
+          "jobTypes": [
+            "Full-time",
+            "Permanent"
+          ]
+        },
+        {
+          "title": "BUSINESS INSIGHTS ANALYST",
+          "url": "https://uk.indeed.com/viewjob?jk=b4f0153672be88d2",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Experience analysing customer, operational or commercial data to identify trends and provide actionable insight. Job Type:* Full Time | Permanent.",
+          "company": "Angel Advance",
+          "location": "Warrington WA3 7PB",
+          "jobTypes": []
+        },
+        {
+          "title": "IT Manager",
+          "url": "https://uk.indeed.com/viewjob?jk=90878bced720d927",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Ensure personal data handled by the IT team is processed in line with company policies, procedures and regulatory requirements.",
+          "company": "Oak Furnitureland",
+          "location": "Swindon",
+          "jobTypes": []
+        },
+        {
+          "title": "Digital Analyst - Tech, Risk & Governance",
+          "url": "https://uk.indeed.com/viewjob?jk=09bf04665e1c7730",
+          "postedAt": "2026-10-01T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Experience in one or more relevant areas, such as IT general controls and SOX/ICFR; cloud risk; DevOps and SDLC controls; ERP risk and controls; operational…",
+          "company": "BDO UK",
+          "location": "London EC3A",
+          "jobTypes": []
+        },
+        {
+          "title": "Digital Product Manager",
+          "url": "https://uk.indeed.com/viewjob?jk=abb775948d6a23e1",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Experience of personalisation and using customer data to improve digital experiences. Experience setting an experimentation strategy and using data and insight…",
+          "company": "Oak Furnitureland",
+          "location": "Swindon",
+          "jobTypes": []
+        },
+        {
+          "title": "EDI Functional Support Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=f89131d332aade12",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Working closely with a wide range of stakeholders, you will develop a thorough understanding of customer and supplier objectives and recommend the most…",
+          "company": "Sysco International",
+          "location": "England",
+          "jobTypes": []
+        },
+        {
+          "title": "Junior Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=d3fb5641a890394f",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Develop and maintain data pipelines and workflows to ensure data integrity and accessibility. Interested in seeking a career within data.",
+          "company": "The Recruitment Source",
+          "location": "North Shields",
+          "jobTypes": [
+            "Full-time",
+            "Permanent"
+          ]
+        },
+        {
+          "title": "Senior Enterprise Technology Engineer",
+          "url": "https://uk.indeed.com/viewjob?jk=e260817bb49aa526",
+          "postedAt": "2026-10-14T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Advanced data analysis skills in Excel. Experience working with excel in real time data scenarios. Experience building connections to system APIs and consuming…",
+          "company": "bp",
+          "location": "London WC2N 5DU",
+          "jobTypes": []
+        },
+        {
+          "title": "Cyber Security Analyst Apprentice",
+          "url": "https://uk.indeed.com/viewjob?jk=14ac11b5872c2f2d",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Adhere to company policies relating to data protection, cyber security, and information governance. Working alongside experienced IT and cyber security…",
+          "company": "Postify",
+          "location": "Sheffield S1",
+          "jobTypes": []
+        },
+        {
+          "title": "Marketing Performance & Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=7a7f196f2d1b00e9",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Ensure sensitive commercial data is handled securely and confidentially. Translate data into meaningful business context and actionable recommendations.",
+          "company": "Acorn Stairlifts",
+          "location": "Steeton",
+          "jobTypes": [
+            "Full-time",
+            "Permanent"
+          ]
+        },
+        {
+          "title": "Project Controls Reporting Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=57c3745eb174b9b3",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Carry out data quality checks and investigate discrepancies. Analyse data to identify trends, discrepancies and opportunities for improvement.",
+          "company": "Net Zero Careers Accelerator",
+          "location": "North London N22 5HT",
+          "jobTypes": [
+            "Contract"
+          ]
+        },
+        {
+          "title": "Technology GRC Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=f259db8858b3df1d",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Confidence using Microsoft Office, data analysis tools and appropriate AI-enabled technologies to improve analysis, documentation, reporting and process…",
+          "company": "Janus Henderson",
+          "location": "London EC2M",
+          "jobTypes": []
+        },
+        {
+          "title": "Senior Forward Deployed Engineer",
+          "url": "https://uk.indeed.com/viewjob?jk=c8e6419a22b989ca",
+          "postedAt": "2026-10-15T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Experience building data pipelines from APIs and enterprise systems, and modelling raw data into curated, business-facing views.",
+          "company": "Janus Henderson",
+          "location": "London EC2M",
+          "jobTypes": []
+        },
+        {
+          "title": "Service Centre Support Lead",
+          "url": "https://uk.indeed.com/viewjob?jk=4326d57eed4c6354",
+          "postedAt": "2026-10-01T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Prepare the weekly demand review and monthly Problem / Knowledge / Experience data pack, translating service data into clear trends, improvement candidates and…",
+          "company": "NTT Ltd",
+          "location": "Birmingham",
+          "jobTypes": []
+        },
+        {
+          "title": "Senior Data Analyst",
+          "url": "https://uk.indeed.com/viewjob?jk=98a0fe6ad87c19b1",
+          "postedAt": "2026-10-09T05:00:00.000Z",
+          "remote": false,
+          "snippet": "Working closely with stakeholders, you will translate business requirements into effective data solutions while supporting robust data governance standards,…",
+          "company": "Regenda Group",
+          "location": "Liverpool L1 5AY",
+          "jobTypes": []
+        }
+      ]
+    },
+    {
+      "name": "JobServe",
+      "run_id": "4GKDrAhj3X0zg4YdS",
+      "dataset_id": "LRcXkIu3O27JN4YI5",
+      "observed_at": "2026-10-16T10:35:40.217Z",
+      "attempted": true,
+      "status": "SUCCEEDED",
+      "records": [
+        {
+          "title": "Business Intelligence/Commercial Modelling Analyst",
+          "url": "https://www.jobserve.com/gb/en/hFmtv",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFmtv",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "This Major UK Infrastructure organisation is looking for a commercially focused and highly analytical Business Performance/Business Intelligence Analyst to deliver high-quality insight, business/commercial intelligence, analysis and performance reporting across the organisation. You will turn customer, revenue and commercial data into clear, actionable recom",
+          "company": "Michael Page Technology",
+          "recruiter": "Michael Page Technology",
+          "location": "Lichfield, UK"
+        },
+        {
+          "title": "BI & Data Analyst",
+          "url": "https://www.jobserve.com/gb/en/hFQKm",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFQKm",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "As a BI & Data Analyst in the music and entertainment industry, based in London, you'll focus on interpreting data and creating actionable insights to support the company's decision-making processes. Your role will involve working with various teams to ensure data accuracy and deliver meaningful reports that drive business growth. Client Details A company op",
+          "company": "Michael Page Technology",
+          "recruiter": "Michael Page Technology",
+          "location": "City of London, UK"
+        },
+        {
+          "title": "Data Analyst - Power BI & Excel",
+          "url": "https://www.jobserve.com/gb/en/hGCRF",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGCRF",
+          "postedDateTime": "2026-10-15",
+          "postedDate": "Thursday, 15 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Data Analyst | Power BI & Excel | Contract £500-£550 per day | Inside IR35 | 6 months Manchester (Hybrid) | UK Your data. Real influence. Global impact. What if the reports and dashboards you built were being used to shape decisions at the very top of a global organisation? We're partnering with a prestigious international professional services firm looking ",
+          "company": "djr",
+          "recruiter": "djr",
+          "location": "Manchester, UK"
+        },
+        {
+          "title": "Data Analyst/Developer - Power BI & Databricks -London",
+          "url": "https://www.jobserve.com/gb/en/hDhGg",
+          "applyUrl": "https://www.jobserve.com/gb/en/hDhGg",
+          "postedDateTime": "2026-10-16",
+          "postedDate": "Friday, 16 October 2026",
+          "jobType": "Contract",
+          "isRemote": true,
+          "description": "Data Analyst/Developer - Power BI & Databricks -London- £450-£550 per day (inside IR35) Hybrid working - 4 days per week in office + 1 day WFH Inside IR35 Leading investment management client is seeking a Senior Data Analyst/Developer to assist with their migration onto Azure and Databricks, alongside a transition from Tableau to Power BI. Someone who can he",
+          "company": "McCabe & Barton",
+          "recruiter": "McCabe & Barton",
+          "location": "London, United Kingdom"
+        },
+        {
+          "title": "Business Intelligence Developer - SQL, ETL, Power BI, DAX",
+          "url": "https://www.jobserve.com/gb/en/hDiRY",
+          "applyUrl": "https://www.jobserve.com/gb/en/hDiRY",
+          "postedDateTime": "2026-10-09",
+          "postedDate": "Friday, 9 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "Business Intelligence Developer - SQL, ETL, Power BI, DAX, Azure Data Factory, Data Warehousing, Reporting & Dashboard Development. Permanent. London Hybrid (3/2). c.£80k -£90k + Bonus + Benefits Global Law Firm seeks an experienced Business Intelligence Developer to join its Business Systems team, supporting and developing a business-critical BI Reporting a",
+          "company": "Comtecs Ltd",
+          "recruiter": "Comtecs Ltd",
+          "location": "London, UK"
+        },
+        {
+          "title": "Technical Business Analyst - SC Cleared & NPPV3",
+          "url": "https://www.jobserve.com/gb/en/hDlJf",
+          "applyUrl": "https://www.jobserve.com/gb/en/hDlJf",
+          "postedDateTime": "2026-10-09",
+          "postedDate": "Friday, 9 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Technical Business Analyst - SC Cleared & NPPV3 We are looking for an experienced Technical Business Analyst to support a high-profile government data transformation programme, focused on integrating and analysing complex datasets to improve intelligence and operational decision-making. The initial phase will focus on delivering a proof of value, bringing to",
+          "company": "SR2 - Socially Responsible Recruitment",
+          "recruiter": "SR2 - Socially Responsible Recruitment",
+          "location": "London, UK"
+        },
+        {
+          "title": "Finance Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hEnT3",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEnT3",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": true,
+          "description": "Contract Business Analyst - Finance Systems & Integrations Location: Remote (UK-based) Contract: Initial 3 months Day Rate: Up to £550/day (Inside IR35) Domain: Finance Systems Transformation/Enterprise Applications Are you a systems-focused Finance Business Analyst skilled at bridging core finance operations with enterprise IT delivery? We are supporting a ",
+          "company": "IO Associates",
+          "recruiter": "IO Associates",
+          "location": "Islington, Greater London, England, UK"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hEuj9",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEuj9",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "Business Analyst Location: Bracknell, Berkshire Salary: £46,000 per annum Working Pattern: Hybrid - 3 days onsite per week Hours: 35 hours per week, with flexible start times About the Role We are looking for an experienced Business Analyst to support business change, process improvement and solution delivery within a regulated financial services environment",
+          "company": "Harvey Nash IT Recruitment UK",
+          "recruiter": "Harvey Nash IT Recruitment UK",
+          "location": "Bracknell, Berkshire, UK"
+        },
+        {
+          "title": "Business Analyst - Utilities & Digital Transformation",
+          "url": "https://www.jobserve.com/gb/en/hEvyT",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEvyT",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Job Overview We are seeking an experienced Mid level Business Analyst with 5+ years of experience in business analysis, digital product delivery and enterprise transformation initiatives. The ideal candidate will bridge business stakeholders and technology teams, translating business needs into clear requirements and actionable delivery plans. Experience in ",
+          "company": "Falcon Chase International",
+          "recruiter": "Falcon Chase International",
+          "location": "Warwick (2-3days week), UK"
+        },
+        {
+          "title": "Business Intelligence Manager",
+          "url": "https://www.jobserve.com/gb/en/hFqsm",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFqsm",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "An established public sector organisation is seeking an experienced Business Intelligence Manager to lead its BI team and drive the delivery of critical reporting, analytics and data initiatives. This is a hands-on leadership role requiring a blend of people management, stakeholder engagement and technical BI expertise. Client Details Our client is a well-es",
+          "company": "Michael Page Technology",
+          "recruiter": "Michael Page Technology",
+          "location": "Manchester, UK"
+        },
+        {
+          "title": "Business Data Analyst- Banking/Finance",
+          "url": "https://www.jobserve.com/gb/en/hGA9K",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGA9K",
+          "postedDateTime": "2026-10-15",
+          "postedDate": "Thursday, 15 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "We are a Global Recruitment specialist that provides support to the clients across EMEA, APAC, US and Canada. We have an excellent job opportunity for you. Role Title: Business Data Analyst- Banking/Finance Location: London/4 days onsite/week Duration: 31/12/2026 Role Description: Business Analysis Requirements Management Endtoend BA life cycle requirements ",
+          "company": "eTeam Workforce Limited",
+          "recruiter": "eTeam Workforce Limited",
+          "location": "London/Hybrid, UK"
+        },
+        {
+          "title": "Business Analysts (Intermediate to Senior - Multiple)",
+          "url": "https://www.jobserve.com/gb/en/hGeRi",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGeRi",
+          "postedDateTime": "2026-10-16",
+          "postedDate": "Friday, 16 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "Business Analysts (Intermediate to Senior - Multiple) Based at client locations, working remotely, or based in our Godalming or Milton Keynes offices. Multiple Business Analyst opportunities are available at intermediate and senior levels, with salaries ranging from £45,000 to £70,000 depending on experience, plus company benefits. Due to the nature of this ",
+          "company": "Triad Group Plc",
+          "recruiter": "Triad Group Plc",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hDhLc",
+          "applyUrl": "https://www.jobserve.com/gb/en/hDhLc",
+          "postedDateTime": "2026-10-09",
+          "postedDate": "Friday, 9 October 2026",
+          "jobType": "Contract",
+          "isRemote": true,
+          "description": "Business Analyst - Public Sector - Remote - Outside IR35 - Edinburgh Base - 12 Month engagement - £265 + VAT An exciting opportunity has arisen to join an organisation delivering digital and data solutions within a technically focused environment.The GIS and Data team is responsible for managing and delivering an integrated spatial platform supporting operat",
+          "company": "Hays Specialist Recruitment",
+          "recruiter": "Hays Specialist Recruitment",
+          "location": "Edinburgh, Scotland, UK"
+        },
+        {
+          "title": "Business Analyst (Telecoms) - Inside IR35 - £350 per day",
+          "url": "https://www.jobserve.com/gb/en/hEpwu",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEpwu",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst (Contract) - Inside IR35 Location: Hybrid - 2 days onsite in Manchester Rate: £350 per day My client is seeking a Business Analyst with significant Telecoms industry experience to support the delivery of key projects. You'll work closely with stakeholders to gather requirements, document business processes, and help deliver effective busines",
+          "company": "Berkeley Square IT Ltd",
+          "recruiter": "Berkeley Square IT Ltd",
+          "location": "Manchester, UK"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hErCs",
+          "applyUrl": "https://www.jobserve.com/gb/en/hErCs",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "BUSINESS ANALYST - COMMODITIES TRADING Exciting opportunity for a Senior Business Analyst to work as a Business Analyst for a leading Hedge Fund in London. PLEASE ONLY APPLY IF YOU HAVE STRONG COMMODITIES TRADING KNOWLEDGE Central London location, with Hybrid working expected, 2 days in office. Longer term than most contract opportunities. Please apply now i",
+          "company": "Lorien",
+          "recruiter": "Lorien",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst - Testing/ITSM (SC Cleared)",
+          "url": "https://www.jobserve.com/gb/en/hEtoE",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEtoE",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst - Testing/ITSM Location: Corsham (hybrid) - 2 days per week/monthly Contract: Contract opportunity Security Clearance: Active SC clearance required Rate: Up to £500 per day The Opportunity A leading management and technology consultancy is seeking an experienced Business Analyst to support a client engagement within a technical testing envir",
+          "company": "Sanderson Government & Defence",
+          "recruiter": "Sanderson Government & Defence",
+          "location": "Corsham, UK"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hFI38",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFI38",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Contract",
+          "isRemote": true,
+          "description": "Business Analyst - 3 months Contract - Sunbury on Thames Inside of IR35 Hybrid - 3 days on site, 2 days remote Required:- Must have solid experience with Intellipen, must have experience working on Pension Fund Administration Function. Solid Business Analysis background. Process Mapping Business Analyst Role Overview An experienced Business Analyst to lead t",
+          "company": "NES Fircroft Engineering Services",
+          "recruiter": "NES Fircroft Engineering Services",
+          "location": "Sunbury on Thames, UK"
+        },
+        {
+          "title": "Business Analyst - 2 days a week oniste - London - £500 per day INSIDE IR35 - SC Required",
+          "url": "https://www.jobserve.com/gb/en/hFKLA",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFKLA",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst - 2 days a week onsite - London - £500 per day INSIDE IR35 - SC Required TrinIT Talent are looking for a Business Analyst to come on board for a 6 month contract based in London. This role falls Inside Scope of IR35 and is paying £500 per day. Job Description:- Strategic and business-focused BA. Strong analysis, insight generation, and infor",
+          "company": "TrinIT Talent Ltd",
+          "recruiter": "TrinIT Talent Ltd",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst with Insurance Domain",
+          "url": "https://www.jobserve.com/gb/en/hFRLX",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFRLX",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst with Insurance Domain Location: London UK (Onsite) Employment Type: Contract Inside Ir35. Job Description: Key Responsibilities: Business Analysis Gather, analyze, and document business requirements. Facilitate stakeholder workshops and discovery sessions. Develop BRDs, user stories, process maps, and functional specifications. Translate bus",
+          "company": "Intuition IT Solutions Ltd",
+          "recruiter": "Intuition IT Solutions Ltd",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst - Policy Administration Systems Build - 12 Month FTC",
+          "url": "https://www.jobserve.com/gb/en/hFmwI",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFmwI",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract/Permanent",
+          "isRemote": false,
+          "description": "Business Analyst - Policy Administration Systems Build Insurance client based in The City of London has a requirement for an insurance Business Analyst with experience of implementing a policy administration system. You must have strong end to end experience to include gathering technical requirements, documentation for questions and ratings, UAT and managem",
+          "company": "Michael James Associates",
+          "recruiter": "Michael James Associates",
+          "location": "The City, London, UK"
+        },
+        {
+          "title": "Business Analyst - Digital - CESA Futures",
+          "url": "https://www.jobserve.com/gb/en/hFojg",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFojg",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst - Digital - Agents - CESA Futures Rate: Up to £500 per day, dependent on seniority Location: Telford or Worthing Working arrangement: 2 days per week in the office Contract length: 3 months IR35/engagement: INSIDE IR35 Clearance: BPSS required Your new company You'll be working in the Agents area within CESA Futures, supporting requirements ",
+          "company": "Hays Specialist Recruitment",
+          "recruiter": "Hays Specialist Recruitment",
+          "location": "Telford, UK"
+        },
+        {
+          "title": "Business Analyst - PPM Implementation",
+          "url": "https://www.jobserve.com/gb/en/hFpKA",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFpKA",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst - Portfolio Insights Programme Directorate: Change & Planning Clearance required: Valid Security Check (SC) About the Programme Portfolio Insights is a strategic transformation programme that will change how we report on projects, programmes and portfolios across the Change & Planning directorate and up to Executive level. The programme will",
+          "company": "Lorien",
+          "recruiter": "Lorien",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst -Customer Journey Manager",
+          "url": "https://www.jobserve.com/gb/en/hGENR",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGENR",
+          "postedDateTime": "2026-10-15",
+          "postedDate": "Thursday, 15 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst -Customer Journey Manager 6 Month contract initially + Extensions Based: Hybrid working. Max - 2 days p/w onsite in Leeds Rate - £400 - £450 p/d via Umbrella We have a great opportunity with a world leading organisation where you will be provided with all of the support and development to succeed. A progressive organisation where you can rea",
+          "company": "LA International Computer Consultants Ltd",
+          "recruiter": "LA International Computer Consultants Ltd",
+          "location": "Leeds, UK"
+        },
+        {
+          "title": "Business Analyst - Crisis Management & Resilience",
+          "url": "https://www.jobserve.com/gb/en/hGHqE",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGHqE",
+          "postedDateTime": "2026-10-15",
+          "postedDate": "Thursday, 15 October 2026",
+          "jobType": "Contract",
+          "isRemote": true,
+          "description": "Business Analyst - Crisis Management & Resilience - £600-£650 per day - Inside IR35 - Remote with occasional site attendance - 6 months initial contract. We are recruiting for an experienced Business Analyst to support a major UK nuclear new build organisation in establishing its Enterprise IT Crisis Management and Resilience capability. Working alongside th",
+          "company": "Morson Edge",
+          "recruiter": "Morson Edge",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst - CRM",
+          "url": "https://www.jobserve.com/gb/en/hFTZL",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFTZL",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "Business Analyst - CRM Transformation & Customer Experience Location: Manchester (Hybrid - 1 day per week in the office) Type: Permanent Salary: Competitive + Benefits The Opportunity An exciting opportunity has arisen for an experienced Business Analyst to join a growing organisation undergoing significant customer and digital transformation. You'll play a ",
+          "company": "Experis IT",
+          "recruiter": "Experis IT",
+          "location": "Manchester, UK"
+        },
+        {
+          "title": "Business Analyst - Financial Crime",
+          "url": "https://www.jobserve.com/gb/en/g9Wi5",
+          "applyUrl": "https://www.jobserve.com/gb/en/g9Wi5",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": true,
+          "description": "Business Analyst - Financial Crime 6 months Remote/London - 3 days a week £Negotiable - INSIDE IR35 We're looking for x3 Business Analyst, who has experience in banking, in financial crime, preferably within KYC/KYB Disclaimer: This vacancy is being advertised by either Advanced Resource Managers Limited, Advanced Resource Managers IT Limited or Advanced Res",
+          "company": "ARM (Advanced Resource Managers)",
+          "recruiter": "ARM (Advanced Resource Managers)",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hFqXM",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFqXM",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst 4 months London - 2/3 days onsite £550 - £650 inside IR35 - umbrella only Responsibilities Develop APQC-aligned L3/L4 processes and BPMN-compliant future-state process maps Define process variations for different business areas, markets, selling channels and types of products Ensure alignment with the wider SAP S/4HANA process design Quantif",
+          "company": "Experis IT",
+          "recruiter": "Experis IT",
+          "location": "City of London, UK"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hEnWF",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEnWF",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst - Customer Loyalty 6 month initial contract. £460 per day (Outside IR35) We're looking for a Business Analyst to support the development and enhancement of a customer loyalty and mobile app platform. This is a hands-on role focused on improving customer engagement through digital features, personalised rewards and gamification. You'll work c",
+          "company": "Sanderson Recruitment Plc",
+          "recruiter": "Sanderson Recruitment Plc",
+          "location": "Birmingham, UK"
+        },
+        {
+          "title": "Business Change Analyst",
+          "url": "https://www.jobserve.com/gb/en/hDg1S",
+          "applyUrl": "https://www.jobserve.com/gb/en/hDg1S",
+          "postedDateTime": "2026-10-09",
+          "postedDate": "Friday, 9 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Analyst (SC Cleared & NPPV3 Cleared) Location: London (1 day per week on-site) Contract Type: Contract Clearance Required: Active SC Clearance & NPPV3 Nationality Requirement: Sole British National IR35: Outside Overview We are seeking an experienced Business Analyst to support a high-profile programme within a secure policing and government environ",
+          "company": "IO Associates",
+          "recruiter": "IO Associates",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst Outside IR35",
+          "url": "https://www.jobserve.com/gb/en/hDiM1",
+          "applyUrl": "https://www.jobserve.com/gb/en/hDiM1",
+          "postedDateTime": "2026-10-09",
+          "postedDate": "Friday, 9 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Senior Business Analyst | Business & Technology Transformation £400 per day outside IR35 6 month contract Hybrid 2 days onsite per week Are you an experienced Business Analyst with a proven track record of delivering large-scale transformation programmes? We're looking for a Senior Business Analyst to play a key role in modernising Legacy systems, driving bu",
+          "company": "Cathcart Technology",
+          "recruiter": "Cathcart Technology",
+          "location": "Liverpool, UK"
+        },
+        {
+          "title": "Business Systems Analyst, £500 per day inside IR35",
+          "url": "https://www.jobserve.com/gb/en/hEpsZ",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEpsZ",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Systems Analyst, £500 per day inside IR35 Warrington, 6 months initially Bench IT require an experienced Business Systems Analyst to join a large organisation starting ASAP. The Business Systems Analyst will be working full time on site in Warrington which is a mandatory requirement. The successful resource should have the skills and experience incl",
+          "company": "Bench IT Limited",
+          "recruiter": "Bench IT Limited",
+          "location": "Warrington, Cheshire, UK"
+        },
+        {
+          "title": "Data/MI Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hBrGM",
+          "applyUrl": "https://www.jobserve.com/gb/en/hBrGM",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Data/MI Business Analyst About Scrumconnect Consulting Scrumconnect Consulting is a multi-award-winning digital consultancy, recognised for delivering impactful technology solutions across UK government departments. Our work has positively influenced the lives of over 40 million UK citizens. With a strong commitment to user-centred design and agile delivery,",
+          "company": "scrumconnect ltd",
+          "recruiter": "scrumconnect ltd",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst - Commodities, Platform, Process",
+          "url": "https://www.jobserve.com/gb/en/hFHSw",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFHSw",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Project Associate/Business Analyst - Commodities, Platform, Process A leading global organisation operating within complex physical market and trading environments is seeking a Business Analyst to join its Transformation and Systems function.This role will support the delivery of a significant strategic transformation programme, focusing on both the implemen",
+          "company": "Hays Specialist Recruitment",
+          "recruiter": "Hays Specialist Recruitment",
+          "location": "City of London, UK"
+        },
+        {
+          "title": "Business Process Analyst - Delegated Authority, London Market, Outside IR35",
+          "url": "https://www.jobserve.com/gb/en/hFNpZ",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFNpZ",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Business Process Analyst - Delegated Authority, London Market, Outside IR35 Our sister professional service company, Stellarmann, is seeking an experienced Business Analyst with strong London Market and Delegated Authority expertise to support their Insurance client with a large scale process transformation programme. You'll facilitate workshops with busines",
+          "company": "William Alexander Recruitment Ltd",
+          "recruiter": "William Alexander Recruitment Ltd",
+          "location": "London, UK"
+        },
+        {
+          "title": "Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/g9Z9r",
+          "applyUrl": "https://www.jobserve.com/gb/en/g9Z9r",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Technical Business Analyst - Data & Markets Transformation Location: Belfast, Northern Ireland (Hybrid - 3 days in the office) Rate: £450 - £475 per day Contract: Initial 9 months, with a view to extend The Opportunity We are looking for a technically strong Business Analyst with excellent SQL skills to join a major financial services organisation's Markets ",
+          "company": "McGregor Boyall",
+          "recruiter": "McGregor Boyall",
+          "location": "Canary Wharf, Belfast, United Kingdom"
+        },
+        {
+          "title": "Business Analyst - £500 Inside - 6 months - Remote",
+          "url": "https://www.jobserve.com/gb/en/hDHmy",
+          "applyUrl": "https://www.jobserve.com/gb/en/hDHmy",
+          "postedDateTime": "2026-10-15",
+          "postedDate": "Thursday, 15 October 2026",
+          "jobType": "Contract",
+          "isRemote": true,
+          "description": "Job Title: Business Analyst Rate: £500 (Inside IR35) Duration: 6 months Location: Remote Clearance: BPSS Stages: 1 Stage They undertake research and analysis to understand how a business or business area works, considering the people, organisation, processes, information, data and technology. They identify areas for improvement, explore feasible options, ana",
+          "company": "Stealth IT Consulting",
+          "recruiter": "Stealth IT Consulting",
+          "location": "United Kingdom"
+        },
+        {
+          "title": "Payments Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hEplT",
+          "applyUrl": "https://www.jobserve.com/gb/en/hEplT",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Payments Business Analyst | Global Banking Organisation London | 3 days in the office Initial 6 month contract | £800 per day inside IR35 We are seeking an experienced Payments Business Analyst to join a leading global banking organisation, supporting a major regulatory change programme within its EMEA Payments Operations function. The successful candidate w",
+          "company": "Magnit Global",
+          "recruiter": "Magnit Global",
+          "location": "London, UK"
+        },
+        {
+          "title": "Senior Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hExae",
+          "applyUrl": "https://www.jobserve.com/gb/en/hExae",
+          "postedDateTime": "2026-10-12",
+          "postedDate": "Monday, 12 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Senior Business Analyst - Defence Initial 12-month contract | Active DV clearance essential We are seeking an experienced Senior Business Analyst to support a defence client on an initial 12-month contract. You will work closely with stakeholders across various defence sites to gather and understand technical requirements, translating them into clear documen",
+          "company": "Certes Computing Ltd",
+          "recruiter": "Certes Computing Ltd",
+          "location": "London, UK"
+        },
+        {
+          "title": "Technical Business Analyst - Hybrid Working",
+          "url": "https://www.jobserve.com/gb/en/hFWBL",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFWBL",
+          "postedDateTime": "2026-10-13",
+          "postedDate": "Tuesday, 13 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "Technical Business Analyst Bromley, Kent | Hybrid Working We are recruiting for an established law firm based in Bromley that is looking for a Technical Business Analyst to join its technology and development team. Previous experience within a law firm or legal environment would be beneficial, but it is not essential. We are more interested in strong Busines",
+          "company": "eTech Partners",
+          "recruiter": "eTech Partners",
+          "location": "Bromley, Kent, UK"
+        },
+        {
+          "title": "Lead Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hFk5i",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFk5i",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "Lead Business Analyst - Cardiff (Hybrid) - £81,700 + Benefits A well-established organisation delivering critical services across the UK is looking for an experienced Lead Business Analyst to join its technology change function. This is a key leadership opportunity for someone who enjoys operating at the intersection of business strategy, technology delivery",
+          "company": "Yolk Recruitment",
+          "recruiter": "Yolk Recruitment",
+          "location": "Cardiff, Wales, UK"
+        },
+        {
+          "title": "Business Intelligence Developer (Tableau/T-SQL)",
+          "url": "https://www.jobserve.com/gb/en/hFmtr",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFmtr",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract/Permanent",
+          "isRemote": false,
+          "description": "This leading Professional Services company require a Finance System Reporting Analyst/BI Developer on a 12 month fixed term contract to cover maternity leave. The role with work closely with the Finance and Operational teams to provide analytical reports and visualisation/dashboarding in Tableau. Client Details Leading Professional Services organisation Desc",
+          "company": "Michael Page Technology",
+          "recruiter": "Michael Page Technology",
+          "location": "Birmingham, UK"
+        },
+        {
+          "title": "Technical Business Analyst - 6 months | Leeds, UK (Hybrid - 3 days/week in office)",
+          "url": "https://www.jobserve.com/gb/en/hFuji",
+          "applyUrl": "https://www.jobserve.com/gb/en/hFuji",
+          "postedDateTime": "2026-10-14",
+          "postedDate": "Wednesday, 14 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Technical Business Analyst - 6 months | Leeds, UK (Hybrid - 3 days/week in office) We are looking for an experienced Technical Business Analyst to join a major financial services transformation, working across business operations, technology teams and third-party suppliers. You will define target-state processes and technology interactions across complex cro",
+          "company": "Hamilton Barnes",
+          "recruiter": "Hamilton Barnes",
+          "location": "Leeds, UK"
+        },
+        {
+          "title": "IT Business Analyst - Insurance, Business Change, Process Modelling, Data Analysis",
+          "url": "https://www.jobserve.com/gb/en/hGGAG",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGGAG",
+          "postedDateTime": "2026-10-15",
+          "postedDate": "Thursday, 15 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "IT Business Analyst - Insurance, Business Change, Process Modelling, Data Analysis Our client, a leading speciality insurer, is seeking an IT Business Analyst to join their growing Business Change and Technology function. This is a highly varied role offering exposure to both strategic project work and business-as-usual initiatives, making it an excellent op",
+          "company": "William Alexander Recruitment Ltd",
+          "recruiter": "William Alexander Recruitment Ltd",
+          "location": "London, UK"
+        },
+        {
+          "title": "Junior Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hGGBr",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGGBr",
+          "postedDateTime": "2026-10-15",
+          "postedDate": "Thursday, 15 October 2026",
+          "jobType": "Permanent",
+          "isRemote": false,
+          "description": "Junior Business Analyst Taunton, Somerset | Permanent | Hybrid - 2/3 days per week on-site | £30,000-£45,000 per annum Our client are seeking to onboard a Junior Business Analyst into their team on a permanent basis. This is an exciting time to join the business as they continue to deliver a number of business-critical projects and transformation initiatives",
+          "company": "Proactive Appointments",
+          "recruiter": "Proactive Appointments",
+          "location": "Taunton, Somerset, England, UK"
+        },
+        {
+          "title": "FX Business Analyst",
+          "url": "https://www.jobserve.com/gb/en/hGeFe",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGeFe",
+          "postedDateTime": "2026-10-16",
+          "postedDate": "Friday, 16 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Senior Business Analyst - FX Payments & Execution Location: London (50% onsite) Duration: 6-Month Initial Contract Rate: Competitive (via umbrella) Sector: Investment Banking/Financial Markets Overview We're supporting a leading investment banking client in the search for an experienced Senior Business Analyst to join a high-profile FX technology and change ",
+          "company": "Lorien",
+          "recruiter": "Lorien",
+          "location": "City of London, UK"
+        },
+        {
+          "title": "Process Business Analyst - London Market Insurance",
+          "url": "https://www.jobserve.com/gb/en/hGfqg",
+          "applyUrl": "https://www.jobserve.com/gb/en/hGfqg",
+          "postedDateTime": "2026-10-16",
+          "postedDate": "Friday, 16 October 2026",
+          "jobType": "Contract",
+          "isRemote": false,
+          "description": "Process Business Analyst - London Market Insurance Our sister company Stellarmann is supporting a London Market insurer as they strengthen their Process Centre of Excellence, with a focus on a key Underwriting Journey initiative. As part of a broader operational improvement effort, the business is looking to enhance how processes are captured, documented, an",
+          "company": "William Alexander Recruitment Ltd",
+          "recruiter": "William Alexander Recruitment Ltd",
+          "location": "Greater London, UK"
+        }
+      ]
+    }
+  ]
+}
