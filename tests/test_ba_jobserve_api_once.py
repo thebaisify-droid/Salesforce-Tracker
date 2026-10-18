@@ -5,7 +5,7 @@ from scripts import ba_jobserve_api_once as recovery
 class JobServeApiOnceTests(unittest.TestCase):
     def test_exact_budget_and_reserve(self):
         ok={"limits":{"maxMonthlyUsageUsd":19},"current":{"monthlyUsageUsd":10.0}}
-        self.assertEqual(recovery.billing(ok)["maximum_request_usd"],0.5)
+        self.assertEqual(recovery.billing(ok)["maximum_request_usd"],0.2)
         for usage in (10.51,18.99):
             with self.assertRaises(RuntimeError):
                 recovery.billing({"limits":{"maxMonthlyUsageUsd":19},"current":{"monthlyUsageUsd":usage}})
@@ -13,8 +13,8 @@ class JobServeApiOnceTests(unittest.TestCase):
             recovery.billing({"limits":{"maxMonthlyUsageUsd":30},"current":{"monthlyUsageUsd":10}})
     def test_only_ba_inputs_and_one_off_guard(self):
         self.assertEqual(recovery.input_record()["keywords"],["business analyst"])
-        self.assertEqual(recovery.input_record()["maxResults"],20)
-        self.assertEqual(recovery.CAP_USD,0.50)
+        self.assertEqual(recovery.input_record()["maxResults"],30)
+        self.assertEqual(recovery.CAP_USD,0.20)
         with patch.dict("os.environ",{"BA_JOBSERVE_APPROVAL":"", "GITHUB_RUN_ATTEMPT":"1"}):
             with self.assertRaises(SystemExit):
                 recovery.main()
