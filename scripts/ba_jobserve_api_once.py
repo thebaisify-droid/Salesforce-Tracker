@@ -16,8 +16,8 @@ from urllib.error import HTTPError, URLError
 BASE = "https://api.apify.com/v2/"
 ACTOR = "solidcode~jobserve-scraper"
 APPROVAL = "AUTHORISE_BA_JOBSERVE_API_RECOVERY_050_20_ONCE"
-CAP_USD = 0.50
-ROWS = 20
+CAP_USD = 0.20
+ROWS = 30
 RESERVE = 8.0
 ACCOUNT_LIMIT = 19.0
 OUTPUT = Path("business-analysis-tracker/evidence/jobserve-api-recovery-result.json")
@@ -74,11 +74,13 @@ def main():
     token=os.getenv("APIFY_TOKEN")
     if not token:
         raise SystemExit("Missing token; no Actor launched")
-    # Check billing before the only permitted POST.
-    before=billing(api(BASE+"users/me/limits",token))
-    print(json.dumps({"event":"billing_preflight_ok",**before}),flush=True)
+    # Explicit one-time exception: user instructed us to skip account-usage reading.
+    # This does not establish account headroom or protect the Salesforce reserve.
+    before={"status":"SKIPPED_AT_USER_REQUEST","account_headroom_verified":False,
+            "protected_salesforce_reserve_verified":False,
+            "maximum_request_usd":CAP_USD}
     url=BASE+"acts/"+ACTOR+"/runs?"+urlencode({
-        "maxItems":ROWS,"maxTotalChargeUsd":"0.50","timeout":120})
+        "maxItems":ROWS,"maxTotalChargeUsd":"0.20","timeout":120})
     # There is exactly ONE POST to the Actor launch endpoint in this program.
     launched=api(url,token,input_record())
     run_id=launched.get("id")
