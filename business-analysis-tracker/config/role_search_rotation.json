@@ -1,6 +1,6 @@
 {
   "schema": "business-tech-role-rotation/v1",
-  "status": "STAGED_NOT_LIVE",
+  "status": "STAGED_NOT_LIVE_PAID_SCHEDULE_PAUSED",
   "market": "UK",
   "source_of_families": "config/business_product_delivery_security_taxonomy_v1.0.json",
   "strategy": "Five distinct family searches per refresh, deterministic 22-family round-robin across Tue/Fri slots; rolling retention is mandatory before publication",
@@ -94,8 +94,9 @@
       "query": "IT security analyst"
     }
   ],
-  "monthly_account_ceiling_usd": 25,
+  "monthly_account_ceiling_usd": 19,
   "salesforce_reserve_usd": 8,
-  "ba_monthly_ceiling_usd": 17,
-  "ba_run_max_usd": 1.8
+  "ba_monthly_ceiling_usd": 11,
+  "ba_run_max_usd": 1.2,
+  "budget_note": "Approved $19 shared account limit, $8 Salesforce reserve, $11 BA monthly allowance, $1.20 max per BA refresh; paid workflows remain disabled pending account headroom and pricing evidence."
 }
