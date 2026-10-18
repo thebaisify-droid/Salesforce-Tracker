@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Business Analysis Snapshot Receiver
  * Description: Independent authenticated atomic delivery of quality-gated BA vacancy snapshots.
- * Version: 0.3.5
+ * Version: 0.3.6
  */
 if (!defined('ABSPATH')) { exit; }
 require_once __DIR__ . '/rolling-retention.php';
@@ -128,6 +128,42 @@ add_action('rest_api_init',static function () {
 
 
 /**
+ * Read-only enrichment of the already observed 18 October snapshot.
+ * This static reviewed evidence ledger is NOT a source refresh or observation:
+ * match all four identity/provenance fields to prevent historical data being
+ * copied to a later job posting at the same URL.
+ */
+function zarafy_ba_evidenced_terms($r) {
+    static $ledger = null;
+    if ($ledger === null) {
+        $ledger = array();
+        $path = __DIR__ . '/evidenced-terms-20261018.json';
+        if (is_file($path) && !is_link($path) && filesize($path) <= 120000) {
+            $doc = json_decode((string) file_get_contents($path), true);
+            if (is_array($doc) && ($doc['schema'] ?? '') === 'ba-evidenced-terms/v1'
+                && ($doc['record_count'] ?? 0) === 218
+                && is_array($doc['records'] ?? null) && count($doc['records']) === 218) {
+                $ledger = $doc['records'];
+            }
+        }
+    }
+    $id = $r['id'] ?? '';
+    $e = is_string($id) ? ($ledger[$id] ?? null) : null;
+    if (!is_array($e)
+        || ($e['source'] ?? null) !== ($r['job_source'] ?? null)
+        || ($e['url'] ?? null) !== ($r['original_advert_url'] ?? null)
+        || ($e['last_observed_at'] ?? null) !== ($r['last_observed_at'] ?? $r['observed_at'] ?? null)) return null;
+    foreach (array('pay_display', 'ir35_status', 'work_mode_display', 'office_requirement') as $name) {
+        if (!is_string($e[$name] ?? null) || strlen($e[$name]) > 160) return null;
+    }
+    if (!in_array($e['ir35_status'], array('Inside IR35', 'Outside IR35', 'Not stated',
+                                         'Not applicable', 'Check advert'), true)) return null;
+    if (!in_array($e['work_mode_display'], array('Remote', 'Remote (site visits)',
+                                               'Hybrid', 'On-site', 'Not stated'), true)) return null;
+    return $e;
+}
+
+/**
  * Server-rendered, fail-closed front-end handoff for BA page 49 only.
  * This reads the receiver's private local file, not a public uploads URL.
  * If the file or any validation fails, return the original embedded table.
@@ -245,6 +281,12 @@ function zarafy_ba_live_content_bridge($content) {
             'observed_age_days' => (int) ($r['observed_age_days'] ?? 0),
             'availability_status' => 'SOURCE_OBSERVED_NOT_EMPLOYER_CONFIRMED'
         );
+        $terms = zarafy_ba_evidenced_terms($r);
+        if (is_array($terms)) {
+            foreach (array('pay_display', 'ir35_status', 'work_mode_display', 'office_requirement') as $field) {
+                $item[$field] = $terms[$field];
+            }
+        }
         $identity = zarafy_ba_advert_identity($r);
         if ($identity === '') return zarafy_ba_unavailable_notice();
         if (!isset($rows[$identity])
@@ -288,12 +330,13 @@ function zarafy_ba_live_content_bridge($content) {
         $short_description = (string) ($r['description_summary'] ?? '');
         $inside = (bool) preg_match('/\\binside(?:\\s+(?:of|scope\\s+of))?\\s+ir35\\b/i', $short_description);
         $outside = (bool) preg_match('/\\boutside(?:\\s+of)?\\s+ir35\\b/i', $short_description);
-        $ir35_label = $inside && !$outside ? 'Inside IR35' : ($outside && !$inside ? 'Outside IR35'
-            : (($r['employment'] ?? '') === 'Permanent' ? 'Not applicable' : 'Not stated'));
-        $work_label = ($r['working_arrangement'] ?? '') !== 'Not specified'
-            ? (string) $r['working_arrangement'] : 'Not stated';
-        $office_label = 'Not stated';
-        $pay_label = 'Not stated';
+        $ir35_label = $r['ir35_status'] ?? ($inside && !$outside ? 'Inside IR35'
+            : ($outside && !$inside ? 'Outside IR35'
+            : (($r['employment'] ?? '') === 'Permanent' ? 'Not applicable' : 'Not stated')));
+        $work_label = $r['work_mode_display'] ?? (($r['working_arrangement'] ?? '') !== 'Not specified'
+            ? (string) $r['working_arrangement'] : 'Not stated');
+        $office_label = $r['office_requirement'] ?? 'Not stated';
+        $pay_label = $r['pay_display'] ?? 'Not stated';
         $trs .= '<tr class="ba-v2-record"><td><strong>' . esc_html($r['title'])
             . '</strong><small>Role family: ' . esc_html($r['role_family'])
             . '</small><small>Last source observation: ' .
