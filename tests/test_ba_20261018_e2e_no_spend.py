@@ -9,6 +9,7 @@ from pathlib import Path
 
 from scripts.ba_controlled_refresh import CONFIG, validate
 from scripts.ba_e2e_offline import run_offline
+from scripts.ba_reviewed_124_offline_replay import replay
 from scripts.ba_stage_five_source_data import MAPPING, link, user_excluded_adverts, FINAL_SCOPE_DECISIONS
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -68,6 +69,24 @@ class OfflineBusinessTrackerE2E(unittest.TestCase):
         self.assertEqual(observed,ledger)
         self.assertEqual(len(observed),161)
         self.assertEqual(len([x for x in self.decisions["decisions"] if x["decision"]=="KEEP"]),124)
+
+    def test_exact_user_reviewed_124_e2e_replay_without_paid_or_delivery(self):
+        r=replay()
+        self.assertEqual(r["status"],"REVIEWED_124_OFFLINE_READY_NOT_FRESH_NOT_PUBLISHED")
+        self.assertEqual((r["source_records"],r["approved_records"],r["excluded_records"]),(161,124,37))
+        self.assertEqual((r["baseline_automatic_records"],r["reviewed_exact_override_records"]),(81,43))
+        self.assertEqual((r["actor_runs_started"],r["wordpress_requests"]),(0,0))
+        self.assertFalse(r["package"]["delivery_approved"])
+        keep={(x["source"],x["original_advert_url"])
+              for x in self.decisions["decisions"] if x["decision"]=="KEEP"}
+        actual={(x["source"],x["url"]) for x in r["candidate"]["records"]}
+        self.assertEqual(keep,actual)
+        self.assertTrue(actual.isdisjoint(user_excluded_adverts()))
+        self.assertEqual(len({x["id"] for x in r["candidate"]["records"]}),124)
+        self.assertTrue(all(x["scope_review_provenance"]=="EXACT_20261016_APPROVED_ADVERT"
+                            for x in r["candidate"]["records"]))
+        print("BA_REVIEWED_124_E2E",json.dumps({k:v for k,v in r.items()
+             if k not in ("candidate","package")},sort_keys=True))
 
     def test_older_source_batch_must_not_be_republished_as_fresh(self):
         self.assertEqual(self.source["date"],"2026-10-16")
