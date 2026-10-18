@@ -1,0 +1,1969 @@
+{
+  "schema": "ba-evidenced-terms/v1",
+  "as_of_source_observation": "2026-10-18T08:16:56.668Z",
+  "record_count": 218,
+  "records": {
+    "4a382f25a49d92215f84434a": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225737337",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "14a7b61fd28fdc39356684c1": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=a9bcd460c741812d",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£50,000–£55,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "21f5831df8ea17b921c723e1": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/allegro-etrm-business-analyst/exxonmobil-job108199297",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "243807325b9b8db72c264a9b": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=623f286594f0a03e",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "8d07a93bedca5f65c7817d6d": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-digital-business-analyst/heathrow-airport-job108199286",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "1ccc51d4f30e2c853b209679": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225734777",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "57b8ade62d6cbd6784600d8f": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225735717",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "5e23a730eda99ef3d2754894": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=9cca6037fb7f7198",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "Up to £60,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "6fab3443f2ed4073dbafe2b0": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGiYl",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£450–£500 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "c62ed9f87a7113968b94ed28": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst/57467322",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£49,618 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "e0c701ca70825668d0804fbf": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225735308",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "£450–£500 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "f93553bed35ec8242273d210": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225734454",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "05d2f055d94a6f9dbea43b12": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGeRi",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "£45 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "b475e3fc1cfe6819ca8ba643": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225736382",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "76dba344f8566883cdb74097": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDhGg",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "£450–£550 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "4 days/week on-site"
+    },
+    "ffbb956c253c0c85e211df0d": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGkeY",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "468dae7c7479d03a00566d2b": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=f238de13d530ec2d",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ca602d5253fa5eabb222cb49": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGeFe",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "50% on-site"
+    },
+    "0c1e31860c41013acba8f36d": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/lead-business-analyst/57467505",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "74180cafd00d5902dfd3fe03": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225733118",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "cae5219e38518a32646cf447": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGfqg",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Outside IR35",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ab9e833ca3e8117447949406": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=d60c10c1b3bf5ff3",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£40,000–£45,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "268cf3ab34b47389c649df9b": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-business-analyst/tpximpact-holdings-plc-job108187847",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ea0675b03567a33ef1018cfa": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225734281",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "96aabdfe4597a1614ed1e557": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=e2ab74df217783ca",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£49,735–£72,471 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "3fa23dbd5f9f6a7f83ba01a9": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225736479",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "0b98b4964f80070398c46769": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=994169edb11b762c",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "0e98de2c77738f773dae4ae6": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst-crisis-management-resilience/morson-edge-job108183060",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "1de2d65099da13fc80f512f3": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGHqE",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£600–£650 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Remote (site visits)",
+      "office_requirement": "Occasional site attendance"
+    },
+    "ff1697531422c34da1f9abcd": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225731330",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "a576407f5c0dd90843019fc3": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDHmy",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "£500 (basis unstated)",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "24faa68f46ee018fdb53cfe9": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGENR",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£400–£450 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "a128873cf784ff70cd7b6d74": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGA9K",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "4 days/week on-site"
+    },
+    "4116b1601833142ebaa752d8": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-functional-analyst-margin-and-valuations-fic/57461995",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "cf370ceffff8ee4604135fbb": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=b4f0153672be88d2",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "3fd31a511eea3557b7ed35b8": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/credit-risk-change-business-analyst/deutsche-bank-job108183968",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ef0c14abc15b92ee5c4b3e83": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/cyber-sec-analyst-network-intrusion-capability-development/salt-job108180114",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "44c5ab85a5340c6dd1104caa": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/cyber-security-analyst/viqu-it-recruitment-job108179002",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "5f1917df887e984754810b15": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=14ac11b5872c2f2d",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "649177f4426639107badcb4a": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=d28093d4fcc12a39",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "3d59dca62c9ccd4cf65dfb3a": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGCRF",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "£500–£550 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "2bb6a943954d0df3497bf7e1": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225727811",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-3": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225727811/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£55,000–£62,000 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "391fd8bf068246eed5816280": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=abb775948d6a23e1",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "a384fccfea1030309983c346": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729882",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "a9dbb00468b631b5c7a43bf6": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729291",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "2168e603647383be57a83cb6": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225728868",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "£300–£400 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "cf8bf26764dbd119630180f6": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGGAG",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£75 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "c08f44cc68d3ca3cddec7a20": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=90878bced720d927",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "a25eeb5bf251644cdb173eae": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hGGBr",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£30 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2–3 days/week on-site"
+    },
+    "58e8749794961e09a97a0884": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=d3fb5641a890394f",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "dc8c585019251baf8963a570": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729954",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-1": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729954/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£60,000–£95,000 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "4f62625143ed519640f12d1c": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=7a7f196f2d1b00e9",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "86eb169127134227e2e10d44": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=57c3745eb174b9b3",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "c99fbd02fb39167020d2e36c": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729928",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "£55,000 (basis unstated)",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-2": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729928/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£55,000 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "86bf43a83bbae2a095ef6da1": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=c8e6419a22b989ca",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "b41d7272d7fb18416b1466e8": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225729143",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Up to £650 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "04dcd8aa56d1b63ce46e6f6c": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108183829",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "98cbfd9fef2592f217459f02": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=f259db8858b3df1d",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "15500e4df83e697225d98a92": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFqXM",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£550–£650 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2–3 days/week on-site"
+    },
+    "2e33e7074f1a10ccc9bc0c16": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/g9Z9r",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£450–£475 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "323d9f25b7d001ebb78fea7f": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst/experis-job108170996",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "423a9e539481c0f387548527": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225724261",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "£550–£650 (basis unstated)",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2–3 days/week on-site"
+    },
+    "742bab13298d777ab5fffef1": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFk5M",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Up to £365 / day",
+      "ir35_status": "Outside IR35",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "af75faf2bc27c7950c6e69ea": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726711",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "d9d964ca9fd084bd76f93e8c": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725772",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "f31871a27b16fb06f205df44": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst/mthree-job108172515",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-5": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726711/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-7": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725772/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£68,000–£73,000 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "11e38b85057f7e4aa19cd698": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFojg",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Up to £500 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "252dcd2a02e8c194ca05d32e": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225723312",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Up to £500 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "4d2b5f3f13f4c990faca5a1d": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFmwI",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "a946ee529a0af894ae923894": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFpKA",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "1300cc6db415238a969a4b7a": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225285452",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "£28,000–£40,000 (basis unstated)",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "22f33f08e26c4fe2abc49774": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst-technical-se-london/langley-james-limited-job108169584",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "b3e334c78697a5f38d5cff7d": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFmtr",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "1306222e8b553dd3e6939d7a": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFqsm",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ab84e995026e73623ae5de19": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFmtv",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ebc5389ab969dad20a176928": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFvh7",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "b079410f1d844c1b58f88709": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725199",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Up to £52,000 (basis unstated)",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "pilot-cvlibrary-10": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725199/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£47,000–£52,000 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "fc69e4df4aa197c27dd5fe1a": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726314",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "fe2e78e31a87d91d6f26b6cc": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225722573",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "7d5054a7187a838269ba2ff7": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225722797",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "£500 / day",
+      "ir35_status": "Outside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2–3 days/week on-site"
+    },
+    "e725b5cc77ad8c5463134581": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725838",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-6": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725838/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£500 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "1104e5051b4e669661c6de4b": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225723161",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "75b3cc085c765888edee651a": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFmt5",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "58716b2cc931efcacac6eef1": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFk5i",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Up to £81600 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "547b7e578830c09124862aea": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=5fdd79d0bddb4f90",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "a32e752cf85efaac402c58a0": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726732",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-4": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726732/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£35,000–£42,000 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "495877e2532767f80a454a44": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/project-analyst/57458778",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "3bdd10c3b9436f859bcd1757": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725567",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "09c70635358d57f46422d8bc": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/sc-cleared-business-analyst/viqu-it-recruitment-job108172193",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "50fe3028ed04c1146fbfc81b": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725519",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "£450–£500 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-8": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725519/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "£450–£500 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "6b68658ba1808f0dd67e4773": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725449",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "pilot-cvlibrary-9": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225725449/",
+      "last_observed_at": "2026-10-15T13:38:38.889Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "9af43d6753601133c4c8cb47": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst-crm/57459401",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£80,000–£95,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "7fe7aa1e7b0c78d018cb68b0": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-business-analyst-iam/anson-mccade-job108175655",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "1bf17afde13eb27ed1f67df2": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-business-analyst-account-and-reference-data-management-officer/state-street-corporation-job108176648",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "5a5ce389bcd2f85f4716df92": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-business-analyst-account-and-reference-data-management-senior-associate/state-street-corporation-job108176651",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "f265dfbb7d668629cadb0eba": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=e260817bb49aa526",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "7318702148c2e38174cdf80f": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=32d85e13eb663cd2",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "787d8c4d1f559f27a03dbdaa": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-consultant/mace-job108176432",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "00676e45b2c1db25c67b3caf": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225726839",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "2af4e03c16a6cca76c4df707": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225722174",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "ece83ab5050d28875237f5c8": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/technical-business-analyst-azure-finops/57456934",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "615111ab8a0196de850f761f": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFnvm",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£400–£600 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "0b118ed4362d6662ec6e5643": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFuji",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Up to £400 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "e2226a78c1544bde0f5814a7": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFQKm",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "7476877c0f632f2ade60935a": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225721973",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "82ac4eb0680aeceabd0e82f6": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst/57454184",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "e6d81cd4470de48d453e4cc8": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFI38",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "d41e729fb333c2d181672205": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFToe",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£402–£492 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "a640487c2b4ad42536bd9cbb": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFKLA",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£500 (basis unstated)",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "351ce6b0d81f9c865f949d9c": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFHSw",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£550 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "097054cfc80107059366827e": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFTZL",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£60 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "1 day/week on-site"
+    },
+    "de8933bd9284686d17af2633": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFRLX",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "e8e7747e04c19ba2811d94a6": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst-charles-river-development-officer/state-street-corporation-job108162129",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "57ed875feff375d30fea2487": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFNpZ",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Outside IR35",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "pilot-indeeduk-31": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=449c5f55e4111c5e",
+      "last_observed_at": "2026-10-15T13:39:51.979Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "6b3f5ece14e29bc1f9b52120": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFTZ2",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£625–£650 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "4 days/week on-site"
+    },
+    "b11f56478bbf021e5015aaf7": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225717521",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "e012966fd689f2cf844e7c95": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225718861",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "b77dbfae370ec2568c83e45e": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225719372",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "efd77042d97662a02600d80b": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225719085",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "5066843d14e9b9b39bbb655a": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225717320",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "92358edfe8d46f548b06baee": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/mes-business-analyst/57453973",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "45f850543bf1ee24c8ae04f5": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225720408",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "be56c51e26c8ffae42807559": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/security-engineer/viqu-it-recruitment-job108161112",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "c84de325bdf90e679e73510b": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFUoL",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£600–£650 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ffdd92c7f76f603dadb5df1b": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225721234",
+      "last_observed_at": "2026-10-18T08:00:30.350Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "fb98f0e33c4dad429fcc4c2c": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108161623",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "2713ce41840178a117900d87": {
+      "source": "CV-Library",
+      "url": "https://www.cv-library.co.uk/job/225721578",
+      "last_observed_at": "2026-10-16T10:33:52.042Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "94c39978086d7da355d58a36": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFWBL",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Up to £65 (basis unstated)",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "c903a29ad42d919976f301c8": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hFTNK",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "68c5850315234ddb74b1d192": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst/57450310",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£55,000–£60,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "763303677de2a7f957edf82e": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEnWF",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£460–£500 / day",
+      "ir35_status": "Outside IR35",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "b8614b80be6f4b075cb3f780": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=20fc0d870e127e37",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£35,000–£45,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "c05b15a9890a357278d7032e": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hErCs",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "c2e8de62b10d2ddb9d355590": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEuj9",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£46,000 / year",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "2e74d7b2259ceed16924ff2a": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEpwu",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£350 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "5eded8b7efb7e01c388fc1b8": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst-ai-programme/expleo-group-job108148874",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "0f8b236f5713faf3fa721b57": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst-commodities-platform-process/hays-job108157488",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "4857b67a25b6d756b901e8ae": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/g9Wi5",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "0eae339c704c41a401b2591f": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEtoE",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£480–£500 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "03dd09a07fc88545cebf2f27": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEvyT",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "22acd5b0d7e7251c2922fe54": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEpsZ",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£500 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "On-site",
+      "office_requirement": "Full-time on-site"
+    },
+    "0759bc6eca31efd52772a214": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hBrGM",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "0b54494123913f80c3645d7a": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/electronic-systems-security-consultant/sanderson-government-and-defence-job108149056",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "4fa57e98d2124a09bfa8c1db": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEnT3",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£550 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "594ce7861b3f5d6ec31d7e45": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEubd",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "41cab18adc98214bdf3132b1": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hEplT",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "£800 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "3 days/week on-site"
+    },
+    "ee3ac692ffed2c0c7e5de9dc": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hExae",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "463f5ecd6827af88e40c715b": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hE1go",
+      "last_observed_at": "2026-10-18T08:16:56.668Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "7dd906089cf6ddd746a70d95": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDhLc",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "£265 (basis unstated)",
+      "ir35_status": "Outside IR35",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "pilot-jobserve-45": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDcRl",
+      "last_observed_at": "2026-10-15T15:51:48.728Z",
+      "pay_display": "£450 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "796d6f53a10ae5d9f4caa5e0": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDiM1",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "£400 / day",
+      "ir35_status": "Outside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2 days/week on-site"
+    },
+    "e7069e54c3f70cc9ae4fb4af": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDg1S",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "1 day/week on-site"
+    },
+    "cc4a761d5e6a5e0d0714299c": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDiRY",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "£80 (basis unstated)",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "4c152d2fcf606ad04bf02824": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/finance-systems-business-analyst/data-careers-job108116940",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "e3ea1dd3b69360577088b72c": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/junior-technology-business-analyst/zachary-daniels-job108116756",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "fda54ccb1e49adfe57b3e58b": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=98a0fe6ad87c19b1",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "41cfe016745e69ea85ebb458": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-engineer-isovalent/cisco-job108124308",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "2b845154c5ca90d9c7737f65": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/systems-infrastructure-eng-msoft-networks-security-nw1-70k/langley-james-limited-job108120556",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "9e1a07fb9591fa7f1ba8c7e4": {
+      "source": "JobServe",
+      "url": "https://www.jobserve.com/gb/en/hDlJf",
+      "last_observed_at": "2026-10-16T10:35:40.217Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "37f8b70ea4a6b349f2e7e39b": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/charles-river-business-analyst/sanderson-recruitment-job108111916",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "0b7fc6866196c0bc6d20e151": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/cyber-security-consultant/fruition-group-job108113714",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "1d2045c5bde62f0576ad4f46": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=c82e7b61d8bf26d9",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "af8d9ce2bf9c13fddb7cbbc6": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/principal-security-architect/hays-job108112987",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "35d3cab4b1daf4b4c1afc7ac": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-security-consultant/anson-mccade-job108115651",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "£70,000–£90,000 (basis unstated)",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "2dbfcd4c07b0f4c608ce1bd1": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/technical-business-analyst-wealth-management/sanderson-recruitment-job108112969",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "f76852a2729ea4ad5822a606": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-information-security-consultant/hays-job108103230",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "ff472e5b1176ed9cf5d70e35": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/lead-data-analyst/57432267",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "53a0e5031ea31d46220f4dc0": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/project-analyst/57431085",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "0fed6cc8ac595ae6199304a2": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/sap-pp-mm-business-analyst/asset-resourcing-job108092553",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "b1fc6dfb18292a00a21deac7": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/senior-business-analyst/mthree-job108093125",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "4fbee659bfef57900ee44462": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=e61ea5d032b79cce",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "745358b861a41651d943bcb1": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/ebilling-analyst/57427598",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "68f6d071a24534501348d3f4": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=7cd39b6923bb8486",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "152b5502ddeee2e6d5db79ac": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/security-consultant-check-team/matchtech-mobility-job108084569",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "96e920a7185a2a8266c3e060": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst-agile-product-team-defence-security/experis-job108079906",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "75cf2f4e1c05fec958c0d542": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/business-analyst-ellucian-banner/hays-job108082583",
+      "last_observed_at": "2026-10-18T08:01:27.841Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "e99cf2d375bd02164b839a28": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst-supply-chain/57415525",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£500–£525 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "pilot-totaljobs-20": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/technical-business-analyst-client-facing-umbraco-cms-specialist/staffworx-limited-job108072498",
+      "last_observed_at": "2026-10-15T13:39:04.363Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "9f77b78f1fcdf61b746f25d7": {
+      "source": "Totaljobs",
+      "url": "https://www.totaljobs.com/job/security-engineer/fs-recruitment-services-ltd-job108075230",
+      "last_observed_at": "2026-10-16T10:34:37.911Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "dce6998eeb8139c728d72b4b": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=09bf04665e1c7730",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "f0ed8c8eadd37fed121a1b80": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=4326d57eed4c6354",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "d919be3d26ac31e14826b2a0": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-system-analyst/57405643",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "178abbdda3f772bbca1d7769": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57407262",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£80,000–£90,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "e9d3c7fad7a4169e0d92e03c": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57408191",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£80,000–£90,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "0550e8636289891893268d58": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/support-analyst/57405011",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "89a0c790976468f5c0673eed": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=093a92e8007f3065",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£55,000–£65,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "92debe41b39921eb916c7960": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/technical-business-analyst/57403479",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£60,000–£85,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "03043e0732edcc75699873d2": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-analyst/57399292",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "On-site",
+      "office_requirement": "Not stated"
+    },
+    "1a16490ed661060fb5fc5b19": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=dcefb42275d7541c",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£35,000–£38,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "fb2888fba9ae3fd210336e46": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=d044cf2f1e22d7bb",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "273b6e68532a205b42c1e49e": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57392838",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "8aca53f11470e01f00566d68": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/senior-business-analyst/57383113",
+      "last_observed_at": "2026-10-18T08:01:44.728Z",
+      "pay_display": "£650–£700 / day",
+      "ir35_status": "Inside IR35",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "2–3 days/week on-site"
+    },
+    "716038689d744610ed61f927": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-readiness-analyst/57372616",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "6f66ee755aefc15c9fbcdeab": {
+      "source": "Reed UK",
+      "url": "https://www.reed.co.uk/jobs/business-readiness-senior-analyst/57372612",
+      "last_observed_at": "2026-10-16T10:34:48.512Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not applicable",
+      "work_mode_display": "Hybrid",
+      "office_requirement": "Not stated"
+    },
+    "92c01a2b89e5fba9729febd5": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=b2ac33f106e58c4a",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£350–£450 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "399b147a67369da245d575dd": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=87f8a2533611597d",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "91606febb87a92871142edc5": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=cf61fb4188cabe1e",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "7500c7f8a7959e66875d6875": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=80c9ee0a8bb1886d",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£81,400–£92,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "816dea4b68d0771e27dfc317": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=b69d8b8315070788",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£350–£450 / day",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "84d7f87541cbbc70f7031964": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=76978912602f255a",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "babb4b9ebeefdcd2d96640fc": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=c7e783a7c1722f29",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Remote",
+      "office_requirement": "Not stated"
+    },
+    "bc7996ac5a19b6632912498d": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=61543256b67b4c69",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "pilot-indeeduk-33": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=7c0a769a98c031ca",
+      "last_observed_at": "2026-10-15T13:39:51.979Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "52e584b57e7fa184b535c46f": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=30f31ba56c8fd90a",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "0cc5022e5e3251196a91809e": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=4a01d2029e971760",
+      "last_observed_at": "2026-10-18T08:02:42.232Z",
+      "pay_display": "£60,000–£65,000 / year",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "a597cd97b21464f94da02036": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=484c9640b09e9760",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    },
+    "8ce6f999d234c1a43b7e5565": {
+      "source": "Indeed UK",
+      "url": "https://uk.indeed.com/viewjob?jk=0501ff18c4042280",
+      "last_observed_at": "2026-10-16T10:35:11.438Z",
+      "pay_display": "Not stated",
+      "ir35_status": "Not stated",
+      "work_mode_display": "Not stated",
+      "office_requirement": "Not stated"
+    }
+  }
+}
