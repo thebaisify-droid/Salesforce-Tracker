@@ -1,8 +1,8 @@
 {
   "schema": "ba-sector-employer-evidence/v1",
   "scope": "ADVERTISER_ORGANISATION_ONLY",
-  "updated_at": "2026-10-15",
-  "usage": "Exact advertiser name -> independently supported advertiser-organisation sector, not end-client sector. Do not infer client or industry from occupation, security clearance or job board category.",
+  "updated_at": "2026-10-16",
+  "usage": "Official advertiser-organisation sector only, from exact named advertiser; never infer recruitment-agency end client or classify sector from job skills.",
   "employers": [
     {
       "advertiser": "Deloitte",
@@ -45,6 +45,72 @@
       "sector": "Public Sector",
       "evidence_url": "https://www.clacks.gov.uk/",
       "basis": "LOCAL_AUTHORITY_OFFICIAL_SITE"
+    },
+    {
+      "advertiser": "Department for Transport",
+      "sector": "Public Sector",
+      "evidence_url": "https://www.gov.uk/government/organisations/department-for-transport/about",
+      "basis": "UK_GOVERNMENT_OFFICIAL_ORGANISATION"
+    },
+    {
+      "advertiser": "Bristol City Council",
+      "sector": "Public Sector",
+      "evidence_url": "https://www.bristol.gov.uk/council",
+      "basis": "LOCAL_AUTHORITY_OFFICIAL_SITE"
+    },
+    {
+      "advertiser": "Warwick District Council",
+      "sector": "Public Sector",
+      "evidence_url": "https://www.warwickdc.gov.uk/site/",
+      "basis": "LOCAL_AUTHORITY_OFFICIAL_SITE"
+    },
+    {
+      "advertiser": "Oxford Health NHS Foundation Trust",
+      "sector": "Healthcare & Life Sciences",
+      "evidence_url": "https://oxfordhealth.nhs.uk/about-us/overview/",
+      "basis": "NHS_TRUST_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Cisco",
+      "sector": "Technology Services",
+      "evidence_url": "https://www.cisco.com/site/uk/en/about/index.html",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Siemens",
+      "sector": "Manufacturing & Engineering",
+      "evidence_url": "https://www.siemens.com/en-gb/company/",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Capital One UK",
+      "sector": "Financial Services",
+      "evidence_url": "https://www.capitalone.co.uk/aboutus/who-are-capital-one",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Deutsche Bank",
+      "sector": "Financial Services",
+      "evidence_url": "https://www.db.com/who-we-are/?language_id=1",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Janus Henderson",
+      "sector": "Financial Services",
+      "evidence_url": "https://www.janushenderson.com/en-gb/institutional/who-we-are/",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "BDO UK",
+      "sector": "Professional Services",
+      "evidence_url": "https://www.bdo.co.uk/en-gb/about",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
+    },
+    {
+      "advertiser": "Evri",
+      "sector": "Transport & Logistics",
+      "evidence_url": "https://www.evri.com/about-us/",
+      "basis": "COMPANY_OFFICIAL_OVERVIEW"
     }
   ],
   "blocked_shortcuts": [
