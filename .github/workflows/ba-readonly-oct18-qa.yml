@@ -1,0 +1,25 @@
+name: One-time read-only BA five-source QA 2026-10-18
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ba-readonly-oct18-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    if: ${{ github.event_name == 'push' && github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate five completed datasets without POST
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python -m scripts.ba_readonly_oct18_qa
