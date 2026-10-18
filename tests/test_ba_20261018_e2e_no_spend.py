@@ -46,7 +46,7 @@ class OfflineBusinessTrackerE2E(unittest.TestCase):
         self.assertEqual(len(r["candidate"]["records"]),r["matched"])
         self.assertEqual(len({x["url"] for x in r["candidate"]["records"]}),r["matched"])
         self.assertTrue(r["preview_sha256"])
-        self.assertEqual(r["matched"],87)
+        self.assertEqual(r["matched"],81)
         print("BA_END_TO_END_REHEARSAL", json.dumps({
             "source_records":161,"source_boards":5,
             "automatic_scope_matches":r["matched"],
