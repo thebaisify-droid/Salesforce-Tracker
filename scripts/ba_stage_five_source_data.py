@@ -16,6 +16,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 from tracker.business_product_delivery_security import classify_market_role
+from scripts.ba_scope_classifier_offline_audit import assess as proposed_scope_assessment
 from scripts.validate_ba_five_source_contract import validate_run_receipts
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -219,6 +220,17 @@ def stage(input_doc, sector_mapping):
                 rejected["user_explicitly_excluded_advert"] += 1
                 continue
             desc = cleaned_excerpt(raw)
+            # Conservative pilot: existing title taxonomy remains authoritative.
+            # Candidate review gates prevent automatic publication of trainee
+            # promotions and apprenticeships. Unmatched proposed families are
+            # REVIEW-only, never silently auto-included.
+            proposal = proposed_scope_assessment(title, desc)
+            if proposal["status"] != "AUTO_INCLUDE":
+                if proposal.get("basis") in ("APPRENTICESHIP_REQUIRES_REVIEW", "PROMOTIONAL_TRAINEE_REVIEW", "PROPOSED_REVIEW_ONLY"):
+                    rejected["scope_review_required_not_auto_published"] += 1
+                else:
+                    rejected["out_of_scope"] += 1
+                continue
             role = classify_market_role(title, desc)
             if not role.get("included"):
                 rejected["out_of_scope"] += 1
