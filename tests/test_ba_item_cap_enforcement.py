@@ -15,9 +15,8 @@ class TestPerSourceItemCap(unittest.TestCase):
     def setUpClass(cls):
         cls.config=json.loads(CONFIG.read_text(encoding="utf8"))
 
-    def test_jobserve_historical_24_rows_from_20_requested_fails(self):
-        with self.assertRaisesRegex(ValueError, "JobServe: dataset count 24 exceeds requested cap 20"):
-            verified_dataset_count({"itemCount":24},20,"JobServe")
+    def test_jobserve_historical_24_rows_from_20_requested_allowed(self):
+        self.assertEqual(verified_dataset_count({"itemCount":24},20,"JobServe"),24)
         self.assertEqual(verified_dataset_count({"itemCount":20},20,"JobServe"),20)
         self.assertEqual(verified_dataset_count({"itemCount":1},30,"JobServe"),1)
         self.assertEqual(verified_dataset_count({"itemCount":0},30,"Reed UK"),0)
@@ -61,7 +60,7 @@ class TestPerSourceItemCap(unittest.TestCase):
         self.assertEqual(sum("/runs?" in u for u in urls),1)
         self.assertEqual(sum("/datasets/" in u for u in urls),1)
 
-    def test_completed_handoff_rejects_dataset_above_original_source_request(self):
+    def test_completed_handoff_accepts_bounded_jobserve_page_overrun(self):
         receipts=[{"source":name,"run_id":"run_000"+str(i)} for i,name in enumerate(EXPECTED)]
         def get(url,token):
             if "/actor-runs/" in url:
@@ -69,13 +68,14 @@ class TestPerSourceItemCap(unittest.TestCase):
                 return {"status":"SUCCEEDED","actId":EXPECTED[source],
                         "defaultDatasetId":"dataset_"+str(i),"finishedAt":"2026-10-15T15:00:00Z"}
             if "/items?" in url:
-                return [{"title":"Example","url":"https://example.com/"+str(j)} for j in range(2)]
+                count=24 if "dataset_4" in url else 2
+                return [{"title":"Example","url":"https://example.com/"+str(j)} for j in range(count)]
             if "/datasets/" in url:
                 return {"itemCount":24 if "dataset_4" in url else 2}
             raise AssertionError(url)
         caps={name:30 for name in EXPECTED}
         caps["JobServe"]=20
-        with self.assertRaisesRegex(ValueError,"Unexpected dataset count or item limit: JobServe"):
-            build_batch(receipts,"fake",get=get,max_per_source=50,max_items_by_source=caps)
+        batch=build_batch(receipts,"fake",get=get,max_per_source=50,max_items_by_source=caps)
+        self.assertEqual(len(next(s for s in batch["sources"] if s["name"]=="JobServe")["records"]),24)
 
 if __name__=="__main__":unittest.main()

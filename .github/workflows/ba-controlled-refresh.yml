@@ -7,7 +7,7 @@ on:
     - cron: "35 7 * * 2,5"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: shared-apify-acquisition
@@ -28,6 +28,9 @@ jobs:
           python -m scripts.ba_recurring_cycle
           python -m scripts.validate_ba_five_source_contract
           python -m unittest discover -s tests -p test_ba_recurring_cycle.py -v
+          python -m unittest discover -s tests -p test_ba_jobserve_overshoot.py -v
+          python -m unittest discover -s tests -p test_ba_slot_claim.py -v
+          python -m unittest discover -s tests -p test_ba_workflow_safety_hold.py -v
       - name: Check standing monetary authorisation in committed BA config
         id: approval
         run: |
@@ -38,6 +41,19 @@ jobs:
       # 46 JobServe items despite maxResults=30. Do not spend on the next
       # Tue/Fri run until actor output sizing, QA and costs are reconciled.
       # The manual workflow also must NOT be retried.
+      # Do not report a healthy acquisition when the spending step is disabled.
+      # Keep this explicit failure until the JobServe 46/30 oversize receipt
+      # and the Actor's actual charge behaviour have been reconciled.
+      - name: Report blocked acquisition as unsuccessful (no paid API calls)
+        run: |
+          echo "BA_REFRESH_STATUS=BLOCKED_COST_SAFETY_HOLD"
+          {
+            echo "### BA acquisition: BLOCKED_COST_SAFETY_HOLD"
+            echo "No paid Actors were launched and no WordPress snapshot was sent."
+            echo "Reason: JobServe oversize output (46 items versus requested 30) requires verified cost and sizing reconciliation."
+            echo "The scheduler and configuration preflight passing is not an acquisition success."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
       - name: Collect five BA boards once and deliver only on quality-passed success
         if: ${{ false }}
         env:
@@ -49,6 +65,7 @@ jobs:
           # The scheduled cron is authoritative; GitHub runners can start late.
           # The second DST cron is rejected by the Python season-specific gate.
           BA_SCHEDULE_CRON: ${{ github.event.schedule }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: python -m scripts.ba_recurring_cycle --scheduled --execute --publish
       - name: Save QA and source-run receipts without raw contacts
         if: always()
