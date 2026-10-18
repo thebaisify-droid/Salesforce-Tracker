@@ -1,0 +1,37 @@
+name: One-time publish already completed BA datasets (no Actor launches)
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/ba-publish-existing-oct18-once.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ba-wordpress-snapshot-delivery
+  cancel-in-progress: false
+
+jobs:
+  publish_existing_only:
+    # Never run on manual dispatch, rerun or an unrelated merge/push.
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.run_attempt == 1 && startsWith(github.event.head_commit.message, '[BA-EXISTING-SNAPSHOT-ONCE-20261018]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate fixed-source publication gates and dry-run tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ba_existing_publish_once.py' -v
+          python -m unittest discover -s tests -p 'test_ba_dedup_expiry.py' -v
+      - name: Recheck the five existing datasets and deliver QA-passed snapshot once
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          BA_WP_USERNAME: ${{ secrets.BA_WP_USERNAME }}
+          BA_WP_APPLICATION_PASSWORD: ${{ secrets.BA_WP_APPLICATION_PASSWORD }}
+          BA_EXISTING_DATASET_PUBLISH_APPROVAL: EXISTING_COMPLETED_DATASETS_ONLY_OCT18
+          BA_WP_DELIVERY_APPROVAL: EXPLICIT_APPROVAL
+          GITHUB_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: python -m scripts.ba_publish_oct18_existing_once
