@@ -14,6 +14,8 @@ PATTERNS=[
 ]
 def assess(title,description=""):
     lower=(title or "").casefold()
+    if "apprentice" in lower or "apprenticeship" in lower:
+        return {"status":"REVIEW","family":None,"basis":"APPRENTICESHIP_REQUIRES_REVIEW"}
     if "no experience needed" in lower and "trainee" in lower:
         return {"status":"REVIEW","family":None,"basis":"PROMOTIONAL_TRAINEE_REVIEW"}
     result=classify_market_role(title,description)
