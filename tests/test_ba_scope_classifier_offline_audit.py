@@ -17,6 +17,16 @@ class TestReviewOnlyCandidate(unittest.TestCase):
             self.assertIn(outcome["status"],("AUTO_INCLUDE","REVIEW"))
             if outcome["basis"]=="PROPOSED_REVIEW_ONLY":
                 self.assertEqual(outcome["status"],"REVIEW")
+    def test_promotional_trainee_not_automatic(self):
+        out=assess("Trainee Cyber Security Analyst – No Experience Needed")
+        self.assertEqual(out["status"],"REVIEW")
+        self.assertEqual(out["basis"],"PROMOTIONAL_TRAINEE_REVIEW")
+    def test_no_false_auto_inclusions_in_161_reviewed(self):
+        report=audit()
+        self.assertEqual(report["false_auto_inclusions"],0,report)
+        self.assertEqual(report["metrics"].get("KEEP__AUTO_INCLUDE"),81)
+        self.assertEqual(report["metrics"].get("KEEP__REVIEW"),43)
+        self.assertEqual(report["metrics"].get("EXCLUDE__REVIEW"),37)
     def test_ambiguous_titles_require_review(self):
         for title in ("Sales Manager","Pensions Technical Manager","Lead Engineer",
                       "Implementation Manager"):
