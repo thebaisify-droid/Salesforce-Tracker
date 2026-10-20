@@ -12,7 +12,8 @@ class ControlledRefreshSafetyTests(unittest.TestCase):
         self.assertEqual(MAX_RUN_USD, 0.90)
         r = check_account(self.payload(7.95))
         self.assertEqual(r["account_limit_usd"],19.0)
-        self.assertEqual(check_account(self.payload(7.95,25.0))["account_limit_usd"],25.0)
+        with self.assertRaises(ValueError):
+            check_account(self.payload(7.95, 25.0))
         self.assertEqual(r["protected_reserve_usd"],8.0)
         self.assertEqual(r["actors_started"],0)
         self.assertFalse(r["automatic_publication"])
