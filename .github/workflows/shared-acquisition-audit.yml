@@ -51,6 +51,7 @@ jobs:
           set -euo pipefail
           python -m scripts.shared_refresh_controller --audit --ledger state/shared_acquisition_ledger.json > state/shared-acquisition-audit.json
           python -m scripts.shared_dataset_reuse --audit > state/source-overlap-audit.json
+          python -m scripts.shared_phase4_readiness --output state/phase4-readiness.json > /dev/null
           python -m scripts.shared_ledger_archive --archive state/shared-acquisition-checkpoint.zip --ledger state/shared_acquisition_ledger.json
           python -m scripts.shared_ledger_archive --restore state/shared-acquisition-checkpoint.zip --ledger state/restore-test-ledger.json
           python -m scripts.shared_refresh_controller --audit --ledger state/restore-test-ledger.json > state/restore-verification.json
@@ -69,5 +70,6 @@ jobs:
             state/shared-acquisition-audit.json
             state/restore-verification.json
             state/source-overlap-audit.json
+            state/phase4-readiness.json
           retention-days: 30
           if-no-files-found: error
