@@ -70,8 +70,8 @@
     "source_3"
   ],
   "apify_budget": {
-    "monthly_usd": 25,
+    "monthly_usd": 19,
     "account_limit_required": true,
-    "accounting": "up_to_25_usd_shared; Salesforce requested source charges and BA reserve protected by independent live preflight. Do not imply this changes Apify console account cap."
+    "accounting": "Strict $19 shared Apify account ceiling; $8 Salesforce reserve and $11 BA allowance. Check actual account limit and usage before any paid Actor. BA acquisition currently paused."
   }
 }

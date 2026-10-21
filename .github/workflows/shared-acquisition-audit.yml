@@ -1,0 +1,75 @@
+name: Joint Salesforce and BA source audit (no spend)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: shared-acquisition-readonly-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SHARED_PAID_ACQUISITION_ENABLED: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate offline source adapter, independent BA/SF QA and archive
+        run: python -m unittest discover -s tests -v
+      - name: Select previous successful same-workflow ledger (GET only)
+        id: previous
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.shared_checkpoint_selector --output state/previous-checkpoint.json --allow-empty-shadow-bootstrap
+      - name: Retrieve previous ledger archive (no paid calls)
+        if: ${{ steps.previous.outputs.found == 'true' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: joint-acquisition-verified-ledger
+          run-id: ${{ steps.previous.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: recovered-checkpoint
+      - name: Verify restored checkpoint; permit empty shadow bootstrap only
+        run: |
+          set -euo pipefail
+          if [ -f recovered-checkpoint/shared-acquisition-checkpoint.zip ]; then
+            python -m scripts.shared_ledger_archive --restore recovered-checkpoint/shared-acquisition-checkpoint.zip --ledger state/shared_acquisition_ledger.json
+          elif [ -f recovered-checkpoint/state/shared-acquisition-checkpoint.zip ]; then
+            python -m scripts.shared_ledger_archive --restore recovered-checkpoint/state/shared-acquisition-checkpoint.zip --ledger state/shared_acquisition_ledger.json
+          else
+            python -c 'import json; from pathlib import Path; d=json.loads(Path("state/previous-checkpoint.json").read_text()); assert d["found"] is False, "Prior artifact missing: fail closed"'
+          fi
+      - name: Zero-spend dual acquisition config and immutable ledger audit
+        run: |
+          set -euo pipefail
+          python -m scripts.shared_refresh_controller --audit --ledger state/shared_acquisition_ledger.json > state/shared-acquisition-audit.json
+          python -m scripts.shared_dataset_reuse --audit > state/source-overlap-audit.json
+          python -m scripts.shared_phase4_readiness --output state/phase4-readiness.json > /dev/null
+          python -m scripts.shared_ledger_archive --archive state/shared-acquisition-checkpoint.zip --ledger state/shared_acquisition_ledger.json
+          python -m scripts.shared_ledger_archive --restore state/shared-acquisition-checkpoint.zip --ledger state/restore-test-ledger.json
+          python -m scripts.shared_refresh_controller --audit --ledger state/restore-test-ledger.json > state/restore-verification.json
+      - name: Persist single verified ledger for the next MANUAL audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: joint-acquisition-verified-ledger
+          path: state/shared-acquisition-checkpoint.zip
+          retention-days: 30
+          if-no-files-found: error
+      - name: Persist only non-sensitive audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: shared-acquisition-no-spend-report
+          path: |
+            state/shared-acquisition-audit.json
+            state/restore-verification.json
+            state/source-overlap-audit.json
+            state/phase4-readiness.json
+          retention-days: 30
+          if-no-files-found: error
