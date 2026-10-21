@@ -1,0 +1,33 @@
+name: Joint Salesforce and BA source audit (no spend)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shared-acquisition-readonly-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify shared source reuse safeguards offline
+        run: python -m unittest tests.test_shared_acquisition_ledger tests.test_shared_dataset_reuse tests.test_salesforce_controlled_refresh_budget -v
+      - name: Audit combined source configuration without secrets
+        run: |
+          mkdir -p state
+          python -m scripts.shared_refresh_controller --audit > state/shared-acquisition-audit.json
+          python -m scripts.shared_dataset_reuse --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shared-acquisition-no-spend-report
+          path: state/shared-acquisition-audit.json
+          retention-days: 14
+          if-no-files-found: error
