@@ -131,6 +131,35 @@ class JointPhaseThreeTests(unittest.TestCase):
         self.assertFalse(choose({"total_count": 0, "artifacts": []},
                         **options)["found"])
 
+    def test_salesforce_actual_incremental_sqlite_shadow_without_publication(self):
+        """Run the existing production normalizer/upsert against an isolated DB."""
+        from unittest.mock import patch
+        from scripts.process_incremental import main as process_salesforce
+        self.intake()
+        handoff = dual_readonly_handoff(self.request, ledger=self.ledger,
+            getter=self.getter, now=self.now)
+        root = Path(self.tmp.name)
+        raw = root / "shadow-run" / "raw"
+        raw.mkdir(parents=True)
+        (raw / "source_4.json").write_text(json.dumps(
+            handoff["salesforce_raw_records"]), encoding="utf-8")
+        db = root / "isolated-salesforce-shadow.db"
+        metrics = root / "sf-shadow-metrics.json"
+        args = ["sf-process-incremental", "--input-dir", str(raw),
+                "--run-id", "shadow-salesforce-001", "--metrics", str(metrics),
+                "--database", str(db)]
+        with patch("sys.argv", args):
+            self.assertEqual(process_salesforce(), 0)
+        report = json.loads(metrics.read_text(encoding="utf-8"))
+        self.assertEqual(report["inserted_rows"], 1)
+        self.assertEqual(report["irrelevant_rows"], 1)
+        self.assertEqual(report["rejected_rows"], 0)
+        import sqlite3
+        with sqlite3.connect(db) as conn:
+            stored = conn.execute("SELECT COUNT(*) FROM vacancies").fetchone()[0]
+        self.assertEqual(stored, 1)
+        self.assertFalse((root / "dashboard" / "live-data.json").exists())
+
     def test_existing_ba_five_board_classification_and_delivery_preview(self):
         boards = [
             ("CV-Library", {"title": "Business Analyst", "url": "https://www.cv-library.co.uk/job/test001",
