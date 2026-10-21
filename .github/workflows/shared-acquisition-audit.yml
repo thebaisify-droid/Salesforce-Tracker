@@ -4,6 +4,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: shared-acquisition-readonly-audit
@@ -12,30 +13,61 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
+    env:
+      SHARED_PAID_ACQUISITION_ENABLED: "false"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Verify shared source reuse safeguards offline
-        run: python -m unittest tests.test_shared_acquisition_ledger tests.test_shared_acquisition_next_stage tests.test_shared_dataset_reuse tests.test_salesforce_controlled_refresh_budget -v
-      - name: Audit combined source configuration without secrets
+      - name: Validate offline source adapter, independent BA/SF QA and archive
+        run: python -m unittest discover -s tests -v
+      - name: Select previous successful same-workflow ledger (GET only)
+        id: previous
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.shared_checkpoint_selector --output state/previous-checkpoint.json --allow-empty-shadow-bootstrap
+      - name: Retrieve previous ledger archive (no paid calls)
+        if: ${{ steps.previous.outputs.found == 'true' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: joint-acquisition-verified-ledger
+          run-id: ${{ steps.previous.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: recovered-checkpoint
+      - name: Verify restored checkpoint; permit empty shadow bootstrap only
         run: |
-          mkdir -p state
-          python -m scripts.shared_refresh_controller --audit > state/shared-acquisition-audit.json
-          python -m scripts.shared_dataset_reuse --audit
-      - name: Verify portable ledger persistence with no Actor requests
+          set -euo pipefail
+          if [ -f recovered-checkpoint/shared-acquisition-checkpoint.zip ]; then
+            python -m scripts.shared_ledger_archive --restore recovered-checkpoint/shared-acquisition-checkpoint.zip --ledger state/shared_acquisition_ledger.json
+          elif [ -f recovered-checkpoint/state/shared-acquisition-checkpoint.zip ]; then
+            python -m scripts.shared_ledger_archive --restore recovered-checkpoint/state/shared-acquisition-checkpoint.zip --ledger state/shared_acquisition_ledger.json
+          else
+            python -c 'import json; from pathlib import Path; d=json.loads(Path("state/previous-checkpoint.json").read_text()); assert d["found"] is False, "Prior artifact missing: fail closed"'
+          fi
+      - name: Zero-spend dual acquisition config and immutable ledger audit
         run: |
-          python -m scripts.shared_ledger_archive --archive state/shared-ledger-audit.zip --ledger state/shared_acquisition_ledger.json
-          python -m scripts.shared_ledger_archive --restore state/shared-ledger-audit.zip --ledger state/restored-verified-ledger.json
-          python -m scripts.shared_refresh_controller --audit --ledger state/restored-verified-ledger.json > state/shared-restoration-audit.json
-      - uses: actions/upload-artifact@v4
+          set -euo pipefail
+          python -m scripts.shared_refresh_controller --audit --ledger state/shared_acquisition_ledger.json > state/shared-acquisition-audit.json
+          python -m scripts.shared_dataset_reuse --audit > state/source-overlap-audit.json
+          python -m scripts.shared_ledger_archive --archive state/shared-acquisition-checkpoint.zip --ledger state/shared_acquisition_ledger.json
+          python -m scripts.shared_ledger_archive --restore state/shared-acquisition-checkpoint.zip --ledger state/restore-test-ledger.json
+          python -m scripts.shared_refresh_controller --audit --ledger state/restore-test-ledger.json > state/restore-verification.json
+      - name: Persist single verified ledger for the next MANUAL audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: joint-acquisition-verified-ledger
+          path: state/shared-acquisition-checkpoint.zip
+          retention-days: 30
+          if-no-files-found: error
+      - name: Persist only non-sensitive audit report
+        uses: actions/upload-artifact@v4
         with:
           name: shared-acquisition-no-spend-report
           path: |
             state/shared-acquisition-audit.json
-            state/shared-restoration-audit.json
-            state/shared-ledger-audit.zip
-          retention-days: 14
+            state/restore-verification.json
+            state/source-overlap-audit.json
+          retention-days: 30
           if-no-files-found: error
