@@ -195,7 +195,9 @@ def apify_get_only(endpoint, token):
     allowed = (
         re.fullmatch(r"actor-runs/[A-Za-z0-9_-]{6,100}", endpoint) or
         re.fullmatch(r"datasets/[A-Za-z0-9_-]{6,100}", endpoint) or
-        re.fullmatch(r"datasets/[A-Za-z0-9_-]{6,100}/items\?clean=false&offset=0&limit=[0-9]{1,4}", endpoint)
+        re.fullmatch(r"datasets/[A-Za-z0-9_-]{6,100}/items\?clean=false&offset=0&limit=[0-9]{1,4}", endpoint) or
+        re.fullmatch(r"key-value-stores/[A-Za-z0-9_-]{6,100}/records/INPUT", endpoint) or
+        re.fullmatch(r"actor-tasks/[A-Za-z0-9_-]{2,100}~[A-Za-z0-9_.-]{2,100}", endpoint)
     )
     if not allowed or not isinstance(token, str) or not token:
         raise ValueError("Only authenticated read-only Apify GET endpoints permitted")
@@ -203,7 +205,11 @@ def apify_get_only(endpoint, token):
         "Authorization": "Bearer " + token, "Accept": "application/json"})
     with urlopen(request, timeout=35) as response:
         payload = json.load(response)
-    if "/items?" in endpoint:
+    if "/items?" in endpoint or endpoint.endswith("/records/INPUT"):
+        if endpoint.endswith("/records/INPUT"):
+            if not isinstance(payload, dict):
+                raise ValueError("Original Actor input is not an object")
+            return payload
         if not isinstance(payload, list):
             raise ValueError("Expected dataset row list")
         return payload
